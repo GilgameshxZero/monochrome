@@ -1,0 +1,14 @@
+[Unit]
+Description=gilgamesh-29.tunnel
+After=network.target
+StartLimitIntervalSec=1
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=4
+User=root
+ExecStart=/home/gilgamesh/main.syncthing/monochrome/config/ssh/gilgamesh-29.tunnel
+
+[Install]
+WantedBy=multi-user.target

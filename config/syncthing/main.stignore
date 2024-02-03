@@ -1,0 +1,55 @@
+// Local files are specific to each device and do not need to be synced.
+**/*local.syncthing*
+
+// General development.
+(?d)**/__pycache__
+(?d)**/.data
+(?d)**/.ipynb_checkpoints
+(?d)**/.venv
+(?d)**/jspm_packages
+(?d)**/node_modules
+(?d)**/obj
+
+// General temporary.
+(?d)**/*~
+(?d)**/*.crdownload
+(?d)**/*.part
+(?d)**/.*.swp
+
+// General cache.
+(?d)**/._*
+(?d)**/.DS_Store
+(?d)**/.Spotlight-V100
+(?d)**/.Trashes
+(?d)**/desktop.ini
+(?d)**/ehthumbs.db
+(?d)**/Thumbs.db
+
+// Syncthing nesting.
+(?d)**/.stfolder
+(?d)**/.stignore
+(?d)**/.stversions
+
+// Project-specific.
+(?d)altair/bin
+(?d)emilia/bin
+(?d)rain/bin
+(?d)utulek/bin
+
+// NTFS Junctions are treated as directories and will be synced to outside the main directory. Internal junctions should be ignored and recreated on each system.
+// These are recommended NOT to be project-specific includes, subdirectory includes are relative to the root, not the subdirectory.
+(?d)altair/silver
+(?d)altair/rain
+(?d)alto/silver
+(?d)cygnus/silver
+(?d)emilia/echidna/silver
+(?d)emilia/echidna/snapshots/altair
+(?d)emilia/echidna/snapshots/cygnus
+(?d)emilia/echidna/snapshots/utulek
+(?d)emilia/rain
+(?d)imperial/silver
+(?d)southstar/silver
+(?d)sviva/silver
+(?d)sylph/silver
+(?d)utulek/rain
+(?d)utulek/silver

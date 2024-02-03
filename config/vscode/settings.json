@@ -1,0 +1,225 @@
+{
+	// "workbench.colorCustomizations": {
+	// 	"activityBar.foreground": "#744DA9",
+	// },
+
+	"breadcrumbs.enabled": true,
+
+	"debug.onTaskErrors": "abort",
+	"debug.console.fontSize": 20,
+	"debug.openDebug": "neverOpen",
+	"debug.internalConsoleOptions": "openOnSessionStart",
+	"debug.console.closeOnEnd": false,
+	"debug.terminal.clearBeforeReusing": true,
+
+	"diffEditor.ignoreTrimWhitespace": false,
+
+	"editor.autoClosingBrackets": "languageDefined",
+	"editor.rulers": [80, 120],
+	"editor.inlineSuggest.enabled": true,
+	"editor.insertSpaces": false,
+	"editor.tabSize": 2,
+	"editor.fontSize": 20,
+	"editor.unicodeHighlight.nonBasicASCII": false,
+	"editor.wordWrap": "on",
+	"editor.wrappingIndent": "indent",
+	"editor.minimap.enabled": false,
+	"editor.experimental.pasteActions.enabled": true,
+	"editor.experimental.asyncTokenization": true,
+
+	"explorer.confirmDelete": false,
+	"explorer.confirmDragAndDrop": false,
+	"explorer.sortOrder": "mixed",
+
+	"extensions.ignoreRecommendations": true,
+	"extensions.autoUpdate": false,
+	"extensions.experimental.affinity": {
+		"ms-toolsai.jupyter": 2,
+		"ms-python.python": 2
+	},
+	"files.eol": "\n",
+	"files.exclude": {
+		"**/.DS_Store": false,
+		"**/.git": false,
+		"**/.hg": false,
+		"**/.svn": false
+	},
+
+	"git.enableSmartCommit": true,
+	"git.openRepositoryInParentFolders": "always",
+
+	"html.format.indentInnerHtml": true,
+	"html.format.wrapLineLength": 80,
+
+	"markdown.preview.breaks": true,
+	"markdown.preview.fontSize": 16,
+	"markdown.extension.print.absoluteImgPath": false,
+	"markdown.extension.print.includeVscodeStylesheets": false,
+	"markdown.extension.toc.unorderedList.marker": "*",
+	"markdown.extension.tableFormatter.enabled": false,
+	"markdown.extension.toc.updateOnSave": false,
+	"markdown.copyFiles.destination": {
+		"**/*": "${documentDirName}/${documentFileName}-assets/"
+	},
+	"markdown.extension.syntax.plainTheme": true,
+
+	"remote.SSH.externalSSH_ASKPASS": true,
+	"remote.SSH.enableRemoteCommand": true,
+
+	"search.quickOpen.includeHistory": false,
+	"search.experimental.notebookSearch": true,
+	"search.exclude": {
+		"**/.venv": true
+	},
+
+	"security.workspace.trust.untrustedFiles": "open",
+
+	"settingsSync.ignoredSettings": ["workbench.colorTheme"],
+
+	"task.problemMatchers.neverPrompt": {
+		"shell": true
+	},
+
+	"terminal.integrated.fontSize": 20,
+	"terminal.integrated.defaultProfile.windows": "Command Prompt",
+	"terminal.integrated.tabs.enabled": false,
+	"terminal.integrated.enableMultiLinePasteWarning": false,
+	"terminal.integrated.defaultProfile.osx": "zsh",
+	"terminal.integrated.gpuAcceleration": "on",
+	// Closes terminals faster (on Windows); faster tasks/builds.
+	"terminal.integrated.windowsEnableConpty": false,
+	"terminal.integrated.profiles.windows": {
+		"Command Prompt": {
+			"path": [
+				"${env:windir}\\System32\\cmd.exe",
+				"${env:windir}\\Sysnative\\cmd.exe"
+			],
+			"icon": "terminal-cmd"
+		},
+		"PowerShell": {
+			"source": "PowerShell",
+			"icon": "terminal-powershell"
+		},
+		"Git Bash": {
+			"source": "Git Bash"
+		}
+	},
+	"terminal.integrated.confirmOnKill": "never",
+	"terminal.integrated.rightClickBehavior": "default",
+	"terminal.integrated.shellIntegration.suggestEnabled": true,
+
+	"timeline.pageOnScroll": true,
+
+	"update.showReleaseNotes": false,
+
+	"window.autoDetectColorScheme": true,
+	"window.commandCenter": false,
+	"window.restoreWindows": "none",
+	"window.restoreFullscreen": true,
+
+	"workbench.editor.focusRecentEditorAfterClose": false,
+	"workbench.editor.showTabs": "multiple",
+	"workbench.editor.splitInGroupLayout": "vertical",
+	"workbench.editorAssociations": {
+		"*.ipynb": "jupyter-notebook",
+		"*.pdf": "default"
+	},
+	"workbench.panel.defaultLocation": "right",
+
+	"workbench.commandPalette.experimental.suggestCommands": true,
+	"workbench.startupEditor": "none",
+	"workbench.preferredLightColorTheme": "Default Light Modern",
+	"workbench.preferredDarkColorTheme": "Default Dark Modern",
+	"workbench.preferredHighContrastColorTheme": "Default High Contrast",
+	"workbench.preferredHighContrastLightColorTheme": "Default High Contrast Light",
+
+	"zenMode.centerLayout": false,
+	"zenMode.restore": true,
+	"zenMode.fullScreen": false,
+
+	// Extensions.
+	"autoHide.hideOnOpen": false,
+	"autoHide.autoHidePanel": false,
+	"autoHide.autoHideSideBar": false,
+	"autoHide.panelDelay": 0,
+	"autoHide.sideBarDelay": 0,
+
+	"C_Cpp.dimInactiveRegions": true,
+	"C_Cpp.default.cppStandard": "c++17",
+	"C_Cpp.autoAddFileAssociations": false,
+	"C_Cpp.clang_format_fallbackStyle": "{BasedOnStyle: Chromium, UseTab: Always, TabWidth: 2, PointerAlignment: Right, NamespaceIndentation: All, FixNamespaceComments: false, AccessModifierOffset: 0, IndentCaseLabels: true, AlignAfterOpenBracket: AlwaysBreak, AlignOperands: false, ContinuationIndentWidth: 2, BinPackArguments: false, BinPackParameters: false, AlignConsecutiveDeclarations: false, AllowShortIfStatementsOnASingleLine: true, AllowShortLoopsOnASingleLine: true, AlignTrailingComments: false, ReflowComments: true, ColumnLimit: 80, IncludeBlocks: Preserve, SortUsingDeclarations: false}",
+	"C_Cpp.experimentalFeatures": "enabled",
+
+	"github.copilot.enable": {
+		"*": true,
+		"plaintext": true,
+		"markdown": true,
+		"scminput": false,
+		"yaml": false
+	},
+
+	"jupyter.askForKernelRestart": false,
+
+	"markdown-mermaid.darkModeTheme": "neutral",
+	"markdown-mermaid.lightModeTheme": "neutral",
+
+	"notebook.cellToolbarLocation": {
+		"default": "right",
+		"jupyter-notebook": "left"
+	},
+
+	"prettier.useTabs": true,
+	"prettier.trailingComma": "none",
+
+	"remote.SSH.lockfilesInTmp": true,
+	"remote.SSH.remotePlatform": {
+		"gilgamesh-27": "windows",
+		"gilgamesh-29": "linux",
+		"gilgamesh-31": "linux",
+		"scout-lab": "linux",
+		"ccg-gpu-0": "linux",
+		"runpod": "linux"
+	},
+
+	// Formatters.
+	"[css]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[html]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[markdown]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.cursorWidth": 1,
+		"editor.occurrencesHighlight": "off",
+		"editor.rulers": [],
+		"editor.wrappingStrategy": "advanced"
+	},
+	"[cpp]": {
+		"editor.defaultFormatter": "ms-vscode.cpptools"
+	},
+	"[javascript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[json]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[jsonc]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[python]": {
+		"editor.defaultFormatter": "ms-python.python",
+		"editor.insertSpaces": true,
+		"editor.tabSize": 4
+	},
+
+	"files.insertFinalNewline": true,
+	"editor.accessibilitySupport": "off",
+	"notebook.output.wordWrap": true,
+	"terminal.integrated.commandsToSkipShell": [
+		"workbench.action.closeActiveEditor"
+	],
+	"C_Cpp.intelliSenseCacheSize": 2048,
+	"C_Cpp.intelliSenseMemoryLimit": 2048,
+	"window.customTitleBarVisibility": "windowed"
+}

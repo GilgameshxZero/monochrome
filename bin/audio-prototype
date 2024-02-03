@@ -1,0 +1,2 @@
+ytdl --verbose -o "$1.%(ext)s" -x --audio-format mp3 -f bestaudio --audio-quality 0 --geo-bypass --no-playlist $2
+mp3gain -r -t $1.mp3
