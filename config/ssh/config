@@ -1,0 +1,20 @@
+Host gilgamesh-29
+	HostName gilgamesh.cc
+	Port 60029
+	User gilgamesh
+
+Host gilgamesh-31
+	HostName gilgamesh.cc
+	Port 22
+	User root
+
+Host gilgamesh-37
+	HostName gilgamesh.cc
+	Port 60037
+	User 0
+
+Host ccg-gpu
+	HostName ccg-gpu-0.csail.mit.edu
+	User gilgamesh-local
+	IdentitiesOnly yes
+	ForwardAgent yes

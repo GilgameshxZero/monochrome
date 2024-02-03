@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+/usr/bin/env ssh -N -R :60029:127.0.0.1:22 -R :61029:127.0.0.1:5900 -R :8384:127.0.0.1:8384 -R :8080:127.0.0.1:8080 -R 8888:127.0.0.1:8888 -o ExitOnForwardFailure=yes -o ServerAliveInterval=8 root@gilgamesh.cc
