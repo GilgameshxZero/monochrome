@@ -1,0 +1,2 @@
+// Archive files are those which do not need to be readily read or written to.
+**/*archive.syncthing*
