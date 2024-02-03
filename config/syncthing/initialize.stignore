@@ -1,0 +1,7 @@
+// New devices should immediately ignore the following to first sync the shared ignore configurations. This file is here as a reminder/placeholder.
+!*.stignore
+**
+
+// They should then transition to include a subset of the following synced ignore configurations.
+#include monochrome/syncthing/main.stignore
+#include monochrome/syncthing/archive.stignore
