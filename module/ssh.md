@@ -78,7 +78,7 @@ Port|Usage
 60000+X|SSH
 61000+X|RDP or VNC
 
-Utilize the tunneling scripts in `monochrome/config/ssh` to establish persistent tunnels from each machine.
+Utilize the tunneling scripts in `monochrome/config/ssh` to establish persistent tunnels from each machine. Use `lsof -i :X` to check for existing processes connected at port X.
 
 ### Windows
 
