@@ -1,0 +1,14 @@
+[Unit]
+Description=0.x11vnc
+After=network.target
+StartLimitIntervalSec=1
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=4
+User=gilgamesh
+ExecStart=/home/gilgamesh/main.syncthing/monochrome/config/gilgamesh-29/0.x11vnc
+
+[Install]
+WantedBy=multi-user.target
