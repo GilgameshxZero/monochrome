@@ -22,7 +22,7 @@ On Windows, to enable Visual Studio developer tools such as `cl.exe` and `nmake`
 
 
 ```batch
-"C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvarsall.bat" x64 && hide "cmd /C code"
+"C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvarsall.bat" x64 10.0.22000.0 && hide "cmd /C code"
 ```
 
 Two copies of this shortcut, for `x64` and `x86` targets, are available in `monochrome/config/vscode`. This assumes a default-path Visual Studio install.
