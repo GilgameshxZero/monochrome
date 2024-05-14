@@ -10,6 +10,8 @@ The *user-specific* `PATH` environment variable needs to be updated to include t
 2. `monochrome/bin`
 3. `monochrome/archive.syncthing/bin`
 
+These PATHs must be added to the *system-specific* environment variable if any programs need them prior to logon.
+
 ### Windows
 
 Search for “Edit the system environment variables” in the start menu. Add the above directories, in order, into the “User variables for 0” section under the `Path` variable.
@@ -17,8 +19,7 @@ Search for “Edit the system environment variables” in the start menu. Add th
 There is a way to accomplish this via `setx`, but `setx` conflates user-specific vs. system-wide environment variables, which is not the desired behavior. Do not run the following:
 
 ```batch
-SETX path "%USERPROFILE%\main.syncthing\monochrome\b
-in;%PATH%"
+SETX path "%USERPROFILE%\main.syncthing\monochrome\bin;%PATH%"
 ```
 
 ### Linux

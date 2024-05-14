@@ -34,7 +34,7 @@ Syncthing should be an autostart program.
 
 ### Windows
 
-With the `syncthing.exe` binary placed in `monochrome/local.syncthing/app`, autostart can be achieved by copying the shortcut `monochrome/config/syncthing/syncthing.lnk` to the startup folder `%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup` (otherwise accessible as `shell:startup`).
+With the `syncthing.exe` binary placed in `monochrome/local.syncthing/apps`, autostart can be achieved by copying the shortcut `monochrome/config/syncthing/syncthing.lnk` to the startup folder `%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup` (otherwise accessible as `shell:startup`).
 
 The shortcut is a standard shorcut with target parameters `-no-browser -no-console` appended.
 

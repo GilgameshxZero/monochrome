@@ -3,5 +3,5 @@
 **
 
 // They should then transition to include a subset of the following synced ignore configurations.
-#include monochrome/syncthing/main.stignore
-#include monochrome/syncthing/archive.stignore
+#include monochrome/config/syncthing/main.stignore
+#include monochrome/config/syncthing/archive.stignore

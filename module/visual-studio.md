@@ -4,7 +4,7 @@ The Visual Studio Build Tools are required for the `cl.exe` and `nmake` utilitie
 
 1. MSVC v143
 2. Just-In-Time Debugger
-3. C++ CMake tools for Windows
+3. Windows 11 SDK (10.0.22000.0)
 4. Image and 3D model editors
 
 The Visual Studio IDE itself should be used for ad-hoc `.obj` model viewing as well as Windows-API application development.
