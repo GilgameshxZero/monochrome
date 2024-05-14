@@ -21,5 +21,6 @@ sudo qemu-system-x86_64 -cdrom /home/gilgamesh/main.syncthing/monochrome/local.s
 Subsequent startups can be configured to be headless, as long as RDP is tunneled beforehand.
 
 ```bash
-while true; do sudo qemu-system-x86_64 -nographic -cpu Skylake-Client-v3 -enable-kvm -m 8192 -smp 6 -device intel-hda -device hda-duplex -usb -nic user,ipv6=off,model=rtl8139,mac=84:1b:77:c9:03:a6 -bios /usr/share/ovmf/x64/OVMF.fd -drive file=/home/gilgamesh/main.syncthing/monochrome/local.syncthing/config/gilgamesh-38/gilgamesh-38.qcow2,format=qcow2; done
+sudo su
+while true; do qemu-system-x86_64 -nographic -m 8192 -smp 6 -vga virtio -cpu Skylake-Client-v3 -enable-kvm -device intel-hda -device hda-duplex -usb -nic user,ipv6=off,model=rtl8139,mac=84:1b:77:c9:03:a6 -bios /usr/share/ovmf/x64/OVMF.fd -drive file=/home/gilgamesh/main.syncthing/monochrome/local.syncthing/config/gilgamesh-38/gilgamesh-38.qcow2,format=qcow2; done
 ```
