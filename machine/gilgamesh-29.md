@@ -15,3 +15,7 @@ Display `:0` is a physical display accelerated by the physical GPU. `x11vnc` run
 ## Genshin Welkin automation
 
 Daily Welkin rewards are claimed automatically via a script running on display `:0` with `xdotool` and `an-anime-game-launcher`. Usage of `xrandr` is critical to ensure that `xdotool` clicks where desired.
+
+```bash
+while true; do ./welkin.genshin; sleep 86400; done
+```
