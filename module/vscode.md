@@ -6,7 +6,7 @@ Visual Studio Code is used for general development and many writing intiatives.
 
 ### Windows
 
-Obtain the system installer from <https://code.visualstudio.com/download>.
+Obtain the *system* installer from <https://code.visualstudio.com/download>.
 
 ### Linux
 
