@@ -31,7 +31,7 @@ sleep 180
 
 echo Loading world.
 xdotool mousemove 720 300 click 1
-sleep 60
+sleep 120
 # scrot %Y-%m-%d-%s-world.png
 
 echo Clicking once.

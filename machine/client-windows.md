@@ -39,8 +39,9 @@
 20. tor
 21. zoom
 22. csp
-23. wsl-2
-24. powertoys
+23. parsec
+24. wsl-2
+25. powertoys
 
 ### Other
 
@@ -63,14 +64,14 @@
 
 ### Quick access
 
-Startup folder is at `%userprofile%\AppData\Romaing\Microsoft\Windows\Start Menu\Programs`
+Startup folder is at `%userprofile%\AppData\Romaing\Microsoft\Windows\Start Menu\Programs` or `shell:startup`.
 
 ### Windows settings
 
 * UAC
 * Updates
 * Night light
-* Focus assist
+* Notifications
 * Quick actions
 * Power & sleep
 * Additional power settings
@@ -86,6 +87,7 @@ Startup folder is at `%userprofile%\AppData\Romaing\Microsoft\Windows\Start Menu
 ### Optional features
 
 * Wireless Display
+* OpenSSH Server
 
 ## Additional customizations
 
@@ -96,3 +98,4 @@ Startup folder is at `%userprofile%\AppData\Romaing\Microsoft\Windows\Start Menu
 ## Notes
 
 1. Groove music/media player plays the first file relatively fast, but all following files are preceded with a long delay in the app which renders it unusable. Restoring an old version of Groove does not fix this issue, though this issue did not exist in the past.
+   1. Use Dopamine instead.
