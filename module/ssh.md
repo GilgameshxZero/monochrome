@@ -76,7 +76,7 @@ Port|Usage
 8384|Syncthing on `gilgamesh-29`
 8888|jupyterlab on `gilgamesh-29`
 60000+X|SSH
-61000+X|RDP or VNC
+61000+X (TCP and UDP)|RDP or VNC
 
 Utilize the tunneling scripts in `monochrome/config/ssh` to establish persistent tunnels from each machine. Use `lsof -i :X` to check for existing processes connected at port X.
 
