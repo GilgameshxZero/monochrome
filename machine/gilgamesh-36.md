@@ -1,7 +1,7 @@
 # gilgamesh-36
 
 Server MacOS Catalina QEMU on `gilgamesh-29`.
-AMD FX-6120 Six-Core (one core) | 3GB RAM | 64GB HDD
+AMD FX-6120 Six-Core (1/6) | 2GB RAM | 64GB HDD
 MacOS Catalina
 
 ## Configuration
@@ -11,7 +11,13 @@ Previously attempted approaches with little success:
 1. <https://github.com/quickemu-project/quickemu>
 2. <https://github.com/foxlet/macOS-Simple-KVM/blob/master/docs/guide-screen-resolution.md>
 
-Current approach: <>.
+Current approach: <https://github.com/sickcodes/Docker-OSX>.
+
+The Docker container contains the boot/run options. The image contains the actual persistent system. To modify boot/run options, recreate the container.
+
+A VNC port is opened on `127.0.0.1:61036`, which can be forwarded (but requires additional auth before doing so).
+
+Resources are intentionally limited for `gilgamesh-36`.
 
 ### Serial number
 

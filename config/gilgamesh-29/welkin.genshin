@@ -37,7 +37,7 @@ sleep 120
 echo Clicking once.
 xdotool mousemove 720 300 click 1
 sleep 2
-scrot local.syncthing/%Y-%m-%d-%s-click.png
+scrot /home/gilgamesh/main.syncthing/monochrome/config/gilgamesh-29/local.syncthing/%Y-%m-%d-%s-click.png
 
 echo Double-clicking.
 xdotool mousemove 720 300 click 1
