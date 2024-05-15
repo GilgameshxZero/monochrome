@@ -21,6 +21,22 @@ sudo qemu-system-x86_64 -cdrom /home/gilgamesh/main.syncthing/monochrome/local.s
 Subsequent startups can be configured to be headless, as long as RDP is tunneled beforehand.
 
 ```bash
-sudo su
-while true; do qemu-system-x86_64 -nographic -m 8192 -smp 6 -vga virtio -cpu Skylake-Client-v3 -enable-kvm -device intel-hda -device hda-duplex -usb -nic user,ipv6=off,model=rtl8139,mac=84:1b:77:c9:03:a6 -bios /usr/share/ovmf/x64/OVMF.fd -drive file=/home/gilgamesh/main.syncthing/monochrome/local.syncthing/config/gilgamesh-38/gilgamesh-38.qcow2,format=qcow2; done
+sudo qemu-system-x86_64 \
+-smp cores=6,threads=1,sockets=1 \
+-m 10240 \
+-cpu host \
+-vga virtio \
+-serial mon:stdio \
+-display none \
+-enable-kvm \
+-device intel-hda \
+-device hda-duplex \
+-usb \
+-nic user,ipv6=off,model=rtl8139,mac=84:1b:77:c9:03:a6 \
+-bios /usr/share/ovmf/x64/OVMF.fd \
+-drive file=/home/gilgamesh/main.syncthing/monochrome/local.syncthing/config/gilgamesh-38/gilgamesh-38.qcow2,format=qcow2
 ```
+
+This is implemented as `gilgamesh-38.qemu` on the host `gilgamesh-29`.
+
+VirtIO drivers should be installed for proper Parsec display usage: <https://pve.proxmox.com/wiki/Windows_VirtIO_Drivers>. Parsec is buggy regardless and for now 1024x768 is our best supported 4;3 resolution. Lag is significant due to no vGPU passthrough and a slow CPU without an iGPU.

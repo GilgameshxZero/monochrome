@@ -23,3 +23,7 @@ Daily Welkin rewards are claimed automatically via a script running on display `
 ```bash
 while true; do /home/gilgamesh/main.syncthing/monochrome/config/gilgamesh-29/welkin.genshin; sleep 86400; done
 ```
+
+## Services
+
+Servies added to `systemctl` are placed in `/etc/systemd/system`. See <https://www.shubhamdipt.com/blog/how-to-create-a-systemd-service-in-linux/> for a short tutorial.
