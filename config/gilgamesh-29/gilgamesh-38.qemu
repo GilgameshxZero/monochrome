@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 qemu-system-x86_64 \
 -smp cores=6,threads=1,sockets=1 \
--m 10240 \
+-m 8192 \
 -cpu host \
 -vga virtio \
 -serial mon:stdio \
