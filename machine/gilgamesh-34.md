@@ -3,6 +3,7 @@
 Onyx Boox Note Air 2 Plus
 Upgraded Octa-Core | 4GB RAM | 64GB SSD
 Android 11
+3HEYDLP-7OLZYGH-DD2JA6D-ZJM6GS3-PJXLIXB-TRJXLZK-3FLCAGM-VOULMQ7
 
 ## Syncthing
 

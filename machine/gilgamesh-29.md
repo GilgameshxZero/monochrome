@@ -3,6 +3,7 @@
 Self-hosted linux server
 AMD FX-6120 Six-Core | Nvidia GTX 1080 Ti | 24GB RAM | 500GB SSD | 8TB HDD
 Manjaro Arch
+LRKLRGL-GVOE3RB-2UVC2V7-JYWXHI4-NO7SRML-FWXPLP4-JMGIZZ2-X4W4PAR
 
 ## gilgamesh-36
 
