@@ -3,6 +3,7 @@
 "Client" Windows 11 QEMU on `gilgamesh-29`.
 AMD fF-6120 Six-Core (2/6) | 8GB RAM | 512GB HDD
 Windows 11 Pro
+LIQFW2Z-HJJ3HLK-OM2LWJ6-O4WAV5X-6JPVY54-5OSAHQ3-DTDQ75X-XRK6EAH
 
 ## Approach
 

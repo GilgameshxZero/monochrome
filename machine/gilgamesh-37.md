@@ -3,6 +3,7 @@
 Surface Pro 7 Windows client
 i5-1035G4 | 8GB RAM | 128GB SSD | 512GB SD
 Windows 11+ Pro
+RTTSSQK-RNO4HLS-Y4WWKCE-CZFTAOS-SKC6AQ5-G7PCDDJ-XK65LYQ-7JKKBAI
 
 ## Modifications
 
