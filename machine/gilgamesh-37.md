@@ -29,3 +29,7 @@ _HOT = 329K
 This can be avoided by installing a bogus driver for SEN9, one of the components in Device Manager > System devices > Intel(R) Dynamic Tuning Participant. While this raises the thermal threshold before shutdown, there is a second thermal shutdown trigger which leaves the filesystem in a dirty state. This may corrupt files and even the operating system, so it is critical that those types of unmanaged shutdowns are managed.
 
 We have found through experimentation that 12W is a safe PL1 limit, and 24W can be achieved with a standard USB-powered fan mount on the back, while 28W may be maintained with a ~20W USB-C fan mount. See the Throttlestop configurations for more details.
+
+### Wi-Fi hotspot driver
+
+The Windows hotspot will disconnect itself after a few hours, but hosts will remain connected with no internet. Replace the pre-installed Intel Drivers with the Microsoft (22.0.1.5) ones to fix this.
