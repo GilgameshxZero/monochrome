@@ -48,3 +48,5 @@ For some reason, IKEv2 clients cannot connect via `xfinitywifi` or `XFINITY` Wi-
 ## OpenVPN
 
 An experimental OpenVPN server has been set up on `gilgamesh.cc`. Note that beyond the guide, I had to disable all `iptables` rules such as what I did for `emilia`.
+
+Also, <https://superuser.com/questions/1274955/use-windows-mobile-hotspot-with-openvpn>.
