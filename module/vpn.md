@@ -44,3 +44,7 @@ Use the `*.mobileconfig` file generated in `monochrome/config/vpn`.
 ## Usage
 
 For some reason, IKEv2 clients cannot connect via `xfinitywifi` or `XFINITY` Wi-Fi hotspots. However, they may be able to form P2P connections, thus enabling VPN’d bittorrent.
+
+## OpenVPN
+
+An experimental OpenVPN server has been set up on `gilgamesh.cc`. Note that beyond the guide, I had to disable all `iptables` rules such as what I did for `emilia`.
