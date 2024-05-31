@@ -37,3 +37,7 @@ Consider flushing `iptables`: <https://www.digitalocean.com/community/tutorials/
 * Clean `/var/log`: `journalctl --vacuum-size=50M`.
 * `rm -rf /usr/share/doc /usr/src`.
 * `rm -rf /var/cache/snapd`.
+
+## OpenVPN
+
+OpenVPN server/CA is set up with password for `gilgamesh.cc` Emilia server, following guide at <https://www.digitalocean.com/community/tutorials/how-to-set-up-and-configure-an-openvpn-server-on-ubuntu-20-04#step-10-starting-openvpn>.
