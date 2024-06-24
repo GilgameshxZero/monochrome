@@ -108,4 +108,4 @@ export DISPLAY=:0
 
 ## Agent forwarding in VSCode, Windows client
 
-`export SSH_AUTH_SOCK=$(ls -t /tmp/ssh-**/* | head -1)` may need be to run to correctly forward SSH agent. You may test with `ssh -T git@github.com`.
+`export SSH_AUTH_SOCK=$(ls -t /tmp/ssh-**/* | head -1)` may need be to run to correctly forward SSH agent. You may test with `ssh -T git@github.com`. See <https://github.com/microsoft/vscode/issues/168202#issuecomment-2016912013> for more information, or <https://github.com/microsoft/vscode/issues/168202#issuecomment-2016916053>.
