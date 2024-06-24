@@ -105,3 +105,7 @@ SET DISPLAY=localhost:0.0
 ```bash
 export DISPLAY=:0
 ```
+
+## Agent forwarding in VSCode, Windows client
+
+`export SSH_AUTH_SOCK=$(ls -t /tmp/ssh-**/* | head -1)` may need be to run to correctly forward SSH agent. You may test with `ssh -T git@github.com`.
