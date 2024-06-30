@@ -15,7 +15,11 @@ LIQFW2Z-HJJ3HLK-OM2LWJ6-O4WAV5X-6JPVY54-5OSAHQ3-DTDQ75X-XRK6EAH
 
 Initial setup must be done with a display connected. The TPM bypass via `swtpm` no longer works, so we use the one provided in the second article, at install-time.
 
+(Prefer to use the second command below.)
+
 ```bash
+qemu-img create -f qcow2 gilgamesh-38.qcow2 512G;
+
 sudo qemu-system-x86_64 -cdrom /home/gilgamesh/main.syncthing/monochrome/local.syncthing/config/gilgamesh-38/Win11.iso -cpu Skylake-Client-v3 -enable-kvm -m 8192 -smp 6 -device intel-hda -device hda-duplex -usb -nic user,ipv6=off,model=rtl8139,mac=84:1b:77:c9:03:a6 -bios /usr/share/ovmf/x64/OVMF.fd -drive file=gilgamesh-38.qcow2,format=qcow2
 ```
 
