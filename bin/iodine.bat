@@ -1,16 +1,36 @@
 @ECHO OFF
 
 START iodinec -f -P "1#GXVeMc" 159.65.224.199 iodine.gilgamesh.cc
-@REM Do I need the IP here?
+@REM Do I need the IP here? Probably...
 ECHO "Press any key to continue, once the other window has stalled..."
 PAUSE > nul
-FOR /f "tokens=2,3 delims={,}" %%a IN ('"WMIC NICConfig where IPEnabled="True" get DefaultIPGateway /value | find "I" "') DO SET "DEFAULT_GATEWAY_IPV4=%%~a"
+FOR /f "tokens=2,3 delims={,}" %%a IN ('"WMIC NICConfig where IPEnabled="True" get DefaultIPGateway /value | C:\Windows\System32\find.exe "I" "') DO SET "DEFAULT_GATEWAY_IPV4=%%~a"
 ECHO %DEFAULT_GATEWAY_IPV4%
-ROUTE CHANGE 0.0.0.0 MASK 0.0.0.0 %DEFAULT_GATEWAY_IPV4% METRIC 400
-@REM ROUTE DELETE 0.0.0.0 MASK 0.0.0.0 %DEFAULT_GATEWAY_IPV4%
+
+@REM Run in a loop, maybe.
+@REM I think we’re very close. Need to read up documentation on ROUTE.
+ROUTE DELETE 0.0.0.0 MASK 0.0.0.0 %DEFAULT_GATEWAY_IPV4%
 ROUTE ADD 159.65.224.199 %DEFAULT_GATEWAY_IPV4% METRIC 60
-ROUTE ADD 0.0.0.0 MASK 0.0.0.0 192.168.99.1 METRIC 50
-@REM ROUTE ADD 0.0.0.0 MASK 0.0.0.0 %DEFAULT_GATEWAY_IPV4% 45
+ROUTE CHANGE 159.65.224.199 %DEFAULT_GATEWAY_IPV4% METRIC 60
+ROUTE ADD 0.0.0.0 MASK 0.0.0.0 %DEFAULT_GATEWAY_IPV4% METRIC 40
+ROUTE CHANGE 0.0.0.0 MASK 0.0.0.0 %DEFAULT_GATEWAY_IPV4% METRIC 40
+
+@REM @REM ROUTE DELETE 0.0.0.0 MASK 0.0.0.0 %DEFAULT_GATEWAY_IPV4%
+@REM ROUTE CHANGE 0.0.0.0 MASK 0.0.0.0 %DEFAULT_GATEWAY_IPV4% METRIC 400
+@REM @REM ROUTE ADD 0.0.0.0 MASK 0.0.0.0 %DEFAULT_GATEWAY_IPV4% METRIC 300
+@REM @REM ROUTE CHANGE 0.0.0.0 MASK 0.0.0.0 172.19.0.1 METRIC 400
+
+@REM ROUTE ADD 159.65.224.199 %DEFAULT_GATEWAY_IPV4% METRIC 60
+@REM @REM ROUTE CHANGE 159.65.224.199 %DEFAULT_GATEWAY_IPV4% METRIC 60
+
+@REM The following hardcoded 192.168.99.1 should be changed sometimes!!
+@REM @REM ROUTE ADD 0.0.0.0 MASK 0.0.0.0 %DEFAULT_GATEWAY_IPV4% METRIC 45
+@REM ROUTE ADD 0.0.0.0 MASK 0.0.0.0 192.168.99.1 METRIC 40
+@REM ROUTE CHANGE 0.0.0.0 MASK 0.0.0.0 192.168.99.1 METRIC 40
+@REM ROUTE ADD 0.0.0.0 MASK 0.0.0.0 192.168.99.1 METRIC 390
+@REM ROUTE CHANGE 0.0.0.0 MASK 0.0.0.0 192.168.99.1 METRIC 390
+
+ROUTE ADD 192.168.99.1 MASK 0.0.0.0 
 
 @REM It is possible to route all traffic through the DNS tunnel. To do this, first add a host route to the nameserver used by iodine over the wired/wireless interface with the default gateway as gateway. Then replace the default gateway with the iodined server's IP address inside the DNS tunnel, and configure the server to do NAT.
 @REM The ROUTE changes attempt to perform this rerouting.
