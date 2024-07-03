@@ -50,8 +50,13 @@ This also requires the rules from `iodine` to be set up. More details to come.
 apt install -y software-properties-common;
 add-apt-repository universe -y;
 add-apt-repository ppa:deadsnakes/ppa -y;
-apt install -y python3.11 htop tmux zip unzip openjdk-21-jdk;
+# apt install -y python3.11 python3.11-venv htop tmux zip unzip git openjdk-21-jdk nvidia-cudnn nvidia-cuda-toolkit;
+apt install -y python3.11 python3.11-venv htop tmux zip unzip git openjdk-21-jdk;
 ln -s /workspace/.vscode-server /root/.vscode-server;
+mkdir -p /workspace/.vscode-server;
+
+cd /workspace;
+git clone git@github.com:GilgameshxZero/utulek.git;
 ```
 
 ```bash
