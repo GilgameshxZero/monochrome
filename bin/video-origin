@@ -1,2 +1,2 @@
 cd ~/main.syncthing/monochrome/config/handbrake/
-find ~/Downloads/*.mkv -exec bash -c 'HandBrakeCLI --preset-import-file presets.json -Z "[origin] 720p [AV1|40RF|P7] [Opus|40kbps]" -i "/home/gilgamesh/Downloads/$(basename -a "$1")" -o "/home/gilgamesh/main.syncthing/origin/local.syncthing/$(basename -a "$1")"' bash {} \;
+find ~/Downloads/*.mkv -exec bash -c 'HandBrakeCLI -x lp=2 --preset-import-file presets.json -Z "[origin] 720p [AV1|40RF|P7] [Opus|40kbps]" -i "/home/gilgamesh/Downloads/$(basename -a "$1")" -o "/home/gilgamesh/main.syncthing/origin/local.syncthing/$(basename -a "$1")"' bash {} \;
