@@ -109,3 +109,7 @@ export DISPLAY=:0
 ## Agent forwarding in VSCode, Windows client
 
 `export SSH_AUTH_SOCK=$(ls -t /tmp/ssh-**/* | head -1)` may need be to run to correctly forward SSH agent. You may test with `ssh -T git@github.com`. See <https://github.com/microsoft/vscode/issues/168202#issuecomment-2016912013> for more information, or <https://github.com/microsoft/vscode/issues/168202#issuecomment-2016916053>.
+
+On Windows, SSH agent forwarding is not enabled by default. The OpenSSH that ships with Windows does not perform this correctly, though Git SSH does, with some additional overhead (`start-ssh-agent` needs to be run before each `ssh`). To bypass this, install the beta version of OpenSSH for windows, reconfigure all paths to use that version, and set up the authentication agent to launch via startup from `Services`. In addition, make sure the keys are added via `ssh-add`.
+
+The beta version of OpenSSH can be acquired here: <https://stackoverflow.com/questions/71399334/ssh-fails-to-use-private-key-from-ssh-agent-communication-with-agent-failed> at the first answer.
