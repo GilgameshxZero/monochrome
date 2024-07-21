@@ -80,5 +80,25 @@
 	{
 		"key": "ctrl+shift+a",
 		"command": "workbench.action.focusActiveEditorGroup"
+	},
+	{
+		"key": "ctrl+k g",
+		"command": "workbench.action.remote.close",
+		"when": "remoteName || virtualWorkspace"
+	},
+	{
+		"key": "ctrl+k v",
+		"command": "markdown.showPreview",
+		"when": "!notebookEditorFocused && editorLangId == 'markdown'"
+	},
+	{
+		"key": "ctrl+shift+v",
+		"command": "-markdown.showPreview",
+		"when": "!notebookEditorFocused && editorLangId == 'markdown'"
+	},
+	{
+		"key": "ctrl+k v",
+		"command": "-markdown.showPreviewToSide",
+		"when": "!notebookEditorFocused && editorLangId == 'markdown'"
 	}
 ]
