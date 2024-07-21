@@ -13,8 +13,28 @@ Host gilgamesh-37
 	Port 60037
 	User 0
 
-Host ccg-gpu
+Host csail-ccg-gpu-0
 	HostName ccg-gpu-0.csail.mit.edu
 	User gilgamesh-local
+	IdentitiesOnly yes
+	ForwardAgent yes
+
+Host runpod-jailbreak-defense-yang-0
+	HostName 213.173.109.144
+	Port 13029
+	User root
+	IdentitiesOnly yes
+	ForwardAgent yes
+
+Host runpod-jailbreak-defense-yang-1
+	HostName 64.247.206.223
+	Port 10896
+	User root
+	IdentitiesOnly yes
+	ForwardAgent yes
+
+Host gcp-jailbreak-defense-shared-devbox
+	HostName 34.168.44.107
+	User yang
 	IdentitiesOnly yes
 	ForwardAgent yes
