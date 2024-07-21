@@ -113,3 +113,9 @@ export DISPLAY=:0
 On Windows, SSH agent forwarding is not enabled by default. The OpenSSH that ships with Windows does not perform this correctly, though Git SSH does, with some additional overhead (`start-ssh-agent` needs to be run before each `ssh`). To bypass this, install the beta version of OpenSSH for windows, reconfigure all paths to use that version, and set up the authentication agent to launch via startup from `Services`. In addition, make sure the keys are added via `ssh-add`.
 
 The beta version of OpenSSH can be acquired here: <https://stackoverflow.com/questions/71399334/ssh-fails-to-use-private-key-from-ssh-agent-communication-with-agent-failed> at the first answer.
+
+Also, consider the following setting in VSCode:
+
+```json
+"remote.SSH.useExecServer": false,
+```
