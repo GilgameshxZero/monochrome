@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <libraryDescription xmlns="http://schemas.microsoft.com/windows/2009/library">
   <ownerSID>S-1-5-21-3656053200-4052073256-117173423-1001</ownerSID>
-  <version>23</version>
+  <version>27</version>
   <isLibraryPinned>true</isLibraryPinned>
   <templateInfo>
     <folderType>{00000000-0000-0000-0000-000000000000}</folderType>
