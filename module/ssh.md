@@ -46,6 +46,8 @@ On the server, sshd must be configured specially to disconnect broken clients, a
 
 ```
 PasswordAuthentication no
+ChallengeResponseAuthentication no
+KbdInteractiveAuthentication no
 
 # Enables port forwarding.
 GatewayPorts yes
