@@ -1,3 +1,14 @@
-archive.syncthing/
-local.syncthing/
 nebo/
+
+**/archive.syncthing/
+**/local.syncthing/
+
+# VPN.
+**.ovpn
+**.mobileconfig
+**.p12
+**.sswan
+
+# General.
+**.ini
+**.DS_Store
