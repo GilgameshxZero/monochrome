@@ -1,5 +1,6 @@
 #!/bin/bash
 # We use custom arguments for memory and cores for fine-tuned control.
+# To change these, remove the existing docker container and run this once, before delegating to the service.
 source ./my_permanent_serial_number.sh
 sudo docker run -i \
     --name gilgamesh-36 \
@@ -21,5 +22,5 @@ sudo docker run -i \
     -v /tmp/.X11-unix:/tmp/.X11-unix \
     -e WIDTH="${WIDTH}" \
     -e HEIGHT="${HEIGHT}" \
-    -e EXTRA="-display none -vnc 0.0.0.0:99 -smp 1,cores=1,threads=1,sockets=1 -m 2048" \
+    -e EXTRA="-display none -vnc 0.0.0.0:99 -smp 6,cores=2,threads=1,sockets=3 -m 8192" \
     sickcodes/docker-osx:naked
