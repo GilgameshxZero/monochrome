@@ -1,5 +1,5 @@
 [Unit]
-Description=gilgamesh-38.qemu
+Description=gilgamesh-29.tunnel
 After=network.target
 StartLimitIntervalSec=1
 
@@ -8,7 +8,7 @@ Type=simple
 Restart=always
 RestartSec=4
 User=root
-ExecStart=/home/gilgamesh/main.syncthing/monochrome/config/gilgamesh-29/gilgamesh-38.qemu
+ExecStart=/home/gilgamesh/main.syncthing/monochrome/machine/gilgamesh-29/gilgamesh-29.tunnel
 
 [Install]
 WantedBy=multi-user.target

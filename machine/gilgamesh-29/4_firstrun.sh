@@ -6,7 +6,7 @@ sudo docker run -i \
     --name gilgamesh-36 \
     --privileged \
     --device /dev/kvm \
-    -v "${PWD}/../../local.syncthing/config/gilgamesh-36/gilgamesh-36.img:/image" \
+    -v "${PWD}/../../local.syncthing/machine/gilgamesh-29/gilgamesh-36.img:/image" \
     -p 61036:5999 \
     -p 1234:1234 \
     -p 50922:10022 \

@@ -1,5 +1,5 @@
 [Unit]
-Description=0.x11vnc
+Description=gilgamesh-38.qemu
 After=network.target
 StartLimitIntervalSec=1
 
@@ -7,8 +7,8 @@ StartLimitIntervalSec=1
 Type=simple
 Restart=always
 RestartSec=4
-User=gilgamesh
-ExecStart=/home/gilgamesh/main.syncthing/monochrome/config/gilgamesh-29/0.x11vnc
+User=root
+ExecStart=/home/gilgamesh/main.syncthing/monochrome/machine/gilgamesh-29/gilgamesh-38.qemu
 
 [Install]
 WantedBy=multi-user.target
