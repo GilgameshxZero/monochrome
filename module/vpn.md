@@ -50,3 +50,15 @@ For some reason, IKEv2 clients cannot connect via `xfinitywifi` or `XFINITY` Wi-
 An experimental OpenVPN server has been set up on `gilgamesh.cc`. Note that beyond the guide, I had to disable all `iptables` rules such as what I did for `emilia`.
 
 Also, <https://superuser.com/questions/1274955/use-windows-mobile-hotspot-with-openvpn>.
+
+The CA password is the same as the Emilia HTTP password.
+
+```bash
+cd ~/easy-rsa/
+./easyrsa gen-req gilgamesh-30 nopass
+cp /root/easy-rsa/pki/private/gilgamesh-30.key ~/client-configs/keys/
+./easyrsa sign-req client gilgamesh-30
+cp /root/easy-rsa/pki/issued/gilgamesh-30.crt ~/client-configs/keys/
+cd ~/client-configs/
+./make_config.sh gilgamesh-30
+```
