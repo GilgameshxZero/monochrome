@@ -9,6 +9,9 @@ nebo/
 **.p12
 **.sswan
 
+# Other.
+**.vnc
+
 # General.
 **.ini
 **.DS_Store

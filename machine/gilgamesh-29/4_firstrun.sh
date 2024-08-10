@@ -1,15 +1,16 @@
 #!/bin/bash
 # We use custom arguments for memory and cores for fine-tuned control.
 # To change these, remove the existing docker container and run this once, before delegating to the service.
-source ./my_permanent_serial_number.sh
+source ./gilgamesh-36.serial.sh
+# WIDTH/HEIGHT from the serial file.
 sudo docker run -i \
     --name gilgamesh-36 \
     --privileged \
     --device /dev/kvm \
     -v "${PWD}/../../local.syncthing/machine/gilgamesh-29/gilgamesh-36.img:/image" \
     -p 61036:5999 \
-    -p 1234:1234 \
-    -p 50922:10022 \
+    # -p 1234:1234 \
+    # -p 50922:10022 \
     -e TERMS_OF_USE=i_agree \
     -e NOPICKER=true \
     -e GENERATE_SPECIFIC=true \
