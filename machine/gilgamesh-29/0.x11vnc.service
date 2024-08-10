@@ -1,5 +1,5 @@
 [Unit]
-Description=gilgamesh-36.docker
+Description=0.x11vnc
 After=network.target
 StartLimitIntervalSec=1
 
@@ -8,7 +8,7 @@ Type=simple
 Restart=always
 RestartSec=4
 User=gilgamesh
-ExecStart=/home/gilgamesh/main.syncthing/monochrome/config/gilgamesh-29/gilgamesh-36.docker
+ExecStart=/home/gilgamesh/main.syncthing/monochrome/machine/gilgamesh-29/0.x11vnc
 
 [Install]
 WantedBy=multi-user.target

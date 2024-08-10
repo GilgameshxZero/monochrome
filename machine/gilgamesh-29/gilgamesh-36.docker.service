@@ -1,5 +1,5 @@
 [Unit]
-Description=gilgamesh-29.tunnel
+Description=gilgamesh-36.docker
 After=network.target
 StartLimitIntervalSec=1
 
@@ -7,8 +7,8 @@ StartLimitIntervalSec=1
 Type=simple
 Restart=always
 RestartSec=4
-User=root
-ExecStart=/home/gilgamesh/main.syncthing/monochrome/config/ssh/gilgamesh-29.tunnel
+User=gilgamesh
+ExecStart=/home/gilgamesh/main.syncthing/monochrome/machine/gilgamesh-29/gilgamesh-36.docker
 
 [Install]
 WantedBy=multi-user.target
