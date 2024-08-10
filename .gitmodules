@@ -1,0 +1,3 @@
+[submodule "config/qbittorrent/qb-web"]
+	path = config/qbittorrent/qb-web
+	url = git@github.com:CzBiX/qb-web.git
