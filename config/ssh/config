@@ -8,9 +8,19 @@ Host gilgamesh-31
 	Port 22
 	User root
 
+Host gilgamesh-36
+	HostName gilgamesh.cc
+	Port 60036
+	User gilgamesh
+
 Host gilgamesh-37
 	HostName gilgamesh.cc
 	Port 60037
+	User 0
+
+Host gilgamesh-38
+	HostName gilgamesh.cc
+	Port 60038
 	User 0
 
 Host csail-ccg-gpu-0

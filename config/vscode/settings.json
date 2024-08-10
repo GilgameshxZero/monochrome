@@ -208,7 +208,8 @@
 		"gcp-jailbreak-defense-shared-devbox": "linux",
 		"runpod-jailbreak-defense-yang": "linux",
 		"runpod-jailbreak-defense-yang-1": "linux",
-		"runpod-jailbreak-defense-yang-0": "linux"
+		"runpod-jailbreak-defense-yang-0": "linux",
+		"gilgamesh-36": "macOS"
 	},
 
 	"xml.format.maxLineWidth": 80,
@@ -252,5 +253,7 @@
 	},
 	"[typescript]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
-	}
+	},
+	"notebook.confirmDeleteRunningCell": false,
+	"notebook.formatOnSave.enabled": true
 }
