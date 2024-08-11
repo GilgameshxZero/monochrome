@@ -28,3 +28,9 @@ while true; do /home/gilgamesh/main.syncthing/monochrome/config/gilgamesh-29/wel
 ## Services
 
 Servies added to `systemctl` are placed in `/etc/systemd/system`. See <https://www.shubhamdipt.com/blog/how-to-create-a-systemd-service-in-linux/> for a short tutorial.
+
+## vGPU passthrough
+
+Attempted <https://github.com/DualCoder/vgpu_unlock> with drivers from <https://justpaste.it/ff63dcbf-e408-4079-b625-664a3b4b>. We didn't get far enough, but the guide at <https://docs.google.com/document/d/1pzrWJ9h-zANCtyqRgS7Vzla0Y8Ea2-5z2HEi4X75d2Q/edit> seems good (but complicated). It is probably preferred to just have a second physical GPU.
+
+Another guide: <https://github.com/tuh8888/libvirt_win10_vm?tab=readme-ov-file>.
