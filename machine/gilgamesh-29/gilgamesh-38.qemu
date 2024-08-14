@@ -10,6 +10,9 @@ qemu-system-x86_64 \
 -device intel-hda \
 -device hda-duplex \
 -usb \
--nic user,ipv6=off,model=rtl8139,mac=84:1b:77:c9:03:a6 \
+-device e1000,netdev=net0 \
+-netdev user,id=net0,hostfwd=tcp::61038-:3389,hostfwd=udp::61038-:3389 \
 -bios /usr/share/ovmf/x64/OVMF.fd \
 -drive file=/home/gilgamesh/main.syncthing/monochrome/local.syncthing/machine/gilgamesh-29/gilgamesh-38.qcow2,format=qcow2
+# -nic user,ipv6=off,model=rtl8139,mac=84:1b:77:c9:03:a6 \
+# -net user,hostfwd=tcp::3389-:3389,hostfwd=tcp::22322-:22 \

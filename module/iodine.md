@@ -5,6 +5,8 @@ iodine enables DNS tunneling on networks which block general traffic but not DNS
 ## Server
 
 ```bash
+# eth0 may need to be changed depending on the specific interface!
+# Use ip link show
 apt-install iodine;
 echo 1 > /proc/sys/net/ipv4/ip_forward;
 iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE;

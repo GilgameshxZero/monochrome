@@ -31,7 +31,7 @@ The IP address will need to be changed should `gilgamesh.cc` be hosted from a di
 The files themselves may need to be renamed in order for the connection name to be set correctly as `gilgamesh.cc-X`, for machine `gilgamesh-X`.
 
 ```batch
-SET "VPN_NAME=gilgamesh.cc-37"
+SET "VPN_NAME=gilgamesh-31"
 certutil -f -importpfx "%VPN_NAME%.p12" NoExport
 powershell -command "Add-VpnConnection -ServerAddress '159.65.224.199' -Name '%VPN_NAME%' -TunnelType IKEv2 -AuthenticationMethod MachineCertificate -EncryptionLevel Required -PassThru"
 powershell -command "Set-VpnConnectionIPsecConfiguration -ConnectionName '%VPN_NAME%' -AuthenticationTransformConstants GCMAES128 -CipherTransformConstants GCMAES128 -EncryptionMethod AES256 -IntegrityCheckMethod SHA256 -PfsGroup None -DHGroup Group14 -PassThru -Force"
@@ -47,7 +47,9 @@ For some reason, IKEv2 clients cannot connect via `xfinitywifi` or `XFINITY` Wi-
 
 ## OpenVPN
 
-An experimental OpenVPN server has been set up on `gilgamesh.cc`. Note that beyond the guide, I had to disable all `iptables` rules such as what I did for `emilia`.
+An experimental OpenVPN server has been set up on `gilgamesh.cc`. Note that beyond the guide, I had to disable all `iptables` rules such as what I did for `emilia`. Namely, clear IP tables and run `iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE;` with the correct ethernet interface name `eth0`.
+
+I also needed `tun-mtu 1400` on the server config sometimes.
 
 Also, <https://superuser.com/questions/1274955/use-windows-mobile-hotspot-with-openvpn>.
 
@@ -61,4 +63,9 @@ cp /root/easy-rsa/pki/private/gilgamesh-30.key ~/client-configs/keys/
 cp /root/easy-rsa/pki/issued/gilgamesh-30.crt ~/client-configs/keys/
 cd ~/client-configs/
 ./make_config.sh gilgamesh-30
+```
+
+```ovpn
+redirect-gateway def1
+block-outside-dns
 ```
