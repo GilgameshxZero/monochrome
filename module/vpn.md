@@ -47,9 +47,9 @@ For some reason, IKEv2 clients cannot connect via `xfinitywifi` or `XFINITY` Wi-
 
 ## OpenVPN
 
-An experimental OpenVPN server has been set up on `gilgamesh.cc`. Note that beyond the guide, I had to disable all `iptables` rules such as what I did for `emilia`. Namely, clear IP tables and run `iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE;` with the correct ethernet interface name `eth0`.
+An experimental OpenVPN server has been set up on `gilgamesh.cc`. Note that beyond the guide, I had to disable all `iptables` rules such as what I did for `emilia`. Namely, clear IP tables and run `iptables -t nat -A POSTROUTING -o enp7s0 -j MASQUERADE;` with the correct ethernet interface name `enp7s0` using `ip route get`.
 
-I also needed `tun-mtu 1400` on the server config sometimes.
+I also needed `tun-mtu 1400` on the server config sometimes. Add `ipv6` to the server pushes to ensure that client ipv6 requests do not sneak through.
 
 Also, <https://superuser.com/questions/1274955/use-windows-mobile-hotspot-with-openvpn>.
 

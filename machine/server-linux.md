@@ -56,7 +56,7 @@ ln -s /workspace/.vscode-server /root/.vscode-server;
 mkdir -p /workspace/.vscode-server;
 
 cd /workspace;
-git clone git@github.com:GilgameshxZero/utulek.git;
+git clone git@github.com:GilgameshxZero/ft-robustness.git;
 ```
 
 ```bash
