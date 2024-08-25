@@ -10,8 +10,7 @@
 
 docker run -it \
     --device /dev/kvm \
-    # -p 50922:10022 \
-    -p 60136:5999 \
+    -p 61036:5999 \
     -v /tmp/.X11-unix:/tmp/.X11-unix \
     -e "DISPLAY=${DISPLAY:-:0.0}" \
     -e GENERATE_UNIQUE=true \

@@ -18,17 +18,17 @@ Initial setup must be done with a display connected. The TPM bypass via `swtpm` 
 (Prefer to use the second command below.)
 
 ```bash
-qemu-img create -f qcow2 gilgamesh-38.qcow2 512G;
+qemu-img create -f qcow2 gilgamesh-38.qcow2 1024G;
 
-sudo qemu-system-x86_64 -cdrom /home/gilgamesh/main.syncthing/monochrome/local.syncthing/config/gilgamesh-38/Win11.iso -cpu Skylake-Client-v3 -enable-kvm -m 8192 -smp 6 -device intel-hda -device hda-duplex -usb -nic user,ipv6=off,model=rtl8139,mac=84:1b:77:c9:03:a6 -bios /usr/share/ovmf/x64/OVMF.fd -drive file=gilgamesh-38.qcow2,format=qcow2
+sudo qemu-system-x86_64 -cdrom /home/gilgamesh/main.syncthing/monochrome/local.syncthing/machine/gilgamesh-38/Win11.iso -cpu host -enable-kvm -m 8192 -smp 6 -device intel-hda -device hda-duplex -usb -nic user,ipv6=off,model=rtl8139,mac=84:1b:77:c9:03:a6 -bios /usr/share/ovmf/x64/OVMF.fd -drive file=gilgamesh-38.qcow2,format=qcow2
 ```
 
 Subsequent startups can be configured to be headless, as long as RDP is tunneled beforehand.
 
 ```bash
-sudo qemu-system-x86_64 \
--smp cores=6,threads=1,sockets=1 \
--m 10240 \
+qemu-system-x86_64 \
+-smp 6 \
+-m 8192 \
 -cpu host \
 -vga virtio \
 -serial mon:stdio \
@@ -37,9 +37,10 @@ sudo qemu-system-x86_64 \
 -device intel-hda \
 -device hda-duplex \
 -usb \
--nic user,ipv6=off,model=rtl8139,mac=84:1b:77:c9:03:a6 \
+-device e1000,netdev=net0 \
+-netdev user,id=net0,hostfwd=tcp::61038-:3389,hostfwd=udp::61038-:3389 \
 -bios /usr/share/ovmf/x64/OVMF.fd \
--drive file=/home/gilgamesh/main.syncthing/monochrome/local.syncthing/config/gilgamesh-38/gilgamesh-38.qcow2,format=qcow2
+-drive file=/home/gilgamesh/main.syncthing/monochrome/local.syncthing/machine/gilgamesh-38/gilgamesh-38.qcow2,format=qcow2
 ```
 
 This is implemented as `gilgamesh-38.qemu` on the host `gilgamesh-29`.
