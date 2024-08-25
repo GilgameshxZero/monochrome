@@ -1,0 +1,14 @@
+[Unit]
+Description=72-minecraft.fonte
+After=network.target
+StartLimitIntervalSec=1
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=4
+User=root
+ExecStart=/home/gilgamesh/main.syncthing/monochrome/machine/gilgamesh-29/72-minecraft.fonte
+
+[Install]
+WantedBy=multi-user.target

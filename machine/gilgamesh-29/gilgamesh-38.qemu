@@ -6,10 +6,10 @@ qemu-system-x86_64 \
 -vga virtio \
 -serial mon:stdio \
 -display none \
+-vnc 0.0.0.0:38 \
 -enable-kvm \
 -device intel-hda \
 -device hda-duplex \
--usb \
 -device e1000,netdev=net0 \
 -netdev user,id=net0,hostfwd=tcp::61038-:3389,hostfwd=udp::61038-:3389 \
 -bios /usr/share/ovmf/x64/OVMF.fd \
