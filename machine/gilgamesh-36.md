@@ -27,6 +27,8 @@ Generation of a valid serial number is required to enable proper iMessage integr
 
 `gilgamesh-36` runs an AirMessage server for the `yang@gilgamesh.cc` Google account, accessible via <https://web.airmessage.org>.
 
+Text Message Forwarding needs to be enabled on the iPhone, otherwise SMS won’t work (only iMessage). iMessage may also require finalging with serials to work.
+
 ## Autostart
 
 `gilgamesh-36` is configured to auto-login (<https://support.apple.com/en-us/102316>) and autostart AirMessage and iMessage on startup.

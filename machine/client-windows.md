@@ -64,7 +64,7 @@
 
 ### Quick access
 
-Startup folder is at `%userprofile%\AppData\Romaing\Microsoft\Windows\Start Menu\Programs` or `shell:startup`.
+1. Startup folder is at `%userprofile%\AppData\Romaing\Microsoft\Windows\Start Menu\Programs` or `shell:startup`.
 
 ### Windows settings
 
@@ -72,7 +72,6 @@ Startup folder is at `%userprofile%\AppData\Romaing\Microsoft\Windows\Start Menu
 * Updates
 * Night light
 * Notifications
-* Quick actions
 * Power & sleep
 * Additional power settings
 * Battery saver
@@ -83,6 +82,9 @@ Startup folder is at `%userprofile%\AppData\Romaing\Microsoft\Windows\Start Menu
 * Language options (disable Ctrl+Alt for language switching)
 * Regional settings
 * Animation effects
+* Start menu
+* High contrast mode
+* Appearance and performance (only font-smoothing and thumnails instead of icons).
 
 ### Optional features
 
@@ -95,8 +97,8 @@ Startup folder is at `%userprofile%\AppData\Romaing\Microsoft\Windows\Start Menu
 * Never require sign on in modern standby resume: <https://www.elevenforum.com/t/enable-or-disable-require-sign-in-on-wakeup-in-windows-11.864/>. This option will reset when visiting the Sign-In Settings page again.
    * <https://www.tenforums.com/tutorials/65628-add-require-password-wakeup-power-options-windows-10-a.html> (option 2 step 2, if above doesn't work).
 * ThrottleStop and AltServer icons will duplicate in the system tray: <https://www.techpowerup.com/forums/threads/windows-11-new-throttlestop-9-6-icon-added-to-other-system-tray-icons-each-reboot.311589/>. This is a Windows 11 bug. The only fix right now is to clear the system tray icons periodically <https://answers.microsoft.com/en-us/windows/forum/all/how-to-delete-duplicate-system-tray-icon-list-from/8790797a-ccb2-43d8-bacb-a5bfc3d7e399>.
-* Disable Windows Defender.
-* Disable Widgets.
+* Disable Windows Defender: https://github.com/ionuttbara/windows-defender-remover/releases.
+* Disable Widgets: <https://lazyadmin.nl/win-11/disable-widgets-windows-11/>.
 
 ## Notes
 
