@@ -21,5 +21,5 @@ sudo docker run -i \
     -v /tmp/.X11-unix:/tmp/.X11-unix \
     -e WIDTH="${WIDTH}" \
     -e HEIGHT="${HEIGHT}" \
-    -e EXTRA="-display none -vnc 0.0.0.0:36 -smp 6,cores=2,threads=1,sockets=3 -m 4096" \
+    -e EXTRA="-display none -vnc 0.0.0.0:36 -smp 2,sockets=1,cores=2 -m 2048" \
     sickcodes/docker-osx:naked
