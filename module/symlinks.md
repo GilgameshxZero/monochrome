@@ -11,6 +11,7 @@ Real|Fake|Notes
 -|-|-
 `~/main.syncthing/snowfall/local.syncthing`|`~/Downloads`|
 `~/main.syncthing/monochrome/libraries`|`~/AppData/Roaming/Microsoft/Windows/Libraries`|Windows-only syncing of libraries for File Explorer.
+`~/main.syncthing/monochrome/config/ssh`|`~/.ssh`|
 
 ### Windows
 
