@@ -29,16 +29,16 @@ Host csail-ccg-gpu-0
 	IdentitiesOnly yes
 	ForwardAgent yes
 
-Host runpod-jailbreak-defense-yang-0
-	HostName 213.173.109.144
-	Port 13029
+Host runpod-jailbreak-defense-yang-8
+	HostName 64.247.206.102
+	Port 16825
 	User root
 	IdentitiesOnly yes
 	ForwardAgent yes
 
-Host runpod-jailbreak-defense-yang-1
-	HostName 64.247.206.223
-	Port 10896
+Host runpod-jailbreak-defense-yang-9
+	HostName 216.81.245.57
+	Port 13761
 	User root
 	IdentitiesOnly yes
 	ForwardAgent yes
