@@ -3,6 +3,13 @@ Host gilgamesh-29
 	Port 60029
 	User gilgamesh
 
+Host gilgamesh-29-guest
+	HostName gilgamesh.cc
+	Port 60029
+	User guest
+	IdentitiesOnly yes
+	ForwardAgent yes
+
 Host gilgamesh-31
 	HostName gilgamesh.cc
 	Port 22
@@ -37,8 +44,15 @@ Host runpod-jailbreak-defense-yang-8
 	ForwardAgent yes
 
 Host runpod-jailbreak-defense-yang-9
-	HostName 216.81.245.76
-	Port 14987
+	HostName 216.81.245.57
+	Port 20959
+	User root
+	IdentitiesOnly yes
+	ForwardAgent yes
+
+Host runpod-jailbreak-defense-yang-10
+	HostName 216.81.245.55
+	Port 32895
 	User root
 	IdentitiesOnly yes
 	ForwardAgent yes
