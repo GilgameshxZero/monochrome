@@ -44,15 +44,15 @@ Host runpod-jailbreak-defense-yang-0
 	ForwardAgent yes
 
 Host runpod-jailbreak-defense-yang-1
-	HostName 216.81.245.56
-	Port 31292
+	HostName 216.81.245.23
+	Port 42284
 	User root
 	IdentitiesOnly yes
 	ForwardAgent yes
 
 Host runpod-jailbreak-defense-yang-2
-	HostName 216.81.245.56
-	Port 30898
+	HostName 216.81.245.76
+	Port 37213
 	User root
 	IdentitiesOnly yes
 	ForwardAgent yes
