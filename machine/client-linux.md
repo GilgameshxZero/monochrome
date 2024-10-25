@@ -1,9 +1,21 @@
-* `vim`
-* `qbittorrent`
+## Modules
+
+1. `syncthing`
+2. `env-vars`
+3. `symlinks`
+4. `vscode`
+5. `git`
+6. `ssh`
+
+## Packages
+
+`vim qbittorrent tmux htop screenfetch`
+
+## UI packages
+
 * `noto-fonts-emoji`: emoji font support.
 * `xorg-xmodmaps`: en/emdash, curly quotes.
 * `vlc`
-* `microsoft-edge-stable-bin` (AUR)
 * `visual-studio-code-bin` (AUR)
 * `ibus`
   * `ibus-pinyin`
@@ -17,8 +29,6 @@
 		XMODIFIERS=@im=ibus
 		```
   * Unicode code point: `<Alt>+u` to work with typography hotkeys later.
-* `pyenv`.
-* `tmux`.
 * Yakuake w/ F8.
 * (deprecated) Keychron K2: <https://schnouki.net/post/2019/how-to-use-a-keychron-k2-usb-keyboard-on-linux/>.
   * `options hid_apple fnmode=2 swap_opt_cmd=1` in `/etc/modprobe.d/hid_apple.conf`.

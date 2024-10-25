@@ -27,7 +27,7 @@ SETX path "%USERPROFILE%\main.syncthing\monochrome\bin;%PATH%"
 Add the following to `~/.bashrc`:
 
 ```bash
-export PATH="~/main.syncthing/monochrome/local.syncthing/bin:~/main.syncthing/monochrome/bin:~/main.syncthing/monochrome/archive.syncthing/bin:$PATH"
+export PATH="$HOME/main.syncthing/monochrome/local.syncthing/bin:$HOME/main.syncthing/monochrome/bin:$HOME/main.syncthing/monochrome/archive.syncthing/bin:$PATH"
 ```
 
 `~` may not function as intended so do test after adding the above line:
