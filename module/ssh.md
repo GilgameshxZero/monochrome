@@ -32,7 +32,7 @@ $authorizedKey = Get-Content -Path $env:USERPROFILE\.ssh\id_rsa.pub
 Add-Content -Force -Path $env:ProgramData\ssh\administrators_authorized_keys -Value "$authorizedKey";icacls.exe "$env:ProgramData\ssh\administrators_authorized_keys" /inheritance:r /grant "Administrators:F" /grant "SYSTEM:F"
 ```
 
-This will require a restart of the service, and may require a re-login, but will likely not.
+This may require a restart of the service, and may require a re-login, but will likely not.
 
 #### References
 
@@ -62,7 +62,7 @@ X11Forwarding yes
 X11UseForwarding yes
 ```
 
-`sudo systemctl sshd restart` to restart and apply configuration.
+`sudo systemctl restart sshd` to restart and apply configuration.
 
 ## Targets and aliases
 
@@ -78,7 +78,7 @@ Port|Usage
 8384|Syncthing on `gilgamesh-29`
 8888|jupyterlab on `gilgamesh-29`
 60000+X|SSH
-61000+X (TCP and UDP)|RDP or VNC
+61000+X (TCP and UDP)|RDP or VNC or ProxMox
 
 Utilize the tunneling scripts in `monochrome/config/ssh` to establish persistent tunnels from each machine. Use `lsof -i :X` to check for existing processes connected at port X.
 
@@ -114,7 +114,7 @@ export DISPLAY=:0
 
 On Windows, SSH agent forwarding is not enabled by default. The OpenSSH that ships with Windows does not perform this correctly, though Git SSH does, with some additional overhead (`start-ssh-agent` needs to be run before each `ssh`). To bypass this, install the beta version of OpenSSH for windows, reconfigure all paths to use that version, and set up the authentication agent to launch via startup from `Services`. In addition, make sure the keys are added via `ssh-add`.
 
-The beta version of OpenSSH can be acquired here: <https://stackoverflow.com/questions/71399334/ssh-fails-to-use-private-key-from-ssh-agent-communication-with-agent-failed> at the first answer. You will need to reconfigure path.
+The beta version of OpenSSH can be acquired here: <https://stackoverflow.com/questions/71399334/ssh-fails-to-use-private-key-from-ssh-agent-communication-with-agent-failed> at the first answer, or at <https://github.com/PowerShell/Win32-OpenSSH/releases>. You will need to reconfigure path. The MSI may not work and you may need to unzip manually.
 
 Also, consider the following setting in VSCode:
 

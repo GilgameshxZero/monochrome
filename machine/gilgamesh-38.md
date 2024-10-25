@@ -7,7 +7,7 @@ LIQFW2Z-HJJ3HLK-OM2LWJ6-O4WAV5X-6JPVY54-5OSAHQ3-DTDQ75X-XRK6EAH
 
 ## Approach
 
-<https://macroform-node.medium.com/building-a-windows-11-vm-with-qemu-using-tpm-emulation-for-research-malware-analysis-part-1-8846378b9582> for a template of instructions to run. The `swtpm` bypass mentioned here no longer works ind is not necessary.
+<https://macroform-node.medium.com/building-a-windows-11-vm-with-qemu-using-tpm-emulation-for-research-malware-analysis-part-1-8846378b9582> for a template of instructions to run. The `swtpm` bypass mentioned here no longer works and is not necessary.
 
 <https://www.tomshardware.com/how-to/bypass-windows-11-tpm-requirement> to bypass TMP requirement.
 

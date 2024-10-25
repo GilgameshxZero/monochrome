@@ -47,7 +47,7 @@ For some reason, IKEv2 clients cannot connect via `xfinitywifi` or `XFINITY` Wi-
 
 ## OpenVPN
 
-An experimental OpenVPN server has been set up on `gilgamesh.cc`. Note that beyond the guide, I had to disable all `iptables` rules such as what I did for `emilia`. Namely, clear IP tables and run `iptables -t nat -A POSTROUTING -o enp7s0 -j MASQUERADE;` with the correct ethernet interface name `enp7s0` using `ip route get`.
+An experimental OpenVPN server has been set up on `gilgamesh.cc` following the guide at <https://www.digitalocean.com/community/tutorials/how-to-set-up-and-configure-an-openvpn-server-on-ubuntu-20-04>. Note that beyond the guide, I had to disable all `iptables` rules such as what I did for `emilia`. Namely, clear IP tables and run `iptables -t nat -A POSTROUTING -o enp7s0 -j MASQUERADE;` with the correct ethernet interface name `enp7s0` using `ip route get`.
 
 I also needed `tun-mtu 1400` on the server config sometimes. Add `ipv6` to the server pushes to ensure that client ipv6 requests do not sneak through.
 
@@ -56,13 +56,13 @@ Also, <https://superuser.com/questions/1274955/use-windows-mobile-hotspot-with-o
 The CA password is the same as the Emilia HTTP password.
 
 ```bash
-cd ~/easy-rsa/
-./easyrsa gen-req gilgamesh-34 nopass
-cp ~/easy-rsa/pki/private/gilgamesh-34.key ~/client-configs/keys/
-./easyrsa sign-req client gilgamesh-34
-cp ~/easy-rsa/pki/issued/gilgamesh-34.crt ~/client-configs/keys/
-cd ~/client-configs/
-./make_config.sh gilgamesh-34
+cd ~/easy-rsa/;
+easyrsa gen-req wfyan-yoga nopass;
+cp ~/easy-rsa/pki/private/wfyan-yoga.key ~/client-configs/keys/;
+easyrsa sign-req client wfyan-yoga;
+cp ~/easy-rsa/pki/issued/wfyan-yoga.crt ~/client-configs/keys/;
+cd ~/client-configs/;
+./make_config.sh wfyan-yoga;
 ```
 
 ```ovpn

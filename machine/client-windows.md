@@ -94,6 +94,7 @@
 ## Additional customizations
 
 * Disable web search: <https://pureinfotech.com/disable-search-web-results-windows-11/>.
+   * This works better: <https://www.reddit.com/r/LinusTechTips/comments/1ahub6n/disabling_web_search_completely_fixes_windows/>.
 * Never require sign on in modern standby resume: <https://www.elevenforum.com/t/enable-or-disable-require-sign-in-on-wakeup-in-windows-11.864/>. This option will reset when visiting the Sign-In Settings page again.
    * <https://www.tenforums.com/tutorials/65628-add-require-password-wakeup-power-options-windows-10-a.html> (option 2 step 2, if above doesn't work).
 * ThrottleStop and AltServer icons will duplicate in the system tray: <https://www.techpowerup.com/forums/threads/windows-11-new-throttlestop-9-6-icon-added-to-other-system-tray-icons-each-reboot.311589/>. This is a Windows 11 bug. The only fix right now is to clear the system tray icons periodically <https://answers.microsoft.com/en-us/windows/forum/all/how-to-delete-duplicate-system-tray-icon-list-from/8790797a-ccb2-43d8-bacb-a5bfc3d7e399>.

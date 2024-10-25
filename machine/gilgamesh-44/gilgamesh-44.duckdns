@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+echo url="https://www.duckdns.org/update?domains=gilgamesh-44&token=f48b700b-3598-4546-8f11-33884c740663&ip=" | curl -k -K -

@@ -1,8 +1,12 @@
-Modules:
+## Modules
 
-* syncthing
-* path
-* downloads
-* vscode
-* git
-* qbittorrent
+* `syncthing`
+* `airmessage`
+* `symlinks`
+* `ssh`
+
+## Optional
+
+* `vscode`
+* `git`
+* `qbittorrent`

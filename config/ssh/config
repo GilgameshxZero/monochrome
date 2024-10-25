@@ -1,38 +1,37 @@
-Host gilgamesh-29
-	HostName gilgamesh.cc
-	Port 60029
-	User gilgamesh
-
-Host gilgamesh-29-guest
-	HostName gilgamesh.cc
-	Port 60029
-	User guest
-	IdentitiesOnly yes
-	ForwardAgent yes
-
 Host gilgamesh-31
 	HostName gilgamesh.cc
 	Port 22
 	User root
-
-Host gilgamesh-36
-	HostName gilgamesh.cc
-	Port 60036
-	User gilgamesh
 
 Host gilgamesh-37
 	HostName gilgamesh.cc
 	Port 60037
 	User 0
 
-Host gilgamesh-38
+Host gilgamesh-42
 	HostName gilgamesh.cc
-	Port 60038
+	Port 60042
 	User 0
+
+Host gilgamesh-43
+	HostName gilgamesh.cc
+	Port 60043
+	User gilgamesh
+
+Host gilgamesh-44
+	HostName gilgamesh.cc
+	Port 60044
+	User gilgamesh
 
 Host csail-ccg-gpu-0
 	HostName ccg-gpu-0.csail.mit.edu
 	User gilgamesh-local
+	IdentitiesOnly yes
+	ForwardAgent yes
+
+Host gcp-jailbreak-defense-shared-devbox
+	HostName 34.168.44.107
+	User yang
 	IdentitiesOnly yes
 	ForwardAgent yes
 
@@ -59,7 +58,7 @@ Host runpod-jailbreak-defense-yang-2
 
 Host runpod-jailbreak-defense-yang-3
 	HostName 64.247.206.223
-	Port 11450
+	Port 16472
 	User root
 	IdentitiesOnly yes
 	ForwardAgent yes
@@ -68,25 +67,5 @@ Host runpod-jailbreak-defense-yang-4
 	HostName 64.247.206.223
 	Port 16664
 	User root
-	IdentitiesOnly yes
-	ForwardAgent yes
-
-Host runpod-jailbreak-defense-yang-5
-	HostName 216.81.245.57
-	Port 39930
-	User root
-	IdentitiesOnly yes
-	ForwardAgent yes
-
-Host runpod-jailbreak-defense-yang-6
-	HostName 216.81.245.76
-	Port 21534
-	User root
-	IdentitiesOnly yes
-	ForwardAgent yes
-
-Host gcp-jailbreak-defense-shared-devbox
-	HostName 34.168.44.107
-	User yang
 	IdentitiesOnly yes
 	ForwardAgent yes
