@@ -1,0 +1,14 @@
+[Unit]
+Description=gilgamesh-45.duckdns
+After=network.target
+StartLimitIntervalSec=1
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=300
+User=root
+ExecStart=/home/gilgamesh/gilgamesh-45.duckdns
+
+[Install]
+WantedBy=multi-user.target
