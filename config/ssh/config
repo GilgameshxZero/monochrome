@@ -22,6 +22,11 @@ Host gilgamesh-44
 	HostName gilgamesh.cc
 	Port 60044
 	User gilgamesh
+	
+Host gilgamesh-45
+	HostName 192.168.50.45
+	Port 22
+	User gilgamesh
 
 Host csail-ccg-gpu-0
 	HostName ccg-gpu-0.csail.mit.edu

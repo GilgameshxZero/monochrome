@@ -7,7 +7,7 @@ StartLimitIntervalSec=1
 Type=simple
 Restart=always
 RestartSec=300
-User=root
+User=gilgamesh
 ExecStart=/home/gilgamesh/gilgamesh-45.duckdns
 
 [Install]

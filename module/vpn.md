@@ -53,16 +53,19 @@ I also needed `tun-mtu 1400` on the server config sometimes. Add `ipv6` to the s
 
 Also, <https://superuser.com/questions/1274955/use-windows-mobile-hotspot-with-openvpn>.
 
+* <https://github.com/angristan/openvpn-install>.
+
 The CA password is the same as the Emilia HTTP password.
 
 ```bash
 cd ~/easy-rsa/;
-easyrsa gen-req wfyan-yoga nopass;
-cp ~/easy-rsa/pki/private/wfyan-yoga.key ~/client-configs/keys/;
-easyrsa sign-req client wfyan-yoga;
-cp ~/easy-rsa/pki/issued/wfyan-yoga.crt ~/client-configs/keys/;
+./easyrsa gen-req gilgamesh-46 nopass;
+cp ~/easy-rsa/pki/private/gilgamesh-46.key ~/client-configs/keys/;
+./easyrsa sign-req client gilgamesh-46;
+
+cp ~/easy-rsa/pki/issued/gilgamesh-46.crt ~/client-configs/keys/;
 cd ~/client-configs/;
-./make_config.sh wfyan-yoga;
+./make_config.sh gilgamesh-46;
 ```
 
 ```ovpn
