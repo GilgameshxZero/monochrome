@@ -31,7 +31,6 @@ mklink /J %USERPROFILE%\main.syncthing\utulek\silver %USERPROFILE%\main.syncthin
 mklink /J %USERPROFILE%\main.syncthing\altair\rain %USERPROFILE%\main.syncthing\rain
 mklink /J %USERPROFILE%\main.syncthing\emilia\rain %USERPROFILE%\main.syncthing\rain
 mklink /J %USERPROFILE%\main.syncthing\utulek\rain %USERPROFILE%\main.syncthing\rain
-mklink /J %USERPROFILE%\main.syncthing\vkem\rain %USERPROFILE%\main.syncthing\rain
 mklink /J %USERPROFILE%\main.syncthing\emilia\echidna\snapshots\altair %USERPROFILE%\main.syncthing\altair
 mklink /J %USERPROFILE%\main.syncthing\emilia\echidna\snapshots\cygnus %USERPROFILE%\main.syncthing\cygnus
 mklink /J %USERPROFILE%\main.syncthing\emilia\echidna\snapshots\utulek %USERPROFILE%\main.syncthing\utulek
@@ -50,7 +49,6 @@ ln -s $HOME/main.syncthing/silver $HOME/main.syncthing/utulek/silver
 ln -s $HOME/main.syncthing/rain $HOME/main.syncthing/altair/rain
 ln -s $HOME/main.syncthing/rain $HOME/main.syncthing/emilia/rain
 ln -s $HOME/main.syncthing/rain $HOME/main.syncthing/utulek/rain
-ln -s $HOME/main.syncthing/rain $HOME/main.syncthing/vkem/rain
 ln -s $HOME/main.syncthing/altair $HOME/main.syncthing/emilia/echidna/snapshots/altair
 ln -s $HOME/main.syncthing/cygnus $HOME/main.syncthing/emilia/echidna/snapshots/cygnus
 ln -s $HOME/main.syncthing/utulek $HOME/main.syncthing/emilia/echidna/snapshots/utulek
