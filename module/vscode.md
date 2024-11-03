@@ -1,6 +1,6 @@
 # `vscode`
 
-Visual Studio Code is used for general development and many writing intiatives.
+Visual Studio Code is used for general development and creative writing.
 
 ## Installation
 
@@ -27,4 +27,4 @@ On Windows, to enable Visual Studio developer tools such as `cl.exe` and `nmake`
 
 Two copies of this shortcut, for `x64` and `x86` targets, are available in `monochrome/config/vscode`. This assumes a default-path Visual Studio install.
 
-These shortcuts may be added to the taskbar.
+These shortcuts may be added to the taskbar, but not to Start.

@@ -1,2 +1,6 @@
+#!/usr/bin/env bash
+# Downloads audio from a link, and normalizes for prototype format, but does not re-encode to opus.
+# $1: new name, e.g. "954".
+# $2: original link, e.g. "https://www.youtube.com/watch?app=desktop&v=r6sGWTCMz2k".
 ytdl --verbose -o "$1.%(ext)s" -x --audio-format mp3 -f bestaudio --audio-quality 0 --geo-bypass --no-playlist $2
 mp3gain -r -t $1.mp3
