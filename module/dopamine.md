@@ -8,4 +8,4 @@ Dopamine 2.0.9 (<https://github.com/digimezzo/dopamine-windows>) is the preferre
 
 This integration will continue to work on other platforms, as long as the `main.syncthing` root structure is preserved.
 
-Dopamine v3 was attempted, but seemed to lack support for easy playlist import.
+Dopamine v3 was attempted, but seemed to lack support for easy playlist import, even with symlinks.

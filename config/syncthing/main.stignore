@@ -25,7 +25,7 @@
 (?d)**/ehthumbs.db
 (?d)**/Thumbs.db
 
-// Syncthing nesting.
+// Syncthing nesting; fairly experimental.
 (?d)**/.stfolder
 (?d)**/.stignore
 (?d)**/.stversions

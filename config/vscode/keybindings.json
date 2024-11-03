@@ -100,5 +100,28 @@
 		"key": "ctrl+k v",
 		"command": "-markdown.showPreviewToSide",
 		"when": "!notebookEditorFocused && editorLangId == 'markdown'"
+	},
+	{
+		"key": "ctrl+k ctrl+z",
+		"command": "workbench.action.toggleZenMode",
+		"when": "!isAuxiliaryWindowFocusedContext"
+	},
+	{
+		"key": "ctrl+k ctrl+g",
+		"command": "workbench.action.debug.start",
+		"when": "debuggersAvailable && debugState == 'inactive'"
+	},
+	{
+		"key": "ctrl+shift+3",
+		"command": "workbench.view.explorer",
+		"when": "viewContainer.workbench.view.explorer.enabled"
+	},
+	{
+		"key": "ctrl+k ctrl+a",
+		"command": "workbench.action.showCommands"
+	},
+	{
+		"key": "ctrl+k ctrl+q",
+		"command": "workbench.action.tasks.runTask"
 	}
 ]

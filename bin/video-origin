@@ -1,3 +1,6 @@
+#!/usr/bin/env bash
+# Processes all `mp4` files in `~/Downloads` via HandBrakeCLI with the "[origin] 720p [AV1|250kbps|P7]" preset.
+# HandBrakeCLI only loads presets correctly if it is called from the directory containing presets.
 cd ~/main.syncthing/monochrome/config/handbrake/
 # -x lp is core parallelism.
-find ~/Downloads/*.mkv ~/Downloads/*.mp4 -exec bash -c 'HandBrakeCLI -x lp=1 --preset-import-file presets.json -Z "[origin] 720p [AV1|250kbps|P7] [Opus|40kbps]" -i "/home/gilgamesh/Downloads/$(basename -a "$1")" -o "/home/gilgamesh/main.syncthing/origin/local.syncthing/$(basename -a "$1")"' bash {} \;
+find ~/Downloads/*.mkv ~/Downloads/*.mp4 -exec bash -c 'HandBrakeCLI -x lp=$1 --preset-import-file presets.json -Z "[origin] 720p [AV1|250kbps|P7] [Opus|40kbps]" -i "/home/gilgamesh/Downloads/$(basename -a "$1")" -o "/home/gilgamesh/main.syncthing/origin/local.syncthing/$(basename -a "$1")" && rm "/home/gilgamesh/Downloads/$(basename -a "$1")"' bash {} \;

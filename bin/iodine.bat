@@ -1,4 +1,5 @@
 @ECHO OFF
+@REM Experimental script for use to adjust routes for `iodine` DNS tunneling.
 
 START iodinec -f -P "1#GXVeMc" 159.65.224.199 iodine.gilgamesh.cc
 @REM Do I need the IP here? Probably...

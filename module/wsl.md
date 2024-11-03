@@ -1,6 +1,6 @@
 # Windows Subsystem for Linux
 
-WSL is not commonly used, but can enable Unix tools natively on Windows, which may be helpful for imagemagick usage.
+WSL is not commonly used, but can enable Unix tools natively on Windows, which may be helpful for some use cases.
 
 ## Installation
 

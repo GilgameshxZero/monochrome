@@ -12,8 +12,9 @@
 	"editor.rulers": [60, 80, 120],
 	"editor.inlineSuggest.enabled": true,
 	"editor.insertSpaces": false,
-	// "editor.letterSpacing": -0.3,
 	"editor.tabSize": 2,
+	"editor.fastScrollSensitivity": 10,
+	"editor.folding": false,
 	"editor.fontSize": 20,
 	"editor.unicodeHighlight.nonBasicASCII": false,
 	"editor.wordWrap": "on",
@@ -21,7 +22,6 @@
 	"editor.minimap.enabled": false,
 	"editor.experimental.asyncTokenization": true,
 	"editor.stickyScroll.enabled": false,
-	"editor.folding": false,
 	"editor.glyphMargin": false,
 	"editor.tokenColorCustomizations": {
 		"[*Light*]": {
@@ -31,7 +31,8 @@
 		}
 	},
 	"editor.accessibilitySupport": "off",
-	"editor.scrollbar.verticalScrollbarSize": 12,
+	"editor.cursorBlinking": "solid",
+	"editor.cursorSurroundingLines": 8,
 
 	"explorer.confirmDelete": false,
 	"explorer.confirmDragAndDrop": false,
@@ -43,6 +44,7 @@
 		"ms-toolsai.jupyter": 2,
 		"ms-python.python": 2
 	},
+	"extensions.autoCheckUpdates": false,
 
 	"files.eol": "\n",
 	"files.exclude": {
@@ -55,6 +57,7 @@
 
 	"git.enableSmartCommit": true,
 	"git.openRepositoryInParentFolders": "always",
+	"git.ignoreMissingGitWarning": true,
 
 	"html.format.indentInnerHtml": true,
 	"html.format.wrapLineLength": 80,
@@ -92,7 +95,6 @@
 	"terminal.integrated.enableMultiLinePasteWarning": "never",
 	"terminal.integrated.defaultProfile.osx": "zsh",
 	"terminal.integrated.gpuAcceleration": "on",
-	// "terminal.integrated.letterSpacing": -0.3,
 	// Closes terminals faster (on Windows); faster tasks/builds.
 	"terminal.integrated.profiles.windows": {
 		"Command Prompt": {
@@ -122,17 +124,18 @@
 	"timeline.pageOnScroll": true,
 
 	"update.showReleaseNotes": false,
+	"update.mode": "manual",
 
 	"window.autoDetectColorScheme": true,
 	"window.commandCenter": false,
 	"window.restoreWindows": "none",
 	"window.restoreFullscreen": true,
 	"window.customTitleBarVisibility": "windowed",
+	"window.menuBarVisibility": "compact",
 
 	"workbench.layoutControl.enabled": false,
 	"workbench.tips.enabled": false,
 	"workbench.editor.focusRecentEditorAfterClose": false,
-	"workbench.editor.showTabs": "multiple",
 	"workbench.editor.splitInGroupLayout": "vertical",
 	"workbench.editorAssociations": {
 		"*.ipynb": "jupyter-notebook",
@@ -141,13 +144,12 @@
 	"workbench.panel.defaultLocation": "right",
 	"workbench.commandPalette.experimental.suggestCommands": true,
 	"workbench.startupEditor": "none",
-	"workbench.preferredLightColorTheme": "Default Light Modern",
-	"workbench.preferredDarkColorTheme": "Default Dark Modern",
 	"workbench.preferredHighContrastColorTheme": "Default High Contrast",
+	"workbench.editor.tabSizing": "shrink",
+	"workbench.list.mouseWheelScrollSensitivity": 3,
 
 	"zenMode.restore": true,
 	"zenMode.showTabs": "none",
-	"zenMode.fullScreen": false,
 	"zenMode.centerLayout": false,
 
 	// Extensions.
@@ -155,9 +157,10 @@
 	"C_Cpp.default.cppStandard": "c++17",
 	"C_Cpp.autoAddFileAssociations": false,
 	"C_Cpp.clang_format_fallbackStyle": "{BasedOnStyle: Chromium, UseTab: Always, TabWidth: 2, PointerAlignment: Right, NamespaceIndentation: All, FixNamespaceComments: false, AccessModifierOffset: 0, IndentCaseLabels: true, AlignAfterOpenBracket: AlwaysBreak, AlignOperands: false, ContinuationIndentWidth: 2, BinPackArguments: false, BinPackParameters: false, AlignConsecutiveDeclarations: false, AllowShortIfStatementsOnASingleLine: true, AllowShortLoopsOnASingleLine: true, AlignTrailingComments: false, ReflowComments: true, ColumnLimit: 60, IncludeBlocks: Preserve, SortUsingDeclarations: false}",
-	"C_Cpp.experimentalFeatures": "enabled",
-	"C_Cpp.intelliSenseCacheSize": 1024,
-	"C_Cpp.intelliSenseMemoryLimit": 2048,
+                                                                                                                                                                                                                                                                "C_Cpp.experimentalFeatures": "enabled",
+		"C_Cpp.intelliSenseCacheSize": 1024,
+		"C_Cpp.intelliSenseMemoryLimit": 2048,
+		"workbench.colorTheme": "Eva Dark",
 
 	"github.copilot.enable": {
 		"*": true,
@@ -174,6 +177,7 @@
 	},
 
 	"jupyter.askForKernelRestart": false,
+	"jupyter.interactiveWindow.textEditor.cellFolding": false,
 
 	"markdown-mermaid.darkModeTheme": "neutral",
 	"markdown-mermaid.lightModeTheme": "neutral",
@@ -189,6 +193,8 @@
 		"editor.insertSpaces": true
 	},
 	"notebook.output.scrolling": true,
+	"notebook.confirmDeleteRunningCell": false,
+	"notebook.formatOnSave.enabled": true,
 
 	"prettier.useTabs": true,
 	"prettier.trailingComma": "none",
@@ -209,8 +215,24 @@
 		"runpod-jailbreak-defense-yang": "linux",
 		"runpod-jailbreak-defense-yang-1": "linux",
 		"runpod-jailbreak-defense-yang-0": "linux",
-		"gilgamesh-36": "macOS"
+		"gilgamesh-36": "macOS",
+		"runpod-jailbreak-defense-yang-3": "linux",
+		"gilgamesh-38": "windows",
+		"runpod-jailbreak-defense-yang-4": "linux",
+		"runpod-jailbreak-defense-yang-6": "linux",
+		"runpod-jailbreak-defense-yang-7": "linux",
+		"runpod-jailbreak-defense-yang-8": "linux",
+		"runpod-jailbreak-defense-yang-9": "linux",
+		"runpod-jailbreak-defense-yang-10": "linux",
+		"runpod-jailbreak-defense-jack": "linux",
+		"runpod-jailbreak-defense-yang-2": "linux",
+		"runpod-jailbreak-defense-yang-5": "linux",
+		"gilgamesh-44": "linux",
+		"gilgamesh-43": "macOS",
+		"gilgamesh-42": "windows",
+		"gilgamesh-45": "linux"
 	},
+	"remote.autoForwardPorts": false,
 
 	"xml.format.maxLineWidth": 80,
 
@@ -219,7 +241,7 @@
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
 	},
 	"[html]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
+		"editor.defaultFormatter": "ms-vsliveshare.vsliveshare"
 	},
 	"[markdown]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode",
@@ -252,8 +274,24 @@
 		"editor.defaultFormatter": "redhat.java"
 	},
 	"[typescript]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
+		"editor.defaultFormatter": "ms-vsliveshare.vsliveshare"
 	},
-	"notebook.confirmDeleteRunningCell": false,
-	"notebook.formatOnSave.enabled": true
+	"cSpell.userWords": [
+		"aeterna",
+		"ARGB",
+		"Astrum",
+		"cooldown",
+		"Datapoint",
+		"Erlijan",
+		"everwinter",
+		"Felysia",
+		"Fonte",
+		"logit",
+		"openai",
+		"tqdm",
+		"xdpi",
+		"xena",
+		"Xfermode",
+		"ydpi"
+	],
 }

@@ -3,11 +3,6 @@ Host gilgamesh-31
 	Port 22
 	User root
 
-Host gilgamesh-37
-	HostName gilgamesh.cc
-	Port 60037
-	User 0
-
 Host gilgamesh-42
 	HostName gilgamesh.cc
 	Port 60042
@@ -27,6 +22,11 @@ Host gilgamesh-45
 	HostName 192.168.50.45
 	Port 22
 	User gilgamesh
+
+Host gilgamesh-46
+	HostName gilgamesh.cc
+	Port 60046
+	User 0
 
 Host csail-ccg-gpu-0
 	HostName ccg-gpu-0.csail.mit.edu

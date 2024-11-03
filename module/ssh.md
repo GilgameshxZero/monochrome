@@ -52,14 +52,14 @@ KbdInteractiveAuthentication no
 # Enables port forwarding.
 GatewayPorts yes
 
+# Enables X11 forwarding, only on Linux-based hosts.
+X11Forwarding yes
+X11UseForwarding yes
+
 # Keeps client alive for 180 seconds, sending a packet every 60 seconds.
 ClientAliveInterval 60
 # This is the default, so no need to set explicitly.
 # ClientAliveCountMax 3
-
-# Enables X11 forwarding, only on Linux-based hosts.
-X11Forwarding yes
-X11UseForwarding yes
 ```
 
 `sudo systemctl restart sshd` to restart and apply configuration.
