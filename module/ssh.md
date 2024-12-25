@@ -34,6 +34,8 @@ Add-Content -Force -Path $env:ProgramData\ssh\administrators_authorized_keys -Va
 
 This may require a restart of the service, and may require a re-login, but will likely not.
 
+`sshd` installation on Windows may not be possible via Optional Features, and may require instructions at <https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH>.
+
 #### References
 
 1. <https://superuser.com/questions/1342411/setting-ssh-keys-on-windows-10-openssh-server>.

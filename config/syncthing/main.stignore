@@ -1,6 +1,11 @@
 // Local files are specific to each device and do not need to be synced.
 **/*local.syncthing*
 
+// Device-specific temporaries are to be unignored on each device config.
+(?d)snowfall/gilgamesh-42
+(?d)snowfall/gilgamesh-44
+(?d)snowfall/gilgamesh-46
+
 // General development.
 (?d)**/__pycache__
 (?d)**/.data
