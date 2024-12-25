@@ -3,6 +3,11 @@ Host gilgamesh-31
 	Port 22
 	User root
 
+Host gilgamesh-40
+	HostName 192.168.50.40
+	Port 22
+	User root
+
 Host gilgamesh-42
 	HostName gilgamesh.cc
 	Port 60042
@@ -41,15 +46,15 @@ Host gcp-jailbreak-defense-shared-devbox
 	ForwardAgent yes
 
 Host runpod-jailbreak-defense-yang-0
-	HostName 216.81.245.78
-	Port 21893
+	HostName 64.247.206.135
+	Port 11504
 	User root
 	IdentitiesOnly yes
 	ForwardAgent yes
 
 Host runpod-jailbreak-defense-yang-1
-	HostName 216.81.245.23
-	Port 18418
+	HostName 216.81.245.57
+	Port 14134
 	User root
 	IdentitiesOnly yes
 	ForwardAgent yes

@@ -1,5 +1,6 @@
 nebo/
 
+.venv/
 **/archive.syncthing/
 **/local.syncthing/
 

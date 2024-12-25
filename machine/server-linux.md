@@ -52,3 +52,17 @@ Consider flushing `iptables`: <https://www.digitalocean.com/community/tutorials/
 * Clean `/var/log`: `journalctl --vacuum-size=50M`.
 * `rm -rf /usr/share/doc /usr/src`.
 * `rm -rf /var/cache/snapd`.
+
+## Runpod
+
+First, clone the repository:
+
+```bash
+git clone git@github.com:GilgameshxZero/ft-robustness.git
+```
+
+Copy the secrets file from `~/main.syncthing/monochromme/machine/server-linux.password.md` to `/root/ft_robustness/.env`. Then, run the setup script.
+
+```bash
+/root/ft-robustness/bin/setup.yang.sh
+```

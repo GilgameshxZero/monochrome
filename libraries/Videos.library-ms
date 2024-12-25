@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <libraryDescription xmlns="http://schemas.microsoft.com/windows/2009/library">
   <name>@shell32.dll,-34620</name>
-  <ownerSID>S-1-5-21-23709005-3831561548-1410449440-1001</ownerSID>
-  <version>5</version>
+  <ownerSID>S-1-5-21-2145434714-3012983935-3372315722-1001</ownerSID>
+  <version>9</version>
   <isLibraryPinned>false</isLibraryPinned>
   <iconReference>imageres.dll,-1005</iconReference>
   <templateInfo>
