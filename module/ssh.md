@@ -23,18 +23,9 @@ One can set these per-connection with `-o`.
 
 ### Windows
 
-OpenSSH Server must be installed as an Optional Feature. Configurations can be managed under `%ProgramData%\ssh\sshd_config` and the service can be managed under `services.msc`. Mirror the configuration for Linux.
+It is preferred to acquire OpenSSH via an independent installation, rather than through Windows features. Install via <https://github.com/PowerShell/Win32-OpenSSH/releases>, and follow instructions for setting `sshd`. Symlink `~/.ssh` to `monochrome/config/ssh` in the process.
 
-Authorized keys should be set in `%ProgramData%\ssh\administrators_authorized_keys` instead of `~\.ssh\authorized_keys` for Administrator accounts. Read <https://learn.microsoft.com/en-us/windows-server/administration/openssh/openssh_keymanagement#administrative-user> for a detailed explanation of how, but quickly, via an admin Powershell:
-
-```powershell
-$authorizedKey = Get-Content -Path $env:USERPROFILE\.ssh\id_rsa.pub
-Add-Content -Force -Path $env:ProgramData\ssh\administrators_authorized_keys -Value "$authorizedKey";icacls.exe "$env:ProgramData\ssh\administrators_authorized_keys" /inheritance:r /grant "Administrators:F" /grant "SYSTEM:F"
-```
-
-This may require a restart of the service, and may require a re-login, but will likely not.
-
-`sshd` installation on Windows may not be possible via Optional Features, and may require instructions at <https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH>.
+Using Windows features may result in either a broken authentication agent or the failure to install `sshd`.
 
 #### References
 
@@ -80,7 +71,7 @@ Port|Usage
 8384|Syncthing on `gilgamesh-29`
 8888|jupyterlab on `gilgamesh-29`
 60000+X|SSH
-61000+X (TCP and UDP)|RDP or VNC or ProxMox
+61000+X (TCP and UDP)|RDP or VNC
 
 Utilize the tunneling scripts in `monochrome/config/ssh` to establish persistent tunnels from each machine. Use `lsof -i :X` to check for existing processes connected at port X.
 
