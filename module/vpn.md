@@ -59,13 +59,14 @@ The CA password is the same as the Emilia HTTP password.
 
 ```bash
 cd ~/easy-rsa/;
-./easyrsa gen-req gilgamesh-46 nopass;
-cp ~/easy-rsa/pki/private/gilgamesh-46.key ~/client-configs/keys/;
-./easyrsa sign-req client gilgamesh-46;
+./easyrsa gen-req gilgamesh-49 nopass;
 
-cp ~/easy-rsa/pki/issued/gilgamesh-46.crt ~/client-configs/keys/;
+cp ~/easy-rsa/pki/private/gilgamesh-49.key ~/client-configs/keys/;
+./easyrsa sign-req client gilgamesh-49;
+
+cp ~/easy-rsa/pki/issued/gilgamesh-49.crt ~/client-configs/keys/;
 cd ~/client-configs/;
-./make_config.sh gilgamesh-46;
+./make_config.sh gilgamesh-49;
 ```
 
 ```ovpn
