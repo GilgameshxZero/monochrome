@@ -33,6 +33,15 @@ Host gilgamesh-46
 	Port 60046
 	User 0
 
+Host gilgamesh-49
+	HostName gilgamesh.cc
+	Port 60049
+	User 0
+
+Host mit-yangilga
+	HostName athena.dialup.mit.edu
+	User yangilga
+
 Host csail-ccg-gpu-0
 	HostName ccg-gpu-0.csail.mit.edu
 	User gilgamesh-local
