@@ -2,9 +2,12 @@
 **/*local.syncthing*
 
 // Device-specific temporaries are to be unignored on each device config.
-(?d)snowfall/gilgamesh-42
+(?d)snowfall/gilgamesh-30
+(?d)snowfall/gilgamesh-34
+(?d)snowfall/gilgamesh-43
 (?d)snowfall/gilgamesh-44
 (?d)snowfall/gilgamesh-46
+(?d)snowfall/gilgamesh-49
 
 // General development.
 (?d)**/__pycache__
