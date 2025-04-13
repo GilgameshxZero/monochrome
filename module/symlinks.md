@@ -38,14 +38,12 @@ mklink /J %USERPROFILE%\main.syncthing\emilia\echidna\snapshots\utulek %USERPROF
 
 ### Linux
 
-We prefer not to use `ln -s` filesystem symlinks as they are not followed correctly by `git`. We may use `mount --rbind` but this requires `sudo` permissions and some deletion effects may be unexpected.
+We prefer not to use `ln -s` filesystem symlinks as they are not followed correctly by `git`. We may use `mount --rbind` but this requires `sudo` permissions and some deletion effects may be unexpected. Instead, repositories will be duplicated instead.
 
 ```bash
 mkdir Fake
 sudo mount --rbind Real Fake
 ```
-
-We prefer `sudo mount --rbind` as `git` traverses this without trouble.
 
 ```bash
 rm /home/gilgamesh/main.syncthing/altair/silver
