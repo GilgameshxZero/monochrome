@@ -1,0 +1,54 @@
+{
+	"name": "Vimium C",
+	"@time": "3/25/2025, 8:59:14 AM",
+	"time": 1742914754214,
+	"environment": {
+		"extension": "1.99.994",
+		"platform": "win",
+		"chromium": 134
+	},
+	"allBrowserUrls": true,
+	"exclusionRules": [
+		{
+			"passKeys": "f j k l t ",
+			"pattern": ":https://www.youtube.com/"
+		},
+		{
+			"passKeys": "",
+			"pattern": ":https://jackbox.tv/"
+		},
+		{
+			"passKeys": "",
+			"pattern": ":https://www.typingtest.com/"
+		},
+		{
+			"passKeys": "",
+			"pattern": ":https://app.gather.town/"
+		},
+		{
+			"passKeys": "",
+			"pattern": ":https://192.168.50.40:8006/"
+		}
+	],
+	"keyLayout": 2,
+	"keyMappings": [
+		"#!no-check",
+		"unmapAll",
+		"unmap 1",
+		"unmap 2",
+		"unmap 3",
+		"unmap 4",
+		"unmap 5",
+		"",
+		"map 1 LinkHints.activate clickable=\".input-output-copier\\u0020.mobile-toolbar-menu\"",
+		"map 2 LinkHints.activateOpenInNewTab clickable=\".input-output-copier\\u0020.mobile-toolbar-menu\"",
+		"map 3 scrollPageUp",
+		"map 4 scrollPageDown",
+		"map ` scrollToLeft",
+		"map 5 scrollToRight",
+		""
+	],
+	"linkHintCharacters": "34qwerasdfzxcv",
+	"smoothScroll": false,
+	"vimSync": true
+}

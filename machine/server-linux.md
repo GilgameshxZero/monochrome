@@ -28,14 +28,14 @@ Services/scripts should be put into `/etc/systemd/system` and point to `~/main.s
 
 ## Port allocation
 
-| Port  | Service                    |
-| ----- | -------------------------- |
-| 25    | `emilia`                   |
-| 53    | `iodined`                  |
-| 80    | `emilia`                   |
-| 443   | `nginx`                    |
-| 60xxx | `ssh` for gilgamesh-xxx    |
-| 61xxx | RDP/VNC for gilgamesh-xxx  |
+Port|Service
+-|-
+25|`emilia`
+53|`iodined`
+80|`emilia`
+443|`nginx`
+60xxx|`ssh` for gilgamesh-xxx
+61xxx|RDP/VNC for gilgamesh-xxx
 
 ## Fixes
 

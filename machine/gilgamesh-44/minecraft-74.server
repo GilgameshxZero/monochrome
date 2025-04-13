@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+tmux new-session -d -s minecraft-74;
+tmux send -t minecraft-74:0 "cd $HOME/main.syncthing/fonte/local.syncthing/minecraft/74.server && ./run.sh" C-m;

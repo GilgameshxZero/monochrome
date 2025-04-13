@@ -1,0 +1,6 @@
+# gilgamesh-46
+
+Windows client daily driver
+Intel Core Ultra 258V | 32GB RAM | 1TB SSD
+Windows 11
+EGDROEM-SPRWSMK-H56DY3X-VNGSWFM-Q7G37NY-CR275XI-V6PAVPN-6BLJGAW

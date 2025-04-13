@@ -1,0 +1,6 @@
+# gilgamesh-49
+
+Windows client running on `gilgamesh-40`
+AMD 5950X | 16GB RAM | 1TB
+Windows 11
+6DTQYIJ-46XINR6-NDOF7BO-MLBECAZ-BEEOITV-2WZZDVB-C7VB376-LIHT3A2

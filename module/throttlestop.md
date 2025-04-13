@@ -12,7 +12,7 @@ Virtualization allows both Docker and WSL2 to be enabled, via Hyper-V + other op
 
 ## Configuration
 
-Existing Throttlestop configurations are replicated per-machine in `monochrome/config/throttlestop` periodically.
+Existing Throttlestop configurations are replicated per-machine in `monochrome/module/throttlestop` periodically.
 
 ## Usage
 
@@ -33,4 +33,4 @@ All power limits are specified for both the CPU and iGPU, combined.
 
 ## Autostart
 
-Autostart on Windows for Throttlestop must be configured via the Task Scheduler, to run when user is logged on. A sample task is exported in `monochrome/config/throttlestop` if needed.
+Autostart on Windows for Throttlestop must be configured via the Task Scheduler, to run when user is logged on. A sample task is exported in `monochrome/module/throttlestop` if needed.

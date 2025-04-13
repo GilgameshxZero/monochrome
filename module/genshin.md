@@ -1,6 +1,6 @@
 # `genshin`
 
-Parameters can be added to the executable command line. Common shortcuts to the default install location are located in `~/monochrome/config`.
+Parameters can be added to the executable command line. Common shortcuts to the default install location are located in `~/monochrome/module`.
 
 Parameter|Usage
 -|-
