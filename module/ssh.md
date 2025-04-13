@@ -1,6 +1,6 @@
 # `ssh`
 
-ssh/sshd are used for inter-device communication. All clients are preferred to use the `gilgamesh-16` keys in `monochrome/config/ssh`.
+ssh/sshd are used for inter-device communication. All clients are preferred to use the `gilgamesh-16` keys in `./module/ssh`.
 
 ## Permissions
 
@@ -23,7 +23,7 @@ One can set these per-connection with `-o`.
 
 ### Windows
 
-It is preferred to acquire OpenSSH via an independent installation, rather than through Windows features. Install via <https://github.com/PowerShell/Win32-OpenSSH/releases>, and follow instructions for setting `sshd`. Symlink `~/.ssh` to `monochrome/config/ssh` in the process.
+It is preferred to acquire OpenSSH via an independent installation, rather than through Windows features. Install via <https://github.com/PowerShell/Win32-OpenSSH/releases>, and follow instructions for setting `sshd`. Symlink `~/.ssh` to `monochrome/module/ssh` in the process.
 
 Using Windows features may result in either a broken authentication agent or the failure to install `sshd`.
 
@@ -68,7 +68,7 @@ ClientAliveInterval 60
 
 ## Targets and aliases
 
-Provisioned `gilgamesh-*` client and server machines may choose to tunnel to `gilgamesh.cc` to enable SSH access. These targets, in addition to more ad-hoc compute clusters, should be aliased in `~/.ssh/config`, otherwise available in `monochrome/config/ssh`.
+Provisioned `gilgamesh-*` client and server machines may choose to tunnel to `gilgamesh.cc` to enable SSH access. These targets, in addition to more ad-hoc compute clusters, should be aliased in `~/.ssh/config`, otherwise available in `monochrome/module/ssh`.
 
 ## Tunnel infrastructure
 
@@ -82,7 +82,7 @@ Port|Usage
 60000+X|SSH
 61000+X (TCP and UDP)|RDP or VNC
 
-Utilize the tunneling scripts in `monochrome/config/ssh` to establish persistent tunnels from each machine. Use `lsof -i :X` to check for existing processes connected at port X.
+Utilize the tunneling scripts in `monochrome/module/ssh` to establish persistent tunnels from each machine. Use `lsof -i :X` to check for existing processes connected at port X.
 
 ### Windows
 
@@ -90,7 +90,7 @@ Shortcuts to the scripts can be placed directly in `shell:startup`.
 
 ### Linux
 
-`systemctl` is preferred. The script should be called from a user service file located in `/etc/systemd/system`. See `monochrome/config/ssh` for a sample.
+`systemctl` is preferred. The script should be called from a user service file located in `/etc/systemd/system`. See `monochrome/module/ssh` for a sample.
 
 ## X11 forwarding
 

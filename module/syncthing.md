@@ -15,18 +15,18 @@ The binary can be obtained from <https://syncthing.net/downloads> and shall be p
 Ignore configurations are synced in `*.stignore` files. Generally, for devices with at least 256GB storage, we would like to sync the entire folder:
 
 ```stignore
-#include monochrome/config/syncthing/main.stignore
+#include monochrome/module/syncthing/main.stignore
 ```
 
 For devices with less storage, we also ignore archives, which generally don’t need to be accessed more than once every 6 months:
 
 ```stignore
 // This order is preferred so that `archive.stignore` may overwrite certain `main.stignore` rules.
-#include monochrome/config/syncthing/main.stignore
-#include monochrome/config/syncthing/archive.stignore
+#include monochrome/module/syncthing/main.stignore
+#include monochrome/module/syncthing/archive.stignore
 ```
 
-The local ignore configuration is located at `.stignore`, but is not synced by syncthing. Utilize `monochrome/config/syncthing/initialize.stignore` to sync the `*.stignore` files first, before setting `.stignore`.
+The local ignore configuration is located at `.stignore`, but is not synced by syncthing. Utilize `monochrome/module/syncthing/initialize.stignore` to sync the `*.stignore` files first, before setting `.stignore`.
 
 ## Autostart
 
@@ -34,7 +34,7 @@ Syncthing should be an autostart program.
 
 ### Windows
 
-With the `syncthing.exe` binary placed in `monochrome/local.syncthing/app`, autostart can be achieved by copying the shortcut `monochrome/config/syncthing/syncthing.lnk` to the startup folder `%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup` (otherwise accessible as `shell:startup`).
+With the `syncthing.exe` binary placed in `monochrome/local.syncthing/app`, autostart can be achieved by copying the shortcut `monochrome/module/syncthing/syncthing.lnk` to the startup folder `%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup` (otherwise accessible as `shell:startup`).
 
 The shortcut is a standard shorcut with target parameters `-no-browser -no-console` appended.
 

@@ -20,13 +20,13 @@ Password: tD2kbmZa5e65PfqG
 ### IKEv2
 
 Multiple connections from the same router may be denied. To avoid this, connect with IKEv2.
-IKEv2 clients may connect with certificates found in `monochrome/config/vpn`.
+IKEv2 clients may connect with certificates found in `monochrome/module/vpn`.
 
 Password (if required): `zSSdRFY2tf2fyXHvYC`.
 
 #### Windows
 
-The IP address will need to be changed should `gilgamesh.cc` be hosted from a different IP. The following script should be run from an admin-level cmd from `monochrome/config/vpn`, and is interactive, so should be run line-by-line.
+The IP address will need to be changed should `gilgamesh.cc` be hosted from a different IP. The following script should be run from an admin-level cmd from `monochrome/module/vpn`, and is interactive, so should be run line-by-line.
 
 The files themselves may need to be renamed in order for the connection name to be set correctly as `gilgamesh.cc-X`, for machine `gilgamesh-X`.
 
@@ -39,7 +39,7 @@ powershell -command "Set-VpnConnectionIPsecConfiguration -ConnectionName '%VPN_N
 
 #### iOS
 
-Use the `*.mobileconfig` file generated in `monochrome/config/vpn`.
+Use the `*.mobileconfig` file generated in `monochrome/module/vpn`.
 
 ## Usage
 
@@ -73,3 +73,11 @@ cd ~/client-configs/;
 redirect-gateway def1
 block-outside-dns
 ```
+
+In the server config, we may write:
+
+```conf
+push "redirect-gateway ipv6 def1 bypass-dhcp"
+```
+
+Note that the order of the pushes does matter. Notably, `ipv6` is nonstandard but prevents IPv6 DNS leaks on some clients.

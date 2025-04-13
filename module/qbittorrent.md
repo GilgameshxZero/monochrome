@@ -6,4 +6,4 @@ qBittorrent is preferred for downloading torrents on clients, and sometimes serv
 
 ### Windows
 
-The configuration files live at `%USERPROFILE%\AppData\Roaming\qBittorrent` and are periodically replicated to `monochrome/config/qbittorrent`.
+The configuration files live at `%USERPROFILE%\AppData\Roaming\qBittorrent` and are periodically replicated to `monochrome/module/qbittorrent`.

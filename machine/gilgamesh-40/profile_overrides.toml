@@ -1,0 +1,24 @@
+[profile.nvidia-47] # B-series are framerate-limited to 45 by default, Q to 60.
+num_displays = 4
+frl_enabled = 0
+cuda_enabled = 1
+
+[vm.100] # 0.5G
+framebuffer = 0x1A000000
+framebuffer_reservation = 0x6000000
+
+[vm.102] # 0.5G
+framebuffer = 0x1A000000
+framebuffer_reservation = 0x6000000
+
+[vm.103] # 0.5G
+framebuffer = 0x1A000000
+framebuffer_reservation = 0x6000000
+
+[vm.107] # 8G
+framebuffer = 0x1DC000000
+framebuffer_reservation = 0x24000000
+
+# 11G-max
+# framebuffer = 0x2BEA00000
+# framebuffer_reservation = 0x0

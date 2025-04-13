@@ -1,0 +1,54 @@
+Host gilgamesh-31
+	HostName gilgamesh.cc
+	Port 22
+	User root
+
+Host gilgamesh-40
+	HostName 192.168.50.40
+	Port 22
+	User root
+
+Host gilgamesh-42
+	HostName gilgamesh-45.duckdns.org
+	Port 60042
+	User gilgamesh
+
+Host gilgamesh-43
+	HostName gilgamesh-45.duckdns.org
+	Port 60043
+	User gilgamesh
+
+Host gilgamesh-44
+	HostName gilgamesh-45.duckdns.org
+	Port 60044
+	User gilgamesh
+	
+Host gilgamesh-45
+	HostName 192.168.50.45
+	Port 22
+	User gilgamesh
+
+Host gilgamesh-46
+	HostName gilgamesh.cc
+	Port 60046
+	User 0
+
+Host gilgamesh-47
+	HostName gilgamesh-45.duckdns.org
+	Port 60047
+	User guest
+
+Host gilgamesh-49
+	HostName gilgamesh-45.duckdns.org
+	Port 60049
+	User 0
+
+Host mit-yangilga
+	HostName athena.dialup.mit.edu
+	User yangilga
+
+Host csail-ccg-gpu-0
+	HostName ccg-gpu-0.csail.mit.edu
+	User gilgamesh-local
+	IdentitiesOnly yes
+	ForwardAgent yes

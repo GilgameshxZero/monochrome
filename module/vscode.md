@@ -14,7 +14,7 @@ On Arch, use the proprietary branded release `visual-studio-code-bin` on the AUR
 
 ## Configuration
 
-Sync settings with the Github account `GilgameshxZero`. A copy of the settings and keybinds is available at `monochrome/config/vscode`, but this is not regularly updated.
+Sync settings with the Github account `GilgameshxZero`. A copy of the settings and keybinds is available at `monochrome/module/vscode`, but this is not regularly updated.
 
 ### Windows
 
@@ -25,6 +25,6 @@ On Windows, to enable Visual Studio developer tools such as `cl.exe` and `nmake`
 "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvarsall.bat" x64 10.0.22000.0 && hide "cmd /C code"
 ```
 
-Two copies of this shortcut, for `x64` and `x86` targets, are available in `monochrome/config/vscode`. This assumes a default-path Visual Studio install.
+Two copies of this shortcut, for `x64` and `x86` targets, are available in `monochrome/module/vscode`. This assumes a default-path Visual Studio install.
 
 These shortcuts may be added to the taskbar, but not to Start.

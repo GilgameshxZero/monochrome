@@ -14,4 +14,4 @@ The Visual Studio IDE itself should be used for ad-hoc `.obj` model viewing as w
 
 Visual Studio configuration is synced with the Microsoft account `0@gilgamesh.cc`. The window layout is `default`.
 
-In the event that sync fails, configuration has been exported to `monochrome/config/visual-studio/settings.vssettings`.
+In the event that sync fails, configuration has been exported to `monochrome/module/visual-studio/settings.vssettings`.

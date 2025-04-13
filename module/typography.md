@@ -14,7 +14,7 @@ Preferred typography practices are enabled by various hotkeys, inspired by MacOS
 
 ### Windows
 
-We have provided an AHK-built app at `monochrome/archive.syncthing/apps/typography.exe` which enables the above hotkey. Copy the app to `monochrome/local.syncthing/app` and enable autostart by copying `monochrome/config/typography/typography.lnk` to `%USERPROFILE%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup`.
+We have provided an AHK-built app at `monochrome/archive.syncthing/apps/typography.exe` which enables the above hotkey. Copy the app to `monochrome/local.syncthing/app` and enable autostart by copying `monochrome/module/typography/typography.lnk` to `%USERPROFILE%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup`.
 
 ### Linux
 
@@ -22,4 +22,4 @@ On KDE, `typography.khotkeys` enables the above hotkeys, but can be somewhat bug
 
 ## Fonts
 
-In addition, the `EB Garamond` font should be installed system-wide. The font files are available in `monochrome/config/typography`. The Adobe-style Garamond is actually preferred, but licensing is difficult to navigate.
+In addition, the `EB Garamond` font should be installed system-wide. The font files are available in `monochrome/module/typography`. The Adobe-style Garamond is actually preferred, but licensing is difficult to navigate.

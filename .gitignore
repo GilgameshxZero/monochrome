@@ -4,13 +4,11 @@ nebo/
 **/archive.syncthing/
 **/local.syncthing/
 
-# VPN.
+# VPN/VNC security.
 **.ovpn
 **.mobileconfig
 **.p12
 **.sswan
-
-# Other.
 **.vnc
 
 # General.

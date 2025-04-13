@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-cd /home/gilgamesh/main.syncthing/fonte/local.syncthing/minecraft
-./run.sh

@@ -31,4 +31,4 @@ git config --global alias.p "! [[ $(git config 'branch.$(git symbolic-ref --shor
 git config --global alias.rgc "! git reflog expire --expire=now --all && git gc --prune=now --aggressive"
 ```
 
-Alternatively, the `.gitconfig` file in `monochrome/config/git` may be used instead.
+Alternatively, the `.gitconfig` file in `monochrome/module/git` may be used instead.

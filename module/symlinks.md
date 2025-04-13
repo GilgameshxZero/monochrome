@@ -4,13 +4,13 @@ Symlinks avoid replication and unnecessary copying and are an integral part of m
 
 ## Procedure
 
-Internal symlinks are tracked via `monochrome/config/syncthing/main.stignore`. Beyond that, The following symlinks should also be created:
+Internal symlinks are tracked via `monochrome/module/syncthing/main.stignore`. Beyond that, The following symlinks should also be created:
 
 Real|Fake|Notes
 -|-|-
 `~/main.syncthing/snowfall/local.syncthing`|`~/Downloads`|
 `~/main.syncthing/monochrome/libraries`|`~/AppData/Roaming/Microsoft/Windows/Libraries`|Windows-only syncing of libraries for File Explorer.
-`~/main.syncthing/monochrome/config/ssh`|`~/.ssh`|
+`~/main.syncthing/monochrome/module/ssh`|`~/.ssh`|
 
 ### Windows
 
@@ -36,28 +36,63 @@ mklink /J %USERPROFILE%\main.syncthing\emilia\echidna\snapshots\cygnus %USERPROF
 mklink /J %USERPROFILE%\main.syncthing\emilia\echidna\snapshots\utulek %USERPROFILE%\main.syncthing\utulek
 ```
 
-```bash
-ln -s $HOME/main.syncthing/silver $HOME/main.syncthing/altair/silver
-ln -s $HOME/main.syncthing/silver $HOME/main.syncthing/alto/silver
-ln -s $HOME/main.syncthing/silver $HOME/main.syncthing/cygnus/silver
-ln -s $HOME/main.syncthing/silver $HOME/main.syncthing/emilia/echidna/silver
-ln -s $HOME/main.syncthing/silver $HOME/main.syncthing/imperial/silver
-ln -s $HOME/main.syncthing/silver $HOME/main.syncthing/southstar/silver
-ln -s $HOME/main.syncthing/silver $HOME/main.syncthing/sviva/silver
-ln -s $HOME/main.syncthing/silver $HOME/main.syncthing/sylph/silver
-ln -s $HOME/main.syncthing/silver $HOME/main.syncthing/utulek/silver
-ln -s $HOME/main.syncthing/rain $HOME/main.syncthing/altair/rain
-ln -s $HOME/main.syncthing/rain $HOME/main.syncthing/emilia/rain
-ln -s $HOME/main.syncthing/rain $HOME/main.syncthing/utulek/rain
-ln -s $HOME/main.syncthing/altair $HOME/main.syncthing/emilia/echidna/snapshots/altair
-ln -s $HOME/main.syncthing/cygnus $HOME/main.syncthing/emilia/echidna/snapshots/cygnus
-ln -s $HOME/main.syncthing/utulek $HOME/main.syncthing/emilia/echidna/snapshots/utulek
-```
-
 ### Linux
 
+We prefer not to use `ln -s` filesystem symlinks as they are not followed correctly by `git`. We may use `mount --rbind` but this requires `sudo` permissions and some deletion effects may be unexpected.
+
 ```bash
-ln -s Real Fake
+mkdir Fake
+sudo mount --rbind Real Fake
+```
+
+We prefer `sudo mount --rbind` as `git` traverses this without trouble.
+
+```bash
+rm /home/gilgamesh/main.syncthing/altair/silver
+mkdir /home/gilgamesh/main.syncthing/altair/silver
+sudo mount --rbind /home/gilgamesh/main.syncthing/silver /home/gilgamesh/main.syncthing/altair/silver
+rm /home/gilgamesh/main.syncthing/alto/silver
+mkdir /home/gilgamesh/main.syncthing/alto/silver
+sudo mount --rbind /home/gilgamesh/main.syncthing/silver /home/gilgamesh/main.syncthing/alto/silver
+rm /home/gilgamesh/main.syncthing/cygnus/silver
+mkdir /home/gilgamesh/main.syncthing/cygnus/silver
+sudo mount --rbind /home/gilgamesh/main.syncthing/silver /home/gilgamesh/main.syncthing/cygnus/silver
+rm /home/gilgamesh/main.syncthing/emilia/echidna/silver
+mkdir /home/gilgamesh/main.syncthing/emilia/echidna/silver
+sudo mount --rbind /home/gilgamesh/main.syncthing/silver /home/gilgamesh/main.syncthing/emilia/echidna/silver
+rm /home/gilgamesh/main.syncthing/imperial/silver
+mkdir /home/gilgamesh/main.syncthing/imperial/silver
+sudo mount --rbind /home/gilgamesh/main.syncthing/silver /home/gilgamesh/main.syncthing/imperial/silver
+rm /home/gilgamesh/main.syncthing/southstar/silver
+mkdir /home/gilgamesh/main.syncthing/southstar/silver
+sudo mount --rbind /home/gilgamesh/main.syncthing/silver /home/gilgamesh/main.syncthing/southstar/silver
+rm /home/gilgamesh/main.syncthing/sviva/silver
+mkdir /home/gilgamesh/main.syncthing/sviva/silver
+sudo mount --rbind /home/gilgamesh/main.syncthing/silver /home/gilgamesh/main.syncthing/sviva/silver
+rm /home/gilgamesh/main.syncthing/sylph/silver
+mkdir /home/gilgamesh/main.syncthing/sylph/silver
+sudo mount --rbind /home/gilgamesh/main.syncthing/silver /home/gilgamesh/main.syncthing/sylph/silver
+rm /home/gilgamesh/main.syncthing/utulek/silver
+mkdir /home/gilgamesh/main.syncthing/utulek/silver
+sudo mount --rbind /home/gilgamesh/main.syncthing/silver /home/gilgamesh/main.syncthing/utulek/silver
+rm /home/gilgamesh/main.syncthing/altair/rain
+mkdir /home/gilgamesh/main.syncthing/altair/rain
+sudo mount --rbind /home/gilgamesh/main.syncthing/rain /home/gilgamesh/main.syncthing/altair/rain
+rm /home/gilgamesh/main.syncthing/emilia/rain
+mkdir /home/gilgamesh/main.syncthing/emilia/rain
+sudo mount --rbind /home/gilgamesh/main.syncthing/rain /home/gilgamesh/main.syncthing/emilia/rain
+rm /home/gilgamesh/main.syncthing/utulek/rain
+mkdir /home/gilgamesh/main.syncthing/utulek/rain
+sudo mount --rbind /home/gilgamesh/main.syncthing/rain /home/gilgamesh/main.syncthing/utulek/rain
+rm /home/gilgamesh/main.syncthing/emilia/echidna/snapshots/altair
+mkdir /home/gilgamesh/main.syncthing/emilia/echidna/snapshots/altair
+sudo mount --rbind /home/gilgamesh/main.syncthing/altair /home/gilgamesh/main.syncthing/emilia/echidna/snapshots/altair
+rm /home/gilgamesh/main.syncthing/emilia/echidna/snapshots/cygnus
+mkdir /home/gilgamesh/main.syncthing/emilia/echidna/snapshots/cygnus
+sudo mount --rbind /home/gilgamesh/main.syncthing/cygnus /home/gilgamesh/main.syncthing/emilia/echidna/snapshots/cygnus
+rm /home/gilgamesh/main.syncthing/emilia/echidna/snapshots/utulek
+mkdir /home/gilgamesh/main.syncthing/emilia/echidna/snapshots/utulek
+sudo mount --rbind /home/gilgamesh/main.syncthing/utulek /home/gilgamesh/main.syncthing/emilia/echidna/snapshots/utulek
 ```
 
 It may be necessary to use absolute paths in some cases.
