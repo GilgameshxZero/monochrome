@@ -9,7 +9,7 @@ Internal symlinks are tracked via `monochrome/module/syncthing/main.stignore`. B
 Real|Fake|Notes
 -|-|-
 `~/main.syncthing/snowfall/local.syncthing`|`~/Downloads`|
-`~/main.syncthing/monochrome/libraries`|`~/AppData/Roaming/Microsoft/Windows/Libraries`|Windows-only syncing of libraries for File Explorer.
+`~/main.syncthing/monochrome/library`|`~/AppData/Roaming/Microsoft/Windows/Libraries`|Windows-only syncing of libraries for File Explorer.
 `~/main.syncthing/monochrome/module/ssh`|`~/.ssh`|
 
 ### Windows
