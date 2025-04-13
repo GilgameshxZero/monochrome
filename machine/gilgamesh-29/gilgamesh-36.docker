@@ -1,2 +1,0 @@
-#!/usr/bin/env bash
-docker start -ai gilgamesh-36
