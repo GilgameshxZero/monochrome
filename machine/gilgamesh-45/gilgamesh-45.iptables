@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+iptables-restore < /home/gilgamesh/gilgamesh-45.iptables.txt
