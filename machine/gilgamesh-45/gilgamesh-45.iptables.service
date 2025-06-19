@@ -1,0 +1,13 @@
+[Unit]
+Description=gilgamesh-45.iptables
+After=network.target
+StartLimitIntervalSec=1
+
+[Service]
+RemainAfterExit=true
+Type=oneshot
+User=root
+ExecStart=/home/gilgamesh/gilgamesh-45.iptables
+
+[Install]
+WantedBy=multi-user.target

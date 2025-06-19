@@ -35,8 +35,10 @@
 (?d)emilia/bin
 (?d)rain/bin
 (?d)utulek/bin
+(?d)xena/android
 (?d)xena/bin
 (?d)xena/lib
+(?d)xena/java
 
 // NTFS Junctions are treated as directories and will be synced to outside the main directory. Internal junctions should be ignored and recreated on each system.
 // These are recommended NOT to be project-specific includes, subdirectory includes are relative to the root, not the subdirectory.
@@ -53,3 +55,4 @@
 (?d)sylph/silver
 (?d)utulek/rain
 (?d)utulek/silver
+(?d)wallflower/silver
