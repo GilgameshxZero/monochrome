@@ -47,9 +47,9 @@ For some reason, IKEv2 clients cannot connect via `xfinitywifi` or `XFINITY` Wi-
 
 ## OpenVPN
 
-An experimental OpenVPN server has been set up on `gilgamesh.cc` following the guide at <https://www.digitalocean.com/community/tutorials/how-to-set-up-and-configure-an-openvpn-server-on-ubuntu-20-04>. Note that beyond the guide, I had to disable all `iptables` rules such as what I did for `emilia`. Namely, clear IP tables and run `iptables -t nat -A POSTROUTING -o enp7s0 -j MASQUERADE;` with the correct ethernet interface name `enp7s0` using `ip route get`.
+An experimental OpenVPN server has been set up on `gilgamesh.cc` following the guide at <https://www.digitalocean.com/community/tutorials/how-to-set-up-and-configure-an-openvpn-server-on-ubuntu-20-04>. Note that beyond the guide, I had to disable all `iptables` rules such as what I did for `emilia`. Namely, clear IP tables and run `iptables -t nat -A POSTROUTING -o ens18 -j MASQUERADE;` with the correct ethernet interface name `ens18` using `ip route get`.
 
-I also needed `tun-mtu 1400` on the server config sometimes. Add `ipv6` to the server pushes to ensure that client ipv6 requests do not sneak through.
+I also needed `tun-mtu 1400` (or 1000) on the server config sometimes. Add `ipv6` to the server pushes to ensure that client ipv6 requests do not sneak through.
 
 Also, <https://superuser.com/questions/1274955/use-windows-mobile-hotspot-with-openvpn>.
 
@@ -81,3 +81,21 @@ push "redirect-gateway ipv6 def1 bypass-dhcp"
 ```
 
 Note that the order of the pushes does matter. Notably, `ipv6` is nonstandard but prevents IPv6 DNS leaks on some clients.
+
+Create a split tunnel on each client by routing specific subnets only:
+
+```conf
+route-nopull
+route 10.8.0.0 255.255.255.0
+# route 192.168.50.0 255.255.255.0
+route 0.0.0.0 0.0.0.0
+```
+
+The second route allows traffic (e.g. bittorrent) which selects only the VPN interface to route correctly. There usually exists another route `0.0.0.0 0.0.0.0` on the default interface with lower metric, so usual traffic is routed outside the VPN.
+
+You may verify your public IP from the command line with `curl https://api.ipify.org`. For this to work properly, DNS outside tunnels must be enabled.
+
+```conf
+# ignore-unknown-option block-outside-dns
+# setenv opt block-outside-dns # Prevent Windows 10 DNS leak
+```
