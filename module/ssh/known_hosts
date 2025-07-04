@@ -192,4 +192,3 @@ github.mit.edu ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyN
 [gilgamesh-45.duckdns.org]:60049 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGaLE1A89QU5AMtujdHFMrvQbcGDHZ4I738Pd+hs1588
 [gilgamesh-45.duckdns.org]:60044 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPxJ8+Wqud5IYCGgE4o9zuj3X3tHwxPZ+Uhlp2ZqxnwE
 [gilgamesh-45.duckdns.org]:60043 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHPJXDKm1lupgcqvaQrVHNBbiffCGbpkLY/cvMJy+B21
-localhost ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPxJ8+Wqud5IYCGgE4o9zuj3X3tHwxPZ+Uhlp2ZqxnwE
