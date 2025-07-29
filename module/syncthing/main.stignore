@@ -30,29 +30,25 @@
 (?d)**/.stignore
 (?d)**/.stversions
 
-// Project-specific.
+// Project-specific. obj directories are ignored globally.
 (?d)altair/bin
 (?d)emilia/bin
 (?d)rain/bin
 (?d)utulek/bin
-(?d)xena/android
 (?d)xena/bin
-(?d)xena/lib
-(?d)xena/java
+(?d)xena/dev
 
 // NTFS Junctions are treated as directories and will be synced to outside the main directory. Internal junctions should be ignored and recreated on each system.
 // These are recommended NOT to be project-specific includes, subdirectory includes are relative to the root, not the subdirectory.
 (?d)altair/silver
 (?d)altair/rain
-(?d)alto/silver
 (?d)cygnus/silver
 (?d)emilia/echidna/silver
 (?d)emilia/rain
-(?d)erlija/**/silver
 (?d)imperial/silver
-(?d)southstar/silver
 (?d)sviva/silver
 (?d)sylph/silver
 (?d)utulek/rain
 (?d)utulek/silver
 (?d)wallflower/silver
+(?d)xena/rain
