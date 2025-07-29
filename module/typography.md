@@ -14,7 +14,7 @@ Preferred typography practices are enabled by various hotkeys, inspired by MacOS
 
 ### Windows
 
-We have provided an AHK-built app at `monochrome/archive.syncthing/apps/typography.exe` which enables the above hotkey. Copy the app to `monochrome/local.syncthing/app` and enable autostart by copying `monochrome/module/typography/typography.lnk` to `%USERPROFILE%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup`.
+We have provided an AHK-built app at `monochrome/apps/typography.exe` which enables the above hotkey. Copy the app to `monochrome/local.syncthing/app` and enable autostart by copying `monochrome/module/typography/typography.lnk` to `%USERPROFILE%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup`.
 
 ### Linux
 
