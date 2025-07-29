@@ -1,0 +1,30 @@
+Conversion #4 - 1 tracks
+
+Client:  fre:ac - free audio converter
+Version: v1.1.5 (x86)
+
+System:  Windows 10 Enterprise (Release 2009, Build 22631)
+CPU:     Intel(R) Core(TM) i5-1035G4 CPU @ 1.10GHz
+RAM:     8 GB
+
+Date:    2024-07-11
+Time:    14:58:59
+
+hh:mm:ss.fff
+------------
+00:00:00.004 Starting conversion process...
+00:00:00.005     Selected encoder:     Opus Audio Encoder v1.3.1
+00:00:00.005     Parallel processing:  Enabled (up to 6 threads)
+00:00:00.005         SuperFast mode:   Enabled
+00:00:00.005 
+00:00:00.005     Output settings:      Multiple files
+00:00:00.005         Filename pattern: <filename>
+00:00:00.005 
+00:00:00.261     Converting: Queen of Disaster.mp3
+00:00:00.263             to: Queen of Disaster.opus
+00:00:00.263         Decoder: mpg123 Decoder
+00:00:00.263 
+00:00:03.015     Finished converting: Queen of Disaster.mp3
+00:00:03.015         Duration: 00:02.751 (70.9x speed)
+00:00:03.015 
+00:00:03.052     Total duration: 00:03.047 (64.0x speed)
