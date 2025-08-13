@@ -11,3 +11,4 @@
 10. Hotspot adapter solution: <https://superuser.com/questions/1448054/choose-which-adapter-to-use-for-mobile-hotspot-on-windows-10>.
 11. Also note how we were able to set up Ctrl+T hotkey in Edge via some file hacking.
 12. juice testing.
+13. Microsoft Defender Antivirus: apply reg fix from <https://www.tenforums.com/tutorials/5918-how-turn-off-microsoft-defender-antivirus-windows-10-a.html>.
