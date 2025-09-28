@@ -4,6 +4,7 @@
 **.p12
 **.sswan
 **.vnc
+**.password.*
 
 # Syncthing.
 **/*local.syncthing*
