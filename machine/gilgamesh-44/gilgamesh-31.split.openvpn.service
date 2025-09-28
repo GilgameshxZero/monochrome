@@ -1,0 +1,13 @@
+[Unit]
+Description=gilgamesh-31.split.openvpn
+After=network.target
+StartLimitIntervalSec=1
+
+[Service]
+RemainAfterExit=true
+Type=oneshot
+User=root
+ExecStart=/home/gilgamesh/main.syncthing/monochrome/machine/gilgamesh-44/gilgamesh-31.split.openvpn
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,13 @@
+[Unit]
+Description=minecraft-75.server
+After=network.target
+StartLimitIntervalSec=1
+
+[Service]
+RemainAfterExit=true
+Type=oneshot
+User=gilgamesh
+ExecStart=/home/gilgamesh/main.syncthing/monochrome/machine/gilgamesh-44/minecraft-75.server
+
+[Install]
+WantedBy=multi-user.target
