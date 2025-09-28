@@ -29,3 +29,15 @@ EndSection
 ```bash
 sudo systemctl restart sddm
 ```
+
+## `ytdl`
+
+We are using `yt-dlp` from Pacman in favor of `ytdl` from anywhere else.
+
+## `ovpn`
+
+Use
+
+```bash
+sudo openvpn --config ~/main.syncthing/monochrome/machine/gilgamesh-44/gilgamesh-31.split.ovpn
+```

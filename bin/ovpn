@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# Set up OpenVPN tunnel based on current machine and config name.
+sudo openvpn --config ~/main.syncthing/monochrome/machine/$(hostname)/$1.ovpn
