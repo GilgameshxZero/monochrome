@@ -18,3 +18,5 @@
 15. Better backup/verification procedures for `Syncthing`.
 16. `origin` tracking.
 17. Filesystem-based MD DB spec (like is used in `sylph` and `utulek`) (FSMDDB).
+18. <https://forum.proxmox.com/threads/about-idle-cpu-utilization-on-windows-11.133987/>.
+19. `nct6775`.

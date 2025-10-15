@@ -1,4 +1,4 @@
-// Place your key bindings in this file to override the defaultsauto[]
+// Place your key bindings in this file to override the defaults
 [
 	{
 		"key": "ctrl+tab",
@@ -25,7 +25,7 @@
 		"command": "-workbench.action.nextEditor"
 	},
 	{
-		"key": "ctrl+alt+b",
+		"key": "ctrl+shift+q",
 		"command": "workbench.action.toggleSidebarVisibility"
 	},
 	{
@@ -102,7 +102,7 @@
 		"when": "!notebookEditorFocused && editorLangId == 'markdown'"
 	},
 	{
-		"key": "ctrl+k ctrl+z",
+		"key": "ctrl+shift+w",
 		"command": "workbench.action.toggleZenMode",
 		"when": "!isAuxiliaryWindowFocusedContext"
 	},
@@ -112,12 +112,12 @@
 		"when": "debuggersAvailable && debugState == 'inactive'"
 	},
 	{
-		"key": "ctrl+shift+3",
+		"key": "ctrl+shift+z",
 		"command": "workbench.view.explorer",
 		"when": "viewContainer.workbench.view.explorer.enabled"
 	},
 	{
-		"key": "ctrl+k ctrl+a",
+		"key": "ctrl+shift+e",
 		"command": "workbench.action.showCommands"
 	},
 	{
@@ -153,5 +153,243 @@
 		"key": "ctrl+space",
 		"command": "-editor.action.triggerSuggest",
 		"when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly && !suggestWidgetVisible"
+	},
+	{
+		"key": "alt+r",
+		"command": "scrollPageDown",
+		"when": "textInputFocus"
+	},
+	{
+		"key": "alt+pagedown",
+		"command": "-scrollPageDown",
+		"when": "textInputFocus"
+	},
+	{
+		"key": "alt+e",
+		"command": "scrollPageUp",
+		"when": "textInputFocus"
+	},
+	{
+		"key": "alt+pageup",
+		"command": "-scrollPageUp",
+		"when": "textInputFocus"
+	},
+	{
+		"key": "ctrl+shift+p",
+		"command": "-workbench.action.showCommands"
+	},
+	{
+		"key": "ctrl+k z",
+		"command": "-workbench.action.toggleZenMode",
+		"when": "!isAuxiliaryWindowFocusedContext"
+	},
+	{
+		"key": "ctrl+shift+p",
+		"command": "workbench.action.showCommands"
+	},
+	{
+		"key": "ctrl+shift+w",
+		"command": "-workbench.action.closeWindow"
+	},
+	{
+		"key": "ctrl+shift+e",
+		"command": "-workbench.view.explorer",
+		"when": "viewContainer.workbench.view.explorer.enabled"
+	},
+	{
+		"key": "ctrl+shift+x",
+		"command": "workbench.action.findInFiles"
+	},
+	{
+		"key": "ctrl+shift+f",
+		"command": "-workbench.action.findInFiles"
+	},
+	{
+		"key": "ctrl+shift+c",
+		"command": "workbench.view.scm",
+		"when": "workbench.scm.active"
+	},
+	{
+		"key": "ctrl+shift+g",
+		"command": "-workbench.view.scm",
+		"when": "workbench.scm.active"
+	},
+	{
+		"key": "ctrl+shift+c",
+		"command": "workbench.view.debug",
+		"when": "viewContainer.workbench.view.debug.enabled"
+	},
+	{
+		"key": "ctrl+shift+d",
+		"command": "-workbench.view.debug",
+		"when": "viewContainer.workbench.view.debug.enabled"
+	},
+	{
+		"key": "alt+e",
+		"command": "workbench.action.terminal.scrollUpPage",
+		"when": "terminalFocusInAny && terminalHasBeenCreated && !terminalAltBufferActive || terminalFocusInAny && terminalProcessSupported && !terminalAltBufferActive"
+	},
+	{
+		"key": "shift+pageup",
+		"command": "-workbench.action.terminal.scrollUpPage",
+		"when": "terminalFocusInAny && terminalHasBeenCreated && !terminalAltBufferActive || terminalFocusInAny && terminalProcessSupported && !terminalAltBufferActive"
+	},
+	{
+		"key": "alt+r",
+		"command": "workbench.action.terminal.scrollDownPage",
+		"when": "terminalFocusInAny && terminalHasBeenCreated && !terminalAltBufferActive || terminalFocusInAny && terminalProcessSupported && !terminalAltBufferActive"
+	},
+	{
+		"key": "shift+pagedown",
+		"command": "-workbench.action.terminal.scrollDownPage",
+		"when": "terminalFocusInAny && terminalHasBeenCreated && !terminalAltBufferActive || terminalFocusInAny && terminalProcessSupported && !terminalAltBufferActive"
+	},
+	{
+		"key": "ctrl+j",
+		"command": "-workbench.action.togglePanel"
+	},
+	{
+		"key": "alt+e",
+		"command": "cursorPageUp",
+		"when": "textInputFocus"
+	},
+	{
+		"key": "pageup",
+		"command": "-cursorPageUp",
+		"when": "textInputFocus"
+	},
+	{
+		"key": "alt+r",
+		"command": "cursorPageDown",
+		"when": "textInputFocus"
+	},
+	{
+		"key": "pagedown",
+		"command": "-cursorPageDown",
+		"when": "textInputFocus"
+	},
+	{
+		"key": "ctrl+k ctrl+z",
+		"command": "workbench.action.toggleZenMode",
+		"when": "!isAuxiliaryWindowFocusedContext"
+	},
+	{
+		"key": "ctrl+k z",
+		"command": "workbench.action.toggleZenMode",
+		"when": "!isAuxiliaryWindowFocusedContext"
+	},
+	{
+		"key": "ctrl+shift+v",
+		"command": "-markdown.extension.closePreview",
+		"when": "activeWebviewPanelId == 'markdown.preview'"
+	},
+	{
+		"key": "ctrl+shift+v",
+		"command": "-java.action.filesExplorerPasteAction",
+		"when": "config.editor.pasteAs.enabled && explorerViewletFocus"
+	},
+	{
+		"key": "ctrl+shift+v",
+		"command": "-notebook.cell.pasteAbove",
+		"when": "notebookEditorFocused && !inputFocus"
+	},
+	{
+		"key": "ctrl+shift+v",
+		"command": "-workbench.action.terminal.paste",
+		"when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
+	},
+	{
+		"key": "ctrl+shift+v",
+		"command": "-java.action.clipboardPasteAction",
+		"when": "javaLSReady && editorLangId == 'java'"
+	},
+	{
+		"key": "alt+r",
+		"command": "notebook.cell.cursorPageDown",
+		"when": "editorTextFocus && inputFocus && notebookEditorFocused"
+	},
+	{
+		"key": "alt+e",
+		"command": "notebook.cell.cursorPageUp",
+		"when": "editorTextFocus && inputFocus && notebookEditorFocused"
+	},
+	{
+		"key": "pagedown",
+		"command": "-notebook.cell.cursorPageDown",
+		"when": "editorTextFocus && inputFocus && notebookEditorFocused"
+	},
+	{
+		"key": "pageup",
+		"command": "-notebook.cell.cursorPageUp",
+		"when": "editorTextFocus && inputFocus && notebookEditorFocused"
+	},
+	{
+		"key": "pageup",
+		"command": "-editor.action.pageUpHover",
+		"when": "editorHoverFocused"
+	},
+	{
+		"key": "pageup",
+		"command": "editor.action.pageUpHover",
+		"when": "editorHoverFocused"
+	},
+	{
+		"key": "pageup",
+		"command": "-list.focusPageUp",
+		"when": "listFocus && !inputFocus && !treestickyScrollFocused"
+	},
+	{
+		"key": "pagedown",
+		"command": "-list.focusPageDown",
+		"when": "listFocus && !inputFocus && !treestickyScrollFocused"
+	},
+	{
+		"key": "ctrl+down",
+		"command": "-notebook.cell.focusInOutput",
+		"when": "isWindows && notebookCellHasOutputs && notebookEditorFocused && !isCompositeNotebook"
+	},
+	{
+		"key": "ctrl+down",
+		"command": "notebook.cell.focusInOutput",
+		"when": "notebookCellHasOutputs && notebookEditorFocused && !isCompositeNotebook"
+	},
+	{
+		"key": "pagedown",
+		"command": "cursorPageDown",
+		"when": "textInputFocus"
+	},
+	{
+		"key": "pageup",
+		"command": "cursorPageUp",
+		"when": "textInputFocus"
+	},
+	{
+		"key": "pagedown",
+		"command": "notebook.cell.cursorPageDown",
+		"when": "editorTextFocus && inputFocus && notebookEditorFocused"
+	},
+	{
+		"key": "pageup",
+		"command": "notebook.cell.cursorPageUp",
+		"when": "editorTextFocus && inputFocus && notebookEditorFocused"
+	},
+	{
+		"key": "ctrl+shift+a",
+		"command": "markdown.showPreviewToSide"
+	},
+	{
+		"key": "alt+r",
+		"command": "editor.action.pageDownHover",
+		"when": "editorHoverFocused"
+	},
+	{
+		"key": "pagedown",
+		"command": "-editor.action.pageDownHover",
+		"when": "editorHoverFocused"
+	},
+	{
+		"key": "alt+r",
+		"command": "editor.action.pageDownHover",
+		"when": "editorHoverFocused"
 	}
 ]
