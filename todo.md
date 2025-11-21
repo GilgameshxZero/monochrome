@@ -20,3 +20,18 @@
 17. Filesystem-based MD DB spec (like is used in `sylph` and `utulek`) (FSMDDB).
 18. <https://forum.proxmox.com/threads/about-idle-cpu-utilization-on-windows-11.133987/>.
 19. `nct6775`.
+20. `intel-media-driver` on Linux for iGPU video decode.
+21. <https://www.reddit.com/r/Windows10/comments/1hygqe1/how_to_permanently_disable_windows_defender/>. (doesn't work?)
+22. Disable HAGS/P7 helps with Moonlight stuttering.
+23. <https://silvae86.github.io/2020/06/13/switching-to-acpi-power/#changing-to-acpi-cpufreq-cpu-management-driver>, <https://wiki.archlinux.org/title/Power_management>, <https://unix.stackexchange.com/questions/650873/why-does-my-cpu-disregard-the-maximum-frequency-set-by-e-g-cpupower-and-how-can>.
+24. <https://www.reddit.com/r/GeForceNOW/comments/ynznkj/linux_users_can_now_enable_hardware_acceleration/> (doesn't work). (works on Wayland?) (check nvtop, edge://media-internals).
+25. Fix VLC player issues by installing all optional dependencies.
+26. <https://discuss.kde.org/t/remote-control-requested-still-an-issue/24733>.
+27. `/sys/class/backlight/intel_backlight/brightness` to `2`.
+	1.  `echo 2 | sudo tee /sys/class/backlight/intel_backlight/brightness`.
+28. Edge “restore default” theme.
+29. <https://askubuntu.com/questions/150166/change-the-brightness-adjustment-interval>, `/usr/share/plasma/plasmoids/org.kde.plasma.brightness/contents/ui/PopupDialog.qml` to `/400`.
+30. `sudo turbostat -i 1 -S -s PkgWatt,CorWatt,GFXWatt,RAMWatt,SysWatt`
+31. vIOMMU = virtual for smooth FPS, HAGS on (unclear if this does anything).
+32. Input Method -> Unicode -> Trigger key needs to be disabled for Alt+control+shuft+u stuff.
+33. Chromium theme lags behind. To set dark theme, set dark theme twice in system settings KDE.

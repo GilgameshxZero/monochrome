@@ -1,4 +1,8 @@
 {
+	// Base code/codium settings.
+	"chat.editor.fontSize": 19,
+	"chat.commandCenter.enabled": false,
+
 	"comments.visible": false,
 
 	"debug.onTaskErrors": "abort",
@@ -36,6 +40,11 @@
 	"editor.cursorSurroundingLines": 2,
 	"editor.letterSpacing": -0.33,
 	"editor.suggest.showWords": false,
+	"editor.inlayHints.enabled": "off",
+	"editor.wrappingIndent": "indent",
+	"editor.fontSize": 19,
+	"editor.inertialScroll": true,
+	"editor.mouseWheelScrollSensitivity": 1.5,
 
 	"explorer.confirmDelete": false,
 	"explorer.confirmDragAndDrop": false,
@@ -67,20 +76,13 @@
 	"html.format.indentInnerHtml": true,
 	"html.format.wrapLineLength": 80,
 
-	"liveshare.notebooks.allowGuestExecuteCells": true,
-
 	"markdown.preview.breaks": true,
-	"markdown.extension.print.absoluteImgPath": false,
-	"markdown.extension.toc.unorderedList.marker": "*",
-	"markdown.extension.tableFormatter.enabled": false,
-	"markdown.extension.toc.updateOnSave": false,
 	"markdown.copyFiles.destination": {
 		"**/*": "${documentDirName}/${documentFileName}.assets/${unixTime}.${fileName}"
 	},
-	"markdown.extension.syntax.plainTheme": true,
-	"markdown.extension.list.indentationSize": "inherit",
-	"markdown.extension.print.includeVscodeStylesheets": false,
-	"markdown.extension.print.pureHtml": true,
+	"markdown.preview.fontSize": 16,
+	"markdown.preview.lineHeight": 1.5,
+	"markdown.preview.scrollPreviewWithEditor": false,
 
 	// Most markdown files should be edited with the `silver` CSS.
 	"markdown.styles": [".vscode/default.css"],
@@ -92,27 +94,17 @@
 
 	"security.workspace.trust.untrustedFiles": "open",
 
-	"settingsSync.ignoredSettings": [
-		"workbench.colorTheme",
-		"-C_Cpp.intelliSenseMemoryLimit",
-		"-C_Cpp.intelliSenseCacheSize"
-	],
-	"settingsSync.ignoredExtensions": ["mit-up-group.constellation-vscode"],
-
 	"task.problemMatchers.neverPrompt": {
 		"shell": true
 	},
 
 	"terminal.integrated.fontSize": 19,
-	"terminal.integrated.defaultProfile.windows": "Command Prompt",
-	"terminal.integrated.defaultProfile.linux": "bash",
-	"terminal.integrated.enableMultiLinePasteWarning": "never",
-	"terminal.integrated.defaultProfile.osx": "zsh",
-	"terminal.integrated.gpuAcceleration": "on",
 	// Closes terminals faster (on Windows); faster tasks/builds.
 	"terminal.integrated.profiles.windows": {
 		"Command Prompt": {
 			"path": [
+				// Need the first line in case {windir} is not defined (e.g. on codium).
+				"C:\\Windows\\System32\\cmd.exe",
 				"${env:windir}\\System32\\cmd.exe",
 				"${env:windir}\\Sysnative\\cmd.exe"
 			],
@@ -126,12 +118,21 @@
 			"source": "Git Bash"
 		}
 	},
+	"terminal.integrated.defaultProfile.windows": "Command Prompt",
+	"terminal.integrated.defaultProfile.linux": "bash",
+	"terminal.integrated.enableMultiLinePasteWarning": "never",
+	"terminal.integrated.defaultProfile.osx": "zsh",
+	"terminal.integrated.gpuAcceleration": "on",
 	"terminal.integrated.confirmOnKill": "never",
 	"terminal.integrated.rightClickBehavior": "default",
 	"terminal.integrated.commandsToSkipShell": [
 		"workbench.action.closeActiveEditor"
 	],
 	"terminal.integrated.scrollback": 8192,
+	"terminal.integrated.ignoreBracketedPasteMode": true,
+	"terminal.integrated.persistentSessionScrollback": 1024,
+	"terminal.integrated.showExitAlert": false,
+	"terminal.integrated.defaultLocation": "editor",
 
 	"timeline.pageOnScroll": true,
 
@@ -145,6 +146,7 @@
 	"window.customTitleBarVisibility": "windowed",
 	"window.menuBarVisibility": "compact",
 	"window.newWindowProfile": "Default",
+	"window.density.editorTabHeight": "compact",
 
 	"workbench.layoutControl.enabled": false,
 	"workbench.tips.enabled": false,
@@ -154,14 +156,16 @@
 		"*.ipynb": "jupyter-notebook",
 		"*.pdf": "default"
 	},
-	"workbench.panel.defaultLocation": "right",
 	"workbench.commandPalette.experimental.suggestCommands": true,
 	"workbench.startupEditor": "none",
 	"workbench.preferredHighContrastColorTheme": "Default High Contrast",
+	"workbench.preferredDarkColorTheme": "Default Dark Modern",
+	"workbench.preferredLightColorTheme": "Default Light Modern",
 	"workbench.editor.tabSizing": "shrink",
 	"workbench.list.mouseWheelScrollSensitivity": 3,
-	"workbench.colorTheme": "Eva Dark",
 	"workbench.editor.empty.hint": "hidden",
+	"workbench.activityBar.location": "bottom",
+	"workbench.panel.showLabels": false,
 
 	"zenMode.restore": true,
 	"zenMode.showTabs": "none",
@@ -219,9 +223,11 @@
 		"logit",
 		"LOWORD",
 		"lpsz",
+		"lzcnt",
 		"mathbb",
 		"MOUSEEVENTF",
 		"nullptr",
+		"Ofast",
 		"openai",
 		"OVERLAPPEDWINDOW",
 		"PAINTSTRUCT",
@@ -244,6 +250,7 @@
 		"starfall",
 		"starfarer",
 		"starfarers",
+		"Strassen",
 		"Strassen's",
 		"subarray",
 		"subcubic",
@@ -265,19 +272,28 @@
 		"Xfermode",
 		"ydpi"
 	],
-
-	"C_Cpp.dimInactiveRegions": true,
-	"C_Cpp.default.cppStandard": "c++17",
-	"C_Cpp.autoAddFileAssociations": false,
-	"C_Cpp.clang_format_fallbackStyle": "{ \tBasedOnStyle: Chromium,  \tUseTab: Always, \tTabWidth: 2, \tPointerAlignment: Right,  \tNamespaceIndentation: All, \tFixNamespaceComments: false, \tAccessModifierOffset: 0, \tIndentCaseLabels: true,  \tAlignAfterOpenBracket: AlwaysBreak, \tAlignOperands: false, \tContinuationIndentWidth: 2,  \tBinPackArguments: false, \tBinPackParameters: false, \tAlignConsecutiveDeclarations: false, \tAllowShortIfStatementsOnASingleLine: true, \tAllowShortLoopsOnASingleLine: true,  \tAlignTrailingComments: false, \tReflowComments: true, \tColumnLimit: 80,  \tIncludeBlocks: Preserve, \tSortUsingDeclarations: false, }",
-																																																																																																																																"C_Cpp.experimentalFeatures": "enabled",
+	"cSpell.enabledNotifications": {
+		"Average Word Length too Long": false,
+		"Lines too Long": false,
+		"Maximum Word Length Exceeded": false
+	},
 
 	"java.project.referencedLibraries": {
 		"include": ["C:/Android/platforms/android-34/*.jar", "lib/*.jar"]
 	},
+	"java.inlayHints.parameterNames.enabled": "none",
 
 	"jupyter.askForKernelRestart": false,
 	"jupyter.interactiveWindow.textEditor.cellFolding": false,
+
+	"markdown.extension.print.absoluteImgPath": false,
+	"markdown.extension.toc.unorderedList.marker": "*",
+	"markdown.extension.tableFormatter.enabled": false,
+	"markdown.extension.toc.updateOnSave": false,
+	"markdown.extension.syntax.plainTheme": true,
+	"markdown.extension.list.indentationSize": "inherit",
+	"markdown.extension.print.includeVscodeStylesheets": false,
+	"markdown.extension.print.pureHtml": true,
 
 	"notebook.cellToolbarLocation": {
 		"default": "right",
@@ -291,50 +307,51 @@
 	},
 	"notebook.confirmDeleteRunningCell": false,
 	"notebook.formatOnSave.enabled": true,
+	"notebook.output.textLineLimit": 10,
+	"notebook.output.scrolling": true,
 
 	"prettier.useTabs": true,
 	"prettier.trailingComma": "none",
 
+	"python.createEnvironment.trigger": "off",
+
 	"redhat.telemetry.enabled": false,
 
-	"remote.SSH.externalSSH_ASKPASS": true,
-	"remote.SSH.enableRemoteCommand": true,
-	// Fixes Agent forwarding, specifically on Windows -> Linux.
-	"remote.SSH.useExecServer": false,
-	"remote.SSH.lockfilesInTmp": true,
 	"remote.SSH.remotePlatform": {
 		"gilgamesh-27": "windows",
 		"gilgamesh-29": "linux",
 		"gilgamesh-31": "linux",
+		"gilgamesh-36": "macOS",
+		"gilgamesh-38": "windows",
+		"gilgamesh-40": "linux",
+		"gilgamesh-42": "windows",
+		"gilgamesh-43": "macOS",
+		"gilgamesh-44": "linux",
+		"gilgamesh-45": "linux",
+		"gilgamesh-46": "windows",
+		"gilgamesh-47": "linux",
+		"gilgamesh-49": "windows",
+		"gilgamesh-51": "linux",
 		"csail-ccg-gpu-0": "linux",
 		"gcp-jailbreak-defense-shared-devbox": "linux",
 		"runpod-jailbreak-defense-yang": "linux",
-		"runpod-jailbreak-defense-yang-1": "linux",
 		"runpod-jailbreak-defense-yang-0": "linux",
-		"gilgamesh-36": "macOS",
+		"runpod-jailbreak-defense-yang-1": "linux",
+		"runpod-jailbreak-defense-yang-2": "linux",
 		"runpod-jailbreak-defense-yang-3": "linux",
-		"gilgamesh-38": "windows",
 		"runpod-jailbreak-defense-yang-4": "linux",
+		"runpod-jailbreak-defense-yang-5": "linux",
 		"runpod-jailbreak-defense-yang-6": "linux",
 		"runpod-jailbreak-defense-yang-7": "linux",
 		"runpod-jailbreak-defense-yang-8": "linux",
 		"runpod-jailbreak-defense-yang-9": "linux",
 		"runpod-jailbreak-defense-yang-10": "linux",
-		"runpod-jailbreak-defense-jack": "linux",
-		"runpod-jailbreak-defense-yang-2": "linux",
-		"runpod-jailbreak-defense-yang-5": "linux",
-		"gilgamesh-44": "linux",
-		"gilgamesh-43": "macOS",
-		"gilgamesh-42": "windows",
-		"gilgamesh-45": "linux",
-		"gilgamesh-40": "linux",
-		"gilgamesh-46": "windows",
-		"gilgamesh-49": "windows",
-		"gilgamesh-47": "linux"
+		"runpod-jailbreak-defense-jack": "linux"
 	},
 	"remote.autoForwardPorts": false,
 
 	"xml.format.maxLineWidth": 80,
+	"xml.server.preferBinary": true,
 
 	// Formatters.
 	"[css]": {
@@ -382,27 +399,31 @@
 	"[typescript]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
 	},
-	"terminal.integrated.ignoreBracketedPasteMode": true,
-	"terminal.integrated.persistentSessionScrollback": 1024,
-	"terminal.integrated.showExitAlert": false,
-	"editor.wrappingIndent": "indent",
-	"editor.fontSize": 19,
-	"markdown.preview.fontSize": 16,
-	"chat.editor.fontSize": 19,
-	"markdown.preview.lineHeight": 1.5,
-	"cSpell.enabledNotifications": {
-		"Average Word Length too Long": false,
-		"Lines too Long": false,
-		"Maximum Word Length Exceeded": false
-	},
-	"markdown.preview.scrollEditorWithPreview": false,
-	"markdown.preview.scrollPreviewWithEditor": false,
-	"java.inlayHints.parameterNames.enabled": "none",
-	"workbench.activityBar.location": "bottom",
-	"window.density.editorTabHeight": "compact",
-	"chat.commandCenter.enabled": false,
+
+	// VSCode-specific settings.
+	"liveshare.notebooks.allowGuestExecuteCells": true,
+
+	"remote.SSH.externalSSH_ASKPASS": true,
+	"remote.SSH.enableRemoteCommand": true,
+	// Fixes Agent forwarding, specifically on Windows -> Linux.
+	"remote.SSH.useExecServer": false,
+	"remote.SSH.lockfilesInTmp": true,
+	"remote.SSH.localServerDownload": "always",
+
+	"settingsSync.ignoredSettings": [
+		"workbench.colorTheme",
+		"-C_Cpp.intelliSenseMemoryLimit",
+		"-C_Cpp.intelliSenseCacheSize"
+	],
+	"settingsSync.ignoredExtensions": ["mit-up-group.constellation-vscode"],
+
 	"C_Cpp.formatting": "clangFormat",
-	"notebook.output.textLineLimit": 10,
-	"notebook.output.scrolling": true,
-	"workbench.panel.showLabels": false
+	"C_Cpp.dimInactiveRegions": true,
+	"C_Cpp.default.cppStandard": "c++17",
+	"C_Cpp.autoAddFileAssociations": false,
+	"C_Cpp.clang_format_fallbackStyle": "{ \tBasedOnStyle: Chromium,  \tUseTab: Always, \tTabWidth: 2, \tPointerAlignment: Right,  \tNamespaceIndentation: All, \tFixNamespaceComments: false, \tAccessModifierOffset: 0, \tIndentCaseLabels: true,  \tAlignAfterOpenBracket: AlwaysBreak, \tAlignOperands: false, \tContinuationIndentWidth: 2,  \tBinPackArguments: false, \tBinPackParameters: false, \tAlignConsecutiveDeclarations: false, \tAllowShortIfStatementsOnASingleLine: true, \tAllowShortLoopsOnASingleLine: true,  \tAlignTrailingComments: false, \tReflowComments: true, \tColumnLimit: 80,  \tIncludeBlocks: Preserve, \tSortUsingDeclarations: false, }",
+	"C_Cpp.experimentalFeatures": "enabled",
+	"C_Cpp.intelliSenseCacheSize": 1024
+
+	// Additional settings.
 }
