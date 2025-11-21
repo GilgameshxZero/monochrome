@@ -1,0 +1,126 @@
+{
+  "Cicero.de": {
+    "domain": "cicero.de",
+    "allow_cookies": 1,
+    "ld_archive_is": "article > div:has(> div.ad-container)|article > div:has(h3)",
+    "upd_version": "4.2.4.2"
+  },
+  "De Tijd": {
+    "domain": "tijd.be",
+    "allow_cookies": 1,
+    "cs_dompurify": 1,
+    "useragent": "googlebot",
+    "upd_version": "4.2.5.1"
+  },
+  "El Cronista": {
+    "domain": "cronista.com",
+    "allow_cookies": 1,
+    "cs_code": "[{\"cond\":\"div.article-body--blurred\", \"rm_class\":\"article-body--blurred\"}, {\"hide_elem\":\"div.paywall-chain--show\"}]",
+    "upd_version": "4.2.4.8"
+  },
+  "El País": {
+    "domain": "elpais.com",
+    "allow_cookies": 1,
+    "block_js_inline": "\\/verne\\.elpais\\.com\\/.+\\.html",
+    "block_regex": "(\\.prisa\\.com\\/dist\\/subs\\/pmwall\\/.+\\/pmwall\\.min\\.js|\\.ampproject\\.org\\/v0\\/amp-access-.+\\.js)",
+    "block_host_perm_add": "prisa.com",
+    "upd_version": "4.2.3.7"
+  },
+  "Krautreporter.de": {
+    "domain": "krautreporter.de",
+    "allow_cookies": 1,
+    "cs_code": "[{\"cond\":\".blurred\", \"rm_class\":\"blurred|json-ld-paywall-marker|hidden@print\"}, {\"hide_elem\":\"section.js-access-wall\"}]",
+    "upd_version": "4.2.4.4"
+  },
+  "L'Écho": {
+    "domain": "lecho.be",
+    "allow_cookies": 1,
+    "cs_dompurify": 1,
+    "useragent": "googlebot",
+    "upd_version": "4.2.5.1"
+  },
+  "Law.com (refresh; fetch from archive.is)": {
+    "domain": "law.com",
+    "allow_cookies": 1,
+    "ld_archive_is": "div.paywall-container|main:not(:has(main))",
+    "upd_version": "4.2.5.1"
+  },
+  "Le Canard enchaîné.fr": {
+    "domain": "lecanardenchaine.fr",
+    "useragent": "googlebot",
+    "upd_version": "4.2.3.7"
+  },
+  "Le Temps.ch": {
+    "domain": "letemps.ch",
+    "allow_cookies": 1,
+    "ld_archive_is": "div.post-subscribe|div#article-body-wrapper",
+    "cs_code": "[{\"cond\":\"div.div.post__content--faded\", \"rm_class\":\"post__content--faded\"}]",
+    "upd_version": "4.2.3.3"
+  },
+  "Neue Westfälische": {
+    "domain": "nw.de",
+    "allow_cookies": 1,
+    "ld_json": "div.abo-container|div[class*='paywall-overlay']",
+    "upd_version": "4.2.4.6"
+  },
+  "New York Post": {
+    "domain": "nypost.com",
+    "allow_cookies": 1,
+    "block_regex": "\\.nypost\\.com\\/zephr\\/feature/",
+    "cs_code": "[{\"cond\":\"div.single__content p[class]\", \"rm_attrib\":\"class\"}]",
+    "upd_version": "4.2.3.1"
+  },
+  "Sciences Humaines (removed)": {
+    "domain": "scienceshumaines.com",
+    "allow_cookies": 1,
+    "nofix": 1,
+    "upd_version": "4.2.4.8"
+  },
+  "Standardmedia.co.ke (text only)": {
+    "domain": "standardmedia.co.ke",
+    "allow_cookies": 1,
+    "ld_json": "div.paywall-container|div.tbl_art>p:not([class])",
+    "upd_version": "4.2.5.2"
+  },
+  "Stereogum": {
+    "domain": "stereogum.com",
+    "allow_cookies": 1,
+    "block_regex": "\\/stereogum\\.com\\/_next\\/static\\/chunks\\/pages\\/.+\\/%5B.+\\.js",
+    "upd_version": "4.2.4.8"
+  },
+  "Südwest Media Network": {
+    "domain": "###_de_smn",
+    "group": [
+      "schwarzwaelder-bote.de",
+      "stuttgarter-nachrichten.de",
+      "stuttgarter-zeitung.de"
+    ],
+    "allow_cookies": 1,
+    "block_regex": "\\.de\\/xbuilder\\/experience\\/execute",
+    "cs_code": "[{\"cond\":\"div.restricted-area\", \"rm_class\":\"restricted-area\"}, {\"hide_elem\":\"div.mod-paywall\"}]",
+    "upd_version": "4.2.3.5"
+  },
+  "The Business Journals": {
+    "domain": "bizjournals.com",
+    "allow_cookies": 1,
+    "block_regex": "\\.cxense\\.com",
+    "block_js_inline": "\\.bizjournals\\.com\\/.+\\/(news|stories)\\/.+\\.html",
+    "cs_dompurify": 1,
+    "upd_version_min": "4.2.1.9",
+    "upd_version": "4.2.3.8"
+  },
+  "The Times UK": {
+    "domain": "thetimes.com",
+    "allow_cookies": 1,
+    "cs_dompurify": 1,
+    "cs_param": {"article_sel": "article[id]"},
+    "upd_version": "4.2.5.1"
+  },
+  "Valeurs Actuelles": {
+    "domain": "valeursactuelles.com",
+    "allow_cookies": 1,
+    "block_regex": "\\.qiota\\.com",
+    "cs_code": "[{\"cond\":\"div.qiota\", \"rm_elem\":1, \"elems\": {\"cond\":\"div.qiota_reserve\", \"rm_attrib\":\"class\"}}]",
+    "upd_version": "4.2.3.2"
+  }
+}
