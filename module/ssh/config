@@ -42,13 +42,7 @@ Host gilgamesh-49
 	HostName gilgamesh-45.duckdns.org
 	Port 60049
 	User 0
-
-Host mit-yangilga
-	HostName athena.dialup.mit.edu
-	User yangilga
-
-Host csail-ccg-gpu-0
-	HostName ccg-gpu-0.csail.mit.edu
-	User gilgamesh-local
-	IdentitiesOnly yes
-	ForwardAgent yes
+Host gilgamesh-51
+	HostName gilgamesh.cc
+	Port 60051
+	User gilgamesh
