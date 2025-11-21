@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+sudo turbostat -i 1 -S -s PkgWatt,CorWatt,GFXWatt,RAMWatt,SysWatt

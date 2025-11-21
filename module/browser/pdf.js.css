@@ -1,7 +1,0 @@
-/* This config should be placed in either userContent.css (Firefox) or in the configs for the PDF Reader extension, where available (Edge). */
-
-@media (prefers-color-scheme: dark) {
-	.pdfViewer {
-		filter: invert(1) hue-rotate(180deg) contrast(80%) brightness(200%);
-	}
-}
