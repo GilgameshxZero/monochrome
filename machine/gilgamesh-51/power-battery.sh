@@ -14,5 +14,8 @@ sudo cpupower -c all frequency-set -g powersave
 powerprofilesctl set power-saver
 
 # Applications.
-syncthing cli config folders ifzzk-usnva paused set true
 # sudo pkill -9 pipewire
+lookandfeeltool -a org.manjaro.breath-dark.desktop
+sleep 1
+lookandfeeltool -a org.manjaro.breath-dark.desktop
+syncthing cli config folders ifzzk-usnva paused set true
