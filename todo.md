@@ -35,3 +35,4 @@
 31. vIOMMU = virtual for smooth FPS, HAGS on (unclear if this does anything).
 32. Input Method -> Unicode -> Trigger key needs to be disabled for Alt+control+shuft+u stuff.
 33. Chromium theme lags behind. To set dark theme, set dark theme twice in system settings KDE.
+34. `pactl list sinks | grep Name:`.
