@@ -9,5 +9,5 @@ echo 0 | sudo tee /sys/devices/system/cpu/cpu3/online
 echo 0 | sudo tee /sys/devices/system/cpu/cpu5/online
 echo 0 | sudo tee /sys/devices/system/cpu/cpu6/online
 echo 0 | sudo tee /sys/devices/system/cpu/cpu7/online
-sudo pkill -9 pipewire
+# sudo pkill -9 pipewire
 syncthing cli config folders ifzzk-usnva paused set true
