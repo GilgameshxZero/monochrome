@@ -17,7 +17,8 @@ sudo powercap-set intel-rapl-mmio -z 0 -c 1 -s 81872814080
 powerprofilesctl set performance
 
 # Applications.
-lookandfeeltool -a org.manjaro.breath-light.desktop
-sleep 1
-lookandfeeltool -a org.manjaro.breath-light.desktop
+# lookandfeeltool -a org.manjaro.breath-light.desktop
+# sleep 1
+# lookandfeeltool -a org.manjaro.breath-light.desktop
+# qdbus6 org.kde.kglobalaccel /component/kwin invokeShortcut "Toggle Night Color"
 syncthing cli config folders ifzzk-usnva paused set false
