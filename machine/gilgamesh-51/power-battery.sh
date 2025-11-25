@@ -18,4 +18,5 @@ powerprofilesctl set power-saver
 lookandfeeltool -a org.manjaro.breath-dark.desktop
 sleep 1
 lookandfeeltool -a org.manjaro.breath-dark.desktop
+# qdbus6 org.kde.kglobalaccel /component/kwin invokeShortcut "Toggle Night Color"
 syncthing cli config folders ifzzk-usnva paused set true
