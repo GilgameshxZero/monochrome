@@ -15,7 +15,16 @@ Additional setup guide: <https://wvthoog.nl/proxmox-vgpu-v3/#Linux>.
 vGPU client and server drivers are available here:
 
 1. <https://cloud.google.com/compute/docs/gpus/grid-drivers-table>
+	1. On linux, needs the headers. Install `sudo pacman -S linux-headers-meta`.
 2. <https://mega.nz/file/RvsyyBaB#7fe_caaJkBHYC6rgFKtiZdZKkAvp7GNjCSa8ufzkG20>
+
+### Linux client patching (Arch)
+
+Follow this trail.
+
+1. <https://bbs.archlinux.org/viewtopic.php?id=298655&p=2>.
+
+Kernel 6.12. Manually applied patches to 535.216.01 but did not get super far. Failed DKMS on all available kernels. Some other patch is needed? Lots of `-grid` substitutions, a sha512 substitution.
 
 ### Licensing
 
@@ -29,7 +38,7 @@ Make sure to double-check your timezone. The SHA1 GPO edit is probably not neede
 
 ### Memory configurations
 
-Memory may not be shared by vGPU clients. Instead, `profile_overrides.toml` should be configured. See module files for more information.
+Memory may not be shared by vGPU clients. Instead, `/etc/vgpu_unlock/profile_override.toml` should be configured. See module files for more information.
 
 ### Debugging
 
