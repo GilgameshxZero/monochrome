@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+sudo modprobe -r btintel_pcie
+sleep 1
+sudo modprobe btintel_pcie

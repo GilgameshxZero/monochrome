@@ -13,6 +13,7 @@ sudo powercap-set intel-rapl -z 0 -c 0 -s 81872814080
 sudo powercap-set intel-rapl -z 0 -c 1 -s 81872814080
 sudo powercap-set intel-rapl-mmio -z 0 -c 0 -s 81872814080
 sudo powercap-set intel-rapl-mmio -z 0 -c 1 -s 81872814080
+echo 1 | sudo tee /sys/devices/system/cpu/cpufreq/boost
 # Sometimes KDE does not set this correctly so we do it here.
 powerprofilesctl set performance
 

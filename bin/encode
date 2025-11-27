@@ -1,0 +1,97 @@
+#!/usr/bin/env bash
+# Downloads audio from a link (or uses an existing file), and normalizes for prototype format.
+# `prototype` format is `opus` VBR 96kb/s at compression level 10, with the peak volume normalized to 0 dB.
+# $1: `audio` or `video`.
+# $2: link or filename, e.g. "https://www.youtube.com/watch?app=desktop&v=r6sGWTCMz2k".
+# $3: audio bitrate in kb/s. Defaults to 96. Can be set for alternative formats.
+# $4: video `crf`. Defaults to 40.
+# $5: video maximum square pixel count. Defaults to 1280.
+set -e
+bitrate_audio=${3:-96}
+crf_video=${4:-40}
+resolution_max_video=${5:-1280}
+if [ "$1" = "audio" ]; then
+	if [ -f "$2" ]; then
+		filename_old=$2
+		filename_int=.${2%.*}.tmp.opus
+		filename_new=${2%.*}.opus
+	else
+		id=$(yt-dlp \
+			--print id \
+			--cookies-from-browser chromium \
+			--no-playlist \
+			"$2" | tail -1)
+		yt-dlp \
+			--output ".%(id)s.tmp" \
+			--extract-audio \
+			--format "bestaudio,best" \
+			--cookies-from-browser chromium \
+			--no-playlist \
+			"$2"
+		# `--print filename` unfortunately gives the pre-`--extract-audio` filename.
+		filename_old=$(ls .$id.tmp*)
+		filename_int=.$id.tmp.opus
+		filename_new=$id.opus
+	fi
+	max_volume=$(ffmpeg \
+		-i "$filename_old" \
+		-filter:a "volumedetect" \
+		-f null - \
+		|& awk -F': ' '/max_volume/ {print $2}') \
+		| awk '{print int($1);}'
+	# `channel_layouts` fix taken from <https://trac.ffmpeg.org/ticket/5718#comment:11>.
+	ffmpeg \
+		-y \
+		-i "$filename_old" \
+		-c:a libopus \
+		-b:a ${bitrate_audio}k \
+		-filter:a "aformat=channel_layouts=7.1|5.1|stereo, volume=$((-max_volume)) dB" \
+		"$filename_int"
+	if [ ! -f "$2" ]; then
+		rm "$filename_old"
+	fi
+	opustags -D -i "$filename_int"
+	mv "$filename_int" "$filename_new"
+else
+	if [ -f "$2" ]; then
+		filename_old=$2
+		filename_int=.${2%.*}.tmp.mkv
+		filename_new=${2%.*}.mkv
+	else
+		id=$(yt-dlp \
+			--print id \
+			--cookies-from-browser chromium \
+			--no-playlist \
+			"$2" | tail -1)
+		yt-dlp \
+			--output ".%(id)s.tmp" \
+			--cookies-from-browser chromium \
+			--no-playlist \
+			"$2"
+		filename_old=$(ls .$id.tmp*)
+		filename_int=.$id.tmp.mkv
+		filename_new=$id.mkv
+	fi
+	max_volume=$(ffmpeg \
+		-i "$filename_old" \
+		-filter:a "volumedetect" \
+		-f null - \
+		|& awk -F': ' '/max_volume/ {print $2}') \
+		| awk '{print int($1);}'
+	# Size filter from <https://stackoverflow.com/questions/54063902/resize-videos-with-ffmpeg-keep-aspect-ratio>.
+	ffmpeg \
+		-y \
+		-i "$filename_old" \
+		-c:a libopus \
+		-b:a ${bitrate_audio}k \
+		-filter:a "aformat=channel_layouts=7.1|5.1|stereo, volume=$((-max_volume)) dB" \
+		-c:v libsvtav1 \
+		-preset 7 \
+		-crf $crf_video \
+		-filter:v "scale=if(gte(iw\,ih)\,min(${resolution_max_video}\,iw)\,-2):if(lt(iw\,ih)\,min(${resolution_max_video}\,ih)\,-2)" \
+		"$filename_int"
+	if [ ! -f "$2" ]; then
+		rm $filename_old
+	fi
+	mv "$filename_int" "$filename_new"
+fi

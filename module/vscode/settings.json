@@ -186,6 +186,8 @@
 	"zenMode.centerLayout": false,
 
 	// Extensions.
+	"clangd.path": "c:\\Users\\0\\AppData\\Roaming\\VSCodium\\User\\globalStorage\\llvm-vs-code-extensions.vscode-clangd\\install\\21.1.0\\clangd_21.1.0\\bin\\clangd.exe",
+
 	"cSpell.userWords": [
 		"abelian",
 		"aeterna",
