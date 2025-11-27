@@ -41,3 +41,19 @@ Use
 ```bash
 sudo openvpn --config ~/main.syncthing/monochrome/machine/gilgamesh-44/gilgamesh-31.split.ovpn
 ```
+
+## vGPU drivers (GRID client)
+
+Follow <https://bbs.archlinux.org/viewtopic.php?id=301753>, `nvidia.diff` copied.
+
+Need the specific gcc 14.2.1 version. 6.11.9 kernel works, 6.6.107 LTS does not (I could not figure it out easily). Other kernels untested.
+
+```bash
+sudo pacman -U https://archive.archlinux.org/packages/l/linux/linux-6.11.9.arch1-1-x86_64.pkg.tar.zst https://archive.archlinux.org/packages/l/linux-headers/linux-headers-6.11.9.arch1-1-x86_64.pkg.tar.zst
+
+sudo pacman -U https://archive.archlinux.org/packages/g/gcc/gcc-14.2.1%2Br134%2Bgab884fffe3fc-1-x86_64.pkg.tar.zst https://archive.archlinux.org/packages/g/gcc-libs/gcc-libs-14.2.1%2Br134%2Bgab884fffe3fc-1-x86_64.pkg.tar.zst
+```
+
+So we must use kernel 6.11.9.
+
+Still can’t get `nvidia-smi` to detect the P40.
