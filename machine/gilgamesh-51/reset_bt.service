@@ -1,0 +1,13 @@
+[Unit]
+Description=reset_bt
+After=hibernate.target hybrid-sleep.target suspend-then-hibernate.target
+StartLimitIntervalSec=1
+
+[Service]
+RemainAfterExit=true
+Type=oneshot
+User=root
+ExecStart=/home/gilgamesh/main.syncthing/monochrome/machine/gilgamesh-51/reset_bt
+
+[Install]
+WantedBy=hibernate.target hybrid-sleep.target suspend-then-hibernate.target

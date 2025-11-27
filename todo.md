@@ -36,3 +36,4 @@
 32. Input Method -> Unicode -> Trigger key needs to be disabled for Alt+control+shuft+u stuff.
 33. Chromium theme lags behind. To set dark theme, set dark theme twice in system settings KDE.
 34. `pactl list sinks | grep Name:`.
+35. `while true; do cat /sys/class/hwmon/hwmon3/power1_input ; sleep 1; done`.

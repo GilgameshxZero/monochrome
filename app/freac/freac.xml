@@ -19,7 +19,7 @@
    <value name="WriteToInputDirectory">0</value>
    <value name="AllowOverwriteSource">0</value>
    <value name="CheckUpdatesAtStartup">1</value>
-   <value name="ActiveConfiguration">BoCA::podcast</value>
+   <value name="ActiveConfiguration">BoCA::prototype</value>
    <value name="EncoderOutDir">C:\Users\0\Music\</value>
    <value name="LastFilePattern5"/>
    <value name="LastFilePattern4"/>
@@ -421,8 +421,8 @@
    <value name="WindowPosY">100</value>
    <value name="WindowSizeX">740</value>
    <value name="WindowSizeY">550</value>
-   <value name="WindowMaximized">1</value>
-   <value name="StartCount">6</value>
+   <value name="WindowMaximized">0</value>
+   <value name="StartCount">7</value>
    <value name="ShowTips">0</value>
    <value name="NextTip">1</value>
    <value name="LastSelectedOpenDir">C:\Users\0\main.syncthing\snowfall</value>
@@ -773,7 +773,7 @@
    <value name="ActiveDrive">0</value>
   </section>
   <section name="Donate">
-   <value name="StartCount">6</value>
+   <value name="StartCount">7</value>
   </section>
  </configuration>
  <configuration name="BoCA::prototype">
@@ -811,7 +811,7 @@
    <value name="WindowPosY">100</value>
    <value name="WindowSizeX">740</value>
    <value name="WindowSizeY">550</value>
-   <value name="WindowMaximized">0</value>
+   <value name="WindowMaximized">1</value>
    <value name="StartCount">3</value>
    <value name="ShowTips">0</value>
    <value name="NextTip">1</value>
@@ -835,7 +835,7 @@
   </section>
   <section name="Joblist">
    <value name="Fields">&lt;artist&gt;,&lt;title&gt;,&lt;track&gt;,&lt;time&gt;,&lt;bytes&gt;</value>
-   <value name="FieldSizes">120,561,50,80,100</value>
+   <value name="FieldSizes">120,613,50,80,100</value>
   </section>
   <section name="freedb">
    <value name="AutoCDDBQueries">1</value>

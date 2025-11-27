@@ -1,2 +1,3 @@
 #!/usr/bin/env bash
-yt-dlp $@
+# Proxy for `yt-dlp` with some defaults.
+yt-dlp --cookies-from-browser chromium $@

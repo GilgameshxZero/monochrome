@@ -10,6 +10,7 @@ echo 0 | sudo tee /sys/devices/system/cpu/cpu5/online
 echo 0 | sudo tee /sys/devices/system/cpu/cpu6/online
 echo 0 | sudo tee /sys/devices/system/cpu/cpu7/online
 sudo cpupower -c all frequency-set -g powersave
+echo 0 | sudo tee /sys/devices/system/cpu/cpufreq/boost
 # Sometimes KDE does not set this correctly so we do it here.
 powerprofilesctl set power-saver
 
