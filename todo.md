@@ -38,3 +38,5 @@
 34. `pactl list sinks | grep Name:`.
 35. `while true; do cat /sys/class/hwmon/hwmon3/power1_input ; sleep 1; done`.
 36. Moonlight client on gilgamesh-50 breaks under gilgamesh-45 VPN. Why?
+37. Only large cursors show on Linux host sunshine: <https://github.com/LizardByte/Sunshine/issues/93#issuecomment-3033636224>. Fix: <https://github.com/LizardByte/Sunshine/issues/93#issuecomment-1377858388>.
+38. Moonlight stream to linux host isn’t glitchy after switching to software decode. For some reason this just works on Android, though I assume its using hardware decode.
