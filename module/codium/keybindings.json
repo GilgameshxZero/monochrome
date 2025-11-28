@@ -1,0 +1,425 @@
+// Place your key bindings in this file to override the defaults
+[
+	{
+		"key": "ctrl+tab",
+		"command": "-workbench.action.openNextRecentlyUsedEditorInGroup"
+	},
+	{
+		"key": "ctrl+tab",
+		"command": "workbench.action.nextEditor"
+	},
+	{
+		"key": "ctrl+shift+tab",
+		"command": "-workbench.action.openPreviousRecentlyUsedEditorInGroup"
+	},
+	{
+		"key": "ctrl+shift+tab",
+		"command": "workbench.action.previousEditor"
+	},
+	{
+		"key": "ctrl+pageup",
+		"command": "-workbench.action.previousEditor"
+	},
+	{
+		"key": "ctrl+pagedown",
+		"command": "-workbench.action.nextEditor"
+	},
+	{
+		"key": "ctrl+shift+q",
+		"command": "workbench.action.toggleSidebarVisibility"
+	},
+	{
+		"key": "ctrl+b",
+		"command": "-workbench.action.toggleSidebarVisibility"
+	},
+	{
+		"key": "ctrl+alt+p",
+		"command": "markdown.extension.printToHtml"
+	},
+	{
+		"key": "ctrl+shift+c",
+		"command": "-workbench.action.terminal.openNativeConsole",
+		"when": "!terminalFocus"
+	},
+	{
+		"key": "ctrl+shift+r",
+		"command": "workbench.action.tasks.runTask"
+	},
+	{
+		"key": "ctrl+shift+r",
+		"command": "-workbench.action.quickOpenNavigatePreviousInRecentFilesPicker",
+		"when": "inQuickOpen && inRecentFilesPicker"
+	},
+	{
+		"key": "ctrl+shift+r",
+		"command": "-rerunSearchEditorSearch",
+		"when": "inSearchEditor"
+	},
+	{
+		"key": "ctrl+shift+r",
+		"command": "-editor.action.refactor",
+		"when": "editorHasCodeActionsProvider && editorTextFocus && !editorReadonly"
+	},
+	{
+		"key": "ctrl+shift+o",
+		"command": "openInApplication.open"
+	},
+	{
+		"key": "ctrl+`",
+		"command": "-workbench.action.terminal.toggleTerminal",
+		"when": "terminal.active"
+	},
+	{
+		"key": "ctrl+shift+`",
+		"command": "workbench.action.createTerminalEditor"
+	},
+	{
+		"key": "ctrl+shift+v",
+		"command": "workbench.action.terminal.toggleTerminal"
+	},
+	{
+		"key": "ctrl+shift+a",
+		"command": "workbench.action.focusActiveEditorGroup"
+	},
+	{
+		"key": "ctrl+k g",
+		"command": "workbench.action.remote.close",
+		"when": "remoteName || virtualWorkspace"
+	},
+	{
+		"key": "ctrl+k v",
+		"command": "markdown.showPreview",
+		"when": "!notebookEditorFocused && editorLangId == 'markdown'"
+	},
+	{
+		"key": "ctrl+shift+v",
+		"command": "-markdown.showPreview",
+		"when": "!notebookEditorFocused && editorLangId == 'markdown'"
+	},
+	{
+		"key": "ctrl+k v",
+		"command": "-markdown.showPreviewToSide",
+		"when": "!notebookEditorFocused && editorLangId == 'markdown'"
+	},
+	{
+		"key": "ctrl+shift+w",
+		"command": "workbench.action.toggleZenMode",
+		"when": "!isAuxiliaryWindowFocusedContext"
+	},
+	{
+		"key": "ctrl+k ctrl+g",
+		"command": "workbench.action.debug.start",
+		"when": "debuggersAvailable && debugState == 'inactive'"
+	},
+	{
+		"key": "ctrl+shift+z",
+		"command": "workbench.view.explorer",
+		"when": "viewContainer.workbench.view.explorer.enabled"
+	},
+	{
+		"key": "ctrl+shift+e",
+		"command": "workbench.action.showCommands"
+	},
+	{
+		"key": "ctrl+k ctrl+q",
+		"command": "workbench.action.tasks.runTask"
+	},
+	{
+		"key": "ctrl+k ctrl+v",
+		"command": "markdown.showPreview",
+		"when": "!notebookEditorFocused && editorLangId == 'markdown'"
+	},
+	{
+		"key": "ctrl+space",
+		"command": "-workbench.action.terminal.requestCompletions",
+		"when": "config.terminal.integrated.suggest.enabled && terminalFocus && terminalProcessSupported && terminalShellIntegrationEnabled"
+	},
+	{
+		"key": "ctrl+space",
+		"command": "-focusSuggestion",
+		"when": "suggestWidgetVisible && textInputFocus && !suggestWidgetHasFocusedSuggestion"
+	},
+	{
+		"key": "ctrl+space",
+		"command": "-toggleSuggestionDetails",
+		"when": "suggestWidgetHasFocusedSuggestion && suggestWidgetVisible && textInputFocus"
+	},
+	{
+		"key": "ctrl+space",
+		"command": "-workbench.action.terminal.sendSequence",
+		"when": "terminalFocus && terminalShellIntegrationEnabled && !accessibilityModeEnabled && terminalShellType == 'pwsh'"
+	},
+	{
+		"key": "ctrl+space",
+		"command": "-editor.action.triggerSuggest",
+		"when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly && !suggestWidgetVisible"
+	},
+	{
+		"key": "alt+r",
+		"command": "scrollPageDown",
+		"when": "textInputFocus"
+	},
+	{
+		"key": "alt+pagedown",
+		"command": "-scrollPageDown",
+		"when": "textInputFocus"
+	},
+	{
+		"key": "alt+e",
+		"command": "scrollPageUp",
+		"when": "textInputFocus"
+	},
+	{
+		"key": "alt+pageup",
+		"command": "-scrollPageUp",
+		"when": "textInputFocus"
+	},
+	{
+		"key": "ctrl+shift+p",
+		"command": "-workbench.action.showCommands"
+	},
+	{
+		"key": "ctrl+k z",
+		"command": "-workbench.action.toggleZenMode",
+		"when": "!isAuxiliaryWindowFocusedContext"
+	},
+	{
+		"key": "ctrl+shift+p",
+		"command": "workbench.action.showCommands"
+	},
+	{
+		"key": "ctrl+shift+w",
+		"command": "-workbench.action.closeWindow"
+	},
+	{
+		"key": "ctrl+shift+e",
+		"command": "-workbench.view.explorer",
+		"when": "viewContainer.workbench.view.explorer.enabled"
+	},
+	{
+		"key": "ctrl+shift+x",
+		"command": "workbench.action.findInFiles"
+	},
+	{
+		"key": "ctrl+shift+f",
+		"command": "-workbench.action.findInFiles"
+	},
+	{
+		"key": "ctrl+shift+c",
+		"command": "workbench.view.scm",
+		"when": "workbench.scm.active"
+	},
+	{
+		"key": "ctrl+shift+g",
+		"command": "-workbench.view.scm",
+		"when": "workbench.scm.active"
+	},
+	{
+		"key": "ctrl+shift+c",
+		"command": "workbench.view.debug",
+		"when": "viewContainer.workbench.view.debug.enabled"
+	},
+	{
+		"key": "ctrl+shift+d",
+		"command": "-workbench.view.debug",
+		"when": "viewContainer.workbench.view.debug.enabled"
+	},
+	{
+		"key": "alt+e",
+		"command": "workbench.action.terminal.scrollUpPage",
+		"when": "terminalFocusInAny && terminalHasBeenCreated && !terminalAltBufferActive || terminalFocusInAny && terminalProcessSupported && !terminalAltBufferActive"
+	},
+	{
+		"key": "shift+pageup",
+		"command": "-workbench.action.terminal.scrollUpPage",
+		"when": "terminalFocusInAny && terminalHasBeenCreated && !terminalAltBufferActive || terminalFocusInAny && terminalProcessSupported && !terminalAltBufferActive"
+	},
+	{
+		"key": "alt+r",
+		"command": "workbench.action.terminal.scrollDownPage",
+		"when": "terminalFocusInAny && terminalHasBeenCreated && !terminalAltBufferActive || terminalFocusInAny && terminalProcessSupported && !terminalAltBufferActive"
+	},
+	{
+		"key": "shift+pagedown",
+		"command": "-workbench.action.terminal.scrollDownPage",
+		"when": "terminalFocusInAny && terminalHasBeenCreated && !terminalAltBufferActive || terminalFocusInAny && terminalProcessSupported && !terminalAltBufferActive"
+	},
+	{
+		"key": "ctrl+j",
+		"command": "-workbench.action.togglePanel"
+	},
+	{
+		"key": "alt+e",
+		"command": "cursorPageUp",
+		"when": "textInputFocus"
+	},
+	{
+		"key": "pageup",
+		"command": "-cursorPageUp",
+		"when": "textInputFocus"
+	},
+	{
+		"key": "alt+r",
+		"command": "cursorPageDown",
+		"when": "textInputFocus"
+	},
+	{
+		"key": "pagedown",
+		"command": "-cursorPageDown",
+		"when": "textInputFocus"
+	},
+	{
+		"key": "ctrl+k ctrl+z",
+		"command": "workbench.action.toggleZenMode",
+		"when": "!isAuxiliaryWindowFocusedContext"
+	},
+	{
+		"key": "ctrl+k z",
+		"command": "workbench.action.toggleZenMode",
+		"when": "!isAuxiliaryWindowFocusedContext"
+	},
+	{
+		"key": "ctrl+shift+v",
+		"command": "-markdown.extension.closePreview",
+		"when": "activeWebviewPanelId == 'markdown.preview'"
+	},
+	{
+		"key": "ctrl+shift+v",
+		"command": "-java.action.filesExplorerPasteAction",
+		"when": "config.editor.pasteAs.enabled && explorerViewletFocus"
+	},
+	{
+		"key": "ctrl+shift+v",
+		"command": "-notebook.cell.pasteAbove",
+		"when": "notebookEditorFocused && !inputFocus"
+	},
+	{
+		"key": "ctrl+shift+v",
+		"command": "-workbench.action.terminal.paste",
+		"when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
+	},
+	{
+		"key": "ctrl+shift+v",
+		"command": "-java.action.clipboardPasteAction",
+		"when": "javaLSReady && editorLangId == 'java'"
+	},
+	{
+		"key": "alt+r",
+		"command": "notebook.cell.cursorPageDown",
+		"when": "editorTextFocus && inputFocus && notebookEditorFocused"
+	},
+	{
+		"key": "alt+e",
+		"command": "notebook.cell.cursorPageUp",
+		"when": "editorTextFocus && inputFocus && notebookEditorFocused"
+	},
+	{
+		"key": "pagedown",
+		"command": "-notebook.cell.cursorPageDown",
+		"when": "editorTextFocus && inputFocus && notebookEditorFocused"
+	},
+	{
+		"key": "pageup",
+		"command": "-notebook.cell.cursorPageUp",
+		"when": "editorTextFocus && inputFocus && notebookEditorFocused"
+	},
+	{
+		"key": "pageup",
+		"command": "-editor.action.pageUpHover",
+		"when": "editorHoverFocused"
+	},
+	{
+		"key": "pageup",
+		"command": "editor.action.pageUpHover",
+		"when": "editorHoverFocused"
+	},
+	{
+		"key": "pageup",
+		"command": "-list.focusPageUp",
+		"when": "listFocus && !inputFocus && !treestickyScrollFocused"
+	},
+	{
+		"key": "pagedown",
+		"command": "-list.focusPageDown",
+		"when": "listFocus && !inputFocus && !treestickyScrollFocused"
+	},
+	{
+		"key": "ctrl+down",
+		"command": "-notebook.cell.focusInOutput",
+		"when": "isWindows && notebookCellHasOutputs && notebookEditorFocused && !isCompositeNotebook"
+	},
+	{
+		"key": "ctrl+down",
+		"command": "notebook.cell.focusInOutput",
+		"when": "notebookCellHasOutputs && notebookEditorFocused && !isCompositeNotebook"
+	},
+	{
+		"key": "pagedown",
+		"command": "cursorPageDown",
+		"when": "textInputFocus"
+	},
+	{
+		"key": "pageup",
+		"command": "cursorPageUp",
+		"when": "textInputFocus"
+	},
+	{
+		"key": "pagedown",
+		"command": "notebook.cell.cursorPageDown",
+		"when": "editorTextFocus && inputFocus && notebookEditorFocused"
+	},
+	{
+		"key": "pageup",
+		"command": "notebook.cell.cursorPageUp",
+		"when": "editorTextFocus && inputFocus && notebookEditorFocused"
+	},
+	{
+		"key": "ctrl+shift+a",
+		"command": "markdown.showPreviewToSide"
+	},
+	{
+		"key": "alt+r",
+		"command": "editor.action.pageDownHover",
+		"when": "editorHoverFocused"
+	},
+	{
+		"key": "pagedown",
+		"command": "-editor.action.pageDownHover",
+		"when": "editorHoverFocused"
+	},
+	{
+		"key": "alt+r",
+		"command": "editor.action.pageDownHover",
+		"when": "editorHoverFocused"
+	},
+	{
+		"key": "ctrl+v",
+		"command": "workbench.action.terminal.pasteSelection",
+		"when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
+	},
+	{
+		"key": "shift+insert",
+		"command": "-workbench.action.terminal.pasteSelection",
+		"when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
+	},
+	{
+		"key": "ctrl+c",
+		"command": "workbench.action.terminal.copySelection",
+		"when": "terminalTextSelectedInFocused || terminalFocus && terminalHasBeenCreated && terminalTextSelected || terminalFocus && terminalProcessSupported && terminalTextSelected || terminalFocus && terminalTextSelected && terminalTextSelectedInFocused || terminalHasBeenCreated && terminalTextSelected && terminalTextSelectedInFocused || terminalProcessSupported && terminalTextSelected && terminalTextSelectedInFocused"
+	},
+	{
+		"key": "ctrl+shift+c",
+		"command": "-workbench.action.terminal.copySelection",
+		"when": "terminalTextSelectedInFocused || terminalFocus && terminalHasBeenCreated && terminalTextSelected || terminalFocus && terminalProcessSupported && terminalTextSelected || terminalFocus && terminalTextSelected && terminalTextSelectedInFocused || terminalHasBeenCreated && terminalTextSelected && terminalTextSelectedInFocused || terminalProcessSupported && terminalTextSelected && terminalTextSelectedInFocused"
+	},
+	{
+		"key": "shift+alt+f",
+		"command": "editor.action.formatDocument",
+		"when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor"
+	},
+	{
+		"key": "ctrl+shift+i",
+		"command": "-editor.action.formatDocument",
+		"when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor"
+	}
+]
