@@ -17,6 +17,10 @@ echo 1 | sudo tee /sys/devices/system/cpu/cpufreq/boost
 # Sometimes KDE does not set this correctly so we do it here.
 powerprofilesctl set performance
 
+# Fan control.
+# sudo modprobe ec_sys write_support=1
+# echo -n -e "\x88" | sudo dd of="/sys/kernel/debug/ec/ec0/io" bs=1 seek=45 count=1 conv=notrunc
+
 # Applications.
 # lookandfeeltool -a org.manjaro.breath-light.desktop
 # sleep 1
