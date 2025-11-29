@@ -19,26 +19,33 @@ if [ "$1" = "audio" ]; then
 		id=$(yt-dlp \
 			--print id \
 			--cookies-from-browser chromium \
+			--js-runtimes node \
+			--remote-components ejs:github \
 			--no-playlist \
 			"$2" | tail -1)
+		# We use .old.tmp here to avoid conflicts where the extracted audio is opus.
 		yt-dlp \
-			--output ".%(id)s.tmp" \
+			--output ".%(id)s.old.tmp" \
 			--extract-audio \
-			--format "bestaudio,best" \
+			--format bestaudio \
 			--cookies-from-browser chromium \
+			--js-runtimes node \
+			--remote-components ejs:github \
 			--no-playlist \
 			"$2"
 		# `--print filename` unfortunately gives the pre-`--extract-audio` filename.
-		filename_old=$(ls .$id.tmp*)
+		filename_old=$(ls .$id.old.tmp*)
 		filename_int=.$id.tmp.opus
 		filename_new=$id.opus
 	fi
-	max_volume=$(ffmpeg \
+	exec 3>&1
+	max_volume_out=$(ffmpeg \
 		-i "$filename_old" \
 		-filter:a "volumedetect" \
-		-f null - \
-		|& awk -F': ' '/max_volume/ {print $2}') \
-		| awk '{print int($1);}'
+		-f null - |& tee /dev/fd/3)
+	max_volume=$(echo $max_volume_out \
+		| awk -F': ' '/max_volume/ {print $2}' \
+		| awk '{print int($1);}')
 	# `channel_layouts` fix taken from <https://trac.ffmpeg.org/ticket/5718#comment:11>.
 	ffmpeg \
 		-y \
@@ -61,23 +68,29 @@ else
 		id=$(yt-dlp \
 			--print id \
 			--cookies-from-browser chromium \
+			--js-runtimes node \
+			--remote-components ejs:github \
 			--no-playlist \
 			"$2" | tail -1)
 		yt-dlp \
 			--output ".%(id)s.tmp" \
 			--cookies-from-browser chromium \
+			--js-runtimes node \
+			--remote-components ejs:github \
 			--no-playlist \
 			"$2"
 		filename_old=$(ls .$id.tmp*)
 		filename_int=.$id.tmp.mkv
 		filename_new=$id.mkv
 	fi
-	max_volume=$(ffmpeg \
+	exec 3>&1
+	max_volume_out=$(ffmpeg \
 		-i "$filename_old" \
 		-filter:a "volumedetect" \
-		-f null - \
-		|& awk -F': ' '/max_volume/ {print $2}') \
-		| awk '{print int($1);}'
+		-f null - |& tee /dev/fd/3)
+	max_volume=$(echo $max_volume_out \
+		| awk -F': ' '/max_volume/ {print $2}' \
+		| awk '{print int($1);}')
 	# Size filter from <https://stackoverflow.com/questions/54063902/resize-videos-with-ffmpeg-keep-aspect-ratio>.
 	ffmpeg \
 		-y \

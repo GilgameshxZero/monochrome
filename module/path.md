@@ -61,8 +61,8 @@ On server machines, setting a larger history size can help recover bash commands
 ### Linux
 
 ```bash
-HISTSIZE=4096
-HISTFILESIZE=65536
+HISTSIZE=65536
+HISTFILESIZE=262144
 ```
 
 No `export` is needed: <https://unix.stackexchange.com/questions/107851/using-export-in-bashrc>.
