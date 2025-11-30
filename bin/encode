@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # Downloads audio from a link (or uses an existing file), and normalizes for prototype format.
 # `prototype` format is `opus` VBR 96kb/s at compression level 10, with the peak volume normalized to 0 dB.
-# $1: `audio` or `video`.
-# $2: link or filename, e.g. "https://www.youtube.com/watch?app=desktop&v=r6sGWTCMz2k".
+# $1: `audio` or `video` or `data`
+# $2: link or filename, e.g. "https://www.youtube.com/watch?v=r6sGWTCMz2k".
 # $3: audio bitrate in kb/s. Defaults to 96. Can be set for alternative formats.
 # $4: video `crf`. Defaults to 40.
 # $5: video maximum square pixel count. Defaults to 1280.
@@ -16,32 +16,39 @@ if [ "$1" = "audio" ]; then
 		filename_int=.${2%.*}.tmp.opus
 		filename_new=${2%.*}.opus
 	else
-		id=$(yt-dlp \
-			--print id \
+		filename=$(yt-dlp \
+			--extract-audio \
+			--output "%(uploader)s-%(title)s" \
+			--restrict-filenames \
+			--windows-filenames \
+			--format bestaudio \
 			--cookies-from-browser chromium \
 			--js-runtimes node \
 			--remote-components ejs:github \
 			--no-playlist \
+			--print filename \
 			"$2" | tail -1)
-		# We use .old.tmp here to avoid conflicts where the extracted audio is opus.
+		# Use old.tmp here to avoid opus conflict after extracting audio.
 		yt-dlp \
-			--output ".%(id)s.old.tmp" \
 			--extract-audio \
+			--output ".%(uploader)s-%(title)s.old.tmp" \
+			--restrict-filenames \
+			--windows-filenames \
 			--format bestaudio \
 			--cookies-from-browser chromium \
 			--js-runtimes node \
 			--remote-components ejs:github \
 			--no-playlist \
 			"$2"
-		# `--print filename` unfortunately gives the pre-`--extract-audio` filename.
-		filename_old=$(ls .$id.old.tmp*)
-		filename_int=.$id.tmp.opus
-		filename_new=$id.opus
+		filename_old=$(ls .$filename.old.tmp*)
+		filename_int=.$filename.tmp.opus
+		filename_new=$filename.opus
 	fi
 	exec 3>&1
 	max_volume_out=$(ffmpeg \
 		-i "$filename_old" \
 		-filter:a "volumedetect" \
+		-map 0:a \
 		-f null - |& tee /dev/fd/3)
 	max_volume=$(echo $max_volume_out \
 		| awk -F': ' '/max_volume/ {print $2}' \
@@ -59,34 +66,40 @@ if [ "$1" = "audio" ]; then
 	fi
 	opustags -D -i "$filename_int"
 	mv "$filename_int" "$filename_new"
-else
+elif [ "$1" = "video" ]; then
 	if [ -f "$2" ]; then
 		filename_old=$2
 		filename_int=.${2%.*}.tmp.mkv
 		filename_new=${2%.*}.mkv
 	else
-		id=$(yt-dlp \
-			--print id \
+		filename=$(yt-dlp \
+			--output "%(uploader)s-%(title)s" \
+			--restrict-filenames \
+			--windows-filenames \
 			--cookies-from-browser chromium \
 			--js-runtimes node \
 			--remote-components ejs:github \
 			--no-playlist \
+			--print filename \
 			"$2" | tail -1)
 		yt-dlp \
-			--output ".%(id)s.tmp" \
+			--output ".%(uploader)s-%(title)s.old.tmp" \
+			--restrict-filenames \
+			--windows-filenames \
 			--cookies-from-browser chromium \
 			--js-runtimes node \
 			--remote-components ejs:github \
 			--no-playlist \
 			"$2"
-		filename_old=$(ls .$id.tmp*)
-		filename_int=.$id.tmp.mkv
-		filename_new=$id.mkv
+		filename_old=$(ls .$filename.old.tmp*)
+		filename_int=.$filename.tmp.mkv
+		filename_new=$filename.mkv
 	fi
 	exec 3>&1
 	max_volume_out=$(ffmpeg \
 		-i "$filename_old" \
 		-filter:a "volumedetect" \
+		-map 0:a \
 		-f null - |& tee /dev/fd/3)
 	max_volume=$(echo $max_volume_out \
 		| awk -F': ' '/max_volume/ {print $2}' \
@@ -107,4 +120,13 @@ else
 		rm $filename_old
 	fi
 	mv "$filename_int" "$filename_new"
+else
+	yt-dlp \
+		--print title \
+		--print uploader \
+		--cookies-from-browser chromium \
+		--js-runtimes node \
+		--remote-components ejs:github \
+		--no-playlist \
+		"$2"
 fi

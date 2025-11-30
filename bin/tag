@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# Tags a file (.opus) with specifics and defaults adhering to `prototype` format.
+# $1: filename
+# $2: TITLE
+# $3: ARTIST
+# $4: ALBUM
+# $5: TRACKNUMBER
+# $6: filename of cover image
+# ALBUMARTIST set to "Various Artists". filename renamed to "TRACKNUMBER.opus"
+# Order matters for some parsers.
+opustags \
+	-D \
+	-s "TITLE=$2" \
+	-s "ARTIST=$3" \
+	-s "ALBUM=$4" \
+	-s "ALBUMARTIST=Various Artists" \
+	-s "TRACKNUMBER=$5" \
+	--set-cover "$6" \
+	-i "$1"
+mv "$1" "$5.opus"
