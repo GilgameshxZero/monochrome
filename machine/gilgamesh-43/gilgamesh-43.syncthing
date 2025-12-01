@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+tmux new-session -d -s gilgamesh-43-syncthing;
+tmux send -t gilgamesh-43-syncthing:0 "while true; do /Applications/syncthing; sleep 4; done" C-m;

@@ -47,3 +47,4 @@
 	3.  Add-Ons -> Unicode -> Trigger Key (disable).
 40. Self-signed certificates: <https://wiki.archlinux.org/title/Chromium#SSL_certificates>.
 	1.  Doesn't work for sunshine because of bad CN in cert.
+41. Root sunshine is good so that autologon isnt needed.
