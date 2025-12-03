@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Downloads audio from a link (or uses an existing file), and normalizes for prototype format.
 # `prototype` format is `opus` VBR 96kb/s at compression level 10, with the peak volume normalized to 0 dB.
-# $1: `audio` or `video` or `data`
+# $1: `audio` or `video` or `normalize`.
 # $2: link or filename, e.g. "https://www.youtube.com/watch?v=r6sGWTCMz2k".
 # $3: audio bitrate in kb/s. Defaults to 96. Can be set for alternative formats.
 # $4: video `crf`. Defaults to 40.
@@ -50,7 +50,8 @@ if [ "$1" = "audio" ]; then
 		-filter:a "volumedetect" \
 		-map 0:a \
 		-f null - |& tee /dev/fd/3)
-	max_volume=$(echo $max_volume_out \
+	# echo must be quoted to preserve newlines.
+	max_volume=$(echo "$max_volume_out" \
 		| awk -F': ' '/max_volume/ {print $2}' \
 		| awk '{print int($1);}')
 	# `channel_layouts` fix taken from <https://trac.ffmpeg.org/ticket/5718#comment:11>.
@@ -101,7 +102,7 @@ elif [ "$1" = "video" ]; then
 		-filter:a "volumedetect" \
 		-map 0:a \
 		-f null - |& tee /dev/fd/3)
-	max_volume=$(echo $max_volume_out \
+	max_volume=$(echo "$max_volume_out" \
 		| awk -F': ' '/max_volume/ {print $2}' \
 		| awk '{print int($1);}')
 	# Size filter from <https://stackoverflow.com/questions/54063902/resize-videos-with-ffmpeg-keep-aspect-ratio>.
@@ -120,13 +121,26 @@ elif [ "$1" = "video" ]; then
 		rm $filename_old
 	fi
 	mv "$filename_int" "$filename_new"
-else
-	yt-dlp \
-		--print title \
-		--print uploader \
-		--cookies-from-browser chromium \
-		--js-runtimes node \
-		--remote-components ejs:github \
-		--no-playlist \
-		"$2"
+elif [ "$1" = "normalize" ]; then
+	filename_old="$2"
+	filename_int=".${2%.*}.tmp.${2#*.}"
+	# ffmpeg fails to preserve cover art in ogg. It can probably be done, I just can't be bothered to investigate.
+	opustags -y --output-cover ".$2.tmp.cover" "$filename_old"
+	exec 3>&1
+	max_volume_out=$(ffmpeg \
+		-i "$filename_old" \
+		-filter:a "volumedetect" \
+		-map 0:a \
+		-f null - |& tee /dev/fd/3)
+	max_volume=$(echo "$max_volume_out" \
+		| awk -F': ' '/max_volume/ {print $2}' \
+		| awk '{print int($1);}')
+	ffmpeg \
+		-y \
+		-i "$filename_old" \
+		-filter:a "volume=$((-max_volume)) dB" \
+		"$filename_int"
+	opustags --set-cover ".$2.tmp.cover" -i "$filename_int"
+	rm ".$2.tmp.cover"
+	mv "$filename_int" "$filename_old"
 fi

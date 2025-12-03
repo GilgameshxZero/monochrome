@@ -48,3 +48,24 @@
 40. Self-signed certificates: <https://wiki.archlinux.org/title/Chromium#SSL_certificates>.
 	1.  Doesn't work for sunshine because of bad CN in cert.
 41. Root sunshine is good so that autologon isnt needed.
+42. Windows SSH agent is broken with Codium SSH.
+43. KDE > remove margin separator.
+44. <https://xdaforums.com/t/solved-unable-to-locate-grub-on-android-x86.4522735/>.
+45. `topology subnet` is required.
+	1.  `dev tun-31`
+	2.  `# persist-tun`
+	3.  `remote gilgamesh.cc`
+	4.  ```ovpn
+		route-nopull
+		route gilgamesh.cc 255.255.255.255 net_gateway 0
+		route 10.8.31.0 255.255.255.0 vpn_gateway 0
+		route 0.0.0.0 0.0.0.0 net_gateway 10
+		# Some mobile OVPN clients do not like the multiple default gateways, so this is disabled. It is only useful for interface-fixed applications, like on desktop qBittorrent.
+		route 0.0.0.0 0.0.0.0 vpn_gateway 500
+
+		# Some mobile OVPN clients do not push DNS servers when route pushes are ignored, so we manually specify OpenDNS here.
+		dhcp-option DNS 208.67.222.222
+		dhcp-option DNS 208.67.220.220
+		```
+	5. <https://superuser.com/questions/1414464/multiple-client-connections-using-openvpn> works for Windows.
+	6. Currently provisioned clients: 30, 44, 49, 51 (autostart pending).
