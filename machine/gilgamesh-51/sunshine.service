@@ -1,0 +1,14 @@
+[Unit]
+Description=sunshine
+After=network.target
+StartLimitIntervalSec=60
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=60
+User=root
+ExecStart=/home/gilgamesh/main.syncthing/monochrome/machine/gilgamesh-51/sunshine.sh
+
+[Install]
+WantedBy=multi-user.target

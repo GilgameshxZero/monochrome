@@ -1,13 +1,12 @@
 [Unit]
-Description=reset_bt
+Description=reset_radio
 After=hibernate.target hybrid-sleep.target suspend-then-hibernate.target
-StartLimitIntervalSec=1
+StartLimitIntervalSec=60
 
 [Service]
-RemainAfterExit=true
 Type=oneshot
 User=root
-ExecStart=/home/gilgamesh/main.syncthing/monochrome/machine/gilgamesh-51/reset_bt
+ExecStart=/home/gilgamesh/main.syncthing/monochrome/machine/gilgamesh-51/reset_radio.sh
 
 [Install]
 WantedBy=hibernate.target hybrid-sleep.target suspend-then-hibernate.target

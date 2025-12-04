@@ -121,6 +121,61 @@ elif [ "$1" = "video" ]; then
 		rm $filename_old
 	fi
 	mv "$filename_int" "$filename_new"
+elif [ "$1" = "voice" ]; then
+	if [ -f "$2" ]; then
+		filename_old=$2
+		filename_int=.${2%.*}.tmp.c2
+		filename_new=${2%.*}.c2
+	else
+		filename=$(yt-dlp \
+			--extract-audio \
+			--output "%(uploader)s-%(title)s" \
+			--restrict-filenames \
+			--windows-filenames \
+			--format bestaudio \
+			--cookies-from-browser chromium \
+			--js-runtimes node \
+			--remote-components ejs:github \
+			--no-playlist \
+			--print filename \
+			"$2" | tail -1)
+		# Use old.tmp here to avoid opus conflict after extracting audio.
+		yt-dlp \
+			--extract-audio \
+			--output ".%(uploader)s-%(title)s.old.tmp" \
+			--restrict-filenames \
+			--windows-filenames \
+			--format bestaudio \
+			--cookies-from-browser chromium \
+			--js-runtimes node \
+			--remote-components ejs:github \
+			--no-playlist \
+			"$2"
+		filename_old=$(ls .$filename.old.tmp*)
+		filename_int=.$filename.tmp.c2
+		filename_new=$filename.c2
+	fi
+	exec 3>&1
+	max_volume_out=$(ffmpeg \
+		-i "$filename_old" \
+		-filter:a "volumedetect" \
+		-map 0:a \
+		-f null - |& tee /dev/fd/3)
+	# echo must be quoted to preserve newlines.
+	max_volume=$(echo "$max_volume_out" \
+		| awk -F': ' '/max_volume/ {print $2}' \
+		| awk '{print int($1);}')
+	# `channel_layouts` fix taken from <https://trac.ffmpeg.org/ticket/5718#comment:11>.
+	./ffmpeg \
+		-y \
+		-i "$filename_old" \
+		-mode 700C \
+		-filter:a "volume=$((-max_volume)) dB" \
+		"$filename_int"
+	if [ ! -f "$2" ]; then
+		rm "$filename_old"
+	fi
+	mv "$filename_int" "$filename_new"
 elif [ "$1" = "normalize" ]; then
 	filename_old="$2"
 	filename_int=".${2%.*}.tmp.${2#*.}"
