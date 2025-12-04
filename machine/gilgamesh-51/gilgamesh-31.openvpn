@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-tmux new-session -d -s gilgamesh-31-openvpn;
-tmux send -t gilgamesh-31-openvpn:0 "while true; do openvpn --config /home/gilgamesh/main.syncthing/monochrome/machine/$(hostname)/gilgamesh-31.ovpn; sleep 4; done" C-m;

@@ -69,3 +69,18 @@
 		```
 	5. <https://superuser.com/questions/1414464/multiple-client-connections-using-openvpn> works for Windows.
 	6. Currently provisioned clients: 30, 44, 49, 51 (autostart pending).
+	7. DNS leaks on linux: <https://unix.stackexchange.com/questions/434916/how-to-fix-openvpn-dns-leak>. WIP. Install issues.
+		1. ```ovpn
+			script-security 2
+			up /etc/openvpn/update-resolv-conf
+			down /etc/openvpn/update-resolv-conf
+
+			script-security 2
+			up /usr/bin/update-systemd-resolved
+			down /usr/bin/update-systemd-resolved
+			down-pre
+			dhcp-option DOMAIN-ROUTE .
+			```
+		2. `systemctl enable systemd-resolved.service`
+		3. `pamac install openvpn-update-systemd-resolved` (may need to manually clone due to permissiosn errors?)
+
