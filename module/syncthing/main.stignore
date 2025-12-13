@@ -49,3 +49,9 @@
 (?d)**/.ipynb_checkpoints/
 (?d)**/jspm_packages/
 (?d)**/node_modules/
+
+// Manual fixes.
+
+// Ignore the question mark generated from Chromium overrides.
+!monochrome/module/browser/overrides/codeforces.com/mathjax.codeforces.org/MathJax.js%3Fconfig=TeX-AMS_HTML-full
+(?d)monochrome/module/browser/overrides/codeforces.com/mathjax.codeforces.org/MathJax.js*

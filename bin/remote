@@ -2,7 +2,7 @@
 host=$1
 rotation=${2:-default}
 if [ "$host" = "gilgamesh-48" ]; then
-	SDL_VIDEODRIVER=wayland scrcpy -f --tcpip=192.168.50.48 --orientation 270
+	SDL_VIDEODRIVER=wayland scrcpy -f --tcpip=192.168.50.48 --orientation 90
 elif [ "$host" = "gilgamesh-52" ]; then
 	SDL_VIDEODRIVER=wayland scrcpy -f --tcpip=192.168.50.52
 fi
