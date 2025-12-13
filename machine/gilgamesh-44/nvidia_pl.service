@@ -7,7 +7,7 @@ StartLimitIntervalSec=1
 RemainAfterExit=true
 Type=oneshot
 User=root
-ExecStart=/root/nvidia.pl
+ExecStart=/home/gilgamesh/main.syncthing/monochrome/machine/gilgamesh-44/nvidia_pl
 
 [Install]
 WantedBy=multi-user.target

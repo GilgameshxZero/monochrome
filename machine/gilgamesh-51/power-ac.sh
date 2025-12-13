@@ -1,13 +1,13 @@
 #!/bin/bash
 # Must be run with sudo. <https://stackoverflow.com/questions/25215604/use-sudo-without-password-inside-a-script>.
-echo 1 | sudo tee /sys/devices/system/cpu/cpu0/online
-echo 1 | sudo tee /sys/devices/system/cpu/cpu1/online
-echo 1 | sudo tee /sys/devices/system/cpu/cpu2/online
-echo 1 | sudo tee /sys/devices/system/cpu/cpu3/online
-echo 1 | sudo tee /sys/devices/system/cpu/cpu4/online
-echo 1 | sudo tee /sys/devices/system/cpu/cpu5/online
-echo 1 | sudo tee /sys/devices/system/cpu/cpu6/online
-echo 1 | sudo tee /sys/devices/system/cpu/cpu7/online
+# echo 1 | sudo tee /sys/devices/system/cpu/cpu0/online
+# echo 1 | sudo tee /sys/devices/system/cpu/cpu1/online
+# echo 1 | sudo tee /sys/devices/system/cpu/cpu2/online
+# echo 1 | sudo tee /sys/devices/system/cpu/cpu3/online
+# echo 1 | sudo tee /sys/devices/system/cpu/cpu4/online
+# echo 1 | sudo tee /sys/devices/system/cpu/cpu5/online
+# echo 1 | sudo tee /sys/devices/system/cpu/cpu6/online
+# echo 1 | sudo tee /sys/devices/system/cpu/cpu7/online
 sudo cpupower -c all frequency-set -g performance
 sudo powercap-set intel-rapl -z 0 -c 0 -s 81872814080
 sudo powercap-set intel-rapl -z 0 -c 1 -s 81872814080
