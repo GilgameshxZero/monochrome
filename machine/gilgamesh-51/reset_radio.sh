@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-sleep 5
+sleep 1
 sudo modprobe -r btintel_pcie
 sudo modprobe -r iwlmld
 sudo modprobe -r iwlwifi

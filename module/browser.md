@@ -21,3 +21,5 @@ body>#body>div {
     width: auto !important;
 }
 ```
+
+Needs to be reloaded while F12 is open to apply the overrides.

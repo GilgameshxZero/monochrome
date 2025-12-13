@@ -118,6 +118,14 @@
 			"source": "Git Bash"
 		}
 	},
+	"terminal.integrated.profiles.linux": {
+		"bash": {
+			"path": "bash",
+			"icon": "terminal-bash",
+			// Necessary for loading `~/.bashrc` properly.
+			"args": ["-i"]
+		}
+	},
 	"terminal.integrated.defaultProfile.windows": "Command Prompt",
 	"terminal.integrated.defaultProfile.linux": "bash",
 	"terminal.integrated.enableMultiLinePasteWarning": "never",
@@ -140,13 +148,14 @@
 		"workbench.action.openEditorAtIndex9",
 		"workbench.action.lastEditorInGroup",
 		"workbench.action.moveEditorLeftInGroup",
-		"workbench.action.moveEditorRightInGroup",
+		"workbench.action.moveEditorRightInGroup"
 	],
 	"terminal.integrated.scrollback": 8192,
 	"terminal.integrated.ignoreBracketedPasteMode": true,
 	"terminal.integrated.persistentSessionScrollback": 1024,
 	"terminal.integrated.showExitAlert": false,
 	"terminal.integrated.defaultLocation": "editor",
+	"terminal.integrated.stickyScroll.enabled": false,
 
 	"timeline.pageOnScroll": true,
 
@@ -186,8 +195,6 @@
 	"zenMode.centerLayout": false,
 
 	// Extensions.
-	"clangd.path": "c:\\Users\\0\\AppData\\Roaming\\VSCodium\\User\\globalStorage\\llvm-vs-code-extensions.vscode-clangd\\install\\21.1.0\\clangd_21.1.0\\bin\\clangd.exe",
-
 	"cSpell.userWords": [
 		"abelian",
 		"aeterna",
@@ -343,7 +350,7 @@
 		"gilgamesh-46": "windows",
 		"gilgamesh-47": "linux",
 		"gilgamesh-49": "windows",
-		"gilgamesh-51": "linux",
+		"gilgamesh-51": "linux"
 	},
 	"remote.autoForwardPorts": false,
 

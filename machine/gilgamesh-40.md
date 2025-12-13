@@ -43,3 +43,9 @@ Memory may not be shared by vGPU clients. Instead, `/etc/vgpu_unlock/profile_ove
 ### Debugging
 
 Try different driver blacklist configurations via `/etc/modprobe.d/blacklist.conf` in case of any trouble.
+
+## Kernel parameters, SSD disconnect
+
+1. <https://bbs.archlinux.org/viewtopic.php?id=297365>.
+
+Check with `cat /sys/module/nvme_core/parameters/default_ps_max_latency_us`.

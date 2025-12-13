@@ -2,15 +2,17 @@
 # Must be run with sudo. <https://stackoverflow.com/questions/25215604/use-sudo-without-password-inside-a-script>.
 # e.g. last line in /etc/sudoers: gilgamesh ALL=(ALL:ALL) NOPASSWD: /usr/bin/cpupower
 # echo 0 | sudo tee /sys/devices/system/cpu/cpu0/online
-echo 0 | sudo tee /sys/devices/system/cpu/cpu1/online
-echo 0 | sudo tee /sys/devices/system/cpu/cpu2/online
-echo 0 | sudo tee /sys/devices/system/cpu/cpu3/online
 # echo 0 | sudo tee /sys/devices/system/cpu/cpu4/online
-echo 0 | sudo tee /sys/devices/system/cpu/cpu5/online
-echo 0 | sudo tee /sys/devices/system/cpu/cpu6/online
-echo 0 | sudo tee /sys/devices/system/cpu/cpu7/online
+
+# echo 0 | sudo tee /sys/devices/system/cpu/cpu1/online
+# echo 0 | sudo tee /sys/devices/system/cpu/cpu2/online
+# echo 0 | sudo tee /sys/devices/system/cpu/cpu3/online
+# echo 0 | sudo tee /sys/devices/system/cpu/cpu5/online
+# echo 0 | sudo tee /sys/devices/system/cpu/cpu6/online
+# echo 0 | sudo tee /sys/devices/system/cpu/cpu7/online
+
 sudo cpupower -c all frequency-set -g powersave
-echo 0 | sudo tee /sys/devices/system/cpu/cpufreq/boost
+# echo 0 | sudo tee /sys/devices/system/cpu/cpufreq/boost
 # Sometimes KDE does not set this correctly so we do it here.
 powerprofilesctl set power-saver
 
@@ -20,8 +22,8 @@ powerprofilesctl set power-saver
 
 # Applications.
 # sudo pkill -9 pipewire
-lookandfeeltool -a org.manjaro.breath-dark.desktop
-sleep 1
-lookandfeeltool -a org.manjaro.breath-dark.desktop
+# lookandfeeltool -a org.manjaro.breath-dark.desktop
+# sleep 1
+# lookandfeeltool -a org.manjaro.breath-dark.desktop
 # qdbus6 org.kde.kglobalaccel /component/kwin invokeShortcut "Toggle Night Color"
 syncthing cli config folders ifzzk-usnva paused set true

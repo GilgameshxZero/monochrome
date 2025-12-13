@@ -25,6 +25,17 @@
 22. Disable HAGS/P7 helps with Moonlight stuttering.
 23. <https://silvae86.github.io/2020/06/13/switching-to-acpi-power/#changing-to-acpi-cpufreq-cpu-management-driver>, <https://wiki.archlinux.org/title/Power_management>, <https://unix.stackexchange.com/questions/650873/why-does-my-cpu-disregard-the-maximum-frequency-set-by-e-g-cpupower-and-how-can>.
 24. <https://www.reddit.com/r/GeForceNOW/comments/ynznkj/linux_users_can_now_enable_hardware_acceleration/> (doesn't work). (works on Wayland?) (check nvtop, edge://media-internals).
+	1.  `--enable-features=UseOzonePlatform,VaapiVideoDecoder,VaapiVideoEncoder,AcceleratedVideoDecodeLinuxZeroCopyGL,AcceleratedVideoDecodeLinuxGL,VaapiIgnoreDriverChecks,VaapiOnNvidiaGPUs --ozone-platform-hint=wayland --use-gl=angle %U` works!
+	2. `vainfo --display drm --device /dev/dri/renderD129`.
+	3. `--enable-features=VaapiVideoDecoder,VaapiIgnoreDriverChecks,Vulkan,DefaultANGLEVulkan,VulkanFromANGLE`.
+	4. `__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia`.
+	5. `--enable-features=AcceleratedVideoDecodeLinuxGL`.
+	6. `--disable-gpu-driver-bug-workarounds --enable-features=VaapiVideoDecodeLinuxGL,UseChromeOSDirectVideoDecoder,CanvasOopRasterization,WebUIDarkMode --enable-gpu-rasterization --ignore-gpu-blocklist --ozone-platform=wayland`.
+	7. `--use-angle=gles-egl`.
+	8. `--use-gl=angle --use-angle=gl --enable-features=AcceleratedVideoEncoder,AcceleratedVideoDecodeLinuxGL,VaapiOnNvidiaGPUs --ignore-gpu-blocklist --disable-gpu-driver-bug-workaround`.
+	9. `--use-gl=angle --use-angle=vulkan --enable-features=AcceleratedVideoEncoder,VaapiOnNvidiaGPUs,VaapiIgnoreDriverChecks,Vulkan,DefaultANGLEVulkan,VulkanFromANGLE --ignore-gpu-blocklist --disable-gpu-driver-bug-workaround`.
+	10. `--enable-features=AcceleratedVideoDecodeLinuxZeroCopyGL,AcceleratedVideoDecodeLinuxGL,VaapiOnNvidiaGPUs`.
+	11. WIP on `44`: `LIBVA_DRIVER_NAME=nvidia chromium --enable-features=AcceleratedVideoDecodeLinuxZeroCopyGL,AcceleratedVideoDecodeLinuxGL,VaapiOnNvidiaGPUs`.
 25. Fix VLC player issues by installing all optional dependencies.
 26. <https://discuss.kde.org/t/remote-control-requested-still-an-issue/24733>.
 27. `/sys/class/backlight/intel_backlight/brightness` to `2`.
@@ -83,4 +94,32 @@
 			```
 		2. `systemctl enable systemd-resolved.service`
 		3. `pamac install openvpn-update-systemd-resolved` (may need to manually clone due to permissiosn errors?)
-
+46. `dd if=... bs=16M | xz -z -9 -M 80% -v | ssh ... "dd of=... bs=16M"`
+	1.  `ssh ... "dd if=... bs=16M" | xz -d -M 80% -v | dd of=... bs=16M`
+47. wihotspot channel must be the same as current connected channel on interface.
+48. Sunshine with NVIDIA on Linux:
+	1.  <https://www.azdanov.dev/articles/2025/how-to-create-a-virtual-display-for-sunshine-on-arch-linux>.
+	2.  Double check settings in `/etc/X11/xorg.conf.d/`.
+	3.  `/etc/modprobe.d/blacklist.conf`.
+	4.  Black SDDM fix: clear out `/etc/X11`. SHould only be 00 and 30 left. No software mouse.
+		1.  Can use software mouse fix. Keep Driver empty.
+			```conf
+			Section "Device"
+				Identifier "sw-mouse"
+				Option "SWCursor" "true"
+			EndSection
+			```
+	5. Disable tray on user allows connect, but still black screen: <https://github.com/LizardByte/Sunshine/issues/2778>.
+	6. Wayland may still not work well with Sunshine <https://github.com/loki-47-6F-64/sunshine/issues/44>.
+		1. May be an NVENC issue. Black screens if buffer is copied. Otherwise, still black screen (on Wayland).
+	7. Sound will work if launched as user service.
+	8. May be a virtual monitor bug: <https://github.com/LizardByte/Sunshine/issues/2044>.
+	9. Working on beta Sunshine and latest Manjaro!
+49. cmus now requires opusfile?
+50. `sunshine-bin` requires manual patching of `libicu*.76`.
+51. PVE gilgamesh-44 may not work well with SATA port 2. Using port 6 for now.
+	1.  Maybe disable VMD?
+52. <https://forum.manjaro.org/t/xdg-open-throws-filed-to-register-with-host-portal-error/183762/5>.
+53. <https://unix.stackexchange.com/questions/91620/efi-variables-are-not-supported-on-this-system>.
+	1.  `sudo grub-install && sudo update-grub && sudo mkinitcpio -P && sudo grub-install && sudo update-grub && sudo swapon /swapfile`
+	2.  `syncthing vim opusfile`
