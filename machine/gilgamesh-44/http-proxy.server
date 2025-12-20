@@ -1,2 +1,0 @@
-#!/usr/bin/env bash
-simple-proxy -port 80 -logtostderr
