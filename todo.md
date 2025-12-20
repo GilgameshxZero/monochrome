@@ -51,7 +51,8 @@
 36. Moonlight client on gilgamesh-50 breaks under gilgamesh-45 VPN. Why?
 37. Only large cursors show on Linux host sunshine: <https://github.com/LizardByte/Sunshine/issues/93#issuecomment-3033636224>. Fix: <https://github.com/LizardByte/Sunshine/issues/93#issuecomment-1377858388>.
 38. Moonlight stream to linux host isn’t glitchy after switching to software decode. For some reason this just works on Android, though I assume its using hardware decode.
-	1.  Forcing software HEVC on host also works.
+	1.  For client, install `intel-media-driver`.
+	2.  Forcing software HEVC on host also works.
 39. `sudo pacman -Syu fcitx5 fcitx5-rime librime fcitx5-configtool`.
 	1.  Virtual Keyboard settings.
 	2.  Input Method settings.
@@ -92,8 +93,8 @@
 			down-pre
 			dhcp-option DOMAIN-ROUTE .
 			```
-		2. `systemctl enable systemd-resolved.service`
-		3. `pamac install openvpn-update-systemd-resolved` (may need to manually clone due to permissiosn errors?)
+		2. `systemctl enable --now systemd-resolved.service`
+		3. `pamac install openvpn-update-systemd-resolved openvpn-update-resolv-conf-git` (may need to manually clone #1 due to permissiosn errors?)
 46. `dd if=... bs=16M | xz -z -9 -M 80% -v | ssh ... "dd of=... bs=16M"`
 	1.  `ssh ... "dd if=... bs=16M" | xz -d -M 80% -v | dd of=... bs=16M`
 47. wihotspot channel must be the same as current connected channel on interface.
@@ -126,3 +127,5 @@
 54. <https://www.maketecheasier.com/wayland-work-with-nvidia-graphics-cards/> for proper `vainfo`.
 55. On `gilgamesh-44`, for some reason, Wayland NVIDIA acceleration only works with an *additional* EDID plugged in. I have provided said EDID. This means that our supposed EDID probably needs modification or is invalid in some way.
 	1.  This DOES work, however. I’ve tried switching things around naively but it is not so trivial.
+56. Hibernate still broken on 44. EFI boot required?
+57. <https://www.linuxbabe.com/desktop-linux/boot-from-iso-files-using-grub2-boot-loader>.

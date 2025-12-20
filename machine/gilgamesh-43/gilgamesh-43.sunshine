@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-tmux new-session -d -s gilgamesh-43-sunshine;
-tmux send -t gilgamesh-43-sunshine:0 "while true; do sunshine; sleep 4; done" C-m;

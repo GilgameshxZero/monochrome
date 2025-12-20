@@ -58,26 +58,16 @@ Also, <https://superuser.com/questions/1274955/use-windows-mobile-hotspot-with-o
 The CA password is the same as the Emilia HTTP password.
 
 ```bash
+export CLIENT_NAME=gilgamesh-51;
 cd ~/easy-rsa/;
-<<<<<<< Updated upstream
-./easyrsa gen-req gilgamesh-51 nopass;
+./easyrsa gen-req $CLIENT_NAME nopass;
 
-cp ~/easy-rsa/pki/private/gilgamesh-51.key ~/client-configs/keys/;
-./easyrsa sign-req client gilgamesh-51;
+cp ~/easy-rsa/pki/private/$CLIENT_NAME.key ~/client-configs/keys/;
+./easyrsa sign-req client $CLIENT_NAME;
 
-cp ~/easy-rsa/pki/issued/gilgamesh-51.crt ~/client-configs/keys/;
+cp ~/easy-rsa/pki/issued/$CLIENT_NAME.crt ~/client-configs/keys/;
 cd ~/client-configs/;
-./make_config.sh gilgamesh-51;
-=======
-./easyrsa gen-req gilgamesh-49 nopass;
-
-cp ~/easy-rsa/pki/private/gilgamesh-49.key ~/client-configs/keys/;
-./easyrsa sign-req client gilgamesh-49;
-
-cp ~/easy-rsa/pki/issued/gilgamesh-49.crt ~/client-configs/keys/;
-cd ~/client-configs/;
-./make_config.sh gilgamesh-49;
->>>>>>> Stashed changes
+./make_config.sh $CLIENT_NAME;
 ```
 
 ```ovpn
