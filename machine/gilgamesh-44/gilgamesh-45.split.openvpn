@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-tmux new-session -d -s gilgamesh-45-split-openvpn;
-tmux send -t gilgamesh-45-split-openvpn:0 "while true; do openvpn --config /home/gilgamesh/main.syncthing/monochrome/machine/$(hostname)/gilgamesh-45.split.ovpn; sleep 4; done" C-m;

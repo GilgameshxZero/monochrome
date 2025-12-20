@@ -1,0 +1,14 @@
+[Unit]
+Description=ovpn
+After=network.target
+StartLimitIntervalSec=60
+
+[Service]
+Type=oneshot
+# Necessary for tmux to remain.
+RemainAfterExit=true
+User=root
+ExecStart=/home/gilgamesh/main.syncthing/monochrome/machine/gilgamesh-44/ovpn.sh
+
+[Install]
+WantedBy=multi-user.target
