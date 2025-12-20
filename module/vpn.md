@@ -59,6 +59,7 @@ The CA password is the same as the Emilia HTTP password.
 
 ```bash
 cd ~/easy-rsa/;
+<<<<<<< Updated upstream
 ./easyrsa gen-req gilgamesh-51 nopass;
 
 cp ~/easy-rsa/pki/private/gilgamesh-51.key ~/client-configs/keys/;
@@ -67,6 +68,16 @@ cp ~/easy-rsa/pki/private/gilgamesh-51.key ~/client-configs/keys/;
 cp ~/easy-rsa/pki/issued/gilgamesh-51.crt ~/client-configs/keys/;
 cd ~/client-configs/;
 ./make_config.sh gilgamesh-51;
+=======
+./easyrsa gen-req gilgamesh-49 nopass;
+
+cp ~/easy-rsa/pki/private/gilgamesh-49.key ~/client-configs/keys/;
+./easyrsa sign-req client gilgamesh-49;
+
+cp ~/easy-rsa/pki/issued/gilgamesh-49.crt ~/client-configs/keys/;
+cd ~/client-configs/;
+./make_config.sh gilgamesh-49;
+>>>>>>> Stashed changes
 ```
 
 ```ovpn
