@@ -96,7 +96,10 @@
 2. ThrottleStop and AltServer icons may duplicate in the system tray: <https://www.techpowerup.com/forums/threads/windows-11-new-throttlestop-9-6-icon-added-to-other-system-tray-icons-each-reboot.311589/>. This is a Windows 11 bug. The only fix right now is to clear the system tray icons periodically <https://answers.microsoft.com/en-us/windows/forum/all/how-to-delete-duplicate-system-tray-icon-list-from/8790797a-ccb2-43d8-bacb-a5bfc3d7e399>.
 3. Disable Widgets: <https://lazyadmin.nl/win-11/disable-widgets-windows-11/>.
 4. To disable Defender, manually turn off protection policies from the control panel. Utilizing more forceful methods may cause problems in future Windows updates.
+<<<<<<< Updated upstream
    1. Maybe use this first <https://answers.microsoft.com/en-us/windows/forum/all/access-is-denied-in-task-manager/9986f100-a733-4bb1-8dea-0286ac99c144> to prevent it from resetting.
+=======
+>>>>>>> Stashed changes
 
 ## Notes
 
