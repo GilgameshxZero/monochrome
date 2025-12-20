@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-tmux new-session -d -s gilgamesh-43-tunnel;
-tmux send -t gilgamesh-43-tunnel:0 "while true; do ssh -N -R :60043:127.0.0.1:22 -o ExitOnForwardFailure=yes -o ServerAliveInterval=8 root@gilgamesh.cc; sleep 4; done" C-m;
-
