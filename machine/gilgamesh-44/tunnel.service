@@ -1,5 +1,5 @@
 [Unit]
-Description=http-proxy.server
+Description=tunnel
 After=network.target
 StartLimitIntervalSec=1
 
@@ -7,8 +7,8 @@ StartLimitIntervalSec=1
 Type=simple
 Restart=always
 RestartSec=4
-User=root
-ExecStart=/home/gilgamesh/main.syncthing/monochrome/machine/gilgamesh-44/http-proxy.server
+User=gilgamesh
+ExecStart=/home/gilgamesh/main.syncthing/monochrome/machine/gilgamesh-44/tunnel.sh
 
 [Install]
 WantedBy=multi-user.target
