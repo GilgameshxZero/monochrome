@@ -123,3 +123,6 @@
 53. <https://unix.stackexchange.com/questions/91620/efi-variables-are-not-supported-on-this-system>.
 	1.  `sudo grub-install && sudo update-grub && sudo mkinitcpio -P && sudo grub-install && sudo update-grub && sudo swapon /swapfile`
 	2.  `syncthing vim opusfile`
+54. <https://www.maketecheasier.com/wayland-work-with-nvidia-graphics-cards/> for proper `vainfo`.
+55. On `gilgamesh-44`, for some reason, Wayland NVIDIA acceleration only works with an *additional* EDID plugged in. I have provided said EDID. This means that our supposed EDID probably needs modification or is invalid in some way.
+	1.  This DOES work, however. I’ve tried switching things around naively but it is not so trivial.
