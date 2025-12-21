@@ -129,3 +129,4 @@
 	1.  This DOES work, however. I’ve tried switching things around naively but it is not so trivial.
 56. Hibernate still broken on 44. EFI boot required?
 57. <https://www.linuxbabe.com/desktop-linux/boot-from-iso-files-using-grub2-boot-loader>.
+58. Working on 43 GPU passthrough: <https://forum.proxmox.com/threads/gpu-passthrough-on-proxmox-ve-macos-monterey-part-04x04.140579/page-2>.

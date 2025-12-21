@@ -76,9 +76,10 @@ For machine `gilgamesh-X`, ports on `gilgamesh.cc` are allocated for tunneling a
 
 Port|Usage
 -|-
-8080|qBittorrent on `gilgamesh-29`
-8384|Syncthing on `gilgamesh-29`
-8888|jupyterlab on `gilgamesh-29`
+8080|qBittorrent on `gilgamesh-44`
+8384|Syncthing on `gilgamesh-31`
+8385|Syncthing on `gilgamesh-44`
+25565|Minecraft on `gilgamesh-44`
 60000+X|SSH
 61000+X (TCP and UDP)|RDP or VNC
 
