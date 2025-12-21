@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 lookandfeeltool -a org.manjaro.breath-light.desktop
-sleep 1
+sleep 0.1
 lookandfeeltool -a org.manjaro.breath-light.desktop
