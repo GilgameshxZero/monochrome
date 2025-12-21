@@ -1,0 +1,5 @@
+// This is a special `stignore` only for `gilgamesh-31`, which ignores
+// everything except the `snowfall/slush/` directory.
+(?d)!snowfall/slush/
+!*.stignore
+**

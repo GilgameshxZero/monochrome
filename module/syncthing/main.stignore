@@ -52,4 +52,7 @@
 
 // Manual fixes.
 
+// Some overrides for files contain `?` in the filename, which is not supported
+// across platforms. It is difficult to ignore single files with `?` for some
+// reason.
 (?d)monochrome/module/browser/overrides/
