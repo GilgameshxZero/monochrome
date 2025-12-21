@@ -126,6 +126,14 @@
 			"args": ["-i"]
 		}
 	},
+	"terminal.integrated.profiles.osx": {
+		"zsh": {
+			"path": "zsh",
+			"icon": "terminal-bash",
+			// Necessary for loading `~/.zshrc` properly.
+			"args": ["-i"]
+		}
+	},
 	"terminal.integrated.defaultProfile.windows": "Command Prompt",
 	"terminal.integrated.defaultProfile.linux": "bash",
 	"terminal.integrated.enableMultiLinePasteWarning": "never",
