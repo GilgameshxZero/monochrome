@@ -352,7 +352,7 @@
 		"gilgamesh-31": "linux",
 		"gilgamesh-40": "linux",
 		"gilgamesh-42": "windows",
-		"gilgamesh-43": "macOS",
+		"gilgamesh-43": "macos",
 		"gilgamesh-44": "linux",
 		"gilgamesh-45": "linux",
 		"gilgamesh-46": "windows",
@@ -360,6 +360,8 @@
 		"gilgamesh-49": "windows",
 		"gilgamesh-51": "linux"
 	},
+	// Sometimes necessary for `git` to function on Windows remotes.
+	// "remote.SSH.enableAgentForwarding": false,
 	"remote.autoForwardPorts": false,
 
 	"xml.format.maxLineWidth": 80,
@@ -383,7 +385,7 @@
 		"editor.wordWrap": "on"
 	},
 	"[cpp]": {
-		"editor.defaultFormatter": "ms-vscode.cpptools"
+		"editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd"
 	},
 	"[javascript]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
