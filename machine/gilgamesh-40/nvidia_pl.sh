@@ -1,3 +1,2 @@
 #!/usr/bin/env bash
-nvidia-smi -pl 200
-
+nvidia-smi -pl 75

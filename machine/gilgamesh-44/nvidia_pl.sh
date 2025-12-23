@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+sudo nvidia-smi -pl 220
