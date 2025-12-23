@@ -1,5 +1,5 @@
 [Unit]
-Description=nvidia.pl
+Description=nvidia_pl
 After=network.target
 StartLimitIntervalSec=1
 
@@ -7,7 +7,7 @@ StartLimitIntervalSec=1
 RemainAfterExit=true
 Type=oneshot
 User=root
-ExecStart=/root/nvidia.pl
+ExecStart=/root/nvidia_pl.sh
 
 [Install]
 WantedBy=multi-user.target

@@ -1,0 +1,14 @@
+[Unit]
+Description=nvidia_license
+After=network.target
+StartLimitIntervalSec=1
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=4
+User=root
+ExecStart=/home/gilgamesh/main.syncthing/monochrome/machine/gilgamesh-44/nvidia_license.sh
+
+[Install]
+WantedBy=multi-user.target
