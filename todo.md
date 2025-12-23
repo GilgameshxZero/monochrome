@@ -130,3 +130,7 @@
 56. Hibernate still broken on 44. EFI boot required?
 57. <https://www.linuxbabe.com/desktop-linux/boot-from-iso-files-using-grub2-boot-loader>.
 58. Working on 43 GPU passthrough: <https://forum.proxmox.com/threads/gpu-passthrough-on-proxmox-ve-macos-monterey-part-04x04.140579/page-2>.
+	1.  <https://elitemacx86.com/threads/how-to-spoof-graphics-on-macos-intel-amd-nvidia.1008/>.
+	2.  <https://dortania.github.io/Getting-Started-With-ACPI/Universal/spoof.html>.
+	3.  <https://github.com/TylerLyczak/Unsupported-6900XT-Hackintosh-Fix?tab=readme-ov-file>.
+	4.  <https://elitemacx86.com/threads/how-to-enable-h-264-and-hevc-h-265-encoding-on-macos.468/>.
