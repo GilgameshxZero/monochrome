@@ -140,3 +140,4 @@
 59. <https://forums.developer.nvidia.com/t/rtx-3050-idle-power-too-high/310255/5>.
 	1.  Restarting the PVE host seemed to have pushed it down to ~14W, which is expected.
 60. <https://alist.homelabproject.cc/foxipan/vGPU/19.3>.
+61. <https://forum.endeavouros.com/t/xdg-open-works-but-shows-an-error-message/76803/2> for the `kioclient` error.
