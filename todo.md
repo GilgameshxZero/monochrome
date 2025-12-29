@@ -134,3 +134,9 @@
 	2.  <https://dortania.github.io/Getting-Started-With-ACPI/Universal/spoof.html>.
 	3.  <https://github.com/TylerLyczak/Unsupported-6900XT-Hackintosh-Fix?tab=readme-ov-file>.
 	4.  <https://elitemacx86.com/threads/how-to-enable-h-264-and-hevc-h-265-encoding-on-macos.468/>.
+	5.  Just these modifications worked: <https://www.reddit.com/r/hackintosh/comments/1mdtif0/hardware_acceleration_on_sequoia_155_with_rx_550/>. I didn't need the `aml` file at all (or, at least not in the `config.plist`)?
+	6.  Resetting NVRAM not necessary?
+	7.  Unclear. Copied `config.plist` for reference. Please don't steal the IDs.
+59. <https://forums.developer.nvidia.com/t/rtx-3050-idle-power-too-high/310255/5>.
+	1.  Restarting the PVE host seemed to have pushed it down to ~14W, which is expected.
+60. <https://alist.homelabproject.cc/foxipan/vGPU/19.3>.
