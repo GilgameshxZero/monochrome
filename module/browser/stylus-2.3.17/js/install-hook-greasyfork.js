@@ -1,0 +1,1 @@
+"use strict";1!==window.INJECTED_GREASYFORK&&(window.INJECTED_GREASYFORK=1,addEventListener("message",async function onMessage(e){e.origin===location.origin&&e.data&&e.data.name&&"style-version-query"===e.data.type&&(removeEventListener("message",onMessage),postMessage({type:"style-version",version:await API.usercss.getVersion(e.data)},"*"))}));
