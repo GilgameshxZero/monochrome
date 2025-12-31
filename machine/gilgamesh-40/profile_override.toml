@@ -1,0 +1,60 @@
+[profile.nvidia-47] # B-series are framerate-limited to 45 by default, Q to 60.
+num_displays = 1
+cuda_enabled = 1
+frl_enabled = 0
+
+[profile.nvidia-525] # NVIDIA RTXA6000-2Q
+num_displays = 1
+display_width=1920
+display_height=1080
+max_pixels=2073600
+cuda_enabled = 1 
+frl_enabled = 0
+
+[vm.100] # 2G
+framebuffer = 0x74000000
+framebuffer_reservation = 0xC000000
+
+[vm.103] # 2G
+framebuffer = 0x74000000
+framebuffer_reservation = 0xC000000
+
+[vm.107] # 2G
+framebuffer = 0x74000000
+framebuffer_reservation = 0xC000000
+
+# 11G-max
+# framebuffer = 0x2BEA00000
+# framebuffer_reservation = 0x0
+
+# 0.5G
+# framebuffer = 0x1A000000
+# framebuffer_reservation = 0x6000000
+
+# 1G
+# framebuffer = 0x38000000
+# framebuffer_reservation = 0x8000000
+
+# 2G
+# framebuffer = 0x74000000
+# framebuffer_reservation = 0xC000000
+
+# 4G
+# framebuffer = 0xEC000000
+# framebuffer_reservation = 0x14000000
+
+# 6G
+# framebuffer = 0x164000000
+# framebuffer_reservation = 0x1C000000
+
+# 8G
+# framebuffer = 0x1DC000000
+# framebuffer_reservation = 0x24000000
+
+# 10G
+# framebuffer = 0x254000000
+# framebuffer_reservation = 0x2C000000
+
+# 11G
+# framebuffer = 0x290000000
+# framebuffer_reservation = 0xC0000000

@@ -52,7 +52,7 @@ if [ "$1" = "audio" ]; then
 		-f null - |& tee /dev/fd/3)
 	# echo must be quoted to preserve newlines.
 	max_volume=$(echo "$max_volume_out" \
-		| awk -F': ' '/max_volume/ {print $2}' \
+		| awk -F': ' '/max_volume/ {print $2; exit;}' \
 		| awk '{print int($1);}')
 	# `channel_layouts` fix taken from <https://trac.ffmpeg.org/ticket/5718#comment:11>.
 	ffmpeg \
@@ -103,7 +103,7 @@ elif [ "$1" = "video" ]; then
 		-map 0:a \
 		-f null - |& tee /dev/fd/3)
 	max_volume=$(echo "$max_volume_out" \
-		| awk -F': ' '/max_volume/ {print $2}' \
+		| awk -F': ' '/max_volume/ {print $2; exit;}' \
 		| awk '{print int($1);}')
 	# Size filter from <https://stackoverflow.com/questions/54063902/resize-videos-with-ffmpeg-keep-aspect-ratio>.
 	ffmpeg \
@@ -163,7 +163,7 @@ elif [ "$1" = "voice" ]; then
 		-f null - |& tee /dev/fd/3)
 	# echo must be quoted to preserve newlines.
 	max_volume=$(echo "$max_volume_out" \
-		| awk -F': ' '/max_volume/ {print $2}' \
+		| awk -F': ' '/max_volume/ {print $2; exit;}' \
 		| awk '{print int($1);}')
 	# `channel_layouts` fix taken from <https://trac.ffmpeg.org/ticket/5718#comment:11>.
 	./ffmpeg \
@@ -188,7 +188,7 @@ elif [ "$1" = "normalize" ]; then
 		-map 0:a \
 		-f null - |& tee /dev/fd/3)
 	max_volume=$(echo "$max_volume_out" \
-		| awk -F': ' '/max_volume/ {print $2}' \
+		| awk -F': ' '/max_volume/ {print $2; exit;}' \
 		| awk '{print int($1);}')
 	ffmpeg \
 		-y \
