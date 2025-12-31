@@ -65,21 +65,16 @@
 		"command": "openInApplication.open"
 	},
 	{
-		"key": "ctrl+`",
-		"command": "-workbench.action.terminal.toggleTerminal",
-		"when": "terminal.active"
+		"key": "ctrl+shift+`",
+		"command": "workbench.action.createTerminalEditor"
 	},
 	{
-		"key": "ctrl+shift+`",
+		"key": "ctrl+shift+c",
 		"command": "workbench.action.createTerminalEditor"
 	},
 	{
 		"key": "ctrl+shift+v",
 		"command": "workbench.action.terminal.toggleTerminal"
-	},
-	{
-		"key": "ctrl+shift+a",
-		"command": "workbench.action.focusActiveEditorGroup"
 	},
 	{
 		"key": "ctrl+k g",
@@ -175,17 +170,9 @@
 		"when": "textInputFocus"
 	},
 	{
-		"key": "ctrl+shift+p",
-		"command": "-workbench.action.showCommands"
-	},
-	{
 		"key": "ctrl+k z",
 		"command": "-workbench.action.toggleZenMode",
 		"when": "!isAuxiliaryWindowFocusedContext"
-	},
-	{
-		"key": "ctrl+shift+p",
-		"command": "workbench.action.showCommands"
 	},
 	{
 		"key": "ctrl+shift+w",
@@ -197,32 +184,9 @@
 		"when": "viewContainer.workbench.view.explorer.enabled"
 	},
 	{
-		"key": "ctrl+shift+x",
-		"command": "workbench.action.findInFiles"
-	},
-	{
-		"key": "ctrl+shift+f",
-		"command": "-workbench.action.findInFiles"
-	},
-	{
-		"key": "ctrl+shift+c",
-		"command": "workbench.view.scm",
-		"when": "workbench.scm.active"
-	},
-	{
 		"key": "ctrl+shift+g",
 		"command": "-workbench.view.scm",
 		"when": "workbench.scm.active"
-	},
-	{
-		"key": "ctrl+shift+c",
-		"command": "workbench.view.debug",
-		"when": "viewContainer.workbench.view.debug.enabled"
-	},
-	{
-		"key": "ctrl+shift+d",
-		"command": "-workbench.view.debug",
-		"when": "viewContainer.workbench.view.debug.enabled"
 	},
 	{
 		"key": "alt+e",
