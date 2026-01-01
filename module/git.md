@@ -19,7 +19,7 @@ The following commands configures common aliases (may require `;` to be appended
 git config --global user.email "~@gilgamesh.cc"
 git config --global user.name "GILGAMESH"
 git config --global core.autocrlf "false"
-git config --global core.fileMode "false"
+# git config --global core.fileMode "false"
 git config --global alias.co "checkout"
 git config --global alias.cp "cherry-pick"
 git config --global alias.ac "! git add -A && git commit --allow-empty-message -am"
