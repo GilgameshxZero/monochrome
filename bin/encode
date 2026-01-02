@@ -6,10 +6,12 @@
 # $3: audio bitrate in kb/s. Defaults to 96. Can be set for alternative formats.
 # $4: video `crf`. Defaults to 40.
 # $5: video maximum square pixel count. Defaults to 1280.
+# $6: av1 preset (default: 7).
 set -e
 bitrate_audio=${3:-96}
 crf_video=${4:-40}
 resolution_max_video=${5:-1280}
+av1_preset=${6:-7}
 if [ "$1" = "audio" ]; then
 	if [ -f "$2" ]; then
 		filename_old=$2
@@ -113,7 +115,7 @@ elif [ "$1" = "video" ]; then
 		-b:a ${bitrate_audio}k \
 		-filter:a "aformat=channel_layouts=7.1|5.1|stereo, volume=$((-max_volume)) dB" \
 		-c:v libsvtav1 \
-		-preset 7 \
+		-preset $av1_preset \
 		-crf $crf_video \
 		-filter:v "scale=if(gte(iw\,ih)\,min(${resolution_max_video}\,iw)\,-2):if(lt(iw\,ih)\,min(${resolution_max_video}\,ih)\,-2)" \
 		"$filename_int"
