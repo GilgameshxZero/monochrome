@@ -142,3 +142,4 @@
 60. <https://alist.homelabproject.cc/foxipan/vGPU/19.3>.
 61. <https://forum.endeavouros.com/t/xdg-open-works-but-shows-an-error-message/76803/2> for the `kioclient` error.
 62. `epr-git` is good.
+63. Not sure why `/sys/power/resume` is not being populated on `gilgamesh-44`, but even manually populating it does not enable proper hibernation.
