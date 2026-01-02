@@ -130,7 +130,7 @@
 		"zsh": {
 			"path": "zsh",
 			"icon": "terminal-bash",
-			// Necessary for loading `~/.zshrc` properly.
+			// Necessary for loading `~/.zshrc` properly. TODO.
 			"args": ["-i"]
 		}
 	},
@@ -162,8 +162,8 @@
 	"terminal.integrated.ignoreBracketedPasteMode": true,
 	"terminal.integrated.persistentSessionScrollback": 1024,
 	"terminal.integrated.showExitAlert": false,
-	"terminal.integrated.defaultLocation": "editor",
 	"terminal.integrated.stickyScroll.enabled": false,
+	"terminal.integrated.defaultLocation": "editor",
 
 	"timeline.pageOnScroll": true,
 
@@ -328,7 +328,7 @@
 
 	"notebook.cellToolbarLocation": {
 		"default": "right",
-		"jupyter-notebook": "left"
+		"jupyter-notebook": "right"
 	},
 	"notebook.output.wordWrap": true,
 	"notebook.editorOptionsCustomizations": {
