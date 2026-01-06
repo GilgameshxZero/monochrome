@@ -119,10 +119,11 @@ elif [ "$1" = "video" ]; then
 		-crf $crf_video \
 		-filter:v "scale=if(gte(iw\,ih)\,min(${resolution_max_video}\,iw)\,-2):if(lt(iw\,ih)\,min(${resolution_max_video}\,ih)\,-2)" \
 		"$filename_int"
+	# Fixes error <https://github.com/mpv-player/mpv/issues/14969>.
+	mkvmerge -o "$filename_new" "$filename_int"
 	if [ ! -f "$2" ]; then
-		rm $filename_old
+		rm "$filename_old" "$filename_int"
 	fi
-	mv "$filename_int" "$filename_new"
 elif [ "$1" = "voice" ]; then
 	if [ -f "$2" ]; then
 		filename_old=$2
