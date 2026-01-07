@@ -7,7 +7,8 @@ StartLimitIntervalSec=1
 RemainAfterExit=true
 Type=oneshot
 User=root
-ExecStart=/home/gilgamesh/gilgamesh-45.iptables
+ExecStart=/home/gilgamesh/iptables.sh
 
 [Install]
 WantedBy=multi-user.target
+
