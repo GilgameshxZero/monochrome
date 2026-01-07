@@ -8,7 +8,7 @@ Type=simple
 Restart=always
 RestartSec=300
 User=gilgamesh
-ExecStart=/home/gilgamesh/gilgamesh-45.duckdns
+ExecStart=/home/gilgamesh/duckdns.sh
 
 [Install]
 WantedBy=multi-user.target
