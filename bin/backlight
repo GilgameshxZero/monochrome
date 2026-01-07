@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -e
+brightness=${1:-3}
+echo $brightness | sudo tee /sys/class/backlight/intel_backlight/brightness
