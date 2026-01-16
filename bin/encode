@@ -111,6 +111,7 @@ elif [ "$1" = "video" ]; then
 	ffmpeg \
 		-y \
 		-i "$filename_old" \
+		-map 0 \
 		-c:a libopus \
 		-b:a ${bitrate_audio}k \
 		-filter:a "aformat=channel_layouts=7.1|5.1|stereo, volume=$((-max_volume)) dB" \
@@ -121,84 +122,8 @@ elif [ "$1" = "video" ]; then
 		"$filename_int"
 	# Fixes error <https://github.com/mpv-player/mpv/issues/14969>.
 	mkvmerge -o "$filename_new" "$filename_int"
-	if [ ! -f "$2" ]; then
-		rm "$filename_old" "$filename_int"
-	fi
-elif [ "$1" = "voice" ]; then
-	if [ -f "$2" ]; then
-		filename_old=$2
-		filename_int=.${2%.*}.tmp.c2
-		filename_new=${2%.*}.c2
-	else
-		filename=$(yt-dlp \
-			--extract-audio \
-			--output "%(uploader)s-%(title)s" \
-			--restrict-filenames \
-			--windows-filenames \
-			--format bestaudio \
-			--cookies-from-browser chromium \
-			--js-runtimes node \
-			--remote-components ejs:github \
-			--no-playlist \
-			--print filename \
-			"$2" | tail -1)
-		# Use old.tmp here to avoid opus conflict after extracting audio.
-		yt-dlp \
-			--extract-audio \
-			--output ".%(uploader)s-%(title)s.old.tmp" \
-			--restrict-filenames \
-			--windows-filenames \
-			--format bestaudio \
-			--cookies-from-browser chromium \
-			--js-runtimes node \
-			--remote-components ejs:github \
-			--no-playlist \
-			"$2"
-		filename_old=$(ls .$filename.old.tmp*)
-		filename_int=.$filename.tmp.c2
-		filename_new=$filename.c2
-	fi
-	exec 3>&1
-	max_volume_out=$(ffmpeg \
-		-i "$filename_old" \
-		-filter:a "volumedetect" \
-		-map 0:a \
-		-f null - |& tee /dev/fd/3)
-	# echo must be quoted to preserve newlines.
-	max_volume=$(echo "$max_volume_out" \
-		| awk -F': ' '/max_volume/ {print $2; exit;}' \
-		| awk '{print int($1);}')
-	# `channel_layouts` fix taken from <https://trac.ffmpeg.org/ticket/5718#comment:11>.
-	./ffmpeg \
-		-y \
-		-i "$filename_old" \
-		-mode 700C \
-		-filter:a "volume=$((-max_volume)) dB" \
-		"$filename_int"
+	rm "$filename_int"
 	if [ ! -f "$2" ]; then
 		rm "$filename_old"
 	fi
-	mv "$filename_int" "$filename_new"
-elif [ "$1" = "normalize" ]; then
-	filename_old="$2"
-	filename_int=".${2%.*}.tmp.${2#*.}"
-	# ffmpeg fails to preserve cover art in ogg. It can probably be done, I just can't be bothered to investigate.
-	opustags -y --output-cover ".$2.tmp.cover" "$filename_old"
-	exec 3>&1
-	max_volume_out=$(ffmpeg \
-		-i "$filename_old" \
-		-filter:a "volumedetect" \
-		-map 0:a \
-		-f null - |& tee /dev/fd/3)
-	max_volume=$(echo "$max_volume_out" \
-		| awk -F': ' '/max_volume/ {print $2; exit;}' \
-		| awk '{print int($1);}')
-	ffmpeg \
-		-y \
-		-i "$filename_old" \
-		-filter:a "volume=$((-max_volume)) dB" \
-		"$filename_int"
-	opustags --set-cover ".$2.tmp.cover" -i "$filename_int"
-	rm ".$2.tmp.cover"
-	mv "$filename_int" "$filename_old"
 fi

@@ -143,3 +143,4 @@
 61. <https://forum.endeavouros.com/t/xdg-open-works-but-shows-an-error-message/76803/2> for the `kioclient` error.
 62. `epr-git` is good.
 63. Not sure why `/sys/power/resume` is not being populated on `gilgamesh-44`, but even manually populating it does not enable proper hibernation.
+64. <https://askubuntu.com/questions/1115061/how-do-i-solve-incorrect-permission-on-usr-lib-policykit-1-polkit-agent-helper>.
