@@ -358,12 +358,12 @@
 	},
 	{
 		"key": "ctrl+v",
-		"command": "workbench.action.terminal.pasteSelection",
+		"command": "workbench.action.terminal.paste",
 		"when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
 	},
 	{
 		"key": "shift+insert",
-		"command": "-workbench.action.terminal.pasteSelection",
+		"command": "-workbench.action.terminal.paste",
 		"when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
 	},
 	{

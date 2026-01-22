@@ -1,0 +1,14 @@
+[Unit]
+Description=juice
+After=network.target
+StartLimitIntervalSec=1
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=4
+User=gilgamesh
+ExecStart=/home/gilgamesh/main.syncthing/monochrome/machine/gilgamesh-44/juice.sh
+
+[Install]
+WantedBy=multi-user.target
