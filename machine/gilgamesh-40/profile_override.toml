@@ -1,60 +1,9 @@
-[profile.nvidia-47] # B-series are framerate-limited to 45 by default, Q to 60.
+[profile.nvidia-525] # NVIDIA RTXA6000-2Q, 2G
 num_displays = 1
 cuda_enabled = 1
 frl_enabled = 0
+framebuffer = 0x7C200000
+framebuffer_reservation = 0x04000000
 
-[profile.nvidia-525] # NVIDIA RTXA6000-2Q
-num_displays = 1
-display_width=1920
-display_height=1080
-max_pixels=2073600
-cuda_enabled = 1 
-frl_enabled = 0
-
-[vm.100] # 2G
-framebuffer = 0x74000000
-framebuffer_reservation = 0xC000000
-
-[vm.103] # 2G
-framebuffer = 0x74000000
-framebuffer_reservation = 0xC000000
-
-[vm.107] # 2G
-framebuffer = 0x74000000
-framebuffer_reservation = 0xC000000
-
-# 11G-max
-# framebuffer = 0x2BEA00000
-# framebuffer_reservation = 0x0
-
-# 0.5G
-# framebuffer = 0x1A000000
-# framebuffer_reservation = 0x6000000
-
-# 1G
-# framebuffer = 0x38000000
-# framebuffer_reservation = 0x8000000
-
-# 2G
-# framebuffer = 0x74000000
-# framebuffer_reservation = 0xC000000
-
-# 4G
-# framebuffer = 0xEC000000
-# framebuffer_reservation = 0x14000000
-
-# 6G
-# framebuffer = 0x164000000
-# framebuffer_reservation = 0x1C000000
-
-# 8G
-# framebuffer = 0x1DC000000
-# framebuffer_reservation = 0x24000000
-
-# 10G
-# framebuffer = 0x254000000
-# framebuffer_reservation = 0x2C000000
-
-# 11G
-# framebuffer = 0x290000000
-# framebuffer_reservation = 0xC0000000
+# First three digits declares the number of MB. Underestimates memory usage by 10MB. Reservation needs to be at least 16MB per 0.5GB of VRAM. Platform reserves 32MB/8192MB = 2MB per 0.5GB of VRAM.
+# e.g. hex((512-16-2)*4+10) = 0x7c2
