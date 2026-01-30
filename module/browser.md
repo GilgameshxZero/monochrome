@@ -20,6 +20,21 @@ body>#body {
 body>#body>div {
     width: auto !important;
 }
+#facebox {
+    left: 0 !important;
+    top: 0 !important;
+}
+#facebox .content {
+    width: auto;
+}
+.source-popup pre {
+    width: 0;
+    overflow-x: visible !important;
+}
+.source-popup {
+    width: auto !important;
+    height: auto !important;
+}
 ```
 
 Needs to be reloaded while F12 is open to apply the overrides.
