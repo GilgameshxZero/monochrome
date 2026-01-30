@@ -146,3 +146,6 @@
 64. <https://askubuntu.com/questions/1115061/how-do-i-solve-incorrect-permission-on-usr-lib-policykit-1-polkit-agent-helper>.
 65. Minecraft is very slow on vgpu setup. Android VM may be disabled. I think this is related to different Hyper-V/virtualization setups on the Windows guest.
 	1.  Check out <https://github.com/zhaodice/proxmox-ve-anti-detection> for Endfield perhaps.
+66. Pinning versions for AUR `ungoogled-chromium-bin` and `vscodium-bin` due to a bug on KDE where chromium apps seem to freeze (while still accepting input) until either a KDE app is interacted with, or the mouse is moved.
+	1.  `138.0.7204.183`
+	2.  `1.106.37943`

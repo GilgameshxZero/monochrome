@@ -45,7 +45,7 @@
 	"editor.inlayHints.enabled": "off",
 	"editor.wrappingIndent": "indent",
 	"editor.fontSize": 19,
-	"editor.inertialScroll": true,
+	"editor.inertialScroll": false,
 	"editor.mouseWheelScrollSensitivity": 1.5,
 	"editor.quickSuggestions": {
 		"other": "false",
