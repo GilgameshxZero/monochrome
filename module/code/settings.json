@@ -91,7 +91,7 @@
 	},
 	"markdown.preview.fontSize": 16,
 	"markdown.preview.lineHeight": 1.5,
-	"markdown.preview.scrollPreviewWithEditor": false,
+	"markdown.preview.scrollPreviewWithEditor": true,
 
 	// Most markdown files should be edited with the `silver` CSS.
 	"markdown.styles": [".vscode/default.css"],
