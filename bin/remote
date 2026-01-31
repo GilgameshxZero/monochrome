@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
+# Starts a graphical session to the remote. Can automate further with `kscreen-doctor -j`.
 host=$1
-rotation=${2:-default}
 if [ "$host" = "gilgamesh-43" ]; then
 	moonlight stream --resolution 2880x1800 --fps 120 gilgamesh-43 default
 elif [ "$host" = "gilgamesh-44" ]; then

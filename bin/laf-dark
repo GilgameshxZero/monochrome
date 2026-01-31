@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-lookandfeeltool -a org.manjaro.breath-dark.desktop
-sleep 0.4
-lookandfeeltool -a org.manjaro.breath-dark.desktop
