@@ -1,18 +1,20 @@
 #!/usr/bin/env bash
 # Downloads audio from a link (or uses an existing file), and normalizes for prototype format.
 # `prototype` format is `opus` VBR 96kb/s at compression level 10, with the peak volume normalized to 0 dB.
-# $1: `audio` or `video` or `normalize`.
+# $1: `audio` or `video`.
 # $2: link or filename, e.g. "https://www.youtube.com/watch?v=r6sGWTCMz2k".
-# $3: audio bitrate in kb/s. Defaults to 96. Can be set for alternative formats.
-# $4: video `crf`. Defaults to 40.
-# $5: video maximum square pixel count. Defaults to 1280.
-# $6: av1 preset (default: 7).
+# $3: opus target bitrate in kb/s (default: 96 for audio, 48 for video).
+# $4: av1 target bitrate in kb/s (default: 500).
+# $5: video maximum square pixel count (default: 1280).
+# $6: video maximum fps (default: 30).
+# $7: av1 preset (default: 4).
 set -e
-bitrate_audio=${3:-96}
-crf_video=${4:-40}
+av1_tbr=${4:-500}
 resolution_max_video=${5:-1280}
-av1_preset=${6:-7}
+fps_max_video=${6:-30}
+av1_preset=${7:-4}
 if [ "$1" = "audio" ]; then
+	bitrate_audio=${3:-96}
 	if [ -f "$2" ]; then
 		filename_old=$2
 		filename_int=.${2%.*}.tmp.opus
@@ -70,6 +72,7 @@ if [ "$1" = "audio" ]; then
 	opustags -D -i "$filename_int"
 	mv "$filename_int" "$filename_new"
 elif [ "$1" = "video" ]; then
+	bitrate_audio=${3:-48}
 	if [ -f "$2" ]; then
 		filename_old=$2
 		filename_int=.${2%.*}.tmp.mkv
@@ -108,6 +111,7 @@ elif [ "$1" = "video" ]; then
 		| awk -F': ' '/max_volume/ {print $2; exit;}' \
 		| awk '{print int($1);}')
 	# Size filter from <https://stackoverflow.com/questions/54063902/resize-videos-with-ffmpeg-keep-aspect-ratio>.
+	# More advanced usage requires the SVT-AV1 binary for `bias-pct` and `passes`.
 	ffmpeg \
 		-y \
 		-i "$filename_old" \
@@ -116,8 +120,10 @@ elif [ "$1" = "video" ]; then
 		-b:a ${bitrate_audio}k \
 		-filter:a "aformat=channel_layouts=7.1|5.1|stereo, volume=$((-max_volume)) dB" \
 		-c:v libsvtav1 \
+		-fps_mode cfr \
+		-fpsmax $fps_max_video \
 		-preset $av1_preset \
-		-crf $crf_video \
+		-svtav1-params rc=1:tbr=$av1_tbr:lookahead=120\
 		-filter:v "scale=if(gte(iw\,ih)\,min(${resolution_max_video}\,iw)\,-2):if(lt(iw\,ih)\,min(${resolution_max_video}\,ih)\,-2)" \
 		"$filename_int"
 	# Fixes error <https://github.com/mpv-player/mpv/issues/14969>.
