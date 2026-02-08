@@ -8,11 +8,6 @@ Host gilgamesh-40
 	Port 60040
 	User root
 
-Host gilgamesh-42
-	HostName gilgamesh-45.duckdns.org
-	Port 60042
-	User gilgamesh
-
 Host gilgamesh-43
 	HostName gilgamesh.cc
 	Port 60043
@@ -32,11 +27,6 @@ Host gilgamesh-46
 	HostName gilgamesh.cc
 	Port 60046
 	User 0
-
-Host gilgamesh-47
-	HostName gilgamesh-45.duckdns.org
-	Port 60047
-	User guest
 
 Host gilgamesh-49
 	HostName gilgamesh.cc
