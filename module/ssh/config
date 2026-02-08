@@ -52,3 +52,8 @@ Host gilgamesh-52
 	HostName gilgamesh.cc
 	Port 60052
 	User gilgamesh
+
+Host gilgamesh-54
+	HostName gilgamesh.cc
+	Port 60054
+	User root
