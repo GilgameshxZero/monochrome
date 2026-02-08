@@ -29,8 +29,12 @@ powerprofilesctl set power-saver
 
 # Applications.
 # sudo pkill -9 pipewire
-# lookandfeeltool -a org.manjaro.breath-dark.desktop
-# sleep 1
-# lookandfeeltool -a org.manjaro.breath-dark.desktop
-# qdbus6 org.kde.kglobalaccel /component/kwin invokeShortcut "Toggle Night Color"
 syncthing cli config folders ifzzk-usnva paused set true
+
+current_theme=$(kreadconfig6 --group KDE --key LookAndFeelPackage)
+if [ "$current_theme" = "org.manjaro.breath-light.desktop" ]; then
+	lookandfeeltool -a org.manjaro.breath-dark.desktop
+	sleep 0.4
+	lookandfeeltool -a org.manjaro.breath-dark.desktop
+	qdbus org.kde.kglobalaccel /component/kwin invokeShortcut "Toggle Night Color"
+fi

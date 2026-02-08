@@ -1,0 +1,15 @@
+[Unit]
+Description=ip_check_reset
+After=network.target
+StartLimitIntervalSec=60
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=300
+KillMode=process
+User=root
+ExecStart=/root/ip_check_reset.sh
+
+[Install]
+WantedBy=multi-user.target

@@ -11,4 +11,4 @@ else
 	sleep 0.4
 	lookandfeeltool -a org.manjaro.breath-dark.desktop
 fi
-# qdbus org.kde.kglobalaccel /component/kwin invokeShortcut "Toggle Night Color"
+qdbus org.kde.kglobalaccel /component/kwin invokeShortcut "Toggle Night Color"

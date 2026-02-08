@@ -1,0 +1,12 @@
+[Unit]
+Description=backlight
+After=network.target
+StartLimitIntervalSec=60
+
+[Service]
+Type=oneshot
+User=root
+ExecStart=/root/backlight.sh 0
+
+[Install]
+WantedBy=multi-user.target

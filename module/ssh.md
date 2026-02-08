@@ -81,7 +81,7 @@ Port|Usage
 8385|Syncthing on `gilgamesh-44`
 25565|Minecraft on `gilgamesh-44`
 60000+X|SSH
-61000+X (TCP and UDP)|RDP or VNC
+61000+X (TCP and UDP)|RDP, VNC, PVE, OVPN
 
 Utilize the tunneling scripts in `monochrome/module/ssh` to establish persistent tunnels from each machine. Use `lsof -i :X` to check for existing processes connected at port X.
 

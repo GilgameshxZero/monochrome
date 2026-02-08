@@ -1,0 +1,12 @@
+[Unit]
+Description=setupcon
+After=network.target
+StartLimitIntervalSec=60
+
+[Service]
+Type=oneshot
+User=root
+ExecStart=/root/setupcon.sh
+
+[Install]
+WantedBy=multi-user.target
