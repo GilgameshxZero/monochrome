@@ -1,5 +1,5 @@
 [Unit]
-Description=gilgamesh-45.duckdns
+Description=duckdns
 After=network.target
 StartLimitIntervalSec=1
 
@@ -7,8 +7,8 @@ StartLimitIntervalSec=1
 Type=simple
 Restart=always
 RestartSec=300
-User=gilgamesh
-ExecStart=/home/gilgamesh/duckdns.sh
+User=root
+ExecStart=/root/duckdns.sh
 
 [Install]
 WantedBy=multi-user.target

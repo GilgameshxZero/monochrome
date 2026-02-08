@@ -4,8 +4,8 @@ Host gilgamesh-31
 	User root
 
 Host gilgamesh-40
-	HostName 192.168.50.40
-	Port 22
+	HostName gilgamesh.cc
+	Port 60040
 	User root
 
 Host gilgamesh-42
@@ -24,8 +24,8 @@ Host gilgamesh-44
 	User gilgamesh
 	
 Host gilgamesh-45
-	HostName 192.168.50.45
-	Port 22
+	HostName gilgamesh.cc
+	Port 60045
 	User gilgamesh
 
 Host gilgamesh-46
