@@ -159,3 +159,4 @@
 	7. <https://www.reddit.com/r/Proxmox/comments/10spjwj/easiest_way_to_mount_usb_drive_proxmox_7/>.
 68. Port forward UDP for SSH tunneled ovpn?
 	1.  <https://superuser.com/questions/53103/how-can-i-send-udp-traffic-through-an-ssh-tunnel>.
+69. `gilgamesh-45` still requires manual iptables intervention for some reason?
