@@ -157,3 +157,5 @@
 	5. <https://github.com/linux-surface/linux-surface/wiki/Installation-and-Setup#arch>.
 	6. <https://www.reddit.com/r/Proxmox/comments/vj6u54/is_it_possible_to_shrink_storage_disk_i_want_to/>.
 	7. <https://www.reddit.com/r/Proxmox/comments/10spjwj/easiest_way_to_mount_usb_drive_proxmox_7/>.
+68. Port forward UDP for SSH tunneled ovpn?
+	1.  <https://superuser.com/questions/53103/how-can-i-send-udp-traffic-through-an-ssh-tunnel>.
