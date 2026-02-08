@@ -1,0 +1,14 @@
+[Unit]
+Description=tunnel
+After=network.target
+StartLimitIntervalSec=60
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=60
+User=gilgamesh
+ExecStart=/home/gilgamesh/tunnel.sh
+
+[Install]
+WantedBy=multi-user.target
