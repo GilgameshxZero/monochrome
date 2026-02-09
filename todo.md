@@ -160,3 +160,4 @@
 68. Port forward UDP for SSH tunneled ovpn?
 	1.  <https://superuser.com/questions/53103/how-can-i-send-udp-traffic-through-an-ssh-tunnel>.
 69. `gilgamesh-45` still requires manual iptables intervention for some reason?
+70. Hibernate wakeups: <https://askubuntu.com/questions/148481/how-do-i-prevent-immediate-wake-up-from-suspend-and-or-hibernation-from-pci-devi>.
