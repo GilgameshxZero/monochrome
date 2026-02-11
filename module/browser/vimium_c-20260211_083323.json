@@ -1,11 +1,11 @@
 {
 	"name": "Vimium C",
-	"@time": "1/2/2026, 8:50:05 AM",
-	"time": 1767369005758,
+	"@time": "2/11/2026, 8:33:23 AM",
+	"time": 1770798803965,
 	"environment": {
 		"extension": "2.12.3",
 		"platform": "linux",
-		"chromium": 142
+		"chromium": 139
 	},
 	"allBrowserUrls": true,
 	"exclusionRules": [
@@ -72,12 +72,13 @@
 		"shortcut userCustomized9 command=\"moveTabLeft\"",
 		"shortcut userCustomized10 command=\"moveTabRight\"",
 		"",
+		"shortcut userCustomized11 command=\"mainFrame\"",
+		"shortcut userCustomized12 command=\"nextFrame\"",
+		"",
 		"# Additional non-shortcuts.",
 		"map <c--> zoomOut",
 		"map <c-=> zoomIn",
 		"map <c-l> Vomnibar.activateEditUrl",
-		"map <a-esc> mainFrame",
-		"map <c-esc> nextFrame",
 		""
 	],
 	"keyupTime": 50,
