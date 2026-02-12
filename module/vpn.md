@@ -100,3 +100,37 @@ You may verify your public IP from the command line with `curl https://api.ipify
 # ignore-unknown-option block-outside-dns
 # setenv opt block-outside-dns # Prevent Windows 10 DNS leak
 ```
+
+Preferred all-tunnel:
+
+```ovpn
+route-nopull
+route gilgamesh.cc 255.255.255.255 net_gateway 0
+route gilgamesh-40.duckdns.org 255.255.255.255 net_gateway 0
+route 10.8.31.0 255.255.255.0 vpn_gateway 0
+route 10.8.0.0 255.255.0.0 net_gateway 0
+route 0.0.0.0 0.0.0.0 vpn_gateway 0
+
+dhcp-option DNS 208.67.222.222
+dhcp-option DNS 208.67.220.220
+dhcp-option DNS 1.1.1.1
+dhcp-option DNS 8.8.8.8
+```
+
+Preferred split tunnel:
+
+```ovpn
+route-nopull
+route 10.8.45.0 255.255.255.0 vpn_gateway 0
+route 0.0.0.0 0.0.0.0 net_gateway 0
+route 0.0.0.0 0.0.0.0 vpn_gateway 500
+
+dhcp-option DNS 208.67.222.222
+dhcp-option DNS 208.67.220.220
+dhcp-option DNS 1.1.1.1
+dhcp-option DNS 8.8.8.8
+```
+
+Mobile clients split tunnels require some fiddling. This is because the configuration is slightly different (we may need an explicit route for the endpoint, and to remove the second default gateway route). By default we do not provide split tunnels for mobile clients.
+
+`persist-tun` should be used for full tunnels to ensure no data leakage. Right now this doesn’t work so well, because of the up/down scripts (on *nix) and some recursive routing shenanigans (verb 4) if the network is changed (due to some routes being removed and not re-added). It is set for MacOS since route removal on MacOS seems to fail.

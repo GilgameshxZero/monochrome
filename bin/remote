@@ -9,4 +9,6 @@ elif [ "$host" = "gilgamesh-48" ]; then
 	SDL_VIDEODRIVER=wayland scrcpy -f --tcpip=10.8.45.48 --orientation 270
 elif [ "$host" = "gilgamesh-49" ]; then
 	moonlight stream --resolution 2880x1800 --fps 120 gilgamesh-49 default
+elif [ "$host" = "gilgamesh-50" ]; then
+	SDL_VIDEODRIVER=wayland scrcpy -f --tcpip=10.8.31.50
 fi
