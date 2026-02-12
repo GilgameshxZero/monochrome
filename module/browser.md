@@ -54,3 +54,11 @@ body>#body>div {
     width: auto !important;
 }`));
 ```
+
+For gmail:
+
+```
+body>div>div {
+    width: auto !important;
+}
+```
