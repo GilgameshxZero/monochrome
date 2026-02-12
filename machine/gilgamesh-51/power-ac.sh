@@ -25,8 +25,4 @@ powerprofilesctl set performance
 # echo -n -e "\x88" | sudo dd of="/sys/kernel/debug/ec/ec0/io" bs=1 seek=45 count=1 conv=notrunc
 
 # Applications.
-# lookandfeeltool -a org.manjaro.breath-light.desktop
-# sleep 1
-# lookandfeeltool -a org.manjaro.breath-light.desktop
-# qdbus6 org.kde.kglobalaccel /component/kwin invokeShortcut "Toggle Night Color"
 syncthing cli config folders ifzzk-usnva paused set false

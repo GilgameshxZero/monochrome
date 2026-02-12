@@ -16,8 +16,8 @@ Take care the select the following options when installing:
 The following commands configures common aliases (may require `;` to be appended at the end of each line):
 
 ```bash
-git config --global user.email "~@gilgamesh.cc"
-git config --global user.name "GILGAMESH"
+git config --global user.email "c706213d-56d4-42c1-a681-27fd4135a504@gilgamesh.cc"
+git config --global user.name "gilgamesh"
 git config --global core.autocrlf "false"
 git config --global core.fileMode "false"
 git config --global alias.co "checkout"
