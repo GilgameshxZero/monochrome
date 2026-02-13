@@ -123,7 +123,24 @@
     ],
     "updateDate": 1766799257683,
     "_id": "d53c8728-a8ae-495e-9ed4-574872a43bed",
-    "_rev": 1766799257683,
+    "_rev": 1769247016583,
     "id": 1
+  },
+  {
+    "enabled": true,
+    "installDate": 1770824102370,
+    "name": "mail.google.com/mail/u/2/",
+    "sections": [
+      {
+        "code": "body>div>div {\n    width: auto !important;\n}",
+        "urlPrefixes": [
+          "https://mail.google.com/mail/u/2/"
+        ]
+      }
+    ],
+    "updateDate": 1770824120883,
+    "_id": "a9a1b927-f915-4fac-8ad9-f03336ffa0e1",
+    "_rev": 1770824120883,
+    "id": 2
   }
 ]
