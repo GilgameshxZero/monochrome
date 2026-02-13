@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # By default, toggles the theme and night light.
 # Themes trigger twice due to chromium bug not adjusting theme on first trigger.
+qdbus6 org.kde.kglobalaccel /component/kwin invokeShortcut "Toggle Night Color"
 current_theme=$(kreadconfig6 --group KDE --key LookAndFeelPackage)
 if [ "$current_theme" = "org.manjaro.breath-dark.desktop" ]; then
 	lookandfeeltool -a org.manjaro.breath-light.desktop
@@ -11,4 +12,3 @@ else
 	sleep 0.4
 	lookandfeeltool -a org.manjaro.breath-dark.desktop
 fi
-qdbus6 org.kde.kglobalaccel /component/kwin invokeShortcut "Toggle Night Color"
