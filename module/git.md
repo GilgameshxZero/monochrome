@@ -20,7 +20,7 @@ git config --global user.email "c706213d-56d4-42c1-a681-27fd4135a504@gilgamesh.c
 git config --global user.name "gilgamesh"
 git config --global core.autocrlf "false"
 # true is probably okay here.
-git config --global core.fileMode "false"
+git config --global core.fileMode "true"
 git config --global alias.co "checkout"
 git config --global alias.cp "cherry-pick"
 git config --global alias.ac "! git add -A && git commit --allow-empty-message -am"
