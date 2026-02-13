@@ -4,6 +4,8 @@ if [ "$1" = "password" ]; then
 	id=$(tr -dc 'a-z0-9' < /dev/urandom | head -c 16)
 elif [ "$1" = "uuid" ]; then
 	id=$(uuidgen)
+elif [ "$1" = "totp" ]; then
+	id=$(oathtool -b --totp $(cat "$2"))
 fi
 echo "$id"
 qdbus6 org.kde.klipper /klipper setClipboardContents "$id"
