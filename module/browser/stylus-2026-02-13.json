@@ -129,18 +129,18 @@
   {
     "enabled": true,
     "installDate": 1770824102370,
-    "name": "mail.google.com/mail/u/2/",
+    "name": "mail.google.com/mail/",
     "sections": [
       {
-        "code": "body>div>div {\n    width: auto !important;\n}",
+        "code": "body>div.tVu25>div.nH {\n    width: auto !important;\n}",
         "urlPrefixes": [
           "https://mail.google.com/mail/u/2/"
         ]
       }
     ],
-    "updateDate": 1770824120883,
+    "updateDate": 1771023819418,
     "_id": "a9a1b927-f915-4fac-8ad9-f03336ffa0e1",
-    "_rev": 1770824120883,
+    "_rev": 1771023819418,
     "id": 2
   }
 ]
