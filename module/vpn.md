@@ -134,3 +134,5 @@ dhcp-option DNS 8.8.8.8
 Mobile clients split tunnels require some fiddling. This is because the configuration is slightly different (we may need an explicit route for the endpoint, and to remove the second default gateway route). By default we do not provide split tunnels for mobile clients.
 
 `persist-tun` should be used for full tunnels to ensure no data leakage. Right now this doesn’t work so well, because of the up/down scripts (on *nix) and some recursive routing shenanigans (verb 4) if the network is changed (due to some routes being removed and not re-added). It is set for MacOS since route removal on MacOS seems to fail.
+
+`block-outside-dns` needs to be removed for split tunnels.
