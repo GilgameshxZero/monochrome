@@ -4,20 +4,20 @@
 # echo 0 | sudo tee /sys/devices/system/cpu/cpu0/online
 # echo 0 | sudo tee /sys/devices/system/cpu/cpu4/online
 
-echo 0 | sudo tee /sys/devices/system/cpu/cpu1/online
-sleep 0.1
-echo 0 | sudo tee /sys/devices/system/cpu/cpu2/online
-sleep 0.1
-echo 0 | sudo tee /sys/devices/system/cpu/cpu3/online
-sleep 0.1
-echo 0 | sudo tee /sys/devices/system/cpu/cpu5/online
-sleep 0.1
-echo 0 | sudo tee /sys/devices/system/cpu/cpu6/online
-sleep 0.1
-echo 0 | sudo tee /sys/devices/system/cpu/cpu7/online
-sleep 0.1
-echo 0 | sudo tee /sys/devices/system/cpu/cpufreq/boost
-sleep 0.1
+# echo 0 | sudo tee /sys/devices/system/cpu/cpu1/online
+# sleep 0.1
+# echo 0 | sudo tee /sys/devices/system/cpu/cpu2/online
+# sleep 0.1
+# echo 0 | sudo tee /sys/devices/system/cpu/cpu3/online
+# sleep 0.1
+# echo 0 | sudo tee /sys/devices/system/cpu/cpu5/online
+# sleep 0.1
+# echo 0 | sudo tee /sys/devices/system/cpu/cpu6/online
+# sleep 0.1
+# echo 0 | sudo tee /sys/devices/system/cpu/cpu7/online
+# sleep 0.1
+# echo 0 | sudo tee /sys/devices/system/cpu/cpufreq/boost
+# sleep 0.1
 
 sudo cpupower -c all frequency-set -g powersave
 # Sometimes KDE does not set this correctly so we do it here.
