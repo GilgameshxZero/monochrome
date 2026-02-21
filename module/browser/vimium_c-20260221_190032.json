@@ -1,7 +1,7 @@
 {
 	"name": "Vimium C",
-	"@time": "2/11/2026, 8:33:23 AM",
-	"time": 1770798803965,
+	"@time": "2/21/2026, 7:00:32 PM",
+	"time": 1771700432574,
 	"environment": {
 		"extension": "2.12.3",
 		"platform": "linux",
@@ -20,6 +20,10 @@
 		{
 			"passKeys": "- 8 9 <esc> ",
 			"pattern": ":https://192.168.50.40:8006/"
+		},
+		{
+			"passKeys": "",
+			"pattern": ":https://gilgamesh.cc:61054/"
 		}
 	],
 	"extAllowList": [
@@ -74,6 +78,7 @@
 		"",
 		"shortcut userCustomized11 command=\"mainFrame\"",
 		"shortcut userCustomized12 command=\"nextFrame\"",
+		"shortcut userCustomized13 command=\"LinkHints.activateCopyLinkUrl\"",
 		"",
 		"# Additional non-shortcuts.",
 		"map <c--> zoomOut",
