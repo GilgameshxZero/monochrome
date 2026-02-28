@@ -1,8 +1,10 @@
-// Local files are specific to each device and do not need to be synced.
+// Local files are specific to each device and do not need
+// to be synced.
 **/*local.syncthing*
 
-// Project-local includes are not supported by `syncthing`; that is, included
-// files declare their patterns relative to the project root:
+// Project-local includes are not supported by `syncthing`;
+// that is, included files declare their patterns relative
+// to the project root:
 // <https://docs.syncthing.net/users/ignoring.html>.
 
 // Syncthing nesting; experimental.
@@ -10,9 +12,9 @@
 (?d)**/.stignore
 (?d)**/.stversions
 
-// A temporary file for `a.b` is stored with the name `.a.tmp.b` in our
-// ecosystem. If `b` doesn't exist, then it will be stored with the name
-// `.a.tmp`.
+// A temporary file for `a.b` is stored with the name
+// `.a.tmp.b` in our ecosystem. If `b` doesn't exist, then
+// it will be stored with the name `.a.tmp`.
 (?d)**/.*.tmp.*
 (?d)**/.*.tmp
 
@@ -34,25 +36,28 @@
 (?d)**/.stackdump
 (?d)**/.user
 
-// Development intermediaries are generally the same as those in `.gitignore`.
-// Files which can be generated should not be synced. `.bin` is used for built
-// files, and `.obj` is used for intermediaries. `.venv` for Python `venv`, and
-// `.data` for downloaded datasets.
-(?d)**/.vs/
-(?d)**/.venv/
-(?d)**/.data/
-(?d)**/.bin/
-(?d)**/.obj/
+// Development intermediaries are generally the same as
+// those in `.gitignore`. Files which can be generated
+// should not be synced. `.bin` is used for built files, and
+// `.obj` is used for intermediaries. `.venv` for Python
+// `venv`, and `.data` for downloaded datasets.
+//
+// Directories must not have a trailing slash.
+(?d)**/.vs
+(?d)**/.venv
+(?d)**/.data
+(?d)**/.bin
+(?d)**/.obj
 
 // General development.
-(?d)**/__pycache__/
-(?d)**/.ipynb_checkpoints/
-(?d)**/jspm_packages/
-(?d)**/node_modules/
+(?d)**/__pycache__
+(?d)**/.ipynb_checkpoints
+(?d)**/jspm_packages
+(?d)**/node_modules
 
 // Manual fixes.
 
-// Some overrides for files contain `?` in the filename, which is not supported
-// across platforms. It is difficult to ignore single files with `?` for some
-// reason.
-// (?d)monochrome/module/browser/overrides/
+// Some overrides for files contain `?` in the filename,
+// which is not supported across platforms. It is difficult
+// to ignore single files with `?` for some reason.
+// (?d)monochrome/module/browser/overrides
