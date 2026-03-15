@@ -25,7 +25,7 @@ if [ "$1" = "audio" ]; then
 			--output "%(uploader)s-%(title)s" \
 			--restrict-filenames \
 			--windows-filenames \
-			--format bestaudio \
+			--format bestaudio/best \
 			--cookies-from-browser chromium \
 			--js-runtimes node \
 			--remote-components ejs:github \
@@ -38,7 +38,7 @@ if [ "$1" = "audio" ]; then
 			--output ".%(uploader)s-%(title)s.old.tmp" \
 			--restrict-filenames \
 			--windows-filenames \
-			--format bestaudio \
+			--format bestaudio/best \
 			--cookies-from-browser chromium \
 			--js-runtimes node \
 			--remote-components ejs:github \
