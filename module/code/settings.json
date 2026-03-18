@@ -87,7 +87,7 @@
 
 	"markdown.preview.breaks": true,
 	"markdown.copyFiles.destination": {
-		"**/*": "${documentDirName}/${documentFileName}.assets/${unixTime}.${fileName}"
+		"**/*": "${documentDirName}/${documentFileName}.asset/${unixTime}.${fileName}"
 	},
 	"markdown.preview.fontSize": 16,
 	"markdown.preview.lineHeight": 1.5,
@@ -199,9 +199,9 @@
 	},
 	"workbench.commandPalette.experimental.suggestCommands": true,
 	"workbench.startupEditor": "none",
-	"workbench.preferredHighContrastColorTheme": "Default High Contrast",
+	"workbench.preferredHighContrastColorTheme": "Default High Contrast Light",
 	"workbench.preferredLightColorTheme": "Default High Contrast Light",
-	"workbench.preferredDarkColorTheme": "Default Dark Modern",
+	"workbench.preferredDarkColorTheme": "Default High Contrast",
 	"workbench.editor.tabSizing": "shrink",
 	"workbench.list.mouseWheelScrollSensitivity": 3,
 	"workbench.editor.empty.hint": "hidden",
@@ -249,6 +249,7 @@
 		"Fenwicks",
 		"Fonte",
 		"fragmentatia",
+		"FUSCATE",
 		"Gdiplus",
 		"GWLP",
 		"Hanazawa",
@@ -263,7 +264,7 @@
 		"infty",
 		"injective",
 		"interdimensional",
-		"Kadane’s",
+		"Kadane",
 		"Kanbaru",
 		"Karp",
 		"Kizumonogatari",
@@ -299,7 +300,7 @@
 		"rewatch",
 		"rewatched",
 		"segtree",
-		"Sengoku’s",
+		"Sengoku",
 		"Senjougahara",
 		"SETLOCAL",
 		"SFINAE",
