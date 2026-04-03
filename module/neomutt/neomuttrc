@@ -1,0 +1,53 @@
+set imap_user="yangawesome@gmail.com"
+set folder="imaps://imap.gmail.com"
+set spoolfile=+INBOX
+set record="+[Gmail]/Sent Mail"
+set postponed="+[Gmail]/Drafts"
+set trash = "+[Gmail]/Bin"
+
+set imap_authenticators = "oauthbearer:xoauth2"
+set imap_oauth_refresh_command = "/usr/share/neomutt/oauth2/mutt_oauth2.py /home/gilgamesh/yangawesome@gmail.com.token"
+set smtp_oauth_refresh_command = "$imap_oauth_refresh_command"
+
+set realname="Yang Yan"
+set from="yang@gilgamesh.cc"
+# set smtp_url="smtp://yang@gilgamesh.cc:25"
+unset ssl_force_tls
+# set smtp_url="smtp://yang@127.0.0.1:2525"
+set smtp_url="smtp://yang@gilgamesh.cc:2525"
+set smtp_pass="REDACTED"
+
+set editor="/usr/bin/vim"
+set header_cache="~/.neomutt/cache/headers"
+set message_cachedir="~/.neomutt/cache/messages/"
+
+set sort=reverse-date
+set sort_aux=last-date-received
+# set sidebar_visible
+set sidebar_format="%B%?F? [%F]?%* %?N?%N/?%S"
+mailboxes =INBOX =[Gmail]/All\ Mail =[Gmail]/Sent\ Mail =[Gmail]/Drafts =[Gmail]/Spam =[Gmail]/Bin
+
+bind index,pager,attach g noop
+macro index gi "<change-folder>=INBOX<enter>" "Go to inbox"
+macro index ga "<change-folder>=[Gmail]/All^V Mail<enter>" "Go to all mail"
+macro index gs "<change-folder>=[Gmail]/Sent^V Mail<enter>" "Go to sent mail"
+macro index gd "<change-folder>=[Gmail]/Drafts<enter>" "Go to drafts"
+macro index gp "<change-folder>=[Gmail]/Spam<enter>" "Go to spam"
+macro index gb "<change-folder>=[Gmail]/Bin<enter>" "Go to bin"
+macro index,pager d "<save-message>=[Gmail]/Bin<enter><enter><sync-mailbox><enter>" "Bin"
+macro index,pager y "<save-message>=[Gmail]/All^V Mail<enter><enter><sync-mailbox><enter>" "Archive"
+bind index,attach gg first-entry
+bind index,attach gG last-entry
+
+bind index N search-opposite
+bind index \cn toggle-new
+
+# bind index,pager \CP sidebar-prev
+# bind index,pager \CN sidebar-next
+# bind index,pager \CI sidebar-open
+# bind index,pager \CB sidebar-toggle-visible
+
+# bind pager g top
+# bind pager G bottom
+# bind attach,index g first-entry
+# bind attach,index G last-entry

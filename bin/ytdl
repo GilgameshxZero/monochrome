@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Proxy for `yt-dlp` with some defaults.
 yt-dlp \
-	--cookies-from-browser chromium \
+	--cookies-from-browser chromium+kwallet6 \
 	--js-runtimes node \
 	--remote-components ejs:github \
-	$@
+	"$@"

@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# Preferred font size for TTYs from /usr/share/kbd/consolefonts.
+# setfont -d ter-124b
+setfont -d ter-132b
+# True white.
+echo -en "\e]P7ffffff"
+# Set block cursor.
+echo -e "\033[?112c"
+# white bk, black fg
+setterm -inversescreen on
+# fullscreen, needs sudo.
+sudo fbset -xres 2880 -yres 1800

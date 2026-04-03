@@ -20,3 +20,16 @@ Manjaro Linux 25.0.1
 8. hinge
 
 Disable by blacklisting `intel_ish_ipc`.
+
+## `mpv` on `tty`
+
+```bash
+mpv --vo=drm --drm-connector=DP-1 ...
+mpv --vo=gpu-next --drm-connector=eDP-1 --gpu-context=drm ...
+```
+
+## Cursor shape in `curses` applications
+
+```bash
+infocmp linux-m | sed 's/cnorm=[^,]*/cnorm=\\E[?25h\\E[?112c/' | tic -
+```
