@@ -5,6 +5,8 @@ Intel Core Ultra 258V | 32GB RAM | 1TB SSD
 Manjaro Linux 25.0.1
 3HM5WYU-ADML4GQ-HFARHWR-5JWFRNB-G3CCGEU-YOFNHCV-PJQ2CHU-XAK66QI
 
+1. <https://bbs.archlinux.org/viewtopic.php?id=266961>.
+
 ## `iio` sensors
 
 `/sys/bus/iio/devices/`:

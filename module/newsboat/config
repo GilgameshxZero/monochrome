@@ -1,5 +1,7 @@
-cleanup-on-quit no
-color listfocus default white bold
+cleanup-on-quit	no
+
+color listfocus black white bold
 color listfocus_unread black white bold
 color title black white bold
 color info black white bold
+color hint-key black white bold
