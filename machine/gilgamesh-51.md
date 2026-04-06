@@ -33,5 +33,12 @@ mpv --vo=gpu-next --drm-connector=eDP-1 --gpu-context=drm ...
 ## Cursor shape in `curses` applications
 
 ```bash
+infocmp linux | sed 's/cnorm=[^,]*/cnorm=\\E[?25h\\E[?112c/' | tic -
 infocmp linux-m | sed 's/cnorm=[^,]*/cnorm=\\E[?25h\\E[?112c/' | tic -
+```
+
+## Screenshot `tty`
+
+```bash
+sudo fbgrab -s 3 fb.png 2>/dev/null &
 ```

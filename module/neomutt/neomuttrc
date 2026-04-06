@@ -6,44 +6,35 @@ set postponed="+[Gmail]/Drafts"
 set trash = "+[Gmail]/Bin"
 
 set imap_authenticators = "oauthbearer:xoauth2"
-set imap_oauth_refresh_command = "/usr/share/neomutt/oauth2/mutt_oauth2.py /home/gilgamesh/yangawesome@gmail.com.token"
-set smtp_oauth_refresh_command = "$imap_oauth_refresh_command"
+set imap_oauth_refresh_command = "/usr/share/neomutt/oauth2/mutt_oauth2.py ~/yangawesome@gmail.com.token"
 
 set realname="Yang Yan"
 set from="yang@gilgamesh.cc"
 unset ssl_force_tls
-# set smtp_url="smtp://yang@gilgamesh.cc:25"
 set smtp_url="smtp://yang@gilgamesh.cc:2525"
 
 set editor="/usr/bin/vim"
-set header_cache="~/.neomutt/cache/headers"
-set message_cachedir="~/.neomutt/cache/messages/"
+set header_cache="~/.neomutt/cache/"
+set message_cachedir="~/.neomutt/cache/"
 set pager_stop=yes
 set sort=reverse-date
 set sort_aux=last-date-received
 set sidebar_format="%B%?F? [%F]?%* %?N?%N/?%S"
 mailboxes =INBOX =[Gmail]/All\ Mail =[Gmail]/Sent\ Mail =[Gmail]/Drafts =[Gmail]/Spam =[Gmail]/Bin
+unset delete
+set include=yes
+set query_command="mutt_vc_query -f ~/main.syncthing/wallflower/contacts.vcf '%s'"
+set signature="~/main.syncthing/monochrome/module/neomutt/.signature"
+set mail_check=300
 
-bind index,pager,attach g noop
-macro index,pager gi "<change-folder>=INBOX<enter><first-entry>" "Go to inbox"
-macro index ga "<change-folder>=[Gmail]/All^V Mail<enter><first-entry>" "Go to all mail"
-macro index gs "<change-folder>=[Gmail]/Sent^V Mail<enter><first-entry>" "Go to sent mail"
-macro index gd "<change-folder>=[Gmail]/Drafts<enter><first-entry>" "Go to drafts"
-macro index gp "<change-folder>=[Gmail]/Spam<enter><first-entry>" "Go to spam"
-macro index gb "<change-folder>=[Gmail]/Bin<enter><first-entry>" "Go to bin"
-bind index,attach gg first-entry
-bind index,attach gG last-entry
-bind pager gg top
-bind pager gG bottom
+bind editor <Tab> complete-query
+bind editor ^T complete
 bind index N search-opposite
-bind index \cn toggle-new
+bind index \CN toggle-new
+bind index,pager R group-reply
 
+# Probably just use `d` for fast archive, then `$` to sync.
 bind index,pager x noop
-macro index,pager d "<save-message>=[Gmail]/Bin<enter><enter><sync-mailbox><enter>" "Bin"
-macro index,pager y "<save-message>=[Gmail]/All^V Mail<enter><enter><sync-mailbox><enter>" "Archive"
-macro index,pager xi "<save-message>=INBOX<enter><enter><sync-mailbox><enter>" "Unspam"
-# bind index,pager xs sidebar-toggle-visible
-# bind index,pager xp sidebar-prev
-# bind index,pager xn sidebar-next
-# bind index,pager xo sidebar-open
-# set sidebar_visible
+macro index,pager xb "<save-message>=[Gmail]/Bin<enter><enter>"
+macro index,pager xa "<save-message>=[Gmail]/All^V Mail<enter><enter>"
+macro index,pager xi "<save-message>=INBOX<enter><enter>"
