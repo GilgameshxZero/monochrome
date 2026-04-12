@@ -48,16 +48,24 @@
 	"editor.inertialScroll": false,
 	"editor.mouseWheelScrollSensitivity": 1.5,
 	"editor.quickSuggestions": {
-		"other": "false",
+		"other": false,
 		"comments": "off",
 		"strings": "off"
 	},
 	"editor.lightbulb.enabled": "off",
 	"editor.pasteAs.showPasteSelector": "never",
+	"editor.colorDecorators": false,
+	// Disable all color and syntax highlights.
+	"editor.maxTokenizationLineLength": 0,
+	"editor.cursorStyle": "block",
+	"editor.lineNumbers": "off",
+	// Undocumented for 0-width gutter.
+	"editor.lineDecorationsWidth": 0,
 
 	"explorer.confirmDelete": false,
 	"explorer.confirmDragAndDrop": false,
 	"explorer.sortOrder": "mixed",
+	"explorer.decorations.colors": false,
 
 	"extensions.ignoreRecommendations": true,
 	"extensions.autoUpdate": false,
@@ -79,8 +87,7 @@
 	"git.enableSmartCommit": true,
 	"git.openRepositoryInParentFolders": "always",
 	"git.ignoreMissingGitWarning": true,
-
-	"inlineChat.lineNaturalLanguageHint": false,
+	"git.decorations.enabled": false,
 
 	"html.format.indentInnerHtml": true,
 	"html.format.wrapLineLength": 80,
@@ -173,6 +180,11 @@
 	"terminal.integrated.showExitAlert": false,
 	"terminal.integrated.stickyScroll.enabled": false,
 	"terminal.integrated.defaultLocation": "editor",
+	"terminal.integrated.minimumContrastRatio": 21,
+	"terminal.integrated.tabStopWidth": 2,
+	"terminal.integrated.shellIntegration.decorationsEnabled": "never",
+	"terminal.integrated.shellIntegration.quickFixEnabled": false,
+	"terminal.integrated.lineDecorationsWidth": 0,
 
 	"timeline.pageOnScroll": true,
 
@@ -189,6 +201,139 @@
 	"window.newWindowProfile": "Default",
 	"window.density.editorTabHeight": "compact",
 
+	"workbench.colorCustomizations": {
+		"[Default High Contrast Light]": {
+			"focusBorder": "#000000",
+			"panel.border": "#000000",
+			"tab.activeBorder": "#000000",
+			"tab.activeBorderTop": "#000000",
+			"tab.border": "#000000",
+			"sideBarTitle.border": "#000000",
+			"editorGroupHeader.border": "#000000",
+			"sideBar.border": "#000000",
+			"sideBarActivityBarTop.border": "#000000",
+			"widget.border": "#000000",
+			"editorWidget.border": "#000000",
+			"editorWidget.background": "#ffffff",
+			"menu.border": "#000000",
+			"titleBar.border": "#000000",
+			"statusBar.border": "#000000",
+			"keybindingLabel.border": "#000000",
+			"keybindingLabel.bottomBorder": "#000000",
+
+			"editor.foreground": "#000000",
+			"editor.selectionBackground": "#000000",
+			"editorGutter.background": "#000000",
+			"editorLineNumber.foreground": "#ffffff",
+			"editorLineNumber.activeForeground": "#ffffff",
+			"editor.findMatchHighlightBackground": "#ffffff00",
+			"editor.findMatchHighlightForeground": "#00000000",
+			"editor.findMatchBackground": "#000000",
+			"editor.findMatchForeground": "#000000",
+			"editorBracketHighlight.foreground1": "#000000",
+			"editorBracketHighlight.foreground2": "#000000",
+			"editorBracketHighlight.foreground3": "#000000",
+			"editorBracketHighlight.foreground4": "#000000",
+			"editorBracketHighlight.foreground5": "#000000",
+			"editorBracketHighlight.foreground6": "#000000",
+			"editorCursor.foreground": "#000000",
+			"editor.lineHighlightBorder": "#000000",
+
+			"editorGutter.addedBackground": "#00000000",
+			"editorGutter.deletedBackground": "#00000000",
+			"editorGutter.modifiedBackground": "#00000000",
+
+			// Show error and warnings.
+			"editorError.foreground": "#000000",
+			"editorError.border": "#00000000",
+			"editorWarning.foreground": "#000000",
+			"editorWarning.border": "#00000000",
+			"editorInfo.foreground": "#00000000",
+			"editorInfo.border": "#00000000",
+
+			"scrollbar.background": "#00000000",
+			"scrollbarSlider.background": "#000000",
+			"scrollbarSlider.activeBackground": "#000000",
+			"scrollbarSlider.hoverBackground": "#000000",
+
+			"terminal.ansiRed": "#000000",
+			"terminal.ansiGreen": "#000000",
+			"terminal.ansiBlue": "#000000",
+			"terminal.ansiCyan": "#000000",
+			"terminal.ansiBrightGreen": "#000000",
+			"terminal.ansiBrightCyan": "#000000",
+			"terminal.ansiBlack": "#000000",
+			"terminal.ansiBrightBlack": "#000000",
+			"terminal.ansiWhite": "#ffffff",
+			"terminal.ansiBrightWhite": "#ffffff"
+		},
+		"[Default High Contrast]": {
+			"focusBorder": "#ffffff",
+			"panel.border": "#ffffff",
+			"tab.activeBorder": "#ffffff",
+			"tab.activeBorderTop": "#ffffff",
+			"tab.border": "#ffffff",
+			"sideBarTitle.border": "#ffffff",
+			"editorGroupHeader.border": "#ffffff",
+			"sideBar.border": "#ffffff",
+			"sideBarActivityBarTop.border": "#ffffff",
+			"widget.border": "#ffffff",
+			"editorWidget.border": "#ffffff",
+			"editorWidget.background": "#000000",
+			"menu.border": "#ffffff",
+			"titleBar.border": "#ffffff",
+			"statusBar.border": "#ffffff",
+			"keybindingLabel.border": "#ffffff",
+			"keybindingLabel.bottomBorder": "#ffffff",
+
+			"editor.foreground": "#ffffff",
+			"editor.selectionBackground": "#ffffff",
+			"editorGutter.background": "#ffffff",
+			"editorLineNumber.foreground": "#000000",
+			"editorLineNumber.activeForeground": "#000000",
+			"editor.findMatchHighlightBackground": "#00000000",
+			"editor.findMatchHighlightForeground": "#ffffff00",
+			"editor.findMatchBackground": "#ffffff",
+			"editor.findMatchForeground": "#ffffff",
+			"editorBracketHighlight.foreground1": "#ffffff",
+			"editorBracketHighlight.foreground2": "#ffffff",
+			"editorBracketHighlight.foreground3": "#ffffff",
+			"editorBracketHighlight.foreground4": "#ffffff",
+			"editorBracketHighlight.foreground5": "#ffffff",
+			"editorBracketHighlight.foreground6": "#ffffff",
+			"editorCursor.foreground": "#ffffff",
+			"editor.lineHighlightBorder": "#ffffff",
+
+			"editorGutter.addedBackground": "#ffffff00",
+			"editorGutter.deletedBackground": "#ffffff00",
+			"editorGutter.modifiedBackground": "#ffffff00",
+
+			// Show error and warnings.
+			"editorError.foreground": "#ffffff",
+			"editorError.border": "#ffffff00",
+			"editorWarning.foreground": "#ffffff",
+			"editorWarning.border": "#ffffff00",
+			"editorInfo.foreground": "#ffffff00",
+			"editorInfo.border": "#ffffff00",
+
+			"scrollbar.background": "#ffffff00",
+			"scrollbarSlider.background": "#ffffff",
+			"scrollbarSlider.activeBackground": "#ffffff",
+			"scrollbarSlider.hoverBackground": "#ffffff",
+
+			"terminal.ansiRed": "#ffffff",
+			"terminal.ansiGreen": "#ffffff",
+			"terminal.ansiBlue": "#ffffff",
+			"terminal.ansiCyan": "#ffffff",
+			"terminal.ansiBrightGreen": "#ffffff",
+			"terminal.ansiBrightCyan": "#ffffff",
+			"terminal.ansiBlack": "#ffffff",
+			"terminal.ansiBrightBlack": "#ffffff",
+			"terminal.ansiWhite": "#000000",
+			"terminal.ansiBrightWhite": "#000000"
+		}
+	},
+	"workbench.iconTheme": null,
 	"workbench.layoutControl.enabled": false,
 	"workbench.tips.enabled": false,
 	"workbench.editor.focusRecentEditorAfterClose": false,
@@ -218,10 +363,14 @@
 		"abelian",
 		"aeterna",
 		"Alveria",
+		"Alverian",
+		"Alverians",
 		"APSP",
 		"Araragi",
 		"ARGB",
+		"Arxists",
 		"Astris",
+		"Astrites",
 		"Astrum",
 		"Bili",
 		"Bluepoch",
@@ -237,6 +386,7 @@
 		"Datapoint",
 		"dedup",
 		"Dragonspine",
+		"Dragonstail",
 		"Duffin",
 		"Edmonds",
 		"ENABLEDELAYEDEXPANSION",
@@ -246,7 +396,10 @@
 		"eternalism",
 		"eternalist",
 		"everwinter",
+		"Felys",
 		"Felysia",
+		"Felysian",
+		"Felysians",
 		"Fenwick",
 		"Fenwicks",
 		"Fonte",
@@ -281,6 +434,7 @@
 		"Madoka",
 		"mathbb",
 		"Monogatari",
+		"Morozov",
 		"MOUSEEVENTF",
 		"Nadeko",
 		"nullptr",
@@ -361,19 +515,21 @@
 	"markdown.extension.print.pureHtml": true,
 
 	"notebook.cellToolbarLocation": {
-		"default": "right",
-		"jupyter-notebook": "right"
+		"default": "hidden",
+		"jupyter-notebook": "hidden"
 	},
 	"notebook.output.wordWrap": true,
 	"notebook.editorOptionsCustomizations": {
 		"editor.tabSize": 4,
 		"editor.indentSize": 4,
-		"editor.insertSpaces": true
+		"editor.insertSpaces": true,
 	},
 	"notebook.confirmDeleteRunningCell": false,
 	"notebook.formatOnSave.enabled": true,
 	"notebook.output.textLineLimit": 10,
 	"notebook.output.scrolling": true,
+	"notebook.globalToolbar": false,
+	"notebook.showCellStatusBar": "hidden",
 
 	"prettier.useTabs": true,
 	"prettier.trailingComma": "none",
@@ -449,6 +605,8 @@
 	},
 
 	// VSCode-specific settings.
+	"inlineChat.lineNaturalLanguageHint": false,
+
 	"liveshare.notebooks.allowGuestExecuteCells": true,
 
 	"remote.SSH.externalSSH_ASKPASS": true,
@@ -471,6 +629,4 @@
 	"C_Cpp.clang_format_fallbackStyle": "{ \tBasedOnStyle: Chromium,  \tUseTab: Always, \tTabWidth: 2, \tPointerAlignment: Right,  \tNamespaceIndentation: All, \tFixNamespaceComments: false, \tAccessModifierOffset: 0, \tIndentCaseLabels: true,  \tAlignAfterOpenBracket: AlwaysBreak, \tAlignOperands: false, \tContinuationIndentWidth: 2,  \tBinPackArguments: false, \tBinPackParameters: false, \tAlignConsecutiveDeclarations: false, \tAllowShortIfStatementsOnASingleLine: true, \tAllowShortLoopsOnASingleLine: true,  \tAlignTrailingComments: false, \tReflowComments: true, \tColumnLimit: 80,  \tIncludeBlocks: Preserve, \tSortUsingDeclarations: false, }",
 	"C_Cpp.experimentalFeatures": "enabled",
 	"C_Cpp.intelliSenseCacheSize": 1024
-
-	// Additional settings.
 }

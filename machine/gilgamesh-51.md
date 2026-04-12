@@ -42,3 +42,7 @@ infocmp linux-m | sed 's/cnorm=[^,]*/cnorm=\\E[?25h\\E[?112c/' | tic -
 ```bash
 sudo fbgrab -s 3 fb.png 2>/dev/null &
 ```
+
+## Bugs
+
+1. Seems like alt-tabbing fast between two chromium windows with the “Compact” visualization turned on will eventually freeze both windows until the mouse moves.

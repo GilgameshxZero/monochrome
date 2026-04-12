@@ -395,5 +395,143 @@
 		"key": "ctrl+shift+i",
 		"command": "-notebook.formatCell",
 		"when": "editorHasDocumentFormattingProvider && editorTextFocus && inCompositeEditor && notebookEditable && !editorReadonly && activeEditor == 'workbench.editor.notebook'"
+	},
+	{
+		"key": "ctrl+r",
+		"command": "-workbench.action.terminal.runRecentCommand",
+		"when": "accessibilityModeEnabled && terminalFocus && terminalHasBeenCreated || accessibilityModeEnabled && terminalFocus && terminalProcessSupported || accessibilityModeEnabled && accessibleViewIsShown && terminalHasBeenCreated && accessibleViewCurrentProviderId == 'terminal' || accessibilityModeEnabled && accessibleViewIsShown && terminalProcessSupported && accessibleViewCurrentProviderId == 'terminal'"
+	},
+	{
+		"key": "ctrl+alt+r",
+		"command": "-workbench.action.terminal.runRecentCommand",
+		"when": "terminalFocus && terminalHasBeenCreated && !accessibilityModeEnabled || terminalFocus && terminalProcessSupported && !accessibilityModeEnabled"
+	},
+	{
+		"key": "alt+1",
+		"command": "-workbench.action.openEditorAtIndex1"
+	},
+	{
+		"key": "alt+2",
+		"command": "-workbench.action.openEditorAtIndex2"
+	},
+	{
+		"key": "alt+3",
+		"command": "-workbench.action.openEditorAtIndex3"
+	},
+	{
+		"key": "alt+4",
+		"command": "-workbench.action.openEditorAtIndex4"
+	},
+	{
+		"key": "alt+5",
+		"command": "-workbench.action.openEditorAtIndex5"
+	},
+	{
+		"key": "alt+6",
+		"command": "-workbench.action.openEditorAtIndex6"
+	},
+	{
+		"key": "alt+7",
+		"command": "-workbench.action.openEditorAtIndex7"
+	},
+	{
+		"key": "alt+8",
+		"command": "-workbench.action.openEditorAtIndex8"
+	},
+	{
+		"key": "alt+9",
+		"command": "-workbench.action.openEditorAtIndex9"
+	},
+	{
+		"key": "alt+0",
+		"command": "-workbench.action.lastEditorInGroup"
+	},
+	{
+		"key": "shift+alt+1",
+		"command": "-workbench.action.moveEditorToFirstGroup"
+	},
+	{
+		"key": "shift+alt+0",
+		"command": "-workbench.action.toggleEditorGroupLayout"
+	},
+	{
+		"key": "ctrl+1",
+		"command": "-workbench.action.focusFirstEditorGroup"
+	},
+	{
+		"key": "ctrl+2",
+		"command": "-workbench.action.focusSecondEditorGroup"
+	},
+	{
+		"key": "ctrl+3",
+		"command": "-workbench.action.focusThirdEditorGroup"
+	},
+	{
+		"key": "ctrl+4",
+		"command": "-workbench.action.focusFourthEditorGroup"
+	},
+	{
+		"key": "ctrl+5",
+		"command": "-workbench.action.focusFifthEditorGroup"
+	},
+	{
+		"key": "ctrl+6",
+		"command": "-workbench.action.focusSixthEditorGroup"
+	},
+	{
+		"key": "ctrl+7",
+		"command": "-workbench.action.focusSeventhEditorGroup"
+	},
+	{
+		"key": "ctrl+8",
+		"command": "-workbench.action.focusEighthEditorGroup"
+	},
+	{
+		"key": "ctrl+9",
+		"command": "-workbench.action.lastEditorInGroup"
+	},
+	{
+		"key": "ctrl+0",
+		"command": "-workbench.action.focusSideBar"
+	},
+	{
+		"key": "ctrl+1",
+		"command": "workbench.action.openEditorAtIndex1"
+	},
+	{
+		"key": "ctrl+2",
+		"command": "workbench.action.openEditorAtIndex2"
+	},
+	{
+		"key": "ctrl+3",
+		"command": "workbench.action.openEditorAtIndex3"
+	},
+	{
+		"key": "ctrl+4",
+		"command": "workbench.action.openEditorAtIndex4"
+	},
+	{
+		"key": "ctrl+5",
+		"command": "workbench.action.openEditorAtIndex5"
+	},
+	{
+		"key": "ctrl+6",
+		"command": "workbench.action.openEditorAtIndex6"
+	},
+	{
+		"key": "ctrl+7",
+		"command": "workbench.action.openEditorAtIndex7"
+	},
+	{
+		"key": "ctrl+8",
+		"command": "workbench.action.openEditorAtIndex8"
+	},
+	{
+		"key": "ctrl+9",
+		"command": "workbench.action.openEditorAtIndex9"
+	},
+	{
+		"key": "ctrl+0",
+		"command": "workbench.action.lastEditorInGroup"
 	}
 ]

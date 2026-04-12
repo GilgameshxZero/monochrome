@@ -25,7 +25,7 @@ powerprofilesctl set power-saver
 
 # Fan control.
 # sudo modprobe ec_sys write_support=1
-# echo -n -e "\x88" | sudo dd of="/sys/kernel/debug/ec/ec0/io" bs=1 seek=45 count=1 conv=notrunc
+# echo -ne "\x88" | sudo dd of="/sys/kernel/debug/ec/ec0/io" bs=1 seek=45 count=1 conv=notrunc
 
 # Applications.
 # sudo pkill -9 pipewire
