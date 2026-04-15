@@ -5,6 +5,7 @@
 **.sswan
 **.vnc
 **.password.*
+**.password
 
 # Syncthing.
 **/*local.syncthing*

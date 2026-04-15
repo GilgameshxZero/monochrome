@@ -164,3 +164,4 @@
 71. `FILTER_BRANCH_SQUELCH_WARNING=1 git filter-branch -f --env-filter "GIT_AUTHOR_NAME='gilgamesh'; GIT_AUTHOR_EMAIL='c706213d-56d4-42c1-a681-27fd4135a504@gilgamesh.cc'; GIT_COMMITTER_NAME='gilgamesh'; GIT_COMMITTER_EMAIL='c706213d-56d4-42c1-a681-27fd4135a504@gilgamesh.cc';" HEAD`
 72. <https://wiki.archlinux.org/title/Bluetooth#Preparing_Bluetooth_5.1_Keys>
 	1.  Can use LTK for both Slave/Peripheral, same with EDiv and ERand values.
+73. `purple-facebook-git` on AUR needs `glib2-devel`.

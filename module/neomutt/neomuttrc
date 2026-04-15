@@ -1,3 +1,8 @@
+# Use this file with
+# `source ~/main.syncthing/monochrome/module/neomutt/neomuttrc`.
+# This file automatically sources the relevant passwords.
+source ~/main.syncthing/monochrome/module/neomutt/neomuttrc.password
+
 set imap_user="yangawesome@gmail.com"
 set folder="imaps://imap.gmail.com"
 set spoolfile=+INBOX
@@ -6,7 +11,7 @@ set postponed="+[Gmail]/Drafts"
 set trash = "+[Gmail]/Bin"
 
 set imap_authenticators = "oauthbearer:xoauth2"
-set imap_oauth_refresh_command = "/usr/share/neomutt/oauth2/mutt_oauth2.py ~/yangawesome@gmail.com.token"
+set imap_oauth_refresh_command = "/usr/share/neomutt/oauth2/mutt_oauth2.py ~/main.syncthing/monochrome/module/neomutt/yangawesome_gmail.com.password.token"
 
 set realname="Yang Yan"
 set from="yang@gilgamesh.cc"
