@@ -165,3 +165,5 @@
 72. <https://wiki.archlinux.org/title/Bluetooth#Preparing_Bluetooth_5.1_Keys>
 	1.  Can use LTK for both Slave/Peripheral, same with EDiv and ERand values.
 73. `purple-facebook-git` on AUR needs `glib2-devel`.
+74. `sudo dd if=/dev/sda bs=64M | pv | pigz -9 | ssh root@192.168.50.40 "dd of=/mnt/pve/sdb/template/iso/gilgamesh-52.20260418.gz.iso bs=64M"`
+	1.  `tar cf - DIRECTORY | pigz > DIRECTORY.tar.gz`
