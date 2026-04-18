@@ -55,12 +55,15 @@
 	"editor.lightbulb.enabled": "off",
 	"editor.pasteAs.showPasteSelector": "never",
 	"editor.colorDecorators": false,
-	// Disable all color and syntax highlights.
+	// Disable all color and syntax highlights. The second line is needed in case of external (?) language servers e.g. `clangd`.
 	"editor.maxTokenizationLineLength": 0,
+	"editor.semanticHighlighting.enabled": false,
+	"editor.selectionHighlight": false,
 	"editor.cursorStyle": "block",
 	"editor.lineNumbers": "off",
 	// Undocumented for 0-width gutter.
 	"editor.lineDecorationsWidth": 0,
+	"editor.occurrencesHighlight": "off",
 
 	"explorer.confirmDelete": false,
 	"explorer.confirmDragAndDrop": false,
@@ -90,7 +93,7 @@
 	"git.decorations.enabled": false,
 
 	"html.format.indentInnerHtml": true,
-	"html.format.wrapLineLength": 80,
+	"html.format.wrapLineLength": 60,
 
 	"markdown.preview.breaks": true,
 	"markdown.copyFiles.destination": {
@@ -184,7 +187,6 @@
 	"terminal.integrated.tabStopWidth": 2,
 	"terminal.integrated.shellIntegration.decorationsEnabled": "never",
 	"terminal.integrated.shellIntegration.quickFixEnabled": false,
-	"terminal.integrated.lineDecorationsWidth": 0,
 
 	"timeline.pageOnScroll": true,
 
@@ -239,6 +241,8 @@
 			"editorCursor.foreground": "#000000",
 			"editor.lineHighlightBorder": "#000000",
 
+			"textLink.foreground": "#000000",
+
 			"editorGutter.addedBackground": "#00000000",
 			"editorGutter.deletedBackground": "#00000000",
 			"editorGutter.modifiedBackground": "#00000000",
@@ -260,8 +264,14 @@
 			"terminal.ansiGreen": "#000000",
 			"terminal.ansiBlue": "#000000",
 			"terminal.ansiCyan": "#000000",
+			"terminal.ansiMagenta": "#000000",
+			"terminal.ansiYellow": "#000000",
+			"terminal.ansiBrightRed": "#000000",
 			"terminal.ansiBrightGreen": "#000000",
+			"terminal.ansiBrightBlue": "#000000",
 			"terminal.ansiBrightCyan": "#000000",
+			"terminal.ansiBrightMagenta": "#000000",
+			"terminal.ansiBrightYellow": "#000000",
 			"terminal.ansiBlack": "#000000",
 			"terminal.ansiBrightBlack": "#000000",
 			"terminal.ansiWhite": "#ffffff",
@@ -304,6 +314,8 @@
 			"editorCursor.foreground": "#ffffff",
 			"editor.lineHighlightBorder": "#ffffff",
 
+			"textLink.foreground": "#ffffff",
+
 			"editorGutter.addedBackground": "#ffffff00",
 			"editorGutter.deletedBackground": "#ffffff00",
 			"editorGutter.modifiedBackground": "#ffffff00",
@@ -325,8 +337,14 @@
 			"terminal.ansiGreen": "#ffffff",
 			"terminal.ansiBlue": "#ffffff",
 			"terminal.ansiCyan": "#ffffff",
+			"terminal.ansiMagenta": "#ffffff",
+			"terminal.ansiYellow": "#ffffff",
+			"terminal.ansiBrightRed": "#ffffff",
 			"terminal.ansiBrightGreen": "#ffffff",
+			"terminal.ansiBrightBlue": "#ffffff",
 			"terminal.ansiBrightCyan": "#ffffff",
+			"terminal.ansiBrightMagenta": "#ffffff",
+			"terminal.ansiBrightYellow": "#ffffff",
 			"terminal.ansiBlack": "#ffffff",
 			"terminal.ansiBrightBlack": "#ffffff",
 			"terminal.ansiWhite": "#000000",
@@ -352,13 +370,14 @@
 	"workbench.editor.empty.hint": "hidden",
 	"workbench.activityBar.location": "bottom",
 	"workbench.panel.showLabels": false,
-	"workbench.statusBar.visible": false,
 
 	"zenMode.restore": true,
 	"zenMode.showTabs": "none",
 	"zenMode.centerLayout": false,
 
 	// Extensions.
+	"clangd.inactiveRegions.opacity": 1,
+
 	"cSpell.userWords": [
 		"abelian",
 		"aeterna",
@@ -520,9 +539,9 @@
 	},
 	"notebook.output.wordWrap": true,
 	"notebook.editorOptionsCustomizations": {
-		"editor.tabSize": 4,
-		"editor.indentSize": 4,
-		"editor.insertSpaces": true,
+		"editor.tabSize": 2,
+		"editor.indentSize": 2,
+		"editor.insertSpaces": false
 	},
 	"notebook.confirmDeleteRunningCell": false,
 	"notebook.formatOnSave.enabled": true,
@@ -557,22 +576,22 @@
 	"xml.format.maxLineWidth": 80,
 	"xml.server.preferBinary": true,
 
+	"yapf.args": [
+		"--style",
+		"{based_on_style: pep8, indent_width: 2, continuation_indent_width: 2, column_limit: 59, use_tabs: True, continuation_align_style: FIXED}"
+	],
+
 	// Formatters.
 	"[css]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
 	},
 	"[markdown]": {
-		// Adheres to `silver` body font-family.
-		// "editor.fontFamily": "'Latin Modern Roman 10', KaiTi, serif",
-		// "editor.letterSpacing": 0,
 		"editor.defaultFormatter": "esbenp.prettier-vscode",
-		// "editor.cursorWidth": 1,
-		"editor.occurrencesHighlight": "off",
 		"editor.rulers": [],
 		// For some reason, "advanced" is broken with Latin Modern Roman without GPU acceleration.
 		"editor.wrappingStrategy": "advanced",
-		// "editor.experimentalGpuAcceleration": "on",
-		"editor.wordWrap": "on"
+		"editor.wordWrap": "on",
+		"editor.cursorStyle": "line"
 	},
 	"[cpp]": {
 		"editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd"
@@ -590,9 +609,9 @@
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
 	},
 	"[python]": {
-		"editor.defaultFormatter": "ms-python.black-formatter",
-		"editor.insertSpaces": true,
-		"editor.tabSize": 4
+		"editor.defaultFormatter": "eeyore.yapf",
+		"editor.insertSpaces": false,
+		"editor.tabSize": 2
 	},
 	"[xml]": {
 		"editor.defaultFormatter": "redhat.vscode-xml"
@@ -628,5 +647,7 @@
 	"C_Cpp.autoAddFileAssociations": false,
 	"C_Cpp.clang_format_fallbackStyle": "{ \tBasedOnStyle: Chromium,  \tUseTab: Always, \tTabWidth: 2, \tPointerAlignment: Right,  \tNamespaceIndentation: All, \tFixNamespaceComments: false, \tAccessModifierOffset: 0, \tIndentCaseLabels: true,  \tAlignAfterOpenBracket: AlwaysBreak, \tAlignOperands: false, \tContinuationIndentWidth: 2,  \tBinPackArguments: false, \tBinPackParameters: false, \tAlignConsecutiveDeclarations: false, \tAllowShortIfStatementsOnASingleLine: true, \tAllowShortLoopsOnASingleLine: true,  \tAlignTrailingComments: false, \tReflowComments: true, \tColumnLimit: 80,  \tIncludeBlocks: Preserve, \tSortUsingDeclarations: false, }",
 	"C_Cpp.experimentalFeatures": "enabled",
-	"C_Cpp.intelliSenseCacheSize": 1024
+	"C_Cpp.intelliSenseCacheSize": 1024,
+	"editor.hover.showLongLineWarning": false,
+	"workbench.statusBar.visible": false
 }

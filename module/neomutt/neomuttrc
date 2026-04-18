@@ -11,7 +11,7 @@ set postponed="+[Gmail]/Drafts"
 set trash = "+[Gmail]/Bin"
 
 set imap_authenticators = "oauthbearer:xoauth2"
-set imap_oauth_refresh_command = "/usr/share/neomutt/oauth2/mutt_oauth2.py ~/main.syncthing/monochrome/module/neomutt/yangawesome_gmail.com.password.token"
+set imap_oauth_refresh_command = "/usr/share/neomutt/oauth2/mutt_oauth2.py ~/main.syncthing/monochrome/module/neomutt/yangawesome_gmail.com.password.token --decryption-pipe cat --encryption-pipe cat"
 
 set realname="Yang Yan"
 set from="yang@gilgamesh.cc"
@@ -30,7 +30,7 @@ unset delete
 set include=yes
 set query_command="mutt_vc_query -f ~/main.syncthing/wallflower/contacts.vcf '%s'"
 set signature="~/main.syncthing/monochrome/module/neomutt/.signature"
-set mail_check=300
+set mail_check=30
 
 bind editor <Tab> complete-query
 bind editor ^T complete
