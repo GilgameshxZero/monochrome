@@ -1,11 +1,11 @@
 {
 	"name": "Vimium C",
-	"@time": "2/21/2026, 7:00:32 PM",
-	"time": 1771700432574,
+	"@time": "4/20/2026, 5:52:17 AM",
+	"time": 1776664337954,
 	"environment": {
 		"extension": "2.12.3",
 		"platform": "linux",
-		"chromium": 139
+		"chromium": 147
 	},
 	"allBrowserUrls": true,
 	"exclusionRules": [
@@ -79,6 +79,7 @@
 		"shortcut userCustomized11 command=\"mainFrame\"",
 		"shortcut userCustomized12 command=\"nextFrame\"",
 		"shortcut userCustomized13 command=\"LinkHints.activateCopyLinkUrl\"",
+		"shortcut userCustomized14 command=\"LinkHints.activateOpenImage\"",
 		"",
 		"# Additional non-shortcuts.",
 		"map <c--> zoomOut",

@@ -8,6 +8,7 @@
 # $5: video maximum square pixel count (default: 1280).
 # $6: video maximum fps (default: 30).
 # $7: av1 preset (default: 4).
+# For `cosine`, use `encode video <> 96 1000 1920 60 2`.
 set -e
 av1_tbr=${4:-500}
 resolution_max_video=${5:-1280}

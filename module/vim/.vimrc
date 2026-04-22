@@ -5,7 +5,7 @@ set tabstop=2
 set colorcolumn=60
 set autoindent
 set scrolloff=2
-hi colorcolumn ctermbg=16
+hi colorcolumn ctermbg=8
 
 " autoread doesn't work, needs additional fixes.
 set autoread
