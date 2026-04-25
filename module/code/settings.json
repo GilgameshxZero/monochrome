@@ -279,7 +279,7 @@
 
 	"workbench.colorCustomizations": {
 		"[Default High Contrast Light]": {
-			"contrastBorder":"#000000",
+			"contrastBorder": "#000000",
 			"focusBorder": "#000000",
 			"panel.border": "#000000",
 			"tab.activeBorder": "#000000",
@@ -353,7 +353,7 @@
 			"terminal.ansiBrightWhite": "#ffffff"
 		},
 		"[Default High Contrast]": {
-			"contrastBorder":"#ffffff",
+			"contrastBorder": "#ffffff",
 			"focusBorder": "#ffffff",
 			"panel.border": "#ffffff",
 			"tab.activeBorder": "#ffffff",
@@ -594,7 +594,10 @@
 	},
 
 	"java.project.referencedLibraries": {
-		"include": ["C:/Android/platforms/android-34/*.jar", "lib/*.jar"]
+		"include": [
+			"C:/Android/platforms/android-34/*.jar",
+			"lib/*.jar"
+		]
 	},
 	"java.inlayHints.parameterNames.enabled": "none",
 
@@ -628,6 +631,7 @@
 	"notebook.showCellStatusBar": "hidden",
 
 	"prettier.useTabs": true,
+	"prettier.printWidth": 60,
 	"prettier.trailingComma": "none",
 
 	"python.createEnvironment.trigger": "off",
@@ -667,8 +671,7 @@
 		"editor.rulers": [],
 		// For some reason, "advanced" is broken with Latin Modern Roman without GPU acceleration.
 		"editor.wrappingStrategy": "advanced",
-		"editor.wordWrap": "on",
-		"editor.cursorStyle": "line"
+		"editor.wordWrap": "on"
 	},
 	"[cpp]": {
 		"editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd"

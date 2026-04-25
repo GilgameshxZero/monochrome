@@ -20,3 +20,5 @@ export LYNX_CFG="$HOME/main.syncthing/monochrome/module/lynx/lynx.cfg"
 export WWW_HOME="http://ddg.gg"
 export GPG_TTY="$(tty)"
 export EDITOR="/usr/bin/vim"
+export RL_CLCOPY_CMD="xargs -I '{}' -0 -n1 clip '{}'"
+

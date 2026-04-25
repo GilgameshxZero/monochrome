@@ -533,5 +533,10 @@
 	{
 		"key": "ctrl+0",
 		"command": "workbench.action.lastEditorInGroup"
+	},
+	{
+		"key": "ctrl+g",
+		"command": "-workbench.action.terminal.goToRecentDirectory",
+		"when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
 	}
 ]

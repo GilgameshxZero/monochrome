@@ -31,6 +31,8 @@ set include=yes
 set query_command="mutt_vc_query -f ~/main.syncthing/wallflower/person/person.vcf '%s'"
 set signature="~/main.syncthing/monochrome/module/neomutt/.signature"
 set mail_check=30
+set markers=no
+set wait_key=no
 
 bind editor <Tab> complete-query
 bind editor ^T complete
@@ -43,4 +45,4 @@ bind index,pager x noop
 macro index,pager xb "<save-message>=[Gmail]/Bin<enter><enter>"
 macro index,pager xa "<save-message>=[Gmail]/All^V Mail<enter><enter>"
 macro index,pager xi "<save-message>=INBOX<enter><enter>"
-macro index xr "T~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>"
+macro index,pager xr "T~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>"
