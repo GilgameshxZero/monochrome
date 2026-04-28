@@ -2,7 +2,7 @@
 # Applications.
 tabs 2
 
-unalias ls
+unalias ls &> /dev/null
 alias tmux="TERM=linux-m tmux"
 alias finch="TERM=linux finch"
 

@@ -1,4 +1,7 @@
 {
+	// Toggle scrollbar.
+	"editor.scrollbar.verticalScrollbarSize": 0,
+
 	// Base code/codium settings.
 	"breadcrumbs.enabled": false,
 
@@ -39,6 +42,7 @@
 	"editor.inlayHints.enabled": "off",
 	"editor.wrappingIndent": "indent",
 	"editor.fontSize": 19,
+	"editor.fontFamily": "monospace",
 	"editor.inertialScroll": false,
 	"editor.mouseWheelScrollSensitivity": 1.5,
 	"editor.quickSuggestions": {
@@ -192,6 +196,7 @@
 	},
 
 	"terminal.integrated.fontSize": 19,
+	"terminal.integrated.fontFamily": "monospace",
 	// Closes terminals faster (on Windows); faster tasks/builds.
 	"terminal.integrated.profiles.windows": {
 		"Command Prompt": {
@@ -202,13 +207,6 @@
 				"${env:windir}\\Sysnative\\cmd.exe"
 			],
 			"icon": "terminal-cmd"
-		},
-		"PowerShell": {
-			"source": "PowerShell",
-			"icon": "terminal-powershell"
-		},
-		"Git Bash": {
-			"source": "Git Bash"
 		}
 	},
 	"terminal.integrated.profiles.linux": {
@@ -217,20 +215,30 @@
 			"icon": "terminal-bash",
 			// Necessary for loading `~/.bashrc` properly.
 			"args": ["-i"]
+		},
+		// Tmux shell for easy keyboard navigation/c/p, but will die on disconnect. Still, drops back into bash when done.
+		"tmux": {
+			"path": "bash",
+			"icon": "terminal-bash",
+			"args": [
+				"-i",
+				"-c",
+				"tmux new \\; set status off \\; set-hook client-detached kill-session; bash -i"
+			]
 		}
 	},
 	"terminal.integrated.profiles.osx": {
 		"zsh": {
 			"path": "zsh",
 			"icon": "terminal-bash",
-			// Necessary for loading `~/.zshrc` properly. TODO.
+			// Necessary for loading `~/.zshrc` properly.
 			"args": ["-i"]
 		}
 	},
 	"terminal.integrated.defaultProfile.windows": "Command Prompt",
-	"terminal.integrated.defaultProfile.linux": "bash",
-	"terminal.integrated.enableMultiLinePasteWarning": "never",
+	"terminal.integrated.defaultProfile.linux": "tmux",
 	"terminal.integrated.defaultProfile.osx": "zsh",
+	"terminal.integrated.enableMultiLinePasteWarning": "never",
 	"terminal.integrated.gpuAcceleration": "on",
 	"terminal.integrated.confirmOnKill": "never",
 	"terminal.integrated.rightClickBehavior": "default",
@@ -278,6 +286,9 @@
 	"window.density.editorTabHeight": "compact",
 
 	"workbench.colorCustomizations": {
+		"activityBarBadge.foreground": "#00000000",
+		"activityBarBadge.background": "#00000000",
+
 		"[Default High Contrast Light]": {
 			"contrastBorder": "#000000",
 			"focusBorder": "#000000",
@@ -315,12 +326,15 @@
 			"editorBracketHighlight.foreground6": "#000000",
 			"editorCursor.foreground": "#000000",
 			"editor.lineHighlightBorder": "#000000",
+			"activityBarTop.activeBorder": "#00000000",
 
 			"textLink.foreground": "#000000",
 
 			"editorGutter.addedBackground": "#00000000",
 			"editorGutter.deletedBackground": "#00000000",
 			"editorGutter.modifiedBackground": "#00000000",
+			"statusBar.debuggingBackground": "#000000",
+			"statusBar.debuggingForeground": "#ffffff",
 
 			// Show error and warnings.
 			"editorError.foreground": "#000000",
@@ -334,6 +348,12 @@
 			"scrollbarSlider.background": "#000000",
 			"scrollbarSlider.activeBackground": "#000000",
 			"scrollbarSlider.hoverBackground": "#000000",
+			"editorOverviewRuler.border": "#000000",
+			"editorOverviewRuler.errorForeground": "#000000",
+			"editorOverviewRuler.warningForeground": "#000000",
+			// We are fine obscuring content here.
+			"editorOverviewRuler.findMatchForeground": "#000000",
+			"terminalOverviewRuler.findMatchForeground": "#000000",
 
 			"terminal.ansiRed": "#000000",
 			"terminal.ansiGreen": "#000000",
@@ -371,6 +391,7 @@
 			"statusBar.border": "#ffffff",
 			"keybindingLabel.border": "#ffffff",
 			"keybindingLabel.bottomBorder": "#ffffff",
+			"activityBarTop.activeBorder": "#ffffff00",
 
 			"editor.foreground": "#ffffff",
 			"editor.selectionBackground": "#ffffff",
@@ -408,6 +429,12 @@
 			"scrollbarSlider.background": "#ffffff",
 			"scrollbarSlider.activeBackground": "#ffffff",
 			"scrollbarSlider.hoverBackground": "#ffffff",
+			"editorOverviewRuler.border": "#ffffff",
+			"editorOverviewRuler.errorForeground": "#ffffff",
+			"editorOverviewRuler.warningForeground": "#ffffff",
+			// We are fine obscuring content here.
+			"editorOverviewRuler.findMatchForeground": "#ffffff",
+			"terminalOverviewRuler.findMatchForeground": "#ffffff",
 
 			"terminal.ansiRed": "#ffffff",
 			"terminal.ansiGreen": "#ffffff",
@@ -446,7 +473,13 @@
 	"workbench.editor.empty.hint": "hidden",
 	"workbench.activityBar.location": "bottom",
 	"workbench.panel.showLabels": false,
-	"workbench.statusBar.visible": false,
+	// "workbench.statusBar.visible": false,
+	"workbench.statusBar.experimental.fontSize": 16,
+	"workbench.statusBar.experimental.fontFamily": "monospace",
+	"workbench.experimental.fontSize": 16,
+	"workbench.experimental.fontFamily": "monospace",
+	"workbench.tree.enableStickyScroll": false,
+	"workbench.editor.useModal": "off",
 
 	"zenMode.restore": true,
 	"zenMode.showTabs": "none",
@@ -469,6 +502,7 @@
 		"Astrites",
 		"Astrum",
 		"Bili",
+		"Blackfeather",
 		"Bluepoch",
 		"Boox",
 		"Chbosky",
@@ -485,6 +519,7 @@
 		"Dragonstail",
 		"Duffin",
 		"Edmonds",
+		"Elon",
 		"ENABLEDELAYEDEXPANSION",
 		"ENDLOCAL",
 		"Erlija",
@@ -500,6 +535,7 @@
 		"Fenwicks",
 		"Fonte",
 		"fragmentatia",
+		"Frankle",
 		"FUSCATE",
 		"Gdiplus",
 		"GWLP",
