@@ -19,7 +19,8 @@
 
 	"diffEditor.ignoreTrimWhitespace": false,
 
-	"editor.autoClosingBrackets": "languageDefined",
+	"editor.autoClosingBrackets": "never",
+	"editor.autoClosingQuotes": "never",
 	"editor.rulers": [60, 80, 120],
 	"editor.inlineSuggest.enabled": true,
 	"editor.insertSpaces": false,
@@ -199,10 +200,8 @@
 	"terminal.integrated.fontFamily": "monospace",
 	// Closes terminals faster (on Windows); faster tasks/builds.
 	"terminal.integrated.profiles.windows": {
-		"Command Prompt": {
+		"cmd": {
 			"path": [
-				// Need the first line in case {windir} is not defined (e.g. on codium).
-				"C:\\Windows\\System32\\cmd.exe",
 				"${env:windir}\\System32\\cmd.exe",
 				"${env:windir}\\Sysnative\\cmd.exe"
 			],
@@ -223,7 +222,7 @@
 			"args": [
 				"-i",
 				"-c",
-				"tmux new \\; set status off \\; set-hook client-detached kill-session; bash -i"
+				"tmux new \\; set status off \\; set-hook client-detached kill-session \\; setenv DESKTOP_SESSION plasma \\; send 'export DESKTOP_SESSION=plasma && clear' ENTER; bash -i"
 			]
 		}
 	},
@@ -235,8 +234,8 @@
 			"args": ["-i"]
 		}
 	},
-	"terminal.integrated.defaultProfile.windows": "Command Prompt",
-	"terminal.integrated.defaultProfile.linux": "tmux",
+	"terminal.integrated.defaultProfile.windows": "cmd",
+	"terminal.integrated.defaultProfile.linux": "bash",
 	"terminal.integrated.defaultProfile.osx": "zsh",
 	"terminal.integrated.enableMultiLinePasteWarning": "never",
 	"terminal.integrated.gpuAcceleration": "on",
@@ -416,6 +415,8 @@
 			"editorGutter.addedBackground": "#ffffff00",
 			"editorGutter.deletedBackground": "#ffffff00",
 			"editorGutter.modifiedBackground": "#ffffff00",
+			"statusBar.debuggingBackground": "#ffffff",
+			"statusBar.debuggingForeground": "#000000",
 
 			// Show error and warnings.
 			"editorError.foreground": "#ffffff",
@@ -480,6 +481,7 @@
 	"workbench.experimental.fontFamily": "monospace",
 	"workbench.tree.enableStickyScroll": false,
 	"workbench.editor.useModal": "off",
+	"workbench.list.horizontalScrolling": true,
 
 	"zenMode.restore": true,
 	"zenMode.showTabs": "none",
@@ -640,6 +642,8 @@
 	"jupyter.askForKernelRestart": false,
 	"jupyter.interactiveWindow.textEditor.cellFolding": false,
 
+	"lldb.suppressUpdateNotifications": true,
+
 	"markdown.extension.print.absoluteImgPath": false,
 	"markdown.extension.toc.unorderedList.marker": "*",
 	"markdown.extension.tableFormatter.enabled": false,
@@ -661,7 +665,7 @@
 	},
 	"notebook.confirmDeleteRunningCell": false,
 	"notebook.formatOnSave.enabled": true,
-	"notebook.output.textLineLimit": 10,
+	"notebook.output.textLineLimit": 16,
 	"notebook.output.scrolling": true,
 	"notebook.globalToolbar": false,
 	"notebook.showCellStatusBar": "hidden",

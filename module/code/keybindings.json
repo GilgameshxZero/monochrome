@@ -84,6 +84,16 @@
 		"command": "notebook.cell.cursorPageDown",
 		"when": "editorTextFocus && inputFocus && notebookEditorFocused"
 	},
+	{
+		"key": "alt+e",
+		"command": "list.focusPageUp",
+		"when": "listFocus && !inputFocus && !treestickyScrollFocused && !notebookOutputFocused"
+	},
+	{
+		"key": "alt+r",
+		"command": "list.focusPageDown",
+		"when": "listFocus && !inputFocus && !treestickyScrollFocused && !notebookOutputFocused"
+	},
 	// These three pairs of settings affects scrolling the suggestions popup.
 	{
 		"key": "alt+e",
@@ -91,8 +101,18 @@
 		"when": "editorHoverFocused"
 	},
 	{
+		"key": "alt+r",
+		"command": "editor.action.pageDownHover",
+		"when": "editorHoverFocused"
+	},
+	{
 		"key": "alt+e",
 		"command": "quickInput.pagePrevious",
+		"when": "inQuickInput && quickInputType == 'quickPick' || inQuickInput && quickInputType == 'quickTree'"
+	},
+	{
+		"key": "alt+r",
+		"command": "quickInput.pageNext",
 		"when": "inQuickInput && quickInputType == 'quickPick' || inQuickInput && quickInputType == 'quickTree'"
 	},
 	{
@@ -102,28 +122,60 @@
 	},
 	{
 		"key": "alt+r",
-		"command": "editor.action.pageDownHover",
-		"when": "editorHoverFocused"
-	},
-	{
-		"key": "alt+r",
-		"command": "quickInput.pageNext",
-		"when": "inQuickInput && quickInputType == 'quickPick' || inQuickInput && quickInputType == 'quickTree'"
-	},
-	{
-		"key": "alt+r",
 		"command": "selectNextPageSuggestion",
 		"when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus || suggestWidgetVisible && textInputFocus && !suggestWidgetHasFocusedSuggestion"
 	},
+	// Scrolling in cell output is still considered listFocus and needs to be cased. Alt+E/R cannot be configured because there is no command to scroll notebook output.
+	{
+		"key": "up",
+		"command": "-list.focusUp",
+		"when": "listFocus && !inputFocus && !treestickyScrollFocused"
+	},
+	{
+		"key": "up",
+		"command": "list.focusUp",
+		"when": "listFocus && !inputFocus && !treestickyScrollFocused && !notebookOutputFocused"
+	},
+	{
+		"key": "down",
+		"command": "-list.focusDown",
+		"when": "listFocus && !inputFocus && !treestickyScrollFocused"
+	},
+	{
+		"key": "down",
+		"command": "list.focusDown",
+		"when": "listFocus && !inputFocus && !treestickyScrollFocused && !notebookOutputFocused"
+	},
 	{
 		"key": "pageup",
-		"command": "notebook.cell.cursorPageUp",
-		"when": "editorTextFocus && inputFocus && notebookEditorFocused"
+		"command": "-list.focusPageUp",
+		"when": "listFocus && !inputFocus && !treestickyScrollFocused"
+	},
+	{
+		"key": "pageup",
+		"command": "list.focusPageUp",
+		"when": "listFocus && !inputFocus && !treestickyScrollFocused && !notebookOutputFocused"
 	},
 	{
 		"key": "pagedown",
-		"command": "notebook.cell.cursorPageDown",
-		"when": "editorTextFocus && inputFocus && notebookEditorFocused"
+		"command": "-list.focusPageDown",
+		"when": "listFocus && !inputFocus && !treestickyScrollFocused"
+	},
+	{
+		"key": "pagedown",
+		"command": "list.focusPageDown",
+		"when": "listFocus && !inputFocus && !treestickyScrollFocused && !notebookOutputFocused"
+	},
+	// Horizontal. Doesn't work in the F8 popup?
+	{
+		"key": "alt+shift+e",
+		"command": "list.scrollLeft",
+		"when": "listFocus && !inputFocus && !treestickyScrollFocused && !notebookOutputFocused"
+	},
+	{
+		"key": "alt+shift+r",
+		"command": "list.scrollRight",
+		"when": "listFocus && !inputFocus && !treestickyScrollFocused && !notebookOutputFocused"
 	},
 
 	// Ctrl+Shift+* removals.

@@ -44,8 +44,8 @@
 //
 // Directories must not have a trailing slash.
 (?d)**/.vs
-(?d)**/.venv
-(?d)**/.data
+(?d)**/*.venv
+(?d)**/*.data
 (?d)**/.bin
 (?d)**/.obj
 

@@ -1,0 +1,38 @@
+touchpad:
+  gestures:
+    - type: swipe
+      fingers: 3
+      direction: left_right
+
+      actions:
+        - on: update
+          interval: -200
+          plasma_shortcut: kwin,Walk Through Windows (Reverse)
+
+        - on: update
+          interval: 200
+          plasma_shortcut: kwin,Walk Through Windows
+
+    - type: swipe
+      fingers: 3
+      direction: up_down
+
+      actions:
+        - on: update
+          interval: -20
+          input:
+            - keyboard: [ leftshift+volumeup ]
+
+        - on: update
+          interval: 20
+          input:
+            - keyboard: [ leftshift+volumedown ]
+
+    # Interferes with kwin 3 finger tap.
+    # - type: tap
+    #   fingers: 3
+
+    #   actions:
+    #     - on: end
+    #       input:
+    #         - keyboard: [ playpause ]

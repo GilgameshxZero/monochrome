@@ -1,6 +1,6 @@
 # Source this file directly.
-# Applications.
-tabs 2
+# Doesn't work on Darwin?
+# tabs 2
 
 unalias ls &> /dev/null
 alias tmux="TERM=linux-m tmux"
@@ -22,3 +22,5 @@ export GPG_TTY="$(tty)"
 export EDITOR="/usr/bin/vim"
 export RL_CLCOPY_CMD="xargs -I '{}' -0 -n1 clip '{}'"
 
+# For any output, e.g. the echos on Darwin.
+clear
