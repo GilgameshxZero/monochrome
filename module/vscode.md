@@ -1,32 +1,13 @@
 # `vscode`
 
-Visual Studio Code is used for general development and creative writing.
-
-## Installation
-
-### Windows
-
-Obtain the *system* x64 installer from <https://code.visualstudio.com/download>.
-
-### Linux
-
-On Arch, use the proprietary branded release `visual-studio-code-bin` on the AUR to ensure availabilitiy of sync and extensions.
+Visual Studio Code is used for general development and creative writing. We prefer the VSCodium fork for its widespread platform availability and open source nature.
 
 ## Configuration
 
-Sync settings with the Github account `GilgameshxZero`. A copy of the settings and keybinds is available at `monochrome/module/vscode`, but this is not regularly updated.
+Keybindings and settings are provided in `module/vscode/`.
+
+A custom fork of `open-remote-ssh` is provided which correctly detects Windows remotes. We are in the process of getting this merged.
 
 ### Windows
 
-On Windows, to enable Visual Studio developer tools such as `cl.exe` and `nmake`, we must load `vcvarsall.bat` before loading VS Code. We do this via a shortcut to a batch file. The shortcut target is as follows:
-
-
-```batch
-"C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvarsall.bat" x64 10.0.22000.0 && hide "cmd /C code"
-```
-
-Two copies of this shortcut, for `x64` and `x86` targets, are available in `monochrome/module/vscode`. This assumes a default-path Visual Studio install.
-
-These shortcuts may be added to the taskbar, but not to Start.
-
-We create this shortcut by first pinning the standard version, then editing that shortcut in the Taskbar folder.
+On Windows, to use `nmake`, VSCode must be launched within the Visual Studio Developer Console. To do this, we provide shortcuts in `module/vscode/` which initialize the developer console variables before launching VSCodium.
