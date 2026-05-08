@@ -29,7 +29,3 @@ Recall that `{local, active, archive}/bin` is placed on the PATH. Any apps which
 ## Deprecation
 
 Configurations for older machines, older themes, and previously-used apps shall be placed into `archive`.
-
-## Recovery
-
-Recovery retains critical information and authentication details for disaster recovery.
