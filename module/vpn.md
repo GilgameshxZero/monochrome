@@ -1,49 +1,13 @@
 # `vpn`
 
-## Server configuration
+OpenVPN servers are available at the default port at:
 
-A VPN server is available on `gilgamesh.cc`/`159.65.224.199` via instructions at <https://github.com/hwdsl2/setup-ipsec-vpn>: `wget https://get.vpnsetup.net -O vpn.sh && sudo sh vpn.sh`
+1. <gilgamesh.cc> (`gilgamesh-31`)
+2. <gilgamesh-40.duckdns.org> (`gilgamesh-45`, with its port tunneled to its hypervisor `gilgamesh-40`).
 
-IKEv2 clients may be managed with `sudo ikev2.sh` and should roughly mirror `gilgamesh-*` machine structure and naming.
+Reference configurations for existing clients are available on the server, and must be generated for each new client. Client `gilgamesh-X` is assigned subnet IP `10.8.Y.X`, where `Y` is the identifier of the server. Client assignments are declared on the server at `/etc/openvpn/server/ccd/*`.
 
-## Client configuration
-
-### IPsec/L2TP
-
-```
-Server IP: 159.65.224.199
-IPsec PSK: gb3UjkTcLhvmukZCbPYi
-Username: vpnuser
-Password: tD2kbmZa5e65PfqG
-```
-
-### IKEv2
-
-Multiple connections from the same router may be denied. To avoid this, connect with IKEv2.
-IKEv2 clients may connect with certificates found in `monochrome/module/vpn`.
-
-Password (if required): `zSSdRFY2tf2fyXHvYC`.
-
-#### Windows
-
-The IP address will need to be changed should `gilgamesh.cc` be hosted from a different IP. The following script should be run from an admin-level cmd from `monochrome/module/vpn`, and is interactive, so should be run line-by-line.
-
-The files themselves may need to be renamed in order for the connection name to be set correctly as `gilgamesh.cc-X`, for machine `gilgamesh-X`.
-
-```batch
-SET "VPN_NAME=gilgamesh-31"
-certutil -f -importpfx "%VPN_NAME%.p12" NoExport
-powershell -command "Add-VpnConnection -ServerAddress '159.65.224.199' -Name '%VPN_NAME%' -TunnelType IKEv2 -AuthenticationMethod MachineCertificate -EncryptionLevel Required -PassThru"
-powershell -command "Set-VpnConnectionIPsecConfiguration -ConnectionName '%VPN_NAME%' -AuthenticationTransformConstants GCMAES128 -CipherTransformConstants GCMAES128 -EncryptionMethod AES256 -IntegrityCheckMethod SHA256 -PfsGroup None -DHGroup Group14 -PassThru -Force"
-```
-
-#### iOS
-
-Use the `*.mobileconfig` file generated in `monochrome/module/vpn`.
-
-## Usage
-
-For some reason, IKEv2 clients cannot connect via `xfinitywifi` or `XFINITY` Wi-Fi hotspots. However, they may be able to form P2P connections, thus enabling VPN’d bittorrent.
+`gilgamesh-31` is configured with a legacy OpenVPN setup via <https://www.digitalocean.com/community/tutorials/how-to-set-up-and-configure-an-openvpn-server-on-ubuntu-20-04>. `gilgamesh-45` is configured with the preferred script from <<https://www.digitalocean.com/community/tutorials/how-to-set-up-and-configure-an-openvpn-server-on-ubuntu-20-04>. Both servers require “clear” `iptables` rules to function.
 
 ## OpenVPN
 
@@ -52,8 +16,6 @@ An experimental OpenVPN server has been set up on `gilgamesh.cc` following the g
 I also needed `tun-mtu 1400` (or 1000) on the server config sometimes. Add `ipv6` to the server pushes to ensure that client ipv6 requests do not sneak through.
 
 Also, <https://superuser.com/questions/1274955/use-windows-mobile-hotspot-with-openvpn>.
-
-* <https://github.com/angristan/openvpn-install>.
 
 The CA password is the same as the Emilia HTTP password.
 
