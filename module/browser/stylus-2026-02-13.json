@@ -117,13 +117,13 @@
       {
         "code": "body>.mobile-toolbar>.mobile-toolbar-internals {\n    width: auto !important;\n}\nbody>#body {\n    max-width: none !important;\n    min-width: auto !important;\n    width: auto !important;\n}\nbody>#body>div {\n    width: auto !important;\n}\n#facebox {\n    left: 0 !important;\n    top: 0 !important;\n}\n#facebox .content {\n    width: auto;\n}\n.source-popup pre {\n    width: 0;\n    overflow-x: visible !important;\n}\n.source-popup {\n    width: auto !important;\n    height: auto !important;\n}",
         "urlPrefixes": [
-          "https://codeforces.com"
+          "https://codeforces.com/"
         ]
       }
     ],
-    "updateDate": 1766799257683,
+    "updateDate": 1774591474048,
     "_id": "d53c8728-a8ae-495e-9ed4-574872a43bed",
-    "_rev": 1769247016583,
+    "_rev": 1774591474049,
     "id": 1
   },
   {
@@ -134,13 +134,30 @@
       {
         "code": "body>div.tVu25>div.nH {\n    width: auto !important;\n}",
         "urlPrefixes": [
-          "https://mail.google.com/mail/u/2/"
+          "https://mail.google.com/mail/"
         ]
       }
     ],
-    "updateDate": 1771023819418,
+    "updateDate": 1774591467194,
     "_id": "a9a1b927-f915-4fac-8ad9-f03336ffa0e1",
-    "_rev": 1771023819418,
+    "_rev": 1774591467194,
     "id": 2
+  },
+  {
+    "enabled": true,
+    "installDate": 1774591407335,
+    "name": "usaco.training",
+    "sections": [
+      {
+        "code": "body {\n    background-image: none !important;\n}\n\n[data-darkreader-inline-bgimage] {\n    background-image: none !important;\n}",
+        "urlPrefixes": [
+          "https://usaco.training/"
+        ]
+      }
+    ],
+    "updateDate": 1774591617324,
+    "_id": "b17cbc8a-625d-49a2-8e02-074320660c2a",
+    "_rev": 1774591617324,
+    "id": 3
   }
 ]

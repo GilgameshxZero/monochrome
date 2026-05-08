@@ -831,7 +831,6 @@
         "www.news-medical.net",
         "voice.google.com",
         "identity.doordash.com",
-        "rezero.fandom.com",
         "forums.debian.net",
         "wiki.debian.org",
         "cdimage.debian.org",
@@ -849,7 +848,16 @@
         "www.cnblogs.com",
         "nocow-cn.github.io",
         "www.geeksforgeeks.org",
-        "postmaster.google.com"
+        "postmaster.google.com",
+        "www.rottentomatoes.com",
+        "rezero.fandom.com",
+        "www.tiktok.com",
+        "www.technologyreview.com",
+        "dev.to",
+        "bearssl.org",
+        "cacr.uwaterloo.ca",
+        "knowledge.workspace.google.com",
+        "projecteuler.net"
     ],
     "fetchNews": true,
     "location": {
