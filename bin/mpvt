@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-drm_connector=${2:-DP-1}
-mpv --gpu-context=drm "$1" --drm-connector="$drm_connector"
