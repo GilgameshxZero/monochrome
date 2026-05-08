@@ -1,7 +1,7 @@
 @ECHO OFF
 @REM Experimental script for use to adjust routes for `iodine` DNS tunneling.
 
-START iodinec -f -P "1#GXVeMc" 159.65.224.199 iodine.gilgamesh.cc
+START %~dp0/../app/iodinec.exe -f -P "1#GXVeMc" 159.65.224.199 iodine.gilgamesh.cc
 @REM Do I need the IP here? Probably...
 ECHO "Press any key to continue, once the other window has stalled..."
 PAUSE > nul
@@ -12,7 +12,7 @@ ECHO %DEFAULT_GATEWAY_IPV4%
 SET "DEFAULT_GATEWAY_IPV4=10.192.63.1"
 
 @REM Run in a loop, maybe.
-@REM I think we’re very close. Need to read up documentation on ROUTE.
+@REM I think we're very close. Need to read up documentation on ROUTE.
 ROUTE DELETE 0.0.0.0 MASK 0.0.0.0 %DEFAULT_GATEWAY_IPV4%
 ROUTE ADD 159.65.224.199 %DEFAULT_GATEWAY_IPV4% METRIC 60
 ROUTE CHANGE 159.65.224.199 %DEFAULT_GATEWAY_IPV4% METRIC 60
