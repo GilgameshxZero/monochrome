@@ -8,19 +8,22 @@ git is used for programmatic line-by-line version control and should be installe
 
 Take care the select the following options when installing:
 
-1. Line endings: checkout as-is, commit as-is. This ensures that we have full control over 
+1. Line endings: checkout as-is, commit as-is. This ensures we have full control over line endings. The editor of choice on Windows should default to LF if possible.
 2. Optional Unix tools: installed. This enables tools like `ls` and `sed` for us in the standard `cmd.exe`.
 
 ## Configuration
 
+Copy `module/git/.gitconfig` to `~/.gitconfig` to automatically configure all options below. Repositories should inherit global options where possible, notably for `core.fileMode`.
+
 The following commands configures common aliases (may require `;` to be appended at the end of each line):
 
 ```bash
+# `true` on POSIX systems which can track filemode, `false` otherwise (Windows).
+git config --global core.fileMode "true"
+
 git config --global user.email "c706213d-56d4-42c1-a681-27fd4135a504@gilgamesh.cc"
 git config --global user.name "gilgamesh"
 git config --global core.autocrlf "false"
-# true is probably okay here.
-git config --global core.fileMode "true"
 git config --global alias.co "checkout"
 git config --global alias.cp "cherry-pick"
 git config --global alias.ac "! git add -A && git commit --allow-empty-message -am"
@@ -32,6 +35,6 @@ git config --global alias.p "! [[ $(git config 'branch.$(git symbolic-ref --shor
 git config --global alias.rgc "! git reflog expire --expire=now --all && git gc --prune=now --aggressive"
 ```
 
-`core.fileMode` should be set to `true` on Unix? (may be inaccurate)
+### Windows
 
-Alternatively, the `.gitconfig` file in `monochrome/module/git` may be used instead.
+On Windows, we disable the global `core.fileMode` option so that the OS’s lack of filemode tracking does not cause unnecessary updates to the repository.

@@ -1,18 +1,15 @@
 [user]
-	email = "~@gilgamesh.cc"
-	name = "GILGAMESH"
+	email = c706213d-56d4-42c1-a681-27fd4135a504@gilgamesh.cc
+	name = gilgamesh
 [core]
-	autocrlf = "false"
-	fileMode = "false"
+	autocrlf = false
+	fileMode = true
 [alias]
-	co = "checkout"
-	cp = "cherry-pick"
-	ac = "! git add -A && git commit --allow-empty-message -am"
-	ace = "! git add -A && git commit --allow-empty --allow-empty-message -am ''"
-	rs = "! git reset --soft HEAD~1"
-	cbr = "! git branch | grep -v 'master' | xargs git branch -D"
-	rgc = "! git reflog expire --expire=now --all && git gc --prune=now --aggressive"
-	# This only works on Windows and should not be used regularly.
-	p = "! [[ $(git config 'branch.$(git symbolic-ref --short HEAD).merge') = '' ]] && git push -u origin $(git symbolic-ref --short HEAD) || git push"
-[credential "https://didit.mit.edu"]
-	provider = generic
+	co = checkout
+	cp = cherry-pick
+	ac = ! git add -A && git commit --allow-empty-message -am
+	ace = ! git add -A && git commit --allow-empty --allow-empty-message -am ''
+	rs = ! git reset --soft HEAD~1
+	cbr = ! git branch | grep -v 'master' | xargs git branch -D
+	p = ! [[  = '' ]] && git push -u origin master || git push
+	rgc = ! git reflog expire --expire=now --all && git gc --prune=now --aggressive
