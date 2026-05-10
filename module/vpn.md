@@ -13,7 +13,7 @@ Reference configurations for existing clients are available on the server, and m
 
 An experimental OpenVPN server has been set up on `gilgamesh.cc` following the guide at <https://www.digitalocean.com/community/tutorials/how-to-set-up-and-configure-an-openvpn-server-on-ubuntu-20-04>. Note that beyond the guide, I had to disable all `iptables` rules such as what I did for `emilia`. Namely, clear IP tables and run `iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE;` with the correct ethernet interface name `eth0` using `ip route get`.
 
-I also needed `tun-mtu 1400` (or 1000) on the server config sometimes. Add `ipv6` to the server pushes to ensure that client ipv6 requests do not sneak through.
+Add `ipv6` to the server pushes to ensure that client ipv6 requests do not sneak through.
 
 Also, <https://superuser.com/questions/1274955/use-windows-mobile-hotspot-with-openvpn>.
 
