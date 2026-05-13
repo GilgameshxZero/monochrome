@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+aria2c \
+	-u 16 \
+	--seed-time 0 \
+	--stream-piece-selector=inorder \
+	--bt-prioritize-piece=head=256M \
+	"$@"
