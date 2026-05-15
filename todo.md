@@ -57,6 +57,7 @@
 	1.  Virtual Keyboard settings.
 	2.  Input Method settings.
 	3.  Add-Ons -> Unicode -> Trigger Key (disable).
+	4.  On-screen keyboard must be activated (via taskbar icon which is usually hidden) (and set to Fcitx5 in virtual keyboard settings).
 40. Self-signed certificates: <https://wiki.archlinux.org/title/Chromium#SSL_certificates>.
 	1.  Doesn't work for sunshine because of bad CN in cert.
 41. Root sunshine is good so that autologon isnt needed.

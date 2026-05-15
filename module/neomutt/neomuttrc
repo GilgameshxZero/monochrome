@@ -34,6 +34,8 @@ set mail_check=30
 set markers=no
 set wait_key=no
 
+bind editor <space> noop
+
 bind editor <Tab> complete-query
 bind editor ^T complete
 bind index N search-opposite
@@ -46,3 +48,8 @@ macro index,pager xb "<save-message>=[Gmail]/Bin<enter><enter>"
 macro index,pager xa "<save-message>=[Gmail]/All^V Mail<enter><enter>"
 macro index,pager xi "<save-message>=INBOX<enter><enter>"
 macro index,pager xr "T~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>"
+macro index,pager xc "<search>~m<space><1024<space>~B<space>17a7ceae-5204-47cd-8c8a-74b95b3aa83d<enter>"
+
+# Quitting the index marks all as read and caches everything.
+bind index q noop
+macro index q "<change-folder>+[Gmail]/All^V Mail<enter>T~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter><sync-mailbox><exit>"

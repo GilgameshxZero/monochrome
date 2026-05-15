@@ -200,8 +200,9 @@
 	"terminal.integrated.fontFamily": "monospace",
 	// Closes terminals faster (on Windows); faster tasks/builds.
 	"terminal.integrated.profiles.windows": {
-		"cmd": {
+		"Command Prompt": {
 			"path": [
+				"C:\\Windows\\System32\\cmd.exe",
 				"${env:windir}\\System32\\cmd.exe",
 				"${env:windir}\\Sysnative\\cmd.exe"
 			],
@@ -234,7 +235,7 @@
 			"args": ["-i"]
 		}
 	},
-	"terminal.integrated.defaultProfile.windows": "cmd",
+	"terminal.integrated.defaultProfile.windows": "Command Prompt",
 	"terminal.integrated.defaultProfile.linux": "bash",
 	"terminal.integrated.defaultProfile.osx": "zsh",
 	"terminal.integrated.enableMultiLinePasteWarning": "never",
