@@ -123,7 +123,7 @@
     ],
     "updateDate": 1774591474048,
     "_id": "d53c8728-a8ae-495e-9ed4-574872a43bed",
-    "_rev": 1774591474049,
+    "_rev": 1778283096676,
     "id": 1
   },
   {
@@ -140,7 +140,7 @@
     ],
     "updateDate": 1774591467194,
     "_id": "a9a1b927-f915-4fac-8ad9-f03336ffa0e1",
-    "_rev": 1774591467194,
+    "_rev": 1778283096676,
     "id": 2
   },
   {
@@ -157,7 +157,24 @@
     ],
     "updateDate": 1774591617324,
     "_id": "b17cbc8a-625d-49a2-8e02-074320660c2a",
-    "_rev": 1774591617324,
+    "_rev": 1778283096676,
     "id": 3
+  },
+  {
+    "enabled": true,
+    "installDate": 1779094580868,
+    "name": "stanford.edu/~shervine/teaching/cs-230/cheatsheet-recurrent-neural-networks/",
+    "sections": [
+      {
+        "code": "html[data-darkreader-scheme=\"dark\"] img.img-responsive {\n    filter: invert(1);\n}",
+        "urlPrefixes": [
+          "https://stanford.edu/~shervine/teaching"
+        ]
+      }
+    ],
+    "updateDate": 1779094682125,
+    "_id": "4ac64a8e-1e3e-483f-8d85-624624bc7a02",
+    "_rev": 1779094682125,
+    "id": 4
   }
 ]

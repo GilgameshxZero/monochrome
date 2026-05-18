@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-/home/gilgamesh/main.syncthing/monochrome/bin/nvidia-pstated
+/home/gilgamesh/main.syncthing/monochrome/app/nvidia-pstated
