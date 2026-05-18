@@ -12,17 +12,17 @@ echo 1 | sudo tee /sys/devices/system/cpu/cpu7/online
 echo 1 | sudo tee /sys/devices/system/cpu/cpufreq/boost
 
 sudo cpupower -c all frequency-set -g performance
-sudo powercap-set intel-rapl -z 0 -c 0 -s 81872814080
-sudo powercap-set intel-rapl -z 0 -c 1 -s 81872814080
-sudo powercap-set intel-rapl-mmio -z 0 -c 0 -s 81872814080
-sudo powercap-set intel-rapl-mmio -z 0 -c 1 -s 81872814080
+sudo powercap-set intel-rapl -z 0 -c 0 -l 37000000 -s 81872814080
+sudo powercap-set intel-rapl -z 0 -c 1 -l 37000000 -s 81872814080
+sudo powercap-set intel-rapl-mmio -z 0 -c 0 -l 37000000 -s 81872814080
+sudo powercap-set intel-rapl-mmio -z 0 -c 1 -l 37000000 -s 81872814080
 
 # Sometimes KDE does not set this correctly so we do it here.
 powerprofilesctl set performance
 
 # Fan control.
-# sudo modprobe ec_sys write_support=1
-# echo -n -e "\x88" | sudo dd of="/sys/kernel/debug/ec/ec0/io" bs=1 seek=45 count=1 conv=notrunc
+sudo modprobe ec_sys write_support=1
+echo -n -e "\x88" | sudo dd of="/sys/kernel/debug/ec/ec0/io" bs=1 seek=45 count=1 conv=notrunc
 
 # Applications.
 syncthing cli config folders ifzzk-usnva paused set false

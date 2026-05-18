@@ -20,21 +20,18 @@
 # sleep 0.1
 
 sudo cpupower -c all frequency-set -g powersave
+sudo powercap-set intel-rapl -z 0 -c 0 -l 37000000 -s 81872814080
+sudo powercap-set intel-rapl -z 0 -c 1 -l 37000000 -s 81872814080
+sudo powercap-set intel-rapl-mmio -z 0 -c 0 -l 37000000 -s 81872814080
+sudo powercap-set intel-rapl-mmio -z 0 -c 1 -l 37000000 -s 81872814080
+
 # Sometimes KDE does not set this correctly so we do it here.
 powerprofilesctl set power-saver
 
 # Fan control.
-# sudo modprobe ec_sys write_support=1
-# echo -ne "\x88" | sudo dd of="/sys/kernel/debug/ec/ec0/io" bs=1 seek=45 count=1 conv=notrunc
+sudo modprobe ec_sys write_support=1
+echo -ne "\x88" | sudo dd of="/sys/kernel/debug/ec/ec0/io" bs=1 seek=45 count=1 conv=notrunc
 
 # Applications.
 # sudo pkill -9 pipewire
 syncthing cli config folders ifzzk-usnva paused set true
-
-# current_theme=$(kreadconfig6 --group KDE --key LookAndFeelPackage)
-# if [ "$current_theme" = "org.manjaro.breath-light.desktop" ]; then
-# 	lookandfeeltool -a org.manjaro.breath-dark.desktop
-# 	sleep 0.4
-# 	lookandfeeltool -a org.manjaro.breath-dark.desktop
-# 	qdbus org.kde.kglobalaccel /component/kwin invokeShortcut "Toggle Night Color"
-# fi
