@@ -1,0 +1,14 @@
+[Unit]
+Description=socat
+After=network.target
+StartLimitIntervalSec=60
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=60
+User=root
+ExecStart=/root/socat.sh
+
+[Install]
+WantedBy=multi-user.target
