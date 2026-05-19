@@ -150,6 +150,7 @@
 66. Pinning versions for AUR `ungoogled-chromium-bin` and `vscodium-bin` due to a bug on KDE where chromium apps seem to freeze (while still accepting input) until either a KDE app is interacted with, or the mouse is moved.
 	1.  `139.0.7258.154-1`
 	2.  `1.106.37943`
+	3.  TODO: solved via adjusting task switching to "Compact" in KDE/Manjaro.
 67. `gilgamesh-54`: <https://wiki.debian.org/WiFi/HowToUse#wpasupplicant>. <https://github.com/ThomasRives/Proxmox-over-wifi>.
 	1. `KillMode=process` for `ifreset`.
 	2. <https://forum.proxmox.com/threads/remove-or-reset-cluster-configuration.114260/>.
@@ -168,3 +169,5 @@
 73. `purple-facebook-git` on AUR needs `glib2-devel`.
 74. `sudo dd if=/dev/sda bs=64M | pv | pigz -9 | ssh root@192.168.50.40 "dd of=/mnt/pve/sdb/template/iso/gilgamesh-52.20260418.gz.iso bs=64M"`
 	1.  `tar cf - DIRECTORY | pigz > DIRECTORY.tar.gz`
+75. dnsmasq
+	1.  `/etc/dnsmasq.d/static-ips.conf`
