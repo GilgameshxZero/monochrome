@@ -1,11 +1,11 @@
 {
 	"name": "Vimium C",
-	"@time": "5/8/2026, 11:27:28 PM",
-	"time": 1778282848979,
+	"@time": "5/25/2026, 5:00:29 PM",
+	"time": 1779728429577,
 	"environment": {
 		"extension": "2.12.3",
 		"platform": "linux",
-		"chromium": 147
+		"chromium": 148
 	},
 	"allBrowserUrls": true,
 	"exclusionRules": [
@@ -24,6 +24,10 @@
 		{
 			"passKeys": "",
 			"pattern": ":https://gilgamesh.cc:61054/"
+		},
+		{
+			"passKeys": "- ",
+			"pattern": ":https://gilgamesh.cc:61040/"
 		}
 	],
 	"extAllowList": [
@@ -102,8 +106,8 @@
 		"  font-family: monospace;",
 		"  font-size: 1.2em;",
 		"",
-		"  color: black;",
-		"  background: white;",
+		"  color: #000000ff;",
+		"  background: #ffffffff;",
 		"  border: solid 0.1em black;",
 		"  border-radius: 0;",
 		"  box-shadow: none;",
