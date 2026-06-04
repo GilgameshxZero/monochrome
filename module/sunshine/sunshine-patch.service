@@ -1,5 +1,5 @@
 [Unit]
-Description=juice
+Description=sunshine-patch
 After=network.target
 StartLimitIntervalSec=1
 
@@ -7,7 +7,8 @@ StartLimitIntervalSec=1
 Type=simple
 Restart=always
 RestartSec=4
-User=root
-ExecStart=/root/juice.sh
+User=gilgamesh
+ExecStart=/usr/bin/sunshine
 
 [Install]
+WantedBy=xdg-desktop-autostart.target

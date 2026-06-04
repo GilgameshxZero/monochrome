@@ -1,11 +1,11 @@
 {
 	// Toggle scrollbar.
-	"editor.scrollbar.verticalScrollbarSize": 0,
+	// "editor.scrollbar.verticalScrollbarSize": 0,
 
 	// Base code/codium settings.
 	"breadcrumbs.enabled": false,
 
-	"chat.editor.fontSize": 19,
+	"chat.editor.fontSize": 20,
 	"chat.commandCenter.enabled": false,
 
 	"comments.visible": false,
@@ -42,7 +42,8 @@
 	"editor.suggest.showWords": false,
 	"editor.inlayHints.enabled": "off",
 	"editor.wrappingIndent": "indent",
-	"editor.fontSize": 19,
+	"editor.fontSize": 20,
+	"editor.fontWeight": "550",
 	"editor.fontFamily": "monospace",
 	"editor.inertialScroll": false,
 	"editor.mouseWheelScrollSensitivity": 1.5,
@@ -196,7 +197,8 @@
 		"shell": true
 	},
 
-	"terminal.integrated.fontSize": 19,
+	"terminal.integrated.fontSize": 20,
+	"terminal.integrated.fontWeight": "550",
 	"terminal.integrated.fontFamily": "monospace",
 	// Closes terminals faster (on Windows); faster tasks/builds.
 	"terminal.integrated.profiles.windows": {
@@ -342,7 +344,7 @@
 			"editorWarning.foreground": "#000000",
 			"editorWarning.border": "#00000000",
 			"editorInfo.foreground": "#00000000",
-			"editorInfo.border": "#00000000",
+			"editorInfo.border": "#00000060",
 
 			"scrollbar.background": "#00000000",
 			"scrollbarSlider.background": "#000000",
@@ -352,7 +354,7 @@
 			"editorOverviewRuler.errorForeground": "#000000",
 			"editorOverviewRuler.warningForeground": "#000000",
 			// We are fine obscuring content here.
-			"editorOverviewRuler.findMatchForeground": "#000000",
+			"editorOverviewRuler.findMatchForeground": "#000000fe",
 			"terminalOverviewRuler.findMatchForeground": "#000000",
 
 			"terminal.ansiRed": "#000000",
@@ -425,7 +427,7 @@
 			"editorWarning.foreground": "#ffffff",
 			"editorWarning.border": "#ffffff00",
 			"editorInfo.foreground": "#ffffff00",
-			"editorInfo.border": "#ffffff00",
+			"editorInfo.border": "#ffffff60",
 
 			"scrollbar.background": "#ffffff00",
 			"scrollbarSlider.background": "#ffffff",
@@ -435,7 +437,7 @@
 			"editorOverviewRuler.errorForeground": "#ffffff",
 			"editorOverviewRuler.warningForeground": "#ffffff",
 			// We are fine obscuring content here.
-			"editorOverviewRuler.findMatchForeground": "#ffffff",
+			"editorOverviewRuler.findMatchForeground": "#fffffffe",
 			"terminalOverviewRuler.findMatchForeground": "#ffffff",
 
 			"terminal.ansiRed": "#ffffff",
@@ -530,6 +532,7 @@
 		"eternalism",
 		"eternalist",
 		"everwinter",
+		"Feli",
 		"Felys",
 		"Felysia",
 		"Felysian",
@@ -568,6 +571,7 @@
 		"lzcnt",
 		"Madoka",
 		"mathbb",
+		"mnist",
 		"Monogatari",
 		"Morozov",
 		"MOUSEEVENTF",
@@ -588,6 +592,7 @@
 		"POINTERWHEEL",
 		"Potievsky",
 		"primality",
+		"Relu",
 		"rewatch",
 		"rewatched",
 		"segtree",
@@ -620,10 +625,8 @@
 		"Windcatcher",
 		"WINDOWPOSCHANGED",
 		"WNDCLASSEX",
-		"xdpi",
 		"xena",
 		"Xfermode",
-		"ydpi",
 		"Zoku"
 	],
 	"cSpell.enabledNotifications": {
