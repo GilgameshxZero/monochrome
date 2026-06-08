@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
-if ! pgrep -x $1 > /dev/null; then
+if ! tmux has-session -t $1 > /dev/null; then
 	# set status off not working; minor issue.
 	tmux new -d -s $1 \; set status off \;
-	tmux send -t $1 "cd ~/main.syncthing && /usr/bin/$1" ENTER
+	tmux send -t $1 "cd ~/main.syncthing && $1" ENTER
 fi
 if [[ ! -v TMUX ]]; then
 	tmux a -t $1

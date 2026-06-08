@@ -28,7 +28,7 @@ set sidebar_format="%B%?F? [%F]?%* %?N?%N/?%S"
 mailboxes =INBOX =[Gmail]/All\ Mail =[Gmail]/Sent\ Mail =[Gmail]/Drafts =[Gmail]/Spam =[Gmail]/Bin
 unset delete
 set include=yes
-set query_command="mutt_vc_query -f ~/main.syncthing/wallflower/person/person.vcf '%s'"
+set query_command="mutt_vc_query -f ~/main.syncthing/wallflower/person/contacts.vcf '%s'"
 set signature="~/main.syncthing/monochrome/module/neomutt/.signature"
 set mail_check=30
 set markers=no
