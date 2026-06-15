@@ -1,7 +1,7 @@
 {
 	"name": "Vimium C",
-	"@time": "5/25/2026, 5:00:29 PM",
-	"time": 1779728429577,
+	"@time": "6/15/2026, 2:33:52 AM",
+	"time": 1781490832880,
 	"environment": {
 		"extension": "2.12.3",
 		"platform": "linux",
@@ -46,6 +46,7 @@
 		"",
 		"# The version of PDF.js for Vimium C we are using.",
 		"pomogjedfdcelooceoglbhmfapnlnpkl",
+		"kefibmkbhllkedbcokkdnhmcmopfcknn",
 		""
 	],
 	"grabBackFocus": true,

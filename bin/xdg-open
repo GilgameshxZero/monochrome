@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Launches with `xdg-open` if in a DE, otherwise $EDITOR.
 if [[ ! -v DESKTOP_SESSION ]]; then 
-	$EDITOR $@
+	$EDITOR "$@"
 else
-	/usr/bin/xdg-open $@
+	/usr/bin/xdg-open "$@"
 fi
