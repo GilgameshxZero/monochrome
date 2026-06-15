@@ -13,14 +13,17 @@ set trash = "+[Gmail]/Bin"
 set imap_authenticators = "oauthbearer:xoauth2"
 set imap_oauth_refresh_command = "/usr/share/neomutt/oauth2/mutt_oauth2.py ~/main.syncthing/monochrome/module/neomutt/yangawesome_gmail.com.password.token --decryption-pipe cat --encryption-pipe cat"
 
-set realname="Yang Yan"
+set real_name="Yang Yan"
 set from="yang@gilgamesh.cc"
 unset ssl_force_tls
 set smtp_url="smtp://yang@gilgamesh.cc:2525"
+set reverse_name
+alternates @gilgamesh.cc yangawesome@gmail.com yangilga@mit.edu yangilga@outlook.com yyan99@mit.edu gilgamesh@tfwno.gf gilgameshxzero@icloud.com gilgameshxzero@outlook.com
+set message_id_format="<%z@gilgamesh.cc>"
 
 set editor="/usr/bin/vim"
 set header_cache="~/.neomutt/cache/"
-set message_cachedir="~/.neomutt/cache/"
+set message_cache_dir="~/.neomutt/cache/"
 set pager_stop=yes
 set sort=reverse-date
 set sort_aux=last-date-received
@@ -28,7 +31,7 @@ set sidebar_format="%B%?F? [%F]?%* %?N?%N/?%S"
 mailboxes =INBOX =[Gmail]/All\ Mail =[Gmail]/Sent\ Mail =[Gmail]/Drafts =[Gmail]/Spam =[Gmail]/Bin
 unset delete
 set include=yes
-set query_command="mutt_vc_query -f ~/main.syncthing/wallflower/person/contacts.vcf '%s'"
+set query_command="mutt_vc_query -f ~/main.syncthing/monochrome/module/person/contacts.vcf '%s'"
 set signature="~/main.syncthing/monochrome/module/neomutt/.signature"
 set mail_check=30
 set markers=no

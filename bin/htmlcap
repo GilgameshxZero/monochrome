@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Pipes HTML to browser tab properly for `mailcap`.
+echo "<!DOCTYPE html><html><head><style>body>* { max-width: 100%; max-height: 100vh; }</style></head><body>" > "${1}.html"
+cat "$1" >> "${1}.html"
+echo "</body></html>" >> "${1}.html"
+xdg-open "${1}.html"
+(sleep 1; rm "${1}.html") &
