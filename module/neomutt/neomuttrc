@@ -17,8 +17,10 @@ set real_name="Yang Yan"
 set from="yang@gilgamesh.cc"
 unset ssl_force_tls
 set smtp_url="smtp://yang@gilgamesh.cc:2525"
+# Reply from receiving mailbox, if on this list.
 set reverse_name
 alternates @gilgamesh.cc yangawesome@gmail.com yangilga@mit.edu yangilga@outlook.com yyan99@mit.edu gilgamesh@tfwno.gf gilgameshxzero@icloud.com gilgameshxzero@outlook.com
+# Don't include hostname in message ID.
 set message_id_format="<%z@gilgamesh.cc>"
 
 set editor="/usr/bin/vim"
@@ -36,6 +38,10 @@ set signature="~/main.syncthing/monochrome/module/neomutt/.signature"
 set mail_check=30
 set markers=no
 set wait_key=no
+# Display message size not number of lines in index.
+set index_format="%4C %Z %{%b %d} %-15.15L %4cr %s"
+auto_view text/html
+alternative_order text/plain text/html
 
 bind editor <space> noop
 
