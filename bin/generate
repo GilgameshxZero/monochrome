@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Generates various IDs.
 if [ "$1" = "password" ]; then
-	id=$(tr -dc 'a-z0-9' < /dev/urandom | head -c 16)
+	id=$(tr -dc '0-9a-f' < /dev/urandom | head -c 32)
 elif [ "$1" = "uuid" ]; then
 	id=$(uuidgen)
 elif [ "$1" = "totp" ]; then
