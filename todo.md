@@ -1,5 +1,5 @@
 1. Persist `iptables` rules through reboot on `gilgamesh-31` and `gilgamesh-45`.
-	1. Might already be done?
+	1. Need documentation
 2. `watch -n 0.1 iostat -d 1 2 nvme0n1 sda sdb`
 3. <https://forum.proxmox.com/threads/amd-bsod-unsupported-processor-since-windows-build-26100-4202-update-kb5060842-its-preview-kb5058499.166828/page-3>.
 4. Understand what caused and resolved the word-style backspace on Windows VSCode SSH -> Windows.
@@ -7,6 +7,7 @@
 5. Integer scaling.
 6. git symlinks on Linux/MacOs.
 7. Remove Windows version message on cmd.exe.
+	1. This might be impossible.
 8. Disable Window Updates via Group Policy, Disabled.
 9.  <https://dortania.github.io/OpenCore-Post-Install/universal/iservices.html#customer-code-error>
 10. Hotspot adapter solution: <https://superuser.com/questions/1448054/choose-which-adapter-to-use-for-mobile-hotspot-on-windows-10>.
