@@ -1,0 +1,17 @@
+[calendars]
+  [[default]]
+    path = ~/main.syncthing/monochrome/module/calendar/default/
+		addresses = yang@gilgamesh.cc
+
+[default]
+	default_calendar = default
+	default_event_duration = 15m
+
+[locale]
+local_timezone = Etc/UTC
+default_timezone = Etc/UTC
+timeformat = %H%M
+dateformat = %m_%d
+longdateformat = %Y_%m_%d
+datetimeformat = %m_%d-%H%M
+longdatetimeformat = %Y_%m_%d-%H%M
