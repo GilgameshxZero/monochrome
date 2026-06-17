@@ -23,29 +23,40 @@ set reverse_name
 alternates @gilgamesh.cc yangawesome@gmail.com yangilga@mit.edu yangilga@outlook.com yyan99@mit.edu gilgamesh@tfwno.gf gilgameshxzero@icloud.com gilgameshxzero@outlook.com
 # Don't include hostname in message ID.
 set message_id_format="<%z@gilgamesh.cc>"
+set signature="~/main.syncthing/monochrome/module/neomutt/.signature"
+# Always quote reply.
+set include=yes
+# `khard` handles contact queries.
+set query_command="echo %s | xargs khard email -d formatted_name --parsable --"
 
+# General and index options.
+# mailboxes =INBOX =[Gmail]/All\ Mail =[Gmail]/Sent\ Mail =[Gmail]/Drafts =[Gmail]/Spam =[Gmail]/Bin
 set editor="/usr/bin/vim"
-set mailcap_path="~/main.syncthing/monochrome/module/neomutt/mailcap"
 set header_cache="~/.neomutt/cache/"
 set message_cache_dir="~/.neomutt/cache/"
 set pager_stop=yes
 set sort=reverse-date
 set sort_aux=last-date-received
-set sidebar_format="%B%?F? [%F]?%* %?N?%N/?%S"
-mailboxes =INBOX =[Gmail]/All\ Mail =[Gmail]/Sent\ Mail =[Gmail]/Drafts =[Gmail]/Spam =[Gmail]/Bin
-unset delete
-set include=yes
-set query_command="echo %s | xargs khard email -d formatted_name --parsable --"
-set signature="~/main.syncthing/monochrome/module/neomutt/.signature"
-set mail_check=30
-set markers=no
-set wait_key=no
-# Display message size not number of lines in index.
+# This is a good sidebar format, but we prefer fullscreen.
+# set sidebar_format="%B%?F? [%F]?%* %?N?%N/?%S"
+# Display message size, not number of lines, in index.
 set index_format="%4C %Z %{%b %d} %-15.15L %4cr %s"
+# Check for new mail every 30 seconds (default: 5).
+# set mail_check=30
+
+# Miscellaneous.
+# Don't ask for confirmation for delete.
+unset delete
+# Don't display line wrap markers for easy copy out of tmux buffer.
+set markers=no
+# Don't ask for confirmation on some functions.
+set wait_key=no
+# Dump with mailcap if html available and no plaintext.
+set mailcap_path="~/main.syncthing/monochrome/module/neomutt/mailcap"
 auto_view text/html
 alternative_order text/plain text/html
-set show_multipart_alternative=""
 
+# The scroll is a little confusing to me.
 bind editor <space> noop
 
 # Search, reply, tab complete contacts.
@@ -56,6 +67,7 @@ bind index \CN toggle-new
 bind index,pager R group-reply
 
 # Use `d` to mark for "archive", and "$" to sync.
+# x-keys are general operations.
 bind index,pager x noop
 macro index,pager xb "<save-message>=[Gmail]/Bin<enter><enter>"
 macro index,pager xa "<save-message>=[Gmail]/All^V Mail<enter><enter>"
@@ -63,6 +75,7 @@ macro index,pager xi "<save-message>=INBOX<enter><enter>"
 macro index,pager xr "T~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter><sync-mailbox>"
 macro index,pager xc "<search>~m<space><1024<space>~B<space>17a7ceae-5204-47cd-8c8a-74b95b3aa83d<enter>"
 
-# Quitting the index marks all as read and caches everything.
+# Off: quitting the index marks all as read and caches everything.
+# Instead, we prefer to manually `xr`.
 # bind index q noop
 # macro index q "<change-folder>+[Gmail]/All^V Mail<enter>T~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter><sync-mailbox><exit>"
