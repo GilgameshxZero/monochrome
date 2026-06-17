@@ -33,7 +33,7 @@ set sidebar_format="%B%?F? [%F]?%* %?N?%N/?%S"
 mailboxes =INBOX =[Gmail]/All\ Mail =[Gmail]/Sent\ Mail =[Gmail]/Drafts =[Gmail]/Spam =[Gmail]/Bin
 unset delete
 set include=yes
-set query_command="mutt_vc_query -f ~/main.syncthing/monochrome/module/person/contacts.vcf '%s'"
+set query_command="echo %s | xargs khard email -d formatted_name --parsable --"
 set signature="~/main.syncthing/monochrome/module/neomutt/.signature"
 set mail_check=30
 set markers=no
@@ -42,6 +42,7 @@ set wait_key=no
 set index_format="%4C %Z %{%b %d} %-15.15L %4cr %s"
 auto_view text/html
 alternative_order text/plain text/html
+set show_multipart_alternative=""
 
 bind editor <space> noop
 

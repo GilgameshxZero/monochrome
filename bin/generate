@@ -5,7 +5,7 @@ if [ "$1" = "password" ]; then
 elif [ "$1" = "uuid" ]; then
 	id=$(uuidgen)
 elif [ "$1" = "totp" ]; then
-	id=$(oathtool -b --totp $(cat "$2"))
+	id=$(oathtool -b --totp "$2")
 fi
 echo "$id"
 qdbus6 org.kde.klipper /klipper setClipboardContents "$id"
