@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Source directory, target filename (without extension).
+# tar -I "pigz -9" -cf "$2.tar.gz" "$1"
+XZ_OPT="-9 -T0" tar -cJf "$2.tar.xz" "$1"
