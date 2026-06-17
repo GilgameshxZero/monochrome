@@ -3,5 +3,5 @@
 echo "<!DOCTYPE html><html><head><style>body img { max-width: 100vw; max-height: 100vh; }</style></head><body>" > "${1}.html"
 cat "$1" >> "${1}.html"
 echo "</body></html>" >> "${1}.html"
-/usr/bin/chromium "${1}.html"
+xdg-open "${1}.html"
 (sleep 64; rm "${1}.html") &
