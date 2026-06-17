@@ -24,6 +24,7 @@ alternates @gilgamesh.cc yangawesome@gmail.com yangilga@mit.edu yangilga@outlook
 set message_id_format="<%z@gilgamesh.cc>"
 
 set editor="/usr/bin/vim"
+set mailcap_path="~/main.syncthing/monochrome/module/neomutt/mailcap"
 set header_cache="~/.neomutt/cache/"
 set message_cache_dir="~/.neomutt/cache/"
 set pager_stop=yes
