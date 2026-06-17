@@ -5,7 +5,8 @@ if [ "$1" = "password" ]; then
 elif [ "$1" = "uuid" ]; then
 	id=$(uuidgen)
 elif [ "$1" = "totp" ]; then
+	# Useful for generating 2fa codes provided an original time-based key (e.g. from Slack).
 	id=$(oathtool -b --totp "$2")
 fi
 echo "$id"
-qdbus6 org.kde.klipper /klipper setClipboardContents "$id"
+clip "$id"

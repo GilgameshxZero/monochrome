@@ -1,9 +1,0 @@
-cleanup-on-quit	no
-
-color background default default
-color listnormal default default
-color listfocus default default reverse
-color listfocus_unread default default reverse bold
-color title default default reverse bold
-color info default default reverse bold
-color hint-key default default reverse bold
