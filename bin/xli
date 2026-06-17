@@ -1,2 +1,3 @@
 #!/usr/bin/env bash
+# Used to view images in `lynx`. Maybe we can consolidate this somehow?
 mpv --pause	"$@"

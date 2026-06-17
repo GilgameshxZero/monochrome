@@ -1,2 +1,0 @@
-#!/usr/bin/env bash
-watch -n 1 "sensors | grep -e SVI2 -e Tdie -e power1 -e Core -e fan1"

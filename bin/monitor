@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+if [ "$1" = "mhz" ]; then
+	watch -n1 "cat /proc/cpuinfo | grep MHz"
+elif [ "$1" = "sensors" ]; then
+	watch -n 1 "sensors | grep -e SVI2 -e Tdie -e power1 -e Core -e fan1"
+elif [ "$1" = "turbostat" ]; then
+	sudo turbostat -i 3 -S -s PkgWatt,CorWatt,GFXWatt,RAMWatt,SysWatt
+fi
