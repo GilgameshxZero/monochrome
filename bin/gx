@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# Should delegate to sub-scripts when there's more functionality.
+if [ "$1" = "trackpad" ]; then
+	xdotool mousemove 0 0
+	xdotool mousemove_relative 9999 100
+	if ! lsmod | grep -q hid_multitouch; then
+		sudo modprobe hid_multitouch
+	else
+		sudo modprobe -r hid_multitouch
+	fi
+elif [ "$1" = "radio" ]; then
+	sleep 0.1
+	sudo modprobe -r btintel_pcie
+	sudo modprobe -r iwlmld
+	sudo modprobe -r iwlwifi
+	sleep 0.1
+	sudo modprobe iwlwifi
+	sudo modprobe iwlmld
+	sudo modprobe btintel_pcie
+fi

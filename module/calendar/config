@@ -1,7 +1,6 @@
 [calendars]
   [[default]]
     path = ~/main.syncthing/monochrome/module/calendar/default/
-		addresses = yang@gilgamesh.cc
 
 [default]
 	default_calendar = default

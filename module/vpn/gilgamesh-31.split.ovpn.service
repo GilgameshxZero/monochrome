@@ -1,0 +1,15 @@
+# Run with the local `gilgamesh-31.ovpn.split` config.
+[Unit]
+Description=gilgamesh-31.split.ovpn
+After=network.target
+StartLimitIntervalSec=60
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=60
+User=root
+ExecStart=/usr/bin/openvpn --config "/home/gilgamesh/main.syncthing/monochrome/machine/%H/gilgamesh-31.split.ovpn"
+
+[Install]
+WantedBy=multi-user.target

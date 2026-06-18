@@ -42,7 +42,7 @@ set sort_aux=last-date-received
 # Display message size, not number of lines, in index.
 set index_format="%4C %Z %{%b %d} %-15.15L %4cr %s"
 # Check for new mail every 30 seconds (default: 5).
-# set mail_check=30
+set mail_check=30
 
 # Miscellaneous.
 # Don't ask for confirmation for delete.
@@ -75,7 +75,7 @@ macro index,pager xi "<save-message>=INBOX<enter><enter>"
 macro index,pager xr "T~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter><sync-mailbox>"
 macro index,pager xc "<search>~m<space><1024<space>~B<space>17a7ceae-5204-47cd-8c8a-74b95b3aa83d<enter>"
 
-# Off: quitting the index marks all as read and caches everything.
+# Quitting the index marks all as read and caches everything.
 # Instead, we prefer to manually `xr`.
 # bind index q noop
 # macro index q "<change-folder>+[Gmail]/All^V Mail<enter>T~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter><sync-mailbox><exit>"

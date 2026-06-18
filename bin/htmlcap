@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 # Pipes HTML to browser tab properly for `mailcap`.
-echo "<!DOCTYPE html><html><head><style>body img { max-width: 100vw; max-height: 100vh; }</style></head><body>" > "${1}.html"
-cat "$1" >> "${1}.html"
-echo "</body></html>" >> "${1}.html"
-xdg-open "${1}.html"
-(sleep 64; rm "${1}.html") &
+echo "<!DOCTYPE html><html><head><style>body img { max-width: 100vw; max-height: 100vh; }</style></head><body>" > "/tmp/.htmlcap.tmp.html"
+cat "$1" >> "/tmp/.htmlcap.tmp.html"
+echo "</body></html>" >> "/tmp/.htmlcap.tmp.html"
+# xdg-open "/tmp/.htmlcap.tmp.html"
+/usr/bin/chromium "/tmp/.htmlcap.tmp.html"
+(sleep 64; rm "/tmp/.htmlcap.tmp.html" 1> /dev/null 2> /dev/null) &
