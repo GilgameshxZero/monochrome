@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+if [ "$1" = "trackpad" ]; then
+	xdotool mousemove 0 0
+	xdotool mousemove_relative 9999 100
+	if ! lsmod | grep -q hid_multitouch; then
+		sudo modprobe hid_multitouch
+	else
+		sudo modprobe -r hid_multitouch
+	fi
+elif [ "$1" = "radio" ]; then
+	sleep 0.1
+	if ! lsmod | grep -q iwlwifi; then
+		sudo modprobe iwlwifi
+		sudo modprobe iwlmld
+		sudo modprobe btintel_pcie
+	else
+		sudo modprobe -r btintel_pcie
+		sudo modprobe -r iwlmld
+		sudo modprobe -r iwlwifi
+	fi
+elif [ "$1" = "theme" ]; then
+	# By default, toggles the theme and night light.
+	# Themes trigger twice due to chromium bug not adjusting theme on first trigger.
+	qdbus6 org.kde.kglobalaccel /component/kwin invokeShortcut "Toggle Night Color"
+	current_theme=$(kreadconfig6 --group KDE --key LookAndFeelPackage)
+	if [ "$current_theme" = "org.manjaro.breath-dark.desktop" ]; then
+		lookandfeeltool -a org.manjaro.breath-light.desktop
+		sleep 0.4
+		lookandfeeltool -a org.manjaro.breath-light.desktop
+	else
+		lookandfeeltool -a org.manjaro.breath-dark.desktop
+		sleep 0.4
+		lookandfeeltool -a org.manjaro.breath-dark.desktop
+	fi
+fi
