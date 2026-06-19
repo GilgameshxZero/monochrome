@@ -9,7 +9,7 @@ Type=simple
 Restart=always
 RestartSec=60
 User=gilgamesh
-ExecStart=/usr/bin/ssh -N -R :60044:127.0.0.1:22 -o ExitOnForwardFailure=yes -o ServerAliveInterval=60 guest@gilgamesh.cc
+ExecStart=/usr/bin/ssh -N -R :60044:127.0.0.1:22 -R :8385:127.0.0.1:8384 -o ExitOnForwardFailure=yes -o ServerAliveInterval=60 guest@gilgamesh.cc
 
 [Install]
 WantedBy=multi-user.target
