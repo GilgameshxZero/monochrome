@@ -4,6 +4,8 @@ iodine enables DNS tunneling on networks which block general traffic but not DNS
 
 ## Server
 
+The server requires clear `iptables` rules from `emilia`.
+
 ```bash
 # eth0 may need to be changed depending on the specific interface!
 # Use ip link show

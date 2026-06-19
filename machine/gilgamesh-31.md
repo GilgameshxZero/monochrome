@@ -5,6 +5,10 @@ DigitalOcean linux server hosting gilgamesh.cc
 Ubuntu
 N/A
 
+We must configure `emilia`, `iodine` on this server on startup.
+
+## `guest` forwarding
+
 A guest user `guest` retains only `-N` forwarding permissions (`/etc/ssh/sshd_config`):
 
 ```

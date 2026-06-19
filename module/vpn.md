@@ -7,7 +7,7 @@ OpenVPN servers are available at the default port at:
 
 Reference configurations for existing clients are available on the server, and must be generated for each new client. Client `gilgamesh-X` is assigned subnet IP `10.8.Y.X`, where `Y` is the identifier of the server. Client assignments are declared on the server at `/etc/openvpn/server/ccd/*`.
 
-`gilgamesh-31` is configured with a legacy OpenVPN setup via <https://www.digitalocean.com/community/tutorials/how-to-set-up-and-configure-an-openvpn-server-on-ubuntu-20-04>. `gilgamesh-45` is configured with the preferred script from <<https://www.digitalocean.com/community/tutorials/how-to-set-up-and-configure-an-openvpn-server-on-ubuntu-20-04>. Both servers require “clear” `iptables` rules to function.
+`gilgamesh-31` is configured with a legacy OpenVPN setup via <https://www.digitalocean.com/community/tutorials/how-to-set-up-and-configure-an-openvpn-server-on-ubuntu-20-04>. `gilgamesh-45` is configured with the preferred script from <<https://www.digitalocean.com/community/tutorials/how-to-set-up-and-configure-an-openvpn-server-on-ubuntu-20-04>. Both servers require “clear” `iptables` rules to function (see `emilia`).
 
 ## NAT
 
