@@ -2,8 +2,17 @@
 num_displays = 1
 cuda_enabled = 1
 frl_enabled = 0
-framebuffer = 0x7C200000
-framebuffer_reservation = 0x04000000
+# 4G
+# framebuffer = 0x0F7A00000
+# framebuffer_reservation = 0x008000000
 
-# First three digits declares the number of MB. Underestimates memory usage by 10MB. Reservation needs to be at least 16MB per 0.5GB of VRAM. Platform reserves 32MB/8192MB = 2MB per 0.5GB of VRAM.
+# 2G
+framebuffer = 0x07C200000
+framebuffer_reservation = 0x004000000
+
+# First four digits declares the number of MB. Underestimates memory usage by 10MB. Reservation needs to be at least 16MB per 0.5GB of VRAM. Platform reserves 32MB/8192MB = 2MB per 0.5GB of VRAM.
 # e.g. hex((512-16-2)*4+10) = 0x7c2
+
+# [vm.107] # 6G
+# framebuffer = 0x173200000
+# framebuffer_reservation = 0x00C000000 

@@ -72,7 +72,10 @@ Try different driver blacklist configurations via `/etc/modprobe.d/blacklist.con
 
 `dnsmasq` is used, like on all Proxmox instances, to create an internal NAT. The NAT addressing format is derived from the `OpenVPN`/`vpn` module NAT addressing format, with `10.8.x.y` being the address for `gilgamesh-y` on the NAT of `gilgamesh-x`.
 
-`interfaces` is the provided in the machine configuration to set up `dnsmasq`.
+We provide the following configs:
+
+1. `/etc/network/interfaces`.
+2. `/etc/dnsmasq.d/static-ips.conf`.
 
 ## Kernel parameters, SSD disconnect
 
