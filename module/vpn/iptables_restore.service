@@ -1,0 +1,15 @@
+# Generated configuration with `iptables-save > /root/iptables.txt`.
+[Unit]
+Description=iptables_restore
+After=network.target
+StartLimitIntervalSec=1
+
+[Service]
+RemainAfterExit=true
+Type=oneshot
+User=root
+ExecStart=/usr/sbin/iptables-restore /root/iptables.txt
+
+[Install]
+WantedBy=multi-user.target
+

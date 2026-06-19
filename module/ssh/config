@@ -2,6 +2,8 @@ Host gilgamesh-31
 	HostName gilgamesh.cc
 	Port 22
 	User root
+	ServerAliveInterval 60
+	ExitOnForwardFailure yes
 
 Host gilgamesh-40
 	HostName gilgamesh.cc
@@ -52,8 +54,3 @@ Host gilgamesh-55
 	HostName gilgamesh.cc
 	Port 60055
 	User gilgamesh
-
-Host gilgamesh-58
-	HostName gilgamesh-58.gilgamesh.cc
-	Port 22
-	User root
