@@ -1,3 +1,4 @@
+# Mirrors port 25 to 2525 for SMTP clients with restricted access.
 [Unit]
 Description=socat
 After=network.target
@@ -8,7 +9,7 @@ Type=simple
 Restart=always
 RestartSec=60
 User=root
-ExecStart=/root/socat.sh
+ExecStart=/usr/bin/socat tcp-listen:2525,reuseaddr,fork tcp:127.0.0.1:25
 
 [Install]
 WantedBy=multi-user.target

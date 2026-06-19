@@ -1,3 +1,4 @@
+# Exposes ports on the internal `dnsmasq` NAT.
 [Unit]
 Description=socat
 After=network.target
@@ -8,7 +9,7 @@ Type=simple
 Restart=always
 RestartSec=60
 User=root
-ExecStart=/root/socat.sh
+ExecStart=bash -c "/usr/bin/socat tcp-listen:61041,reuseaddr,fork tcp:10.8.40.41:3389 & /usr/bin/socat udp-listen:61041,reuseaddr,fork udp:10.8.40.41:3389 & /usr/bin/socat tcp-listen:61045,reuseaddr,fork tcp:10.8.40.45:61045 & /usr/bin/socat udp-listen:61045,reuseaddr,fork udp:10.8.40.45:61045"
 
 [Install]
 WantedBy=multi-user.target
