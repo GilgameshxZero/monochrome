@@ -102,3 +102,17 @@ Mobile clients split tunnels require some fiddling. This is because the configur
 `persist-tun` should be used for full tunnels to ensure no data leakage. Right now this doesn’t work so well, because of the up/down scripts (on *nix) and some recursive routing shenanigans (verb 4) if the network is changed (due to some routes being removed and not re-added). It is set for MacOS since route removal on MacOS seems to fail.
 
 `block-outside-dns` needs to be removed for split tunnels.
+
+## DNS leaks on Linux
+
+Follow the guide: <https://unix.stackexchange.com/questions/434916/how-to-fix-openvpn-dns-leak>. Check at <https://ipleak.net>.
+
+```bash
+# May need manual clone due to permission errors.
+pamac install openvpn-update-systemd-resolved openvpn-update-resolv-conf-git
+systemctl enable --now systemd-resolved.service
+```
+
+## Multiple connections on Windows
+
+Trail: <https://superuser.com/questions/1414464/multiple-client-connections-using-openvpn>.

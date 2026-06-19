@@ -13,18 +13,18 @@ This is the *main* syncthing node, and all nodes connect to this one. Other sync
 
 ```10-monitor.conf
 Section "Monitor"
-        Identifier "Virtual-1"
-        Modeline "2880x1800_120.00"  934.00  2880 3136 3456 4032  1800 1803 1809 19
+  Identifier "Virtual-1"
+  Modeline "2880x1800_120.00"  934.00  2880 3136 3456 4032  1800 1803 1809 19
 31 -hsync +vsync
-        Option "PreferredMode" "2880x1800_120.00"
+  Option "PreferredMode" "2880x1800_120.00"
 EndSection
 ```
 
 ```90-mouse.conf
 Section "Device"
-    Identifier "sw-mouse"
-    Driver "modesetting"
-    Option "SWCursor" "true"
+  Identifier "sw-mouse"
+  Driver "modesetting"
+  Option "SWCursor" "true"
 EndSection
 ```
 
@@ -59,3 +59,10 @@ sudo pacman -U https://archive.archlinux.org/packages/g/gcc/gcc-14.2.1%2Br134%2B
 So we must use kernel 6.11.9.
 
 Still can’t get `nvidia-smi` to detect the P40.
+
+## Bugs
+
+1. Not sure why `/sys/power/resume` is not being populated, but even manually populating it does not enable proper hibernation. Maybe EFI boot is required?
+  1. Trail: <https://askubuntu.com/questions/148481/how-do-i-prevent-immediate-wake-up-from-suspend-and-or-hibernation-from-pci-devi>.
+2. For some reason, Wayland NVIDIA acceleration only works with an *additional* EDID plugged in. I have provided said EDID. We will use this workaround for now.
+3. May not work well with SATA port 2. Using port 6 for now. Maybe disable VMID?

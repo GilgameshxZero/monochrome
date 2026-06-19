@@ -5,8 +5,6 @@ Intel Core Ultra 258V | 32GB RAM | 1TB SSD
 Manjaro Linux 25.0.1
 3HM5WYU-ADML4GQ-HFARHWR-5JWFRNB-G3CCGEU-YOFNHCV-PJQ2CHU-XAK66QI
 
-1. <https://bbs.archlinux.org/viewtopic.php?id=266961>.
-
 ## `iio` sensors
 
 `/sys/bus/iio/devices/`:
@@ -45,4 +43,4 @@ sudo fbgrab -s 3 fb.png 2>/dev/null &
 
 ## Bugs
 
-1. Seems like alt-tabbing fast between two chromium windows with the “Compact” visualization turned on will eventually freeze both windows until the mouse moves.
+1. Seems like alt-tabbing fast between two chromium windows will eventually freeze both windows until the mouse moves. Bypass this by setting `Task Switching` to `Compact` again.

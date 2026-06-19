@@ -21,6 +21,7 @@ vGPU client and server drivers are available here:
 1. <https://cloud.google.com/compute/docs/gpus/grid-drivers-table>
 	1. On linux, needs the headers. Install `sudo pacman -S linux-headers-meta`.
 2. <https://mega.nz/file/RvsyyBaB#7fe_caaJkBHYC6rgFKtiZdZKkAvp7GNjCSa8ufzkG20>
+3. <https://alist.homelabproject.cc/foxipan/vGPU/19.3>.
 
 ### `nvidia_pl`, `nvidia_pstate`
 

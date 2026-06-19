@@ -13,3 +13,11 @@ Configurations under `moonlight-WIDTH-HEIGHT.*` are provided to be run upon conn
 ### EDIDs
 
 Custom EDIDs are provided that either clone or allow a range of custom resolutions and refresh rates for different client connections.
+
+### Root vs user service
+
+User service will require some auto-logon-like script. We still prefer this for the most part.
+
+## Bugs
+
+1. May require manual patching of `libicu*.76`.

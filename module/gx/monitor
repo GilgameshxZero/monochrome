@@ -5,4 +5,8 @@ elif [ "$1" = "sensors" ]; then
 	watch -n 1 "sensors | grep -e SVI2 -e Tdie -e power1 -e Core -e fan1"
 elif [ "$1" = "turbostat" ]; then
 	sudo turbostat -i 3 -S -s PkgWatt,CorWatt,GFXWatt,RAMWatt,SysWatt
+elif [ "$1" = "battery" ]; then
+	while true; do cat /sys/class/hwmon/hwmon3/power1_input ; sleep 1; done
+elif [ "$1" = "iostat" ]; then
+	watch -n 0.1 iostat -d 1 2 nvme0n1 sda sdb
 fi

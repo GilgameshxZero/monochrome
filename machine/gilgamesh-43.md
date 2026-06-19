@@ -39,3 +39,14 @@ Must be modified via Recovery mode.
 ## VPN
 
 For some reason, complete tunnels will cause the network to fail over time. For now, we maintain the network interfaces on `gilgamesh-43` to only utilize the split tunnels.
+
+## GPU passthrough trail
+
+1. <https://forum.proxmox.com/threads/gpu-passthrough-on-proxmox-ve-macos-monterey-part-04x04.140579/page-2>.
+2. <https://elitemacx86.com/threads/how-to-spoof-graphics-on-macos-intel-amd-nvidia.1008/>.
+3. <https://dortania.github.io/Getting-Started-With-ACPI/Universal/spoof.html>.
+4. <https://github.com/TylerLyczak/Unsupported-6900XT-Hackintosh-Fix?tab=readme-ov-file>.
+5. <https://elitemacx86.com/threads/how-to-enable-h-264-and-hevc-h-265-encoding-on-macos.468/>.
+6. Just these modifications worked: <https://www.reddit.com/r/hackintosh/comments/1mdtif0/hardware_acceleration_on_sequoia_155_with_rx_550/>. I didn't need the `aml` file at all (or, at least not in the `config.plist`)?
+7. Resetting NVRAM not necessary?
+	1. Unclear. Copied `config.plist` for reference. Please don't steal the IDs.

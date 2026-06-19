@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# Connect to various BT devices.
+# Connect to various BT devices. BT devices can be given the same address by following procedures here: <https://wiki.archlinux.org/title/Bluetooth#Preparing_Bluetooth_5.1_Keys>.
+# Can use LTK for both Slave/Peripheral, same with EDiv and ERand values.
 if [ "$1" = "b2p" ]; then
 	bluetoothctl connect "40:5E:F6:5A:03:32"
 fi

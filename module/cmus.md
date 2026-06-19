@@ -5,3 +5,7 @@
 ## Theming
 
 A theme for monochrome is available in `module/cmus`.
+
+## Bugs
+
+1. May require manual install of `opusfile`.
