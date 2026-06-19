@@ -1,6 +1,6 @@
 # gilgamesh-30
 
-iPhone 12 Mini daily driver
+iPhone 12 Mini
 A14 Bionic | 4GB RAM | 64GB SSD
 iOS 14.1+
 EDRHUAM-WAXJBLF-E4Q75R2-IKUJWF4-T4QKQSU-5GDXNIH-LEFYVDT-WPRSXQZ
