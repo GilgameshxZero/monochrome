@@ -1,0 +1,15 @@
+# Specific ports may be changed depending on machine needs.
+[Unit]
+Description=tunnel-gilgamesh.cc
+After=network.target
+StartLimitIntervalSec=60
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=60
+User=gilgamesh
+ExecStart=/usr/bin/ssh -N -R :60045:127.0.0.1:22 -R :61045:127.0.0.1:1194 -o ExitOnForwardFailure=yes -o ServerAliveInterval=60 guest@gilgamesh.cc
+
+[Install]
+WantedBy=multi-user.target
