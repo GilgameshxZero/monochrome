@@ -7,9 +7,15 @@ OYQNCEI-VB4L4A4-GKQ7HKB-OZYTISA-MPYEJCU-FENEWJT-JLH6JUC-LDQNSQN
 
 This machine also retains an XCode compiler and may compile C++ code with `apple-clang`. The Syncthing node only syncs with `gilgamesh-44`, which runs on the same hardware. This minimizes network utilization when a machine outside the network wishes to sync.
 
+The general configuration is cloned from <https://github.com/luchina-gabriel/OSX-PROXMOX>.
+
+## `config.plist`
+
 1. <https://www.reddit.com/r/hackintosh/comments/i48kxw/wheres_configplist/>.
 
-## SIP
+Our modified and working `config.plist` is provided. This may contain sensitive keys.
+
+## SIP (WIP, but I think disabled)
 
 From recovery,
 
@@ -24,7 +30,7 @@ Also, <https://discussions.apple.com/thread/254915449?answerId=259150545022&sort
 
 1. <https://stackoverflow.com/questions/73048614/can-i-mount-the-root-system-filesystem-as-writable-in-macos-monterey>. Bless in Recovery mode. Doesn't work.
 
-## EDID override
+## EDID override (WIP)
 
 1. `/System/Library/Displays/Contents/Resources/Overrides/DisplayVendorID-756e6b6e/DisplayProductID-717`, keys via `defaults read /Library/Preferences/com.apple.windowserver.plist`.
 
