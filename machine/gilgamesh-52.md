@@ -1,0 +1,6 @@
+# gilgamesh-52
+
+Linux client on USB
+N/A
+Manjaro Linux
+GUZ2I6N-VLVKWTG-352GB6D-IFJ4JOA-OBPS2QH-D7G4UG6-UHDMVJQ-OTSY6AD
