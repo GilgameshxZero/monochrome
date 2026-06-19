@@ -8,7 +8,7 @@ Type=simple
 Restart=always
 RestartSec=4
 User=root
-ExecStart=/home/gilgamesh/main.syncthing/monochrome/machine/gilgamesh-44/nvidia_pstate.sh
+ExecStart=/home/gilgamesh/main.syncthing/monochrome/app/nvidia-pstated
 
 [Install]
 WantedBy=multi-user.target

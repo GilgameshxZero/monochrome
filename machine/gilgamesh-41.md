@@ -5,4 +5,4 @@ AMD 5950X | 16GB RAM | 512GB
 Windows 11
 N/A
 
-This is a managed machine.
+This is a managed machine for `wfyan`.

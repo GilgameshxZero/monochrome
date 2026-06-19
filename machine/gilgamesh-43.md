@@ -1,7 +1,7 @@
 # gilgamesh-43
 
 MacOS server running on `gilgamesh-40`
-AMD 5950X 1x | 8GB RAM | 512GB
+AMD 5950X 4x | 8GB RAM | 512GB
 MacOS
 OYQNCEI-VB4L4A4-GKQ7HKB-OZYTISA-MPYEJCU-FENEWJT-JLH6JUC-LDQNSQN
 
@@ -29,3 +29,7 @@ Also, <https://discussions.apple.com/thread/254915449?answerId=259150545022&sort
 1. `/System/Library/Displays/Contents/Resources/Overrides/DisplayVendorID-756e6b6e/DisplayProductID-717`, keys via `defaults read /Library/Preferences/com.apple.windowserver.plist`.
 
 Must be modified via Recovery mode.
+
+## VPN
+
+For some reason, complete tunnels will cause the network to fail over time. For now, we maintain the network interfaces on `gilgamesh-43` to only utilize the split tunnels.

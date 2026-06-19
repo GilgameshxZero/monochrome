@@ -1,13 +1,13 @@
 # gilgamesh-40
 
 Self-hosted Proxmox
-AMD 5950X | Nvidia GTX 1080 Ti | 32+32+8+8GB DDR4 RAM | 500GB SSD | 8TB HDD
+AMD 5950X | NVIDIA GTX 1080 Ti, NVIDIA GTX 1070, AMD Radeon RX 550 4GB | 32+32+32+32GB DDR4 RAM | 500GB SSD | 8TB HDD
 Proxmox VE 6.8.12-9
 N/A
 
 ## GPU
 
-### Passthrough (GTX 1080 ti, RX 550)
+### Passthrough (GTX 1080 Ti, RX 550)
 
 The GPU is configured to be used via PCI passthrough: <https://pve.proxmox.com/wiki/PCI_Passthrough>. It may also be configured with a vGPU driver to be shared, but this comes with quirks.
 
