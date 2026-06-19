@@ -9,6 +9,10 @@ Reference configurations for existing clients are available on the server, and m
 
 `gilgamesh-31` is configured with a legacy OpenVPN setup via <https://www.digitalocean.com/community/tutorials/how-to-set-up-and-configure-an-openvpn-server-on-ubuntu-20-04>. `gilgamesh-45` is configured with the preferred script from <<https://www.digitalocean.com/community/tutorials/how-to-set-up-and-configure-an-openvpn-server-on-ubuntu-20-04>. Both servers require “clear” `iptables` rules to function.
 
+## NAT
+
+All VPN configurations create an internal NAT with addressing scheme `10.8.x.y` to refer to `gilgamesh-y` on the NAT of `gilgamesh-x`.
+
 ## OpenVPN
 
 An experimental OpenVPN server has been set up on `gilgamesh.cc` following the guide at <https://www.digitalocean.com/community/tutorials/how-to-set-up-and-configure-an-openvpn-server-on-ubuntu-20-04>. Note that beyond the guide, I had to disable all `iptables` rules such as what I did for `emilia`. Namely, clear IP tables and run `iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE;` with the correct ethernet interface name `eth0` using `ip route get`. This should already be encoded in the respective `iptables` autostart services on each host.

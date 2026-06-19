@@ -8,7 +8,7 @@ Type=simple
 Restart=always
 RestartSec=4
 User=root
-ExecStart=/root/nvidia_pstate.sh
+ExecStart=bash -c "LD_LIBRARY_PATH=/root/ /root/nvidia-pstated"
 
 [Install]
 WantedBy=multi-user.target
