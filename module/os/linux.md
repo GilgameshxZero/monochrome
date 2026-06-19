@@ -8,3 +8,7 @@ Most current configurations are on Manjaro, but we plan to Migrate to Debian for
 	 modprobe -r hid_apple
 	 modprobe hid_apple
 	 ```
+
+## Bugs
+
+1. `intel-media-driver` on Linux for iGPU video decode.

@@ -83,3 +83,7 @@ We provide the following configs:
 1. <https://bbs.archlinux.org/viewtopic.php?id=297365>.
 
 Check with `cat /sys/module/nvme_core/parameters/default_ps_max_latency_us`.
+
+## Bugs
+
+1. <https://forum.proxmox.com/threads/amd-bsod-unsupported-processor-since-windows-build-26100-4202-update-kb5060842-its-preview-kb5058499.166828/page-3>.

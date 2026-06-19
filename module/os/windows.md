@@ -45,3 +45,8 @@ The following settings are worth manually adjusting:
 ## Notes
 
 1. Windows can be upgraded in place under secure boot and TPM bypass via the ISO. Run `setup.exe /product server` and do not download updates until complete.
+
+## Bugs
+
+1. <https://superuser.com/questions/1448054/choose-which-adapter-to-use-for-mobile-hotspot-on-windows-10>.
+2. <https://forum.proxmox.com/threads/about-idle-cpu-utilization-on-windows-11.133987/>.

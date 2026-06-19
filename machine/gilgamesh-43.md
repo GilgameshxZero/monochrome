@@ -50,3 +50,7 @@ For some reason, complete tunnels will cause the network to fail over time. For 
 6. Just these modifications worked: <https://www.reddit.com/r/hackintosh/comments/1mdtif0/hardware_acceleration_on_sequoia_155_with_rx_550/>. I didn't need the `aml` file at all (or, at least not in the `config.plist`)?
 7. Resetting NVRAM not necessary?
 	1. Unclear. Copied `config.plist` for reference. Please don't steal the IDs.
+
+## Bugs
+
+1. <https://dortania.github.io/OpenCore-Post-Install/universal/iservices.html#customer-code-error>.

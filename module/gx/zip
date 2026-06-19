@@ -2,3 +2,5 @@
 # Source directory, target filename (without extension).
 # tar -I "pigz -9" -cf "$2.tar.gz" "$1"
 XZ_OPT="-9 -T0" tar -cJf "$2.tar.xz" "$1"
+
+# sudo dd if=/dev/sda bs=64M | pv | pigz -9 | ssh root@192.168.50.40 "dd of=/mnt/pve/sdb/template/iso/gilgamesh-52.20260418.gz.iso bs=64M"

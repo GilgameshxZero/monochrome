@@ -33,3 +33,7 @@ Reference:
 ```
 toybox vi
 ```
+
+## Bugs
+
+1. <https://xdaforums.com/t/solved-unable-to-locate-grub-on-android-x86.4522735/>.

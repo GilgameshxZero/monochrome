@@ -11,3 +11,7 @@ A custom fork of `open-remote-ssh` is provided which correctly detects Windows r
 ### Windows
 
 On Windows, to use `nmake`, VSCode must be launched within the Visual Studio Developer Console. To do this, we provide shortcuts in `module/vscode/` which initialize the developer console variables before launching VSCodium.
+
+## Bugs
+
+1. Windows SSH agent is broken with Codium SSH.

@@ -66,3 +66,6 @@ Still can’t get `nvidia-smi` to detect the P40.
   1. Trail: <https://askubuntu.com/questions/148481/how-do-i-prevent-immediate-wake-up-from-suspend-and-or-hibernation-from-pci-devi>.
 2. For some reason, Wayland NVIDIA acceleration only works with an *additional* EDID plugged in. I have provided said EDID. We will use this workaround for now.
 3. May not work well with SATA port 2. Using port 6 for now. Maybe disable VMID?
+4. Pending EFI migration: <https://unix.stackexchange.com/questions/91620/efi-variables-are-not-supported-on-this-system>.
+	1. `sudo grub-install && sudo update-grub && sudo mkinitcpio -P && sudo grub-install && sudo update-grub && sudo swapon /swapfile`.
+5. <https://www.maketecheasier.com/wayland-work-with-nvidia-graphics-cards/> for proper `vainfo`.
