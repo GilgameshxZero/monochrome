@@ -6,7 +6,7 @@ StartLimitIntervalSec=1
 [Service]
 Type=simple
 Restart=always
-RestartSec=4
+RestartSec=60
 User=root
 ExecStart=/usr/bin/docker run --rm -e DLS_URL=10.8.40.44 -e TZ=Etc/UTC -e DLS_PORT=7070 -p 7070:443 -v /opt/docker/fastapi-dls/cert:/app/cert -v dls-db:/app/database collinwebdesigns/fastapi-dls:latest
 

@@ -6,7 +6,7 @@ StartLimitIntervalSec=1
 [Service]
 Type=simple
 Restart=always
-RestartSec=4
+RestartSec=60
 User=root
 ExecStart=bash -c "LD_LIBRARY_PATH=/root/ /root/nvidia-pstated"
 
