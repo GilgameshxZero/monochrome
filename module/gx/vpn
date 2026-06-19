@@ -1,11 +1,6 @@
 #!/usr/bin/env bash
 # Choose a VPN configuration and set up corresponding split tunnels, based on the provided systemd services.
-if [ "$1" = "none" ]; then
-	sudo systemctl stop gilgamesh-31.ovpn
-	sudo systemctl stop gilgamesh-45.ovpn
-	sudo systemctl start gilgamesh-31.split.ovpn
-	sudo systemctl start gilgamesh-45.split.ovpn
-elif [ "$1" = "31" ]; then
+if [ "$1" = "31" ]; then
 	sudo systemctl stop gilgamesh-31.split.ovpn
 	sudo systemctl stop gilgamesh-45.ovpn
 	sudo systemctl start gilgamesh-31.ovpn
@@ -15,4 +10,9 @@ elif [ "$1" = "45" ]; then
 	sudo systemctl stop gilgamesh-45.split.ovpn
 	sudo systemctl start gilgamesh-31.split.ovpn
 	sudo systemctl start gilgamesh-45.ovpn
+else
+	sudo systemctl stop gilgamesh-31.ovpn
+	sudo systemctl stop gilgamesh-45.ovpn
+	sudo systemctl start gilgamesh-31.split.ovpn
+	sudo systemctl start gilgamesh-45.split.ovpn
 fi

@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Connect to various BT devices.
+if [ "$1" = "b2p" ]; then
+	bluetoothctl connect "40:5E:F6:5A:03:32"
+fi
