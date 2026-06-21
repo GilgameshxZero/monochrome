@@ -45,6 +45,7 @@ The following settings are worth manually adjusting:
 ## Notes
 
 1. Windows can be upgraded in place under secure boot and TPM bypass via the ISO. Run `setup.exe /product server` and do not download updates until complete.
+2. Default wallpapers are here: <C:\Windows\Web\Wallpaper\Windows>.
 
 ## Bugs
 
