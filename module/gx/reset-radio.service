@@ -6,7 +6,7 @@ StartLimitIntervalSec=60
 [Service]
 Type=oneshot
 User=root
-ExecStart=/home/gilgamesh/main.syncthing/monochrome/bin/gx toggle radio && /home/gilgamesh/main.syncthing/monochrome/bin/gx toggle radio
+ExecStart=/usr/bin/bash -c "/home/gilgamesh/main.syncthing/monochrome/bin/gx toggle radio && /home/gilgamesh/main.syncthing/monochrome/bin/gx toggle radio"
 
 [Install]
 WantedBy=hibernate.target hybrid-sleep.target suspend-then-hibernate.target
