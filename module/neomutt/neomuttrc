@@ -44,6 +44,7 @@ set sort_aux=last-date-received
 set index_format="%4C %Z %{%b %d} %-15.15L %4cr %s"
 # Check for new mail every 30 seconds (default: 5).
 set mail_check=30
+set timeout=30
 
 # Miscellaneous.
 # Don't ask for confirmation for delete.
@@ -67,16 +68,21 @@ bind index N search-opposite
 bind index \CN toggle-new
 bind index,pager R group-reply
 
+# Replacements.
+bind index,pager $ noop
+macro index,pager $ "<imap-fetch-mail><sync-mailbox>"
+bind index <Up> previous-entry
+bind index K previous-unread
+bind index <Down> next-entry
+bind index J next-unread
+bind pager <Up> previous-line
+bind pager <Down> next-line
+
 # Use `d` to mark for "archive", and "$" to sync.
 # x-keys are general operations.
 bind index,pager x noop
 macro index,pager xb "<save-message>=[Gmail]/Bin<enter><enter>"
 macro index,pager xa "<save-message>=[Gmail]/All^V Mail<enter><enter>"
 macro index,pager xi "<save-message>=INBOX<enter><enter>"
-macro index,pager xr "T~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter><sync-mailbox>"
+macro index,pager xr "<tag-pattern>~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>"
 macro index,pager xc "<search>~m<space><1024<space>~B<space>17a7ceae-5204-47cd-8c8a-74b95b3aa83d<enter>"
-
-# Quitting the index marks all as read and caches everything.
-# Instead, we prefer to manually `xr`.
-# bind index q noop
-# macro index q "<change-folder>+[Gmail]/All^V Mail<enter>T~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter><sync-mailbox><exit>"

@@ -43,7 +43,7 @@
 	"editor.inlayHints.enabled": "off",
 	"editor.wrappingIndent": "indent",
 	"editor.fontSize": 20,
-	"editor.fontWeight": "550",
+	"editor.fontWeight": "500",
 	"editor.fontFamily": "monospace",
 	"editor.inertialScroll": false,
 	"editor.mouseWheelScrollSensitivity": 1.5,
@@ -198,7 +198,7 @@
 	},
 
 	"terminal.integrated.fontSize": 20,
-	"terminal.integrated.fontWeight": "550",
+	"terminal.integrated.fontWeight": "500",
 	"terminal.integrated.fontFamily": "monospace",
 	// Closes terminals faster (on Windows); faster tasks/builds.
 	"terminal.integrated.profiles.windows": {
