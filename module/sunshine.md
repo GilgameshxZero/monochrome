@@ -14,6 +14,8 @@ Configurations under `moonlight-WIDTH-HEIGHT.*` are provided to be run upon conn
 
 Custom EDIDs are provided that either clone or allow a range of custom resolutions and refresh rates for different client connections.
 
+Reference: <https://www.azdanov.dev/articles/2025/how-to-create-a-virtual-display-for-sunshine-on-arch-linux>.
+
 ### Root vs user service
 
 User service will require some auto-logon-like script. We still prefer this for the most part.
