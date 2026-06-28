@@ -48,3 +48,5 @@ User service will require some auto-logon-like script. We still prefer this for 
 4. Moonlight stream to linux host isn’t glitchy after switching to software decode. For some reason this just works on Android, though I assume its using hardware decode.
 	1. For client, install `intel-media-driver`.
 	2. Forcing software HEVC on host also works.
+5. MacOS host is laggy unless Bluetooth is turned off: <https://www.reddit.com/r/MoonlightStreaming/comments/18yxt0s/moolightsteaming_latest_sunshine_latest_lagging/>.
+	1. Even with Bluetooth off, it isn’t perfect, but that might just be due to my slow GPU.

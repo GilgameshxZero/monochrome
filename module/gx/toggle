@@ -47,4 +47,12 @@ elif [ "$1" = "vpn" ]; then
 		gx vpn 31
 		echo Enabled gilgamesh-31.ovpn.
 	fi
+elif [ "$1" = "syncthing" ]; then
+	if [ "`syncthing cli config folders ifzzk-usnva paused get`" = "true" ]; then
+		syncthing cli config folders ifzzk-usnva paused set false
+		echo Enabled Syncthing.
+	else
+		syncthing cli config folders ifzzk-usnva paused set true
+		echo Disabled Syncthing.
+	fi
 fi

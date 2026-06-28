@@ -116,3 +116,9 @@ systemctl enable --now systemd-resolved.service
 ## Multiple connections on Windows
 
 Trail: <https://superuser.com/questions/1414464/multiple-client-connections-using-openvpn>.
+
+## Bugs
+
+1. Seems like MacOS fails its internet interface after a while with the full tunnel. Still looking into this.
+	1. <https://serverfault.com/questions/975000/file-exists-when-pushing-route-with-openvpn>.
+		1. Seems like this solution is working.
