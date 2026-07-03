@@ -75,8 +75,8 @@ bind index <Up> previous-entry
 bind index K previous-unread
 bind index <Down> next-entry
 bind index J next-unread
-bind pager <Up> previous-line
-bind pager <Down> next-line
+# bind pager <Up> previous-line
+# bind pager <Down> next-line
 
 # Use `d` to mark for "archive", and "$" to sync.
 # x-keys are general operations.
