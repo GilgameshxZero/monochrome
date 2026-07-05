@@ -8,8 +8,15 @@ IF "%1" == "31" (
 	openvpn-gui --command disconnect_all
 	openvpn-gui --command connect gilgamesh-31.split
 	openvpn-gui --command connect gilgamesh-45
-) ELSE (
+) ELSE IF "%1" == "0" (
 	openvpn-gui --command disconnect_all
 	openvpn-gui --command connect gilgamesh-31.split
 	openvpn-gui --command connect gilgamesh-45.split
 )
+SLEEP 1
+PING -n 1 -w 1 10.8.31.1 | grep -A1 statistics
+PING -n 1 -w 1 10.8.45.1 | grep -A1 statistics
+PING -n 1 -w 1 10.8.58.1 | grep -A1 statistics
+PING -n 1 -w 1 1.1.1.1 | grep -A1 statistics
+CURL api.ipify.org
+ECHO[
