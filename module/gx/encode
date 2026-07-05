@@ -18,7 +18,8 @@ if [ "$1" = "audio" ]; then
 	bitrate_audio=${3:-96}
 	if [ -f "$2" ]; then
 		filename_old=$2
-		filename_int=.${2%.*}.tmp.opus
+		filename_old_bn=`basename $filename_old`
+		filename_int=.${filename_old_bn%.*}.tmp.opus
 		filename_new=${2%.*}.opus
 	else
 		filename=$(yt-dlp \
@@ -66,7 +67,7 @@ if [ "$1" = "audio" ]; then
 		-b:a ${bitrate_audio}k \
 		-filter:a "aformat=channel_layouts=7.1|5.1|stereo, volume=$((-max_volume)) dB" \
 		"$filename_int"
-	if [ ! -f "$2" ]; then
+	if [ -f "$2" ]; then
 		rm "$filename_old"
 	fi
 	opustags -D -i "$filename_int"
@@ -75,7 +76,8 @@ elif [ "$1" = "video" ]; then
 	bitrate_audio=${3:-48}
 	if [ -f "$2" ]; then
 		filename_old=$2
-		filename_int=.${2%.*}.tmp.mkv
+		filename_old_bn=`basename $filename_old`
+		filename_int=.${filename_old_bn%.*}.tmp.mkv
 		filename_new=${2%.*}.mkv
 	else
 		filename=$(yt-dlp \
@@ -128,10 +130,10 @@ elif [ "$1" = "video" ]; then
 		-filter:v "scale=if(gte(iw\,ih)\,min(${resolution_max_video}\,iw)\,-2):if(lt(iw\,ih)\,min(${resolution_max_video}\,ih)\,-2)" \
 		-c:s copy \
 		"$filename_int"
+	if [ -f "$2" ]; then
+		rm "$filename_old"
+	fi
 	# Fixes error <https://github.com/mpv-player/mpv/issues/14969>.
 	mkvmerge -o "$filename_new" "$filename_int"
 	rm "$filename_int"
-	if [ ! -f "$2" ]; then
-		rm "$filename_old"
-	fi
 fi
