@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# Bind to interface doesn't work for some reason. Make sure the default route is on a VPN!
+#	--interface=tun-31 \
 aria2c \
 	-u 16 \
 	--seed-time 0 \

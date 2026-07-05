@@ -10,9 +10,16 @@ elif [ "$1" = "45" ]; then
 	sudo systemctl stop gilgamesh-45.split.ovpn
 	sudo systemctl start gilgamesh-31.split.ovpn
 	sudo systemctl start gilgamesh-45.ovpn
-else
+elif [ "$1" = "0" ]; then
 	sudo systemctl stop gilgamesh-31.ovpn
 	sudo systemctl stop gilgamesh-45.ovpn
 	sudo systemctl start gilgamesh-31.split.ovpn
 	sudo systemctl start gilgamesh-45.split.ovpn
 fi
+sleep 1
+ping -c1 -W 1 10.8.31.1 | grep -B1 transmitted
+ping -c1 -W 1 10.8.45.1 | grep -B1 transmitted
+ping -c1 -W 1 10.8.58.1 | grep -B1 transmitted
+ping -c1 -W 1 1.1.1.1 | grep -B1 transmitted
+curl api.ipify.org
+echo

@@ -71,10 +71,10 @@ bind index,pager R group-reply
 # Replacements.
 bind index,pager $ noop
 macro index,pager $ "<imap-fetch-mail><sync-mailbox>"
-bind index <Up> previous-entry
-bind index K previous-unread
-bind index <Down> next-entry
-bind index J next-unread
+bind index,pager <Up> previous-entry
+bind index,pager K previous-unread
+bind index,pager <Down> next-entry
+bind index,pager J next-unread
 # bind pager <Up> previous-line
 # bind pager <Down> next-line
 

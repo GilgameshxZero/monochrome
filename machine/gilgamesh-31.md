@@ -18,3 +18,9 @@ Match User guest
 	AllowAgentForwarding no
 	ForceCommand /bin/false
 ```
+
+## Outbound via reserved IP
+
+For additional flexibility for droplets: <https://docs.digitalocean.com/products/networking/reserved-ips/how-to/outbound-traffic/>.
+
+Unfortunately this doesn’t support reverse DNS (PTR), so we will not be using it.
