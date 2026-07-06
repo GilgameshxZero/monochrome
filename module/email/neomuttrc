@@ -1,16 +1,17 @@
 # Use this file with
 # `source ~/main.syncthing/monochrome/module/email/neomuttrc`.
+cd ~/main.syncthing/monochrome/module/email/
 
-# GMail foler setup.
+# GMail folder setup.
 set imap_user="yangawesome@gmail.com"
 set folder="imaps://imap.gmail.com"
 set spoolfile=+INBOX
 set record="+[Gmail]/Sent Mail"
 set postponed="+[Gmail]/Drafts"
-# "delete" messages = "archive". Use `xr` for real delete.
+# "delete" messages = "archive". Use `xb` for real delete.
 set trash = "+[Gmail]/All Mail"
 set imap_authenticators = "oauthbearer:xoauth2"
-set imap_oauth_refresh_command = "/usr/share/neomutt/oauth2/mutt_oauth2.py ~/main.syncthing/monochrome/module/email/yangawesome_gmail.com.password.token --decryption-pipe cat --encryption-pipe cat"
+set imap_oauth_refresh_command = "/usr/share/neomutt/oauth2/mutt_oauth2.py yangawesome_gmail.com.password.token --decryption-pipe cat --encryption-pipe cat"
 
 # Send via `gilgamesh.cc` usually.
 set real_name="Yang Yan"
@@ -18,13 +19,13 @@ set from="yang@gilgamesh.cc"
 unset ssl_force_tls
 set smtp_url="smtp://yang@gilgamesh.cc:2525"
 # This file automatically sources the relevant passwords.
-source ~/main.syncthing/monochrome/module/email/neomuttrc.password
+source "neomuttrc.password"
 # Reply from receiving mailbox, if on this list.
 set reverse_name
 alternates @gilgamesh.cc yangawesome@gmail.com yangilga@mit.edu yangilga@outlook.com yyan99@mit.edu gilgamesh@tfwno.gf gilgameshxzero@icloud.com gilgameshxzero@outlook.com
 # Don't include hostname in message ID.
 set message_id_format="<%z@gilgamesh.cc>"
-set signature="~/main.syncthing/monochrome/module/email/.signature"
+set signature=".signature"
 # Always quote reply.
 set include=yes
 # `khard` handles contact queries.
@@ -45,6 +46,10 @@ set index_format="%4C %Z %{%b %d} %-15.15L %4cr %s"
 # Check for new mail every 30 seconds (default: 5).
 set mail_check=30
 set timeout=30
+set time_inc=5
+
+# `archive` maildir conditional. Extract from `../../archive.syncthing/module/email/archive.mbox.tar.xz` if desired.
+startup-hook "mailboxes -label archive `ls -d ../../local.syncthing/module/email/archive/ 2>/dev/null`"
 
 # Miscellaneous.
 # Don't ask for confirmation for delete.
@@ -54,7 +59,7 @@ set markers=no
 # Don't ask for confirmation on some functions.
 set wait_key=no
 # Dump with mailcap if html available and no plaintext.
-set mailcap_path="~/main.syncthing/monochrome/module/email/mailcap"
+set mailcap_path="mailcap"
 auto_view text/html
 alternative_order text/plain text/html
 

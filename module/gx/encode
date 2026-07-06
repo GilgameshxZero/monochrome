@@ -18,7 +18,7 @@ if [ "$1" = "audio" ]; then
 	bitrate_audio=${3:-96}
 	if [ -f "$2" ]; then
 		filename_old=$2
-		filename_old_bn=`basename $filename_old`
+		filename_old_bn=`basename "$filename_old"`
 		filename_int=.${filename_old_bn%.*}.tmp.opus
 		filename_new=${2%.*}.opus
 	else
@@ -76,7 +76,7 @@ elif [ "$1" = "video" ]; then
 	bitrate_audio=${3:-48}
 	if [ -f "$2" ]; then
 		filename_old=$2
-		filename_old_bn=`basename $filename_old`
+		filename_old_bn=`basename "$filename_old"`
 		filename_int=.${filename_old_bn%.*}.tmp.mkv
 		filename_new=${2%.*}.mkv
 	else

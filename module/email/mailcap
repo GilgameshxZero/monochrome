@@ -1,6 +1,6 @@
 image/*; /usr/bin/xdg-open %s
 video/*; /usr/bin/xdg-open %s
 application/octet-stream; mpv %s
-application/pdf; /usr/bin/xdg-open %s
+application/*; /usr/bin/xdg-open %s
 text/html; gx htmlcap %s
 text/html; lynx -dump %s; copiousoutput; nametemplate=%s.html
