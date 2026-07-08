@@ -1,19 +1,17 @@
 #!/usr/bin/env bash
 # Downloads audio from a link (or uses an existing file), and normalizes for prototype format.
 # `prototype` format is `opus` VBR 96kb/s at compression level 10, with the peak volume normalized to 0 dB.
-# $1: `audio` or `video`.
+# $1: `audio` or `video` or `image`.
 # $2: link or filename, e.g. "https://www.youtube.com/watch?v=r6sGWTCMz2k".
 # $3: opus target bitrate in kb/s (default: 96 for audio, 48 for video).
-# $4: av1 target bitrate in kb/s (default: 500).
+# $4: av1 target bitrate in kb/s or avif quality (default: 500 for video, 90 for image).
 # $5: video maximum square pixel count (default: 1280).
 # $6: video maximum fps (default: 30).
-# $7: av1 preset (default: 4).
+# $7: av1 preset or avif speed (default: 4 for video, 0 for image).
 # For `cosine`, use `encode video <> 96 1000 1920 60 2`.
 set -e
-av1_tbr=${4:-500}
 resolution_max_video=${5:-1280}
 fps_max_video=${6:-30}
-av1_preset=${7:-4}
 if [ "$1" = "audio" ]; then
 	bitrate_audio=${3:-96}
 	if [ -f "$2" ]; then
@@ -73,7 +71,9 @@ if [ "$1" = "audio" ]; then
 	opustags -D -i "$filename_int"
 	mv "$filename_int" "$filename_new"
 elif [ "$1" = "video" ]; then
+	av1_quality=${4:-500}
 	bitrate_audio=${3:-48}
+	av1_speed=${7:-4}
 	if [ -f "$2" ]; then
 		filename_old=$2
 		filename_old_bn=`basename "$filename_old"`
@@ -125,8 +125,8 @@ elif [ "$1" = "video" ]; then
 		-c:v libsvtav1 \
 		-fps_mode cfr \
 		-fpsmax $fps_max_video \
-		-preset $av1_preset \
-		-svtav1-params rc=1:tbr=$av1_tbr:lookahead=120\
+		-preset $av1_speed \
+		-svtav1-params rc=1:tbr=$av1_quality:lookahead=120\
 		-filter:v "scale=if(gte(iw\,ih)\,min(${resolution_max_video}\,iw)\,-2):if(lt(iw\,ih)\,min(${resolution_max_video}\,ih)\,-2)" \
 		-c:s copy \
 		"$filename_int"
@@ -136,4 +136,15 @@ elif [ "$1" = "video" ]; then
 	# Fixes error <https://github.com/mpv-player/mpv/issues/14969>.
 	mkvmerge -o "$filename_new" "$filename_int"
 	rm "$filename_int"
+elif [ "$1" = "image" ]; then
+	av1_quality=${4:-80}
+	av1_speed=${7:-0}
+	filename_old=$2
+	filename_old_bn=`basename "$filename_old"`
+	filename_int=.${filename_old_bn%.*}.tmp.avif
+	filename_new=${2%.*}.avif
+	avifenc -q "$av1_quality" -s "$av1_speed" -o "$filename_int" "$filename_old"
+	echo `magick compare -metric RMSE "$filename_old" "$filename_int" NULL:`
+	mv "$filename_int" "$filename_new"
+	rm "$filename_old"
 fi
