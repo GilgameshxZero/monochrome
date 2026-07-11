@@ -1,23 +1,23 @@
 #!/usr/bin/env bash
 # Downloads audio from a link (or uses an existing file), and normalizes for prototype format.
 # `prototype` format is `opus` VBR 96kb/s at compression level 10, with the peak volume normalized to 0 dB.
-# $1: `audio` or `video` or `image`.
+# $1: `audio` or `video` or `image` or `file`.
 # $2: link or filename, e.g. "https://www.youtube.com/watch?v=r6sGWTCMz2k".
 # $3: opus target bitrate in kb/s (default: 96 for audio, 48 for video).
-# $4: av1 target bitrate in kb/s or avif quality (default: 500 for video, 90 for image).
-# $5: video maximum square pixel count (default: 1280).
+# $4: av1 target bitrate in kb/s or avif quality (default: 500 for video, 80 for image).
+# $5: video/image maximum square pixel count (default: 1280 for video, 1920 for image).
 # $6: video maximum fps (default: 30).
 # $7: av1 preset or avif speed (default: 4 for video, 0 for image).
-# For `cosine`, use `encode video <> 96 1000 1920 60 2`.
+# $8: parallelism (default: "all" for image).
+# Use `encode video <> 96 1000 1920 60 2` and `encode image <> - 80 3840` for `cosine`.
 set -e
-resolution_max_video=${5:-1280}
-fps_max_video=${6:-30}
 if [ "$1" = "audio" ]; then
 	bitrate_audio=${3:-96}
 	if [ -f "$2" ]; then
 		filename_old=$2
 		filename_old_bn=`basename "$filename_old"`
-		filename_int=.${filename_old_bn%.*}.tmp.opus
+		filename_old_dir=`dirname "$filename_old"`
+		filename_int=${filename_old_dir}.${filename_old_bn%.*}.tmp.opus
 		filename_new=${2%.*}.opus
 	else
 		filename=$(yt-dlp \
@@ -49,6 +49,8 @@ if [ "$1" = "audio" ]; then
 	fi
 	exec 3>&1
 	max_volume_out=$(ffmpeg \
+		-hide_banner \
+		-nostats \
 		-i "$filename_old" \
 		-filter:a "volumedetect" \
 		-map 0:a \
@@ -59,6 +61,8 @@ if [ "$1" = "audio" ]; then
 		| awk '{print int($1);}')
 	# `channel_layouts` fix taken from <https://trac.ffmpeg.org/ticket/5718#comment:11>.
 	ffmpeg \
+		-hide_banner \
+		-nostats \
 		-y \
 		-i "$filename_old" \
 		-c:a libopus \
@@ -68,16 +72,19 @@ if [ "$1" = "audio" ]; then
 	if [ -f "$2" ]; then
 		rm "$filename_old"
 	fi
-	opustags -D -i "$filename_int"
+	# opustags -D -i "$filename_int"
 	mv "$filename_int" "$filename_new"
 elif [ "$1" = "video" ]; then
-	av1_quality=${4:-500}
 	bitrate_audio=${3:-48}
+	av1_quality=${4:-500}
+	frame_max_resolution=${5:-1920}
+	fps_max_video=${6:-30}
 	av1_speed=${7:-4}
 	if [ -f "$2" ]; then
 		filename_old=$2
 		filename_old_bn=`basename "$filename_old"`
-		filename_int=.${filename_old_bn%.*}.tmp.mkv
+		filename_old_dir=`dirname "$filename_old"`
+		filename_int=${filename_old_dir}/.${filename_old_bn%.*}.tmp.mkv
 		filename_new=${2%.*}.mkv
 	else
 		filename=$(yt-dlp \
@@ -106,6 +113,8 @@ elif [ "$1" = "video" ]; then
 	fi
 	exec 3>&1
 	max_volume_out=$(ffmpeg \
+		-hide_banner \
+		-nostats \
 		-i "$filename_old" \
 		-filter:a "volumedetect" \
 		-map 0:a \
@@ -116,6 +125,8 @@ elif [ "$1" = "video" ]; then
 	# Size filter from <https://stackoverflow.com/questions/54063902/resize-videos-with-ffmpeg-keep-aspect-ratio>.
 	# More advanced usage requires the SVT-AV1 binary for `bias-pct` and `passes`.
 	ffmpeg \
+		-hide_banner \
+		-stats_period 4s \
 		-y \
 		-i "$filename_old" \
 		-map 0 \
@@ -127,7 +138,7 @@ elif [ "$1" = "video" ]; then
 		-fpsmax $fps_max_video \
 		-preset $av1_speed \
 		-svtav1-params rc=1:tbr=$av1_quality:lookahead=120\
-		-filter:v "scale=if(gte(iw\,ih)\,min(${resolution_max_video}\,iw)\,-2):if(lt(iw\,ih)\,min(${resolution_max_video}\,ih)\,-2)" \
+		-filter:v "scale=if(gte(iw\,ih)\,min(${frame_max_resolution}\,iw)\,-2):if(lt(iw\,ih)\,min(${frame_max_resolution}\,ih)\,-2)" \
 		-c:s copy \
 		"$filename_int"
 	if [ -f "$2" ]; then
@@ -138,13 +149,37 @@ elif [ "$1" = "video" ]; then
 	rm "$filename_int"
 elif [ "$1" = "image" ]; then
 	av1_quality=${4:-80}
+	frame_max_resolution=${5:-1920}
 	av1_speed=${7:-0}
+	avif_parallelism=${8:-all}
 	filename_old=$2
 	filename_old_bn=`basename "$filename_old"`
-	filename_int=.${filename_old_bn%.*}.tmp.avif
+	filename_old_dir=`dirname "$filename_old"`
+	filename_int=${filename_old_dir}/.${filename_old_bn%.*}.tmp.avif
+	filename_int_png=${filename_old_dir}/.${filename_old_bn%.*}.tmp.png
 	filename_new=${2%.*}.avif
-	avifenc -q "$av1_quality" -s "$av1_speed" -o "$filename_int" "$filename_old"
-	echo `magick compare -metric RMSE "$filename_old" "$filename_int" NULL:`
+	# Quality => CRF computed from <https://github.com/AOMediaCodec/libavif/blob/d0605c98085e2fe4830ed248c8b00df7e6f80643/apps/avifenc.c#L1399>.
+	size_old=`magick identify -ping -format "%[width]x%[height]" "$filename_old"`
+	# First, convert losslessly to PNG while resizing below maximum dimension.
+	magick "$filename_old" -resize "${frame_max_resolution}x${frame_max_resolution}>" "$filename_int_png"
+	# Then, encode to `avif` (mostly equivalent to `ffmpeg` without filter, which may cause problems; also loses some color filter detail (?)) on the lossless PNG. EXIF data may be lost with `ffmpeg`.
+	avifenc -q "$av1_quality" -s "$av1_speed" -j "$avif_parallelism" "$filename_int_png" "$filename_int" >/dev/null
+	# ffmpeg \
+	# 	-hide_banner \
+	# 	-loglevel fatal \
+	# 	-nostats \
+	# 	-y \
+	# 	-i "$filename_int_png" \
+	# 	-c:v libaom-av1 \
+	# 	-crf $((-(($av1_quality * 63 - 31) / 100 - 63))) \
+	# 	-preset $av1_speed \
+	# 	"$filename_int"
+	rm "$filename_int_png"
+	# Resize smaller to larger then compare.
+	echo " [$filename_old @ $size_old]" `magick compare -metric SSIM -alpha off -resize "$size_old" "$filename_old" "$filename_int" NULL:`
 	mv "$filename_int" "$filename_new"
 	rm "$filename_old"
+elif [ "$1" = "file" ]; then
+	tar --sort=name -cf - "$2" | pv | xz -9 -T0 --lzma2=dict=1024MiB > "${2%/}.tar.xz"
+	# tar --sort=name -cf - "$2" | pv | pixz -9 > "${2%/}.tar.xz"
 fi

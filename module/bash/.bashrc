@@ -4,10 +4,11 @@
 
 unalias ls &> /dev/null
 alias tmux="TERM=linux-m tmux"
-alias finch="TERM=linux finch"
+# alias finch="TERM=linux finch"
 
 HISTSIZE=262144
 HISTFILESIZE=262144
+HISTCONTROL=ignoreboth:erasedups
 
 # True white.
 echo -en "\e]P7ffffff"
@@ -20,7 +21,7 @@ export LYNX_CFG="$HOME/main.syncthing/monochrome/module/lynx/lynx.cfg"
 export WWW_HOME="http://ddg.gg"
 export GPG_TTY="$(tty)"
 export EDITOR="/usr/bin/vim"
-export RL_CLCOPY_CMD="xargs -I '{}' -0 -n1 clip '{}'"
+export RL_CLCOPY_CMD="xargs -I'{}' -0 -n1 clip '{}'"
 
 # For any output, e.g. the echos on Darwin.
-clear
+# clear
