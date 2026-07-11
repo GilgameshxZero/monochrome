@@ -3,4 +3,6 @@
 # Can use LTK for both Slave/Peripheral, same with EDiv and ERand values.
 if [ "$1" = "b2p" ]; then
 	bluetoothctl connect "40:5E:F6:5A:03:32"
+elif [ "$1" = "jjl" ]; then
+	bluetoothctl connect "90:DA:07:9D:61:13"
 fi
