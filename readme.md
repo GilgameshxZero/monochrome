@@ -13,7 +13,7 @@
 
 ## Theme
 
-Under Manjaro, wallpapers must be configured in 3 locations:
+Under KDE, wallpapers must be configured in 3 locations:
 
 1. Screen Locking.
 2. Wallpaper.
