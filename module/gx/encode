@@ -9,7 +9,7 @@
 # $6: video maximum fps (default: 30).
 # $7: av1 preset or avif speed (default: 4 for video, 0 for image).
 # $8: parallelism (default: "all" for image).
-# Use `encode video <> 96 1000 1920 60 2` and `encode image <> - 80 3840` for `cosine`, and default `1920` for `cygnus` images.
+# Use `encode video <> 96 1000 1920 60 2` and `encode image <> - 80 3840` for `cosine`, and default `1920` size for `cygnus` images. Use default settings with `0` speed for `emilia` videos and images, or even lower bitrate (down to 0, but usually 32 or 48, since we have constrained CRF) depending on the source.
 set -e
 if [ "$1" = "audio" ]; then
 	bitrate_audio=${3:-96}
