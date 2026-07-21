@@ -16,7 +16,7 @@ IF "%1" == "31" (
 SLEEP 1
 PING -n 1 -w 1 10.8.31.1 | grep -A1 statistics
 PING -n 1 -w 1 10.8.45.1 | grep -A1 statistics
-PING -n 1 -w 1 10.8.58.1 | grep -A1 statistics
+PING -n 1 -w 1 10.8.47.1 | grep -A1 statistics
 PING -n 1 -w 1 1.1.1.1 | grep -A1 statistics
 CURL api.ipify.org
 ECHO[
