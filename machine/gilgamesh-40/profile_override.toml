@@ -1,4 +1,4 @@
-[profile.nvidia-525] # NVIDIA RTXA6000-2Q, 2G
+[profile.nvidia-763] # NVIDIA RTXA5500-2Q, 2G
 num_displays = 1
 cuda_enabled = 1
 frl_enabled = 0
@@ -16,3 +16,4 @@ framebuffer_reservation = 0x004000000
 # [vm.107] # 6G
 # framebuffer = 0x173200000
 # framebuffer_reservation = 0x00C000000 
+

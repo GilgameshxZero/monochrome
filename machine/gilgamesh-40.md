@@ -1,9 +1,13 @@
 # gilgamesh-40
 
 Self-hosted Proxmox
-AMD 5950X | NVIDIA GTX 1080 Ti, NVIDIA GTX 1070, AMD Radeon RX 550 4GB | 32+32+32+32GB DDR4 RAM | 500GB SSD | 8TB HDD
-Proxmox VE 6.8.12-9
+AMD 5950X | NVIDIA GTX 1080 Ti, NVIDIA GTX 1070, AMD Radeon RX 550 4GB | 32+32+32+32GB DDR4 RAM | 4TB SSD, 500GB SSD, 8TB HDD
+Proxmox VE 9.2.4 with kernel 6.14.11-9-pve
 N/A
+
+Hostname needs to be changed after install, since we want hostname to not be a FQDN.
+
+It is nontrivial to create a LVM-Thin pool inside LUKS, but we have done it, roughly following <https://forum.proxmox.com/threads/adding-a-disk-and-set-it-as-lvm-thin-help-needed-please.111724/>.
 
 ## GPU
 
@@ -47,6 +51,10 @@ Follow this trail.
 
 Kernel 6.12. Manually applied patches to 535.216.01 but did not get super far. Failed DKMS on all available kernels. Some other patch is needed? Lots of `-grid` substitutions, a sha512 substitution.
 
+---
+
+After upgrading to PVE 9.2, we now use kernel 6.14.11-9, which is the closest kernel version still available in the PVE repos, and it still works with version 580.105.06 on the server, and 580.105.08 on the client.
+
 ### Licensing
 
 A license server runs on `gilgamesh-44` and is necessary to unlock framerates for a computer that runs for longer than 15 minutes. The relevant query URL for the client token is based on the `gilgamesh-40` internal `dnsmasq` NAT:
@@ -65,9 +73,21 @@ Memory may not be shared by vGPU clients. Instead, `/etc/vgpu_unlock/profile_ove
 
 Try different driver blacklist configurations via `/etc/modprobe.d/blacklist.conf` in case of any trouble.
 
+`lspci -vnn` to see IDs for selective device blacklisting. Update `/etc/modprobe.d/blacklist.conf` and `/etc/modules-load.d/modules.conf` to load the right modules. See `PolloLoco`'s guide for more details.
+
 ## `zenpower`
 
-`zenpower` is used for `sensors`-based monitoring of computing resources. It may need a patch to function, available in `ZEN3-test4,patch`.
+`zenpower` is used for `sensors`-based monitoring of computing resources. This is the preferred upstream: <https://github.com/AliEmreSenel/zenpower3> as the original had various issues patching. Check that the kernel version is correct.
+
+Might need to reinstall NVIDIA driver after due to some `dkms` and kernel version issues.
+
+## Power governors
+
+Make sure to set the CPU power governor to `conservative` afterwards, so that it can clock down when possible. Follow <https://forum.proxmox.com/threads/pve-9-0-cpu-scaling-governor-not-working-anymore.169869/> for kernel 6.14+.
+
+```bash
+echo conservative | tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
+```
 
 ## `dnsmasq`
 
@@ -83,6 +103,25 @@ We provide the following configs:
 1. <https://bbs.archlinux.org/viewtopic.php?id=297365>.
 
 Check with `cat /sys/module/nvme_core/parameters/default_ps_max_latency_us`.
+
+## PVE Headers for building DKMS
+
+Need the PVE (no-subscription) repository to be added to locate `proxmox-default-headers`. This can be done via the web interface easily. Note that due to vgpu requirements, a different kernel/header version may be required.
+
+## `grub`
+
+`grub` can select an older kernel as default via the grub parameters:
+
+```
+GRUB_SAVEDEFAULT=true
+GRUB_DEFAULT=saved
+```
+
+However, on current (2026) version of grub, this has a bug, which triggers "error: diskfilter writes are not supported". To bypass this, pin the kernel version via `proxmox-boot-tool` instead of `grub`.
+
+Not removing failing kernels, however, will cause `dkpg` packages to fail to build every time an upgrade is run, which is mostly okay.
+
+Other grub parameters are available in `grub`, copied directly from `/etc/default/grub`.
 
 ## Bugs
 
