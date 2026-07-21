@@ -9,7 +9,7 @@ Type=simple
 Restart=always
 RestartSec=60
 User=root
-ExecStart=/usr/bin/openvpn --config "/home/gilgamesh/main.syncthing/monochrome/machine/%H/gilgamesh-45.split.ovpn"
+ExecStart=/usr/sbin/openvpn --config "/home/gilgamesh/main.syncthing/monochrome/machine/%H/gilgamesh-45.split.ovpn"
 
 [Install]
 WantedBy=multi-user.target

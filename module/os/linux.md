@@ -12,3 +12,4 @@ Most current configurations are on Manjaro, but we plan to Migrate to Debian for
 ## Bugs
 
 1. `intel-media-driver` on Linux for iGPU video decode.
+2. <https://www.reddit.com/r/kde/comments/u4chnl/constant_cpu_usage_when_sddmgreeter_is_idle/>.

@@ -1,0 +1,14 @@
+[Unit]
+Description=duckdns
+After=network.target
+StartLimitIntervalSec=1
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=300
+User=root
+ExecStart=/usr/bin/curl --interface ens18 "https://www.duckdns.org/update?domains=gilgamesh-40&token=f48b700b-3598-4546-8f11-33884c740663&ip="
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,14 @@
+[Unit]
+Description=jupyter
+After=network.target
+StartLimitIntervalSec=1
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=60
+User=gilgamesh
+ExecStart=/usr/bin/bash -c "source ~/main.syncthing/utulek/.venv/bin/activate && jupyter lab --ServerApp.open_browser='False' --ServerApp.token='' --ServerApp.password='' --ServerApp.disable_check_xsrf='True' --ServerApp.allow_origin='*' --ServerApp.ip='0.0.0.0' --ServerApp.notebook_dir='~/main.syncthing/utulek'"
+
+[Install]
+WantedBy=multi-user.target

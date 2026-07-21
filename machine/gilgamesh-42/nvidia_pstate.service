@@ -1,0 +1,15 @@
+[Unit]
+Description=nvidia_pstate
+After=network.target
+StartLimitIntervalSec=1
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=60
+User=root
+ExecStart=/home/gilgamesh/main.syncthing/monochrome/app/nvidia-pstated
+
+[Install]
+WantedBy=multi-user.target
+

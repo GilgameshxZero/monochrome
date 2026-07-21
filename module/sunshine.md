@@ -50,3 +50,4 @@ User service will require some auto-logon-like script. We still prefer this for 
 	2. Forcing software HEVC on host also works.
 5. MacOS host is laggy unless Bluetooth is turned off: <https://www.reddit.com/r/MoonlightStreaming/comments/18yxt0s/moolightsteaming_latest_sunshine_latest_lagging/>.
 	1. Even with Bluetooth off, it isn’t perfect, but that might just be due to my slow GPU.
+6. Mouse still doesn't show unless this fix is applied: <https://github.com/LizardByte/Sunshine/issues/93>.

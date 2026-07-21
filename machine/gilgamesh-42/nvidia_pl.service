@@ -1,4 +1,3 @@
-# May require persistence mode to be enabled beforehand.
 [Unit]
 Description=nvidia_pl
 After=network.target
