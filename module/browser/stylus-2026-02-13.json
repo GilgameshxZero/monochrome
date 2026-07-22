@@ -176,5 +176,22 @@
     "_id": "4ac64a8e-1e3e-483f-8d85-624624bc7a02",
     "_rev": 1779094682125,
     "id": 4
+  },
+  {
+    "enabled": true,
+    "installDate": 1781034172284,
+    "name": "myanimelist.net/anime/26/Texhnolyze",
+    "sections": [
+      {
+        "code": "/*.page-common #myanimelist {\n    width: 100%;\n}\n.page-common #menu {\n    width: 100%;\n}\n.page-common .h1.edit-info span.h1-title, .page-common .h1.edit-info div.h1-title {\n    width: 100%;\n}\n.page-common td>.rightside>div,\n.page-common td>.rightside>table td>* {\n    width: calc(100vw - 250px) !important;\n}*/",
+        "urlPrefixes": [
+          "https://myanimelist.net"
+        ]
+      }
+    ],
+    "updateDate": 1781034993678,
+    "_id": "7b5faf9f-ae0b-4efd-bc1b-99fb1e301938",
+    "_rev": 1781034993678,
+    "id": 5
   }
 ]

@@ -151,7 +151,7 @@
 	"explorer.decorations.colors": false,
 
 	"extensions.ignoreRecommendations": true,
-	"extensions.autoUpdate": false,
+	"extensions.autoUpdate": "off",
 	"extensions.experimental.affinity": {
 		"ms-toolsai.jupyter": 2,
 		"ms-python.python": 2
