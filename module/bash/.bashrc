@@ -15,7 +15,7 @@ echo -en "\e]P7ffffff"
 # Block cursor shape.
 echo -en "\033[?112c"
 
-export PATH="$HOME/main.syncthing/monochrome/local.syncthing/bin:$HOME/main.syncthing/monochrome/bin:$HOME/main.syncthing/monochrome/archive.syncthing/bin:$PATH"
+export PATH="$HOME/main.syncthing/monochrome/local.syncthing/bin:$HOME/main.syncthing/monochrome/bin:$HOME/main.syncthing/monochrome/archive.syncthing/bin:$PATH:$HOME/.local/bin"
 export PS1="> "
 export LYNX_CFG="$HOME/main.syncthing/monochrome/module/lynx/lynx.cfg"
 export WWW_HOME="http://ddg.gg"

@@ -40,6 +40,20 @@ User service will require some auto-logon-like script. We still prefer this for 
 8. May be a virtual monitor bug: <https://github.com/LizardByte/Sunshine/issues/2044>.
 9. Working on beta Sunshine and latest Manjaro!
 
+### Attempt 2 (Debian)
+
+1. Ran into same blackscreen problem.
+2. Adding the LEN6521 monitor fixed blackscreen, but input was still disabled.
+3. NVIDIA modeset probably needs to be placed in grub, not modprobe.
+4. Need to perform steps at <https://docs.lizardbyte.dev/projects/sunshine/v0.14.0/about/usage.html#linux> to fix input!
+5. Version doesn't seem to matter. I used `v2026.516.143833`.
+6. Maybe `nvidia-patch` mattered?
+7. Remember that `setcap` might have mattered.
+
+Seems like SDDM autostart causes the GPU driver to not properly attach to display, causing black screen. Restarting or delaying SDDM fixes this. Confusingly, it still requires the LEN6521 dummy monitor plugged in.
+
+Tray should be disabled if RTSP error during user service connect.
+
 ## Bugs
 
 1. May require manual patching of `libicu*.76`.
@@ -50,5 +64,5 @@ User service will require some auto-logon-like script. We still prefer this for 
 	2. Forcing software HEVC on host also works.
 5. MacOS host is laggy unless Bluetooth is turned off: <https://www.reddit.com/r/MoonlightStreaming/comments/18yxt0s/moolightsteaming_latest_sunshine_latest_lagging/>.
 	1. Even with Bluetooth off, it isn’t perfect, but that might just be due to my slow GPU.
-6. Mouse still doesn't show unless this fix is applied: <https://github.com/LizardByte/Sunshine/issues/93>.
+6. Mouse still doesn't show in software mode unless this fix is applied: <https://github.com/LizardByte/Sunshine/issues/93>.
 7. Sunshine fails to work on the login screen for KDE. We implement autologin in SDDM to bypass this.

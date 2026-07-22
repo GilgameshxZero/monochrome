@@ -1,6 +1,6 @@
-# Should be started as user service for correct permissions (e.g. audio).
+# Should be run as a user service in ~/.config/systemd/user/.
 [Unit]
-Description=sunshine-patch
+Description=dotoold
 After=sddm.service
 StartLimitIntervalSec=1
 
@@ -9,8 +9,7 @@ Type=simple
 Restart=always
 RestartSec=60
 User=gilgamesh
-ExecStartPre=/usr/bin/sleep 16
-ExecStart=/usr/bin/sunshine
+ExecStart=/usr/local/bin/dotoold
 
 [Install]
 WantedBy=xdg-desktop-autostart.target

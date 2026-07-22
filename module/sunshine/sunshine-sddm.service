@@ -1,0 +1,14 @@
+# For stubborn setups where `sddm` must be restarted to enable correct GPU bindings before sunshine can be started.
+[Unit]
+Description=sunshine-sddm
+After=sddm.service
+StartLimitIntervalSec=1
+
+[Service]
+Type=oneshot
+User=root
+ExecStartPre=/usr/bin/sleep 8
+ExecStart=/usr/bin/systemctl restart sddm
+
+[Install]
+WantedBy=graphical.target
