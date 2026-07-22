@@ -39,7 +39,8 @@ set message_cache_dir="~/.neomutt/cache/"
 set message_cache_clean=yes
 set pager_stop=yes
 set sort=reverse-date
-set sort_aux=last-date-received
+set sort_aux=reverse-last-date-received
+set use_threads=no
 # This is a good sidebar format, but we prefer fullscreen.
 # set sidebar_format="%B%?F? [%F]?%* %?N?%N/?%S"
 # Display message size, not number of lines, in index.
@@ -101,6 +102,7 @@ color signature black white
 color quoted0 black white
 color tree black white
 color tilde black white
+color attachment bold black white
 
 # Change to `snowfall` at the end for saved files.
 # cd ../../../snowfall/

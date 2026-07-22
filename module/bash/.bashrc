@@ -3,7 +3,7 @@
 # tabs 2
 
 unalias ls &> /dev/null
-alias tmux="TERM=linux-m tmux"
+# alias tmux="TERM=linux-m tmux"
 # alias finch="TERM=linux finch"
 
 HISTSIZE=262144

@@ -17,9 +17,10 @@ elif [ "$1" = "0" ]; then
 	sudo systemctl start gilgamesh-45.split.ovpn
 fi
 sleep 1
+ping -c1 -W 1 1.1.1.1 | grep -B1 transmitted
 ping -c1 -W 1 10.8.31.1 | grep -B1 transmitted
+ping -c1 -W 1 10.8.40.1 | grep -B1 transmitted
 ping -c1 -W 1 10.8.45.1 | grep -B1 transmitted
 ping -c1 -W 1 10.8.47.1 | grep -B1 transmitted
-ping -c1 -W 1 1.1.1.1 | grep -B1 transmitted
 curl api.ipify.org
 echo
