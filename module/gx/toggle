@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
 if [ "$1" = "trackpad" ]; then
-	xdotool mousemove 0 0
-	xdotool mousemove_relative 9999 100
+	if [ "$HOSTNAME" = "gilgamesh-51" ]; then
+		xdotool mousemove 0 0
+		xdotool mousemove_relative 9999 100
+	else
+		echo mouseto 1 0.1 | dotoolc
+	fi
 	if ! lsmod | grep -q hid_multitouch; then
 		sudo modprobe hid_multitouch
 		echo Enabled trackpad.
@@ -28,15 +32,15 @@ elif [ "$1" = "theme" ]; then
 	# Themes trigger twice due to chromium bug not adjusting theme on first trigger.
 	gx toggle nightlight
 	current_theme=$(kreadconfig6 --group KDE --key LookAndFeelPackage)
-	if [ "$current_theme" = "org.manjaro.breath-dark.desktop" ]; then
-		lookandfeeltool -a org.manjaro.breath-light.desktop
+	if [ "$current_theme" = "org.kde.breezedark.desktop" ]; then
+		lookandfeeltool -a org.kde.breeze.desktop
 		sleep 0.4
-		lookandfeeltool -a org.manjaro.breath-light.desktop
+		lookandfeeltool -a org.kde.breeze.desktop
 		echo Enabled light theme.
 	else
-		lookandfeeltool -a org.manjaro.breath-dark.desktop
+		lookandfeeltool -a org.kde.breezedark.desktop
 		sleep 0.4
-		lookandfeeltool -a org.manjaro.breath-dark.desktop
+		lookandfeeltool -a org.kde.breezedark.desktop
 		echo Enabled dark theme.
 	fi
 elif [ "$1" = "vpn" ]; then

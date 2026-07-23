@@ -7,7 +7,7 @@
 qm start 141
 qm start 142
 qm start 143
-qm start 144
+# qm start 144
 qm start 145
 qm start 147
 qm start 148

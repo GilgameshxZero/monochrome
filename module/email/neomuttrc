@@ -105,6 +105,7 @@ color bold bold default default
 color attachment bold default default
 color status bold reverse default default
 color indicator reverse default default
+color tree default default
 
 # Change to `snowfall` at the end for saved files.
 # cd ../../../snowfall/
