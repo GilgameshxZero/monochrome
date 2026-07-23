@@ -55,7 +55,7 @@ KbdInteractiveAuthentication no
 GatewayPorts yes
 
 # Enables X11 forwarding, only on Linux-based hosts.
-X11Forwarding yes
+# X11Forwarding yes
 
 # Keeps client alive for 180 seconds, sending a packet every 60 seconds.
 ClientAliveInterval 60

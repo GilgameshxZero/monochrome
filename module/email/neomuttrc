@@ -36,7 +36,7 @@ mailboxes =INBOX =[Gmail]/All\ Mail =[Gmail]/Sent\ Mail =[Gmail]/Drafts =[Gmail]
 set editor="/usr/bin/vim"
 set header_cache="~/.neomutt/cache/"
 set message_cache_dir="~/.neomutt/cache/"
-# set message_cache_clean=yes
+set message_cache_clean=yes
 set pager_stop=yes
 set sort=reverse-date
 set sort_aux=reverse-last-date-received
@@ -45,7 +45,7 @@ set use_threads=no
 # set sidebar_format="%B%?F? [%F]?%* %?N?%N/?%S"
 # Display message size, not number of lines, in index.
 set index_format="%4C %Z %{%b %d} %-15.15L %4cr %s"
-# Check for new mail every 30 seconds (default: 5).
+# Check for new mail every 300 seconds (default: 5).
 set mail_check=30
 set timeout=30
 set time_inc=5
@@ -96,13 +96,15 @@ macro index,pager xr "<tag-pattern>~U<enter><tag-prefix><clear-flag>N<untag-patt
 macro index,pager xc "<search>~m<space><1024<space>~B<space>17a7ceae-5204-47cd-8c8a-74b95b3aa83d<enter>"
 
 # Force color.
-color normal black white
-color hdrdefault black white
-color signature black white
-color quoted0 black white
-color tree black white
-color tilde black white
-color attachment bold black white
+color normal default default
+color hdrdefault default default
+color signature default default
+color quoted0 default default
+color tilde default default
+color bold bold default default
+color attachment bold default default
+color status bold reverse default default
+color indicator reverse default default
 
 # Change to `snowfall` at the end for saved files.
 # cd ../../../snowfall/
