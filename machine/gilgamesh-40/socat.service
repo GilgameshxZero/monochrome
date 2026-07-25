@@ -9,7 +9,7 @@ Type=simple
 Restart=always
 RestartSec=60
 User=root
-ExecStart=bash -c "/usr/bin/socat tcp-listen:61041,reuseaddr,fork tcp:10.8.40.41:3389 & /usr/bin/socat udp-listen:61041,reuseaddr,fork udp:10.8.40.41:3389 & /usr/bin/socat tcp-listen:61045,reuseaddr,fork tcp:10.8.40.45:61045 & /usr/bin/socat udp-listen:61045,reuseaddr,fork udp:10.8.40.45:61045"
+ExecStart=bash -c "/usr/bin/socat tcp-listen:61041,reuseaddr,fork tcp:10.8.40.41:3389 & /usr/bin/socat udp-listen:61041,reuseaddr,fork udp:10.8.40.41:3389 & /usr/bin/socat tcp-listen:61047,reuseaddr,fork tcp:10.8.40.47:61047 & /usr/bin/socat udp-listen:61047,reuseaddr,fork udp:10.8.40.47:61047"
 
 [Install]
 WantedBy=multi-user.target

@@ -1,0 +1,15 @@
+# Run with the local `gilgamesh-47.ovpn` config.
+[Unit]
+Description=gilgamesh-47.ovpn
+After=network.target
+StartLimitIntervalSec=60
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=60
+User=root
+ExecStart=/usr/sbin/openvpn --config "/home/gilgamesh/main.syncthing/monochrome/module/vpn/gilgamesh-47.conf" --config "/home/gilgamesh/main.syncthing/monochrome/machine/%H/gilgamesh-47.ovpn"
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,15 @@
+# Exposes ports on the internal `dnsmasq` NAT.
+[Unit]
+Description=socat
+After=network.target
+StartLimitIntervalSec=60
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=60
+User=root
+ExecStart=bash -c "/usr/bin/socat tcp-listen:2525,reuseaddr,fork tcp:127.0.0.1:25 & /usr/bin/socat udp-listen:2525,reuseaddr,fork udp:127.0.0.1:25"
+
+[Install]
+WantedBy=multi-user.target

@@ -1,11 +1,11 @@
 IF "%1" == "vpn" (
 	FOR /F "DELIMS=" %%I IN ('CURL -s api.ipify.org') DO (
-		IF "%%I" == "159.65.224.199" (
-			gx vpn 45
-			ECHO Enabled gilgamesh-45.ovpn.
+		IF "%%I" == "152.42.140.161" (
+			gx vpn 47
+			ECHO Enabled gilgamesh-47.ovpn.
 		) ELSE (
-			gx vpn 31
-			ECHO Enabled gilgamesh-31.ovpn.
+			gx vpn 58
+			ECHO Enabled gilgamesh-58.ovpn.
 		)	
 	)
 )

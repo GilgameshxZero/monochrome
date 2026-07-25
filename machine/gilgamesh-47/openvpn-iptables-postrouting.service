@@ -1,0 +1,13 @@
+# MASQUERADE all packets to any of the three outward-facing interfaces.
+[Unit]
+Description=openvpn-iptables-postrouting
+After=network.target
+StartLimitIntervalSec=60
+
+[Service]
+Type=oneshot
+User=root
+ExecStart=bash -c "/usr/sbin/iptables -t nat -A POSTROUTING -o ens18 -j MASQUERADE && /usr/sbin/iptables -t nat -A POSTROUTING -o tun-58 -j MASQUERADE"
+
+[Install]
+WantedBy=multi-user.target

@@ -123,6 +123,12 @@ Not removing failing kernels, however, will cause `dkpg` packages to fail to bui
 
 Other grub parameters are available in `grub`, copied directly from `/etc/default/grub`.
 
+## How to take disk backups
+
+```bash
+sudo dd if=/dev/sda bs=64M | pv | pigz -9 | ssh <REMOTE> "dd of=/mnt/pve/sdb1/import/NAME.DATE.gz.raw bs=64M"
+```
+
 ## Bugs
 
 1. <https://forum.proxmox.com/threads/amd-bsod-unsupported-processor-since-windows-build-26100-4202-update-kb5060842-its-preview-kb5058499.166828/page-3>.

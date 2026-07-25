@@ -1,66 +1,49 @@
-Host gilgamesh-31
-	HostName gilgamesh.cc
-	Port 22
-	User root
-	ServerAliveInterval 60
-	ExitOnForwardFailure yes
-
 Host gilgamesh-40
-	HostName gilgamesh.cc
+	HostName gilgamesh-58.gilgamesh.cc
 	Port 60040
 	User root
 
 Host gilgamesh-42
-	HostName gilgamesh.cc
+	HostName gilgamesh-58.gilgamesh.cc
 	Port 60042
 	User gilgamesh
 
 Host gilgamesh-43
-	HostName gilgamesh.cc
+	HostName gilgamesh-58.gilgamesh.cc
 	Port 60043
-	User gilgamesh
-
-Host gilgamesh-44
-	HostName gilgamesh.cc
-	Port 60044
 	User gilgamesh
 	
 Host gilgamesh-45
-	HostName gilgamesh.cc
+	HostName gilgamesh-58.gilgamesh.cc
 	Port 60045
 	User gilgamesh
 
 Host gilgamesh-46
-	HostName gilgamesh.cc
+	HostName gilgamesh-58.gilgamesh.cc
 	Port 60046
 	User 0
 
 Host gilgamesh-47
-	HostName gilgamesh.cc
+	HostName gilgamesh-58.gilgamesh.cc
 	Port 60047
 	User gilgamesh
 
 Host gilgamesh-49
-	HostName gilgamesh.cc
+	HostName gilgamesh-58.gilgamesh.cc
 	Port 60049
 	User 0
 
 Host gilgamesh-51
-	HostName gilgamesh.cc
+	HostName gilgamesh-58.gilgamesh.cc
 	Port 60051
 	User gilgamesh
 
 Host gilgamesh-52
-	HostName gilgamesh.cc
+	HostName gilgamesh-58.gilgamesh.cc
 	Port 60052
 	User gilgamesh
 
-Host gilgamesh-54
-	HostName gilgamesh.cc
-	Port 60054
+Host gilgamesh-58
+	HostName gilgamesh-58.gilgamesh.cc
+	Port 22
 	User root
-
-Host gilgamesh-55
-	HostName gilgamesh.cc
-	Port 60055
-	User gilgamesh

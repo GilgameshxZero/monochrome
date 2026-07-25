@@ -1,0 +1,7 @@
+// This is a special `stignore` only for `gilgamesh-58`, which ignores
+// everything except the `snowfall/slush/` directory.
+// (?d)!/emilia
+(?d)!/monochrome/machine/gilgamesh-58
+(?d)!/snowfall/slush
+!*.stignore
+**

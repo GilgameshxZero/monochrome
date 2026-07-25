@@ -1,11 +1,8 @@
 #!/usr/bin/env bash
 if [ "$1" = "trackpad" ]; then
-	if [ "$HOSTNAME" = "gilgamesh-51" ]; then
-		xdotool mousemove 0 0
-		xdotool mousemove_relative 9999 100
-	else
-		echo mouseto 1 0.1 | dotoolc
-	fi
+	# xdotool mousemove 0 0
+	# xdotool mousemove_relative 9999 100
+	echo mouseto 1 0.1 | dotoolc
 	if ! lsmod | grep -q hid_multitouch; then
 		sudo modprobe hid_multitouch
 		echo Enabled trackpad.
@@ -44,12 +41,19 @@ elif [ "$1" = "theme" ]; then
 		echo Enabled dark theme.
 	fi
 elif [ "$1" = "vpn" ]; then
-	if systemctl -q is-active gilgamesh-31.ovpn; then
-		gx vpn 45
-		echo Enabled gilgamesh-45.ovpn.
-	else
-		gx vpn 31
-		echo Enabled gilgamesh-31.ovpn.
+	# if systemctl -q is-active gilgamesh-31.ovpn; then
+	# 	gx vpn 45
+	# 	echo Enabled gilgamesh-45.ovpn.
+	# elif systemctl -q is-active gilgamesh-45.ovpn; then
+	if systemctl -q is-active gilgamesh-58.ovpn; then
+		gx vpn 47
+		echo Enabled gilgamesh-47.ovpn.
+	elif systemctl -q is-active gilgamesh-47.ovpn; then
+		gx vpn 58
+		echo Enabled gilgamesh-58.ovpn.
+	# else
+	# 	gx vpn 31
+	# 	echo Enabled gilgamesh-31.ovpn.
 	fi
 elif [ "$1" = "syncthing" ]; then
 	if [ "`syncthing cli config folders ifzzk-usnva paused get`" = "true" ]; then

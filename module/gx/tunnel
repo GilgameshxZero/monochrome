@@ -4,6 +4,6 @@ while true; do \
 		-R :$1:127.0.0.1:$2 \
 		-o ExitOnForwardFailure=yes \
 		-o ServerAliveInterval=60 \
-		guest@gilgamesh.cc; \
+		guest@gilgamesh-58.gilgamesh.cc; \
 	sleep 60;
 done
