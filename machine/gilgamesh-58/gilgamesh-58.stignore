@@ -3,5 +3,5 @@
 // (?d)!/emilia
 (?d)!/monochrome/machine/gilgamesh-58
 (?d)!/snowfall/slush
-!*.stignore
-**
+(?d)!*.stignore
+(?d)**

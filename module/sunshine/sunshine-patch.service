@@ -9,7 +9,7 @@ Type=simple
 Restart=always
 RestartSec=60
 User=gilgamesh
-ExecStartPre=/usr/bin/sleep 16
+ExecStartPre=/usr/bin/sleep 64
 ExecStart=/usr/bin/sunshine
 
 [Install]

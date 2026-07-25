@@ -7,7 +7,7 @@ StartLimitIntervalSec=1
 [Service]
 Type=oneshot
 User=root
-ExecStartPre=/usr/bin/sleep 8
+ExecStartPre=/usr/bin/sleep 32
 ExecStart=/usr/bin/systemctl restart sddm
 
 [Install]
