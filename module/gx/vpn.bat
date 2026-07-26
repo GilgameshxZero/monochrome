@@ -14,9 +14,9 @@ IF "%1" == "47" (
 	openvpn-gui --command connect gilgamesh-58.split
 )
 SLEEP 1
-PING -n 2 -w 2 1.1.1.1 | grep -A1 statistics
-PING -n 2 -w 2 10.8.40.1 | grep -A1 statistics
-PING -n 2 -w 2 10.8.47.1 | grep -A1 statistics
-PING -n 2 -w 2 10.8.58.1 | grep -A1 statistics
+PING -n 1 -w 2 1.1.1.1 | grep -A1 statistics
+PING -n 1 -w 2 10.8.40.1 | grep -A1 statistics
+PING -n 1 -w 2 10.8.47.1 | grep -A1 statistics
+PING -n 1 -w 2 10.8.58.1 | grep -A1 statistics
 CURL api.ipify.org
 ECHO[

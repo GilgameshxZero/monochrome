@@ -1,4 +1,4 @@
-# Long-running service is safest. Use that (and adjust PL) to achieve highest performance. However, starting once with a limited power state will error but lower the power usage. Unclear of long-term effects of this but it helps with low-power tasks (e.g. encoding).
+# Adjust the high performance state from 8 to 16 to unlock performance (in addition to  adjusting PL).
 [Unit]
 Description=nvidia_pstate
 After=network.target
@@ -8,9 +8,8 @@ StartLimitIntervalSec=1
 Type=simple
 Restart=always
 RestartSec=60
-# Type=oneshot
 User=root
-ExecStart=sh -c "/home/gilgamesh/main.syncthing/monochrome/app/nvidia-pstated --performance-state-high 15 || true; sleep infinity"
+ExecStart=/home/gilgamesh/main.syncthing/monochrome/app/nvidia-pstated --performance-state-high 8
 
 [Install]
 WantedBy=multi-user.target
