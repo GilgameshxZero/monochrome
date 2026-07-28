@@ -669,7 +669,7 @@
 	},
 	"notebook.confirmDeleteRunningCell": false,
 	"notebook.formatOnSave.enabled": true,
-	"notebook.output.textLineLimit": 16,
+	"notebook.output.textLineLimit": 8,
 	"notebook.output.scrolling": true,
 	"notebook.globalToolbar": false,
 	"notebook.showCellStatusBar": "hidden",

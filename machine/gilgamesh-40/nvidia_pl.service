@@ -7,7 +7,7 @@ StartLimitIntervalSec=1
 RemainAfterExit=true
 Type=oneshot
 User=root
-ExecStart=/usr/bin/nvidia-smi -pl 75
+ExecStart=/usr/bin/nvidia-smi -pl 150
 
 [Install]
 WantedBy=multi-user.target
