@@ -55,15 +55,29 @@ Kernel 6.12. Manually applied patches to 535.216.01 but did not get super far. F
 
 After upgrading to PVE 9.2, we now use kernel 6.14.11-9, which is the closest kernel version still available in the PVE repos, and it still works with version 580.105.06 on the server, and 580.105.08 on the client.
 
+---
+
+We are trying 535.230.02 on the server: <https://alist.homelabproject.cc/foxipan/vGPU/16.9>, kernel 6.14.11-9.
+
+---
+
+17.6 (from alist.homelabproject.cc) ended up working well.
+
+---
+
+If getting reset errors, disable `profile_overrides` and try again.
+
 ### Licensing
 
 A license server runs on `gilgamesh-44` and is necessary to unlock framerates for a computer that runs for longer than 15 minutes. The relevant query URL for the client token is based on the `gilgamesh-40` internal `dnsmasq` NAT:
 
 ```bash
-curl.exe --insecure -L -X GET https://10.8.40.44:7070/-/client-token -o "C:\Program Files\NVIDIA Corporation\vGPU Licensing\ClientConfigToken\client_configuration_token_$($(Get-Date).tostring('dd-MM-yy-hh-mm-ss')).tok"
+curl.exe --insecure -L -X GET https://10.8.40.47:7070/-/client-token -o "C:\Program Files\NVIDIA Corporation\vGPU Licensing\ClientConfigToken\client_configuration_token_$($(Get-Date).tostring('dd-MM-yy-hh-mm-ss')).tok"
 ```
 
 Make sure to double-check your timezone. The SHA1 GPO edit is probably not needed and may cause connectivity issues (RDP & Parsec, but Sunshine still works). Should you make this edit, it is recommended to revert virtual display setups beforehand so that the display is still accessible via the Proxmox interface, if not over internet.
+
+Probably need this <https://git.collinwebdesigns.de/vgpu/gridd-unlock-patcher#how-to-patch> for the 580 series of drivers on host and client. However, the patcher fails for the 580.81 DLL because the certificate locator fails. We tried replacing the two certificates, and made some progress, but ultimately the patched DLL still fails. Instead, we are reverting to 535.230.02 on the server (16.9), which is supported.
 
 ### Memory configurations
 

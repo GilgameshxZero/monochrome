@@ -27,7 +27,7 @@ elif [ "$1" = "nightlight" ]; then
 elif [ "$1" = "theme" ]; then
 	# By default, toggles the theme and night light.
 	# Themes trigger twice due to chromium bug not adjusting theme on first trigger.
-	gx toggle nightlight
+	# gx toggle nightlight
 	current_theme=$(kreadconfig6 --group KDE --key LookAndFeelPackage)
 	if [ "$current_theme" = "org.kde.breezedark.desktop" ]; then
 		lookandfeeltool -a org.kde.breeze.desktop
