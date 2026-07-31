@@ -21,5 +21,7 @@ ping -c1 -W 2 1.1.1.1 | grep -B1 transmitted
 ping -c1 -W 2 10.8.40.1 | grep -B1 transmitted
 ping -c1 -W 2 10.8.47.1 | grep -B1 transmitted
 ping -c1 -W 2 10.8.58.1 | grep -B1 transmitted
-curl api.ipify.org
+curl -m1 api.ipify.org
+echo
+curl -m1 api6.ipify.org
 echo

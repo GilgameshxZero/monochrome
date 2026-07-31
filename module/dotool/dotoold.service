@@ -9,7 +9,7 @@ Type=simple
 Restart=always
 RestartSec=60
 User=gilgamesh
-ExecStart=/usr/local/bin/dotoold
+ExecStart=dotoold
 
 [Install]
 WantedBy=xdg-desktop-autostart.target

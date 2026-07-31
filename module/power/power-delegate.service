@@ -1,0 +1,10 @@
+[Unit]
+Description=power-delegate
+
+[Service]
+Type=oneshot
+User=root
+ExecStart=/home/gilgamesh/main.syncthing/monochrome/module/power/power-delegate.sh
+
+[Install]
+WantedBy=power-battery.target power-ac.target
