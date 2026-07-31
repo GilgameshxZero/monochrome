@@ -6,7 +6,7 @@ echo conservative | tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
 
 # VM-specific keys are stored in plaintext on `sdb1`, after it is unlocked.
 ./cryptmount.sh
-swapon /mnt/pve/sda1/swapfile
+# swapon /mnt/pve/sda1/swapfile
 
 # Start all VMs.
 qm start 141

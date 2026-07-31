@@ -66,3 +66,4 @@ Tray should be disabled if RTSP error during user service connect.
 	1. Even with Bluetooth off, it isn’t perfect, but that might just be due to my slow GPU.
 6. Mouse still doesn't show in software mode unless this fix is applied: <https://github.com/LizardByte/Sunshine/issues/93>.
 7. Sunshine fails to work on the login screen for KDE. We implement autologin in SDDM to bypass this.
+8. Service on Windows periodically fails on startup. Prefer Task Scheduler.
