@@ -8,4 +8,19 @@ IF "%1" == "vpn" (
 			ECHO Enabled gilgamesh-58.ovpn.
 		)	
 	)
+) ELSE IF "%1" == "theme" (
+	FOR /F "TOKENS=* USEBACKQ" %%I IN (`POWERSHELL "Get-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize -Name SystemUsesLightTheme"`) DO (
+		SET "X=%%I"
+		GOTO :BREAK1
+	)
+	:BREAK1
+	FOR %%I IN (%X%) DO (
+		SET "Y=%%I"
+	)
+	IF "%Y%" == "0" (
+		CALL "%~dp0/../../theme/intent.deskthemepack"
+	) ELSE (
+		CALL "%~dp0/../../theme/intent-dark.deskthemepack"
+	)
+	TASKKILL /F /IM systemsettings.exe
 )
