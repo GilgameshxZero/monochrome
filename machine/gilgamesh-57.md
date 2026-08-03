@@ -34,6 +34,10 @@ Reference:
 toybox vi
 ```
 
+## `ipv4`
+
+Switch the profile in network settings to default to 4 instead of 6!
+
 ## Bugs
 
 1. <https://xdaforums.com/t/solved-unable-to-locate-grub-on-android-x86.4522735/>.

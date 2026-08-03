@@ -67,3 +67,4 @@ Tray should be disabled if RTSP error during user service connect.
 6. Mouse still doesn't show in software mode unless this fix is applied: <https://github.com/LizardByte/Sunshine/issues/93>.
 7. Sunshine fails to work on the login screen for KDE. We implement autologin in SDDM to bypass this.
 8. Service on Windows periodically fails on startup. Prefer Task Scheduler.
+9. 2026 version has trouble with NVENC on Windows. Prefer 202509 if possible: <https://github.com/LizardByte/Sunshine/issues/5147>.

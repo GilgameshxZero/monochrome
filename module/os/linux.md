@@ -13,3 +13,5 @@ Most current configurations are on Manjaro, but we plan to Migrate to Debian for
 
 1. `intel-media-driver` on Linux for iGPU video decode.
 2. <https://www.reddit.com/r/kde/comments/u4chnl/constant_cpu_usage_when_sddmgreeter_is_idle/>.
+3. <https://www.reddit.com/r/linuxquestions/comments/1u6hzgu/for_unknown_reasons_pipewire_screen_capture_isnt/>: Restart the service if all screen capture is failing.
+	1. `systemctl --user restart xdg-desktop-portal`

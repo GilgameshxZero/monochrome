@@ -8,3 +8,4 @@ Windows 11
 ## Bugs
 
 1. Minecraft is very slow on vgpu setup. Android VM may be disabled. I think this is related to different Hyper-V/virtualization setups on the Windows guest.
+2. Some games require -100 on the 1080 Ti overclock.

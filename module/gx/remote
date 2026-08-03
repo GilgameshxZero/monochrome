@@ -11,7 +11,7 @@ echo $resolution_x
 echo $resolution_y
 echo $resolution_fps
 
-moonlight_params="--resolution ${resolution_x}x${resolution_y} --fps $resolution_fps --bitrate 4000"
+moonlight_params="--resolution ${resolution_x}x${resolution_y} --fps $resolution_fps --bitrate 32000"
 
 host=$1
 if [ "$host" = "34" ]; then
