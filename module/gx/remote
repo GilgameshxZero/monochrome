@@ -23,7 +23,7 @@ elif [ "$host" = "43" ]; then
 elif [ "$host" = "48" ]; then
 	SDL_VIDEODRIVER=wayland scrcpy -f --tcpip=10.8.40.48 --orientation 270
 elif [ "$host" = "49" ]; then
-	moonlight stream $moonlight_params 10.8.47.49 default
+	moonlight stream $moonlight_params 10.8.47.49 Desktop
 elif [ "$host" = "50" ]; then
 	SDL_VIDEODRIVER=wayland scrcpy -f --tcpip=10.8.58.50 --no-audio
 elif [ "$host" = "57" ]; then

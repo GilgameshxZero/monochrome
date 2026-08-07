@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+~/main.syncthing/monochrome/app/scrcpy-linux-x86_64-v4.1/adb "$@"

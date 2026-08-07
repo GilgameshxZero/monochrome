@@ -46,8 +46,8 @@ set use_threads=no
 # Display message size, not number of lines, in index.
 set index_format="%4C %Z %{%b %d} %-15.15L %4cr %s"
 # Check for new mail every 300 seconds (default: 5).
-set mail_check=30
-set timeout=30
+set mail_check=300
+set timeout=300
 set time_inc=5
 
 # `archive` maildir conditional. Extract from `../../archive.syncthing/module/email/archive.mbox.tar.xz` if desired.
