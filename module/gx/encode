@@ -7,7 +7,7 @@
 # $4: av1 target bitrate in kb/s or avif quality (default: 500 for video, 80 for image).
 # $5: video/image maximum square pixel count (default: 1280 for video, 1920 for image).
 # $6: video maximum fps (default: 30).
-# $7: av1 preset or avif speed (default: 4 for video, 0 for image).
+# $7: av1 preset or avif speed (default: 7 for video, 0 for image).
 # $8: parallelism (default: "all" for image).
 # Use `encode video <> 96 1000 1920 60 2` and `encode image <> - 80 3840` for `cosine`, and default `1920` size for `cygnus` images. Use default settings with `0` speed for `emilia` videos and images, or even lower bitrate (down to 0, but usually 32 or 48, since we have constrained CRF) depending on the source.
 set -e
@@ -40,7 +40,7 @@ if [ "$1" = "audio" ]; then
 			--output ".%(uploader)s-%(title)s.old.tmp" \
 			--restrict-filenames \
 			--windows-filenames \
-			--format "ba[filesize < 100M] / ba / b" \
+			--format "ba[filesize<100M] / ba / b" \
 			--no-playlist \
 			"$2"
 		filename_old=$(ls .$filename.old.tmp*)
@@ -77,9 +77,9 @@ if [ "$1" = "audio" ]; then
 elif [ "$1" = "video" ]; then
 	bitrate_audio=${3:-48}
 	av1_quality=${4:-500}
-	frame_max_resolution=${5:-1920}
+	frame_max_resolution=${5:-1280}
 	fps_max_video=${6:-30}
-	av1_speed=${7:-4}
+	av1_speed=${7:-7}
 	if [ -f "$2" ]; then
 		filename_old=$2
 		filename_old_bn=$(basename "$filename_old")
@@ -104,7 +104,7 @@ elif [ "$1" = "video" ]; then
 			--output ".%(uploader)s-%(title)s.old.tmp" \
 			--restrict-filenames \
 			--windows-filenames \
-			-f "bv[height>=720][filesize<1G] + ba[filesize < 100M] / b[filesize<1G] / wv[height>=720] + wa[filesize >= 100M] / wv + wa / w" \
+			-f "bv[height>=720][filesize<1G] + ba[filesize<100M] / b[filesize<1G] / wv[height>=720] + wa[filesize>=100M] / wv + wa / w" \
 			--no-playlist \
 			"$2"
 		filename_old=$(ls .$filename.old.tmp*)

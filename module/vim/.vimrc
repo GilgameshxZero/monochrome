@@ -9,6 +9,6 @@ set scrolloff=2
 " Gray so that it works on both white/black themes.
 hi colorcolumn ctermbg=8
 
-autocmd TextChanged,TextChangedI <buffer> silent write
-set autoread
-au FocusGained,BufEnter * :checktime
+" autocmd TextChanged,TextChangedI <buffer> silent write
+" set autoread
+" au FocusGained,BufEnter * :checktime

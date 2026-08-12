@@ -44,7 +44,7 @@
 	"editor.wrappingIndent": "indent",
 	"editor.fontSize": 20,
 	"editor.fontWeight": "400",
-	"editor.fontFamily": "monospace",
+	"editor.fontFamily": "Noto Sans Mono, monospace",
 	"editor.inertialScroll": false,
 	"editor.mouseWheelScrollSensitivity": 1.5,
 	"editor.quickSuggestions": {
@@ -199,7 +199,7 @@
 
 	"terminal.integrated.fontSize": 20,
 	"terminal.integrated.fontWeight": "400",
-	"terminal.integrated.fontFamily": "monospace",
+	"terminal.integrated.fontFamily": "Noto Sans Mono, monospace",
 	// Closes terminals faster (on Windows); faster tasks/builds.
 	"terminal.integrated.profiles.windows": {
 		"Command Prompt": {
@@ -479,9 +479,9 @@
 	"workbench.panel.showLabels": false,
 	// "workbench.statusBar.visible": false,
 	"workbench.statusBar.experimental.fontSize": 16,
-	"workbench.statusBar.experimental.fontFamily": "monospace",
+	"workbench.statusBar.experimental.fontFamily": "Noto Sans Mono, monospace",
 	"workbench.experimental.fontSize": 16,
-	"workbench.experimental.fontFamily": "monospace",
+	"workbench.experimental.fontFamily": "Noto Sans Mono, monospace",
 	"workbench.tree.enableStickyScroll": false,
 	"workbench.editor.useModal": "off",
 	"workbench.list.horizontalScrolling": true,
