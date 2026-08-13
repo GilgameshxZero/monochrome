@@ -17,12 +17,24 @@ set imap_oauth_refresh_command = "/usr/share/neomutt/oauth2/mutt_oauth2.py yanga
 set real_name="Yang Yan"
 set from="yang@gilgamesh.cc"
 unset ssl_force_tls
-set smtp_url="smtp://yang@gilgamesh.cc:2525"
-# This file automatically sources the relevant passwords.
-source "neomuttrc.password"
 # Reply from receiving mailbox, if on this list.
 set reverse_name
-alternates @gilgamesh.cc yangawesome@gmail.com yangilga@mit.edu yangilga@outlook.com yyan99@mit.edu gilgamesh@tfwno.gf gilgameshxzero@icloud.com gilgameshxzero@outlook.com
+# Not all SMTP servers are set up.
+# alternates @gilgamesh.cc yangawesome@gmail.com yangilga@mit.edu yangilga@outlook.com yyan99@mit.edu gilgamesh@tfwno.gf gilgameshxzero@icloud.com gilgameshxzero@outlook.com
+alternates @gilgamesh.cc yangawesome@gmail.com @mit.edu
+# This file automatically sources the relevant passwords.
+source "neomuttrc.password"
+# Adjust SMTP server based on sending address. For some reason, AUTH LOGIN on SMTP is not explicitly selectable, so `smtp_authenticators` needs to be set for each hook.
+set smtp_oauth_refresh_command="$imap_oauth_refresh_command"
+set my_smtp_url_gilgamesh_cc="smtp://yang@gilgamesh.cc:2525"
+set my_smtp_url_yangawesome_gmail_com="smtp://yangawesome@gmail.com@smtp.gmail.com:587"
+set my_smtp_url_mit_edu="smtp://yangilga@outgoing.mit.edu:587"
+# set my_smtp_url_yangilga_outlook_com="smtp://yangilga@outlook.com@smtp.office365.com:587"
+send2-hook '~f @gilgamesh\.cc$' 'set smtp_url="$my_smtp_url_gilgamesh_cc" smtp_authenticators="" smtp_pass="$my_smtp_pass_gilgamesh_cc"'
+send2-hook '~f yangawesome@gmail.com' 'set smtp_url="$my_smtp_url_yangawesome_gmail_com" smtp_authenticators="$imap_authenticators" smtp_pass=""'
+send2-hook '~f @mit\.edu$' 'set smtp_url="$my_smtp_url_mit_edu" smtp_authenticators="" smtp_pass="$my_smtp_pass_mit_edu"'
+# Outlook is disabled as it requires OAUTH, which we haven't set up yet.
+# send2-hook '~f yangilga@outlook.com' 'set smtp_url="$my_smtp_url_yangilga_outlook_com" smtp_authenticators="" smtp_pass="$my_smtp_pass_yangilga_outlook_com"'
 # Don't include hostname in message ID. This option is relatively new.
 # set message_id_format="<%z@gilgamesh.cc>"
 set signature=".signature"
@@ -45,10 +57,10 @@ set use_threads=no
 # set sidebar_format="%B%?F? [%F]?%* %?N?%N/?%S"
 # Display message size, not number of lines, in index.
 set index_format="%4C %Z %{%b %d} %-15.15L %4cr %s"
-# Check for new mail every 300 seconds (default: 5).
-set mail_check=300
-set timeout=300
-set time_inc=5
+# Check for new mail slower, since GMail tends to throttle.
+set mail_check=3600
+set timeout=3600
+set time_inc=1000
 
 # `archive` maildir conditional. Extract from `../../archive.syncthing/module/email/archive.mbox.tar.xz` if desired.
 startup-hook "mailboxes -label archive `ls -d ../../local.syncthing/module/email/archive/ 2>/dev/null`"
