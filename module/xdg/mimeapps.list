@@ -81,6 +81,7 @@ application/x-ipynb+json=codium.desktop;
 application/x-matroska=mpv.desktop;
 application/x-subrip=codium.desktop;
 application/x-yaml=codium.desktop;
+application/xhtml+xml=chromium.desktop;
 application/xml=codium.desktop;
 audio/aac=mpv.desktop;
 audio/flac=mpv.desktop;

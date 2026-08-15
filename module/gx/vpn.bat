@@ -18,5 +18,7 @@ PING -n 1 -w 2 1.1.1.1 | grep -A1 statistics
 PING -n 1 -w 2 10.8.40.1 | grep -A1 statistics
 PING -n 1 -w 2 10.8.47.1 | grep -A1 statistics
 PING -n 1 -w 2 10.8.58.1 | grep -A1 statistics
-CURL api.ipify.org
+CURL -m1 api.ipify.org
+ECHO[
+CURL -m1 api6.ipify.org
 ECHO[

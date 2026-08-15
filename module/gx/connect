@@ -5,4 +5,6 @@ if [ "$1" = "b2p" ]; then
 	bluetoothctl connect "40:5E:F6:5A:03:32"
 elif [ "$1" = "jjl" ]; then
 	bluetoothctl connect "90:DA:07:9D:61:13"
+elif [ "$1" = "jjm" ]; then
+	bluetoothctl connect "BF:03:A1:D5:BA:8D"
 fi

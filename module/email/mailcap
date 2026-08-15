@@ -2,5 +2,5 @@ image/*; /usr/bin/xdg-open %s
 video/*; /usr/bin/xdg-open %s
 application/octet-stream; mpv %s
 application/*; /usr/bin/xdg-open %s
-text/html; gx htmlcap %s
-text/html; lynx -dump %s; copiousoutput; nametemplate=%s.html
+text/html; /home/gilgamesh/main.syncthing/monochrome/module/email/neomutt-html-open.sh %s
+text/html; /home/gilgamesh/main.syncthing/monochrome/module/email/neomutt-html-parse.sh %s; copiousoutput; nametemplate=%s.html

@@ -25,16 +25,14 @@ alternates @gilgamesh.cc yangawesome@gmail.com @mit.edu
 # This file automatically sources the relevant passwords.
 source "neomuttrc.password"
 # Adjust SMTP server based on sending address. For some reason, AUTH LOGIN on SMTP is not explicitly selectable, so `smtp_authenticators` needs to be set for each hook.
+# Outlook is disabled as it requires OAUTH, which we haven't set up yet.
 set smtp_oauth_refresh_command="$imap_oauth_refresh_command"
 set my_smtp_url_gilgamesh_cc="smtp://yang@gilgamesh.cc:2525"
 set my_smtp_url_yangawesome_gmail_com="smtp://yangawesome@gmail.com@smtp.gmail.com:587"
 set my_smtp_url_mit_edu="smtp://yangilga@outgoing.mit.edu:587"
-# set my_smtp_url_yangilga_outlook_com="smtp://yangilga@outlook.com@smtp.office365.com:587"
 send2-hook '~f @gilgamesh\.cc$' 'set smtp_url="$my_smtp_url_gilgamesh_cc" smtp_authenticators="" smtp_pass="$my_smtp_pass_gilgamesh_cc"'
 send2-hook '~f yangawesome@gmail.com' 'set smtp_url="$my_smtp_url_yangawesome_gmail_com" smtp_authenticators="$imap_authenticators" smtp_pass=""'
 send2-hook '~f @mit\.edu$' 'set smtp_url="$my_smtp_url_mit_edu" smtp_authenticators="" smtp_pass="$my_smtp_pass_mit_edu"'
-# Outlook is disabled as it requires OAUTH, which we haven't set up yet.
-# send2-hook '~f yangilga@outlook.com' 'set smtp_url="$my_smtp_url_yangilga_outlook_com" smtp_authenticators="" smtp_pass="$my_smtp_pass_yangilga_outlook_com"'
 # Don't include hostname in message ID. This option is relatively new.
 # set message_id_format="<%z@gilgamesh.cc>"
 set signature=".signature"
@@ -44,11 +42,12 @@ set include=yes
 set query_command="echo %s | xargs khard email -d formatted_name --parsable --"
 
 # General and index options.
-mailboxes =INBOX =[Gmail]/All\ Mail =[Gmail]/Sent\ Mail =[Gmail]/Drafts =[Gmail]/Spam =[Gmail]/Bin
+# mailboxes =INBOX =[Gmail]/All\ Mail =[Gmail]/Sent\ Mail =[Gmail]/Drafts =[Gmail]/Spam =[Gmail]/Bin
+mailboxes =INBOX
 set editor="/usr/bin/vim"
 set header_cache="~/.neomutt/cache/"
 set message_cache_dir="~/.neomutt/cache/"
-set message_cache_clean=yes
+# set message_cache_clean=yes
 set pager_stop=yes
 set sort=reverse-date
 set sort_aux=reverse-last-date-received
@@ -61,6 +60,11 @@ set index_format="%4C %Z %{%b %d} %-15.15L %4cr %s"
 set mail_check=3600
 set timeout=3600
 set time_inc=1000
+set imap_keep_alive=3600
+unset imap_idle
+set imap_fetch_chunk_size=200
+set imap_deflate=yes
+set imap_passive=yes
 
 # `archive` maildir conditional. Extract from `../../archive.syncthing/module/email/archive.mbox.tar.xz` if desired.
 startup-hook "mailboxes -label archive `ls -d ../../local.syncthing/module/email/archive/ 2>/dev/null`"
@@ -108,6 +112,7 @@ macro index,pager xa "<save-message>=[Gmail]/All^V Mail<enter><enter>"
 macro index,pager xi "<save-message>=INBOX<enter><enter>"
 macro index,pager xr "<tag-pattern>~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>"
 macro index,pager xc "<search>~m<space><1024<space>~B<space>17a7ceae-5204-47cd-8c8a-74b95b3aa83d<enter>"
+macro pager "x#" "<shell-escape>./neomutt-html-parse-link_open.sh<enter>"
 
 # Force color (patch).
 color normal default default
