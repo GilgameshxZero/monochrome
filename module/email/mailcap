@@ -1,6 +1,8 @@
-image/*; /usr/bin/xdg-open %s
-video/*; /usr/bin/xdg-open %s
+# Loaded by `neomuttrc`. Relative to `$/snowfall`.
+audio/*; xdg-open %s
+image/*; xdg-open %s
+video/*; xdg-open %s
 application/octet-stream; mpv %s
-application/*; /usr/bin/xdg-open %s
-text/html; /home/gilgamesh/main.syncthing/monochrome/module/email/neomutt-html-open.sh %s
-text/html; /home/gilgamesh/main.syncthing/monochrome/module/email/neomutt-html-parse.sh %s; copiousoutput; nametemplate=%s.html
+application/*; xdg-open %s
+text/html; ~/main.syncthing/monochrome/module/email/neomutt-html-open.sh %s
+text/html; lynx -dump -hiddenlinks=ignore %s; copiousoutput; nametemplate=%s.html

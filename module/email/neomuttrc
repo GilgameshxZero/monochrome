@@ -1,120 +1,101 @@
 # Use this file with
 # `source ~/main.syncthing/monochrome/module/email/neomuttrc`.
-cd ~/main.syncthing/monochrome/module/email/
 
-# GMail folder setup.
+# Change to `snowfall` for <save-entry>.
+cd ~/main.syncthing/snowfall/
+
+# Receive: GMail folder setup.
+# "delete" messages = "archive". Use `xb` for real delete,
+# along with `xi`, `xa`.
 set imap_user="yangawesome@gmail.com"
 set folder="imaps://imap.gmail.com"
 set spoolfile=+INBOX
+# record must be set, as not all sent emails are sent
+# through the GMail SMTP servers.
 set record="+[Gmail]/Sent Mail"
 set postponed="+[Gmail]/Drafts"
-# "delete" messages = "archive". Use `xb` for real delete.
-set trash = "+[Gmail]/All Mail"
-set imap_authenticators = "oauthbearer:xoauth2"
-set imap_oauth_refresh_command = "/usr/share/neomutt/oauth2/mutt_oauth2.py yangawesome_gmail.com.password.token --decryption-pipe cat --encryption-pipe cat"
+# Trash does not need to be set; it will be placed into
+# `All Mail` after deleting via `d` by GMail anyway.
+# set trash="+[Gmail]/All Mail"
+set imap_authenticators="oauthbearer:xoauth2"
+set imap_oauth_refresh_command=\
+	"/usr/share/neomutt/oauth2/mutt_oauth2.py \
+	~/main.syncthing/monochrome/module/email/yangawesome_gmail.com.password.token \
+	--decryption-pipe cat --encryption-pipe cat"
 
-# Send via `gilgamesh.cc` usually.
+# Send: via `gilgamesh.cc` usually.
+unset ssl_force_tls
 set real_name="Yang Yan"
 set from="yang@gilgamesh.cc"
-unset ssl_force_tls
+set signature="~/main.syncthing/monochrome/module/email/.signature"
 # Reply from receiving mailbox, if on this list.
 set reverse_name
-# Not all SMTP servers are set up.
-# alternates @gilgamesh.cc yangawesome@gmail.com yangilga@mit.edu yangilga@outlook.com yyan99@mit.edu gilgamesh@tfwno.gf gilgameshxzero@icloud.com gilgameshxzero@outlook.com
+# Not all SMTP servers are set up yet: `yangilga@outlook.com
+# gilgamesh@tfwno.gf gilgameshxzero@icloud.com
+# gilgameshxzero@outlook.com`.
 alternates @gilgamesh.cc yangawesome@gmail.com @mit.edu
 # This file automatically sources the relevant passwords.
-source "neomuttrc.password"
-# Adjust SMTP server based on sending address. For some reason, AUTH LOGIN on SMTP is not explicitly selectable, so `smtp_authenticators` needs to be set for each hook.
-# Outlook is disabled as it requires OAUTH, which we haven't set up yet.
+source "~/main.syncthing/monochrome/module/email/neomuttrc.password"
+# Adjust SMTP server based on sending address.
+# For some reason, AUTH LOGIN on SMTP is not explicitly
+# selectable, so `smtp_authenticators` needs to be set for
+# each hook.
 set smtp_oauth_refresh_command="$imap_oauth_refresh_command"
 set my_smtp_url_gilgamesh_cc="smtp://yang@gilgamesh.cc:2525"
-set my_smtp_url_yangawesome_gmail_com="smtp://yangawesome@gmail.com@smtp.gmail.com:587"
-set my_smtp_url_mit_edu="smtp://yangilga@outgoing.mit.edu:587"
-send2-hook '~f @gilgamesh\.cc$' 'set smtp_url="$my_smtp_url_gilgamesh_cc" smtp_authenticators="" smtp_pass="$my_smtp_pass_gilgamesh_cc"'
-send2-hook '~f yangawesome@gmail.com' 'set smtp_url="$my_smtp_url_yangawesome_gmail_com" smtp_authenticators="$imap_authenticators" smtp_pass=""'
-send2-hook '~f @mit\.edu$' 'set smtp_url="$my_smtp_url_mit_edu" smtp_authenticators="" smtp_pass="$my_smtp_pass_mit_edu"'
-# Don't include hostname in message ID. This option is relatively new.
-# set message_id_format="<%z@gilgamesh.cc>"
-set signature=".signature"
+set my_smtp_url_yangawesome_gmail_com=\
+	"smtp://yangawesome@gmail.com@smtp.gmail.com:587"
+set my_smtp_url_mit_edu=\
+	"smtp://yangilga@outgoing.mit.edu:587"
+# `send2-hook` is used because it is run each time the
+# message is edited, including when `From:` is edited.
+send2-hook "~f @gilgamesh\.cc$" "set \
+	smtp_url='$my_smtp_url_gilgamesh_cc' \
+	smtp_authenticators='' \
+	smtp_pass='$my_smtp_pass_gilgamesh_cc'"
+send2-hook "~f yangawesome@gmail.com" "set \
+	smtp_url='$my_smtp_url_yangawesome_gmail_com' \
+	smtp_authenticators='$imap_authenticators' \
+	smtp_pass=''"
+send2-hook "~f @mit\.edu$" "set \
+	smtp_url='$my_smtp_url_mit_edu' \
+	smtp_authenticators='' \
+	smtp_pass='$my_smtp_pass_mit_edu'"
 # Always quote reply.
 set include=yes
-# `khard` handles contact queries.
-set query_command="echo %s | xargs khard email -d formatted_name --parsable --"
+# Don't include hostname in message ID.
+set message_id_format="<%z@gilgamesh.cc>"
+# `khard` handles address book queries.
+set query_command="echo %s | \
+	xargs khard email -d formatted_name --parsable --"
+# Don't ask for confirmation for delete.
+set delete=yes
 
-# General and index options.
-# mailboxes =INBOX =[Gmail]/All\ Mail =[Gmail]/Sent\ Mail =[Gmail]/Drafts =[Gmail]/Spam =[Gmail]/Bin
+# View: general and index options.
 mailboxes =INBOX
-set editor="/usr/bin/vim"
 set header_cache="~/.neomutt/cache/"
 set message_cache_dir="~/.neomutt/cache/"
-# set message_cache_clean=yes
 set pager_stop=yes
 set sort=reverse-date
 set sort_aux=reverse-last-date-received
 set use_threads=no
-# This is a good sidebar format, but we prefer fullscreen.
-# set sidebar_format="%B%?F? [%F]?%* %?N?%N/?%S"
 # Display message size, not number of lines, in index.
 set index_format="%4C %Z %{%b %d} %-15.15L %4cr %s"
-# Check for new mail slower, since GMail tends to throttle.
-set mail_check=3600
-set timeout=3600
-set time_inc=1000
-set imap_keep_alive=3600
-unset imap_idle
-set imap_fetch_chunk_size=200
-set imap_deflate=yes
-set imap_passive=yes
-
-# `archive` maildir conditional. Extract from `../../archive.syncthing/module/email/archive.mbox.tar.xz` if desired.
-startup-hook "mailboxes -label archive `ls -d ../../local.syncthing/module/email/archive/ 2>/dev/null`"
-
-# Miscellaneous.
-# Don't ask for confirmation for delete.
-set delete=yes
 # Don't display line wrap markers for easy copy out of tmux buffer.
 set markers=no
 # Don't ask for confirmation on some functions.
 set wait_key=no
-# Dump with mailcap if html available and no plaintext.
-set mailcap_path="mailcap"
+# Dump with `mailcap` if html available and no plaintext.
+set mailcap_path="~/main.syncthing/monochrome/module/email/mailcap"
 auto_view text/html
 alternative_order text/plain text/html
-# Unsubscribe from all but INBOX.
-unsubscribe-from =[Gmail]/All\ Mail
+# Extract `archive` mailbox from
+# `../../archive.syncthing/module/email/archive.mbox.tar.xz`
+# if desired.
+startup-hook "mailboxes -label archive `ls -d \
+	~/main.syncthing/monochrome/local.syncthing/module/email/archive/ \
+	2>/dev/null`"
 
-# The scroll is a little confusing to me.
-bind editor <space> noop
-
-# Search, reply, tab complete contacts.
-bind editor <Tab> complete-query
-bind editor ^T complete
-bind index N search-opposite
-bind index \CN toggle-new
-bind index,pager R group-reply
-
-# Replacements.
-bind index,pager $ noop
-macro index,pager $ "<imap-fetch-mail><sync-mailbox>"
-bind index,pager <Up> previous-entry
-bind index,pager K previous-unread
-bind index,pager <Down> next-entry
-bind index,pager J next-unread
-# bind pager <Up> previous-line
-# bind pager <Down> next-line
-
-# Use `d` to mark for "archive", and "$" to sync.
-# x-keys are general operations.
-bind index,pager x noop
-macro index,pager xb "<save-message>=[Gmail]/Bin<enter><enter>"
-macro index,pager xp "<purge-message>"
-macro index,pager xa "<save-message>=[Gmail]/All^V Mail<enter><enter>"
-macro index,pager xi "<save-message>=INBOX<enter><enter>"
-macro index,pager xr "<tag-pattern>~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>"
-macro index,pager xc "<search>~m<space><1024<space>~B<space>17a7ceae-5204-47cd-8c8a-74b95b3aa83d<enter>"
-macro pager "x#" "<shell-escape>./neomutt-html-parse-link_open.sh<enter>"
-
-# Force color (patch).
+# Force color for older patches.
 color normal default default
 color hdrdefault default default
 color signature default default
@@ -126,8 +107,51 @@ color status bold reverse default default
 color indicator reverse default default
 color tree default default
 
-# No automatic line breaks (patch).
-set editor="vim +':set textwidth=0' +':set wrapmargin=0' +':set wrap'"
+# Search, reply, tab complete.
+bind editor <Tab> complete-query
+bind editor ^T complete
+bind index N search-opposite
+bind index \CN toggle-new
+bind index,pager R group-reply
+# Editor scroll is confusing to me.
+bind editor <space> noop
 
-# Change to `snowfall` at the end for saved files.
-# cd ../../../snowfall/
+# No automatic line breaks (patch).
+# set editor="vim +':set textwidth=0' +':set wrapmargin=0' +':set wrap'"
+
+# Keybind replacements. Use `d` to mark for "archive",
+# "$" to sync. New mail may be fetched, but the index may
+# not update until re-sorted.
+macro index,pager $ \
+	"<imap-fetch-mail>:set sort=date<enter>:set sort=reverse-date<enter><sync-mailbox>"
+bind index,pager <Up> previous-entry
+bind index,pager K previous-unread
+bind index,pager <Down> next-entry
+bind index,pager J next-unread
+
+# Keybind `x`-keys are general operations.
+bind index,pager x noop
+macro index,pager xi "<save-message>=INBOX<enter><enter>"
+macro index,pager xa \
+	"<save-message>=[Gmail]/All^V Mail<enter><enter>"
+macro index,pager xb \
+	"<save-message>=[Gmail]/Bin<enter><enter>"
+macro index,pager xp "<purge-message>"
+macro index,pager xr \
+	"<tag-pattern>~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>"
+macro index,pager xc \
+	"<search>~m<space><1024<space>~B<space>17a7ceae-5204-47cd-8c8a-74b95b3aa83d<enter>"
+macro index,pager xx "<imap-fetch-mail>:set sort=date<enter>:set sort=reverse-date<enter><tag-pattern>~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter><sync-mailbox><search>~m<space><1024<space>~B<space>17a7ceae-5204-47cd-8c8a-74b95b3aa83d<enter>"
+
+# IMAP throttle experimental options.
+# mailboxes =INBOX =[Gmail]/All\ Mail =[Gmail]/Sent\ Mail =[Gmail]/Drafts =[Gmail]/Spam =[Gmail]/Bin
+# unsubscribe-from =[Gmail]/All\ Mail
+# set message_cache_clean=yes
+set mail_check=3600
+set timeout=3600
+set time_inc=1000
+set imap_keep_alive=600
+unset imap_idle
+set imap_fetch_chunk_size=200
+set imap_deflate=yes
+set imap_passive=yes
