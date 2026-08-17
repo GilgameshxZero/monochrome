@@ -15,14 +15,10 @@ set postponed="${my_archive_dir}draft.maildir/"
 set trash="${my_archive_dir}archive.maildir/"
 # Helps with Windows syncing.
 set maildir_field_delimiter=";"
-# Extract `archive` mailbox from
-# `${my_archive_dir}archive.mbox.tar.xz`.
 mailboxes -label inbox $spoolfile
 mailboxes -label sent $record
 mailboxes -label draft $postponed
 mailboxes -label archive $trash
-mailboxes -label deep_archive \
-	~/main.syncthing/monochrome/local.syncthing/module/email/archive/
 set sort_browser=unsorted
 
 # Receive: deprecated GMail setup.
@@ -155,8 +151,9 @@ bind editor <space> noop
 # Keybind replacements. Use `d` to mark for "archive",
 # "$" to sync. New mail may be fetched, but the index may
 # not update until re-sorted.
-macro index,pager $ \
+# macro index,pager $ \
 	"<imap-fetch-mail>:set sort=date<enter>:set sort=reverse-date<enter><sync-mailbox>"
+macro index,pager $ "<sync-mailbox>"
 bind index,pager <Up> previous-entry
 bind index,pager K previous-unread
 bind index,pager <Down> next-entry
@@ -164,14 +161,15 @@ bind index,pager J next-unread
 
 # Keybind `x`-keys are general operations.
 bind index,pager x noop
-macro index,pager xi "<save-message>=INBOX<enter><enter>"
-macro index,pager xa \
+# macro index,pager xi "<save-message>=INBOX<enter><enter>"
+# macro index,pager xa \
 	"<save-message>=[Gmail]/All^V Mail<enter><enter>"
-macro index,pager xb \
+# macro index,pager xb \
 	"<save-message>=[Gmail]/Bin<enter><enter>"
+macro index,pager xi "<save-message>$spoolfile<enter><enter>"
 macro index,pager xp "<purge-message>"
 macro index,pager xr \
 	"<tag-pattern>~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>"
-macro index,pager xc \
+# macro index,pager xc \
 	"<search>~m<space><1024<space>~B<space>17a7ceae-5204-47cd-8c8a-74b95b3aa83d<enter>"
-macro index,pager xx "<imap-fetch-mail>:set sort=date<enter>:set sort=reverse-date<enter><tag-pattern>~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter><sync-mailbox><search>~m<space><1024<space>~B<space>17a7ceae-5204-47cd-8c8a-74b95b3aa83d<enter>"
+# macro index,pager xx "<imap-fetch-mail>:set sort=date<enter>:set sort=reverse-date<enter><tag-pattern>~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter><sync-mailbox><search>~m<space><1024<space>~B<space>17a7ceae-5204-47cd-8c8a-74b95b3aa83d<enter>"
