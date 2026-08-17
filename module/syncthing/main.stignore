@@ -1,6 +1,6 @@
 // Local files are specific to each device and do not need
 // to be synced.
-**/*local.syncthing*
+**/local.syncthing
 
 // Project-local includes are not supported by `syncthing`;
 // that is, included files declare their patterns relative

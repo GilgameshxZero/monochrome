@@ -2,6 +2,7 @@
 **.ovpn
 **.password.*
 **.password
+**.maildir
 
 # Syncthing.
 **/*local.syncthing*

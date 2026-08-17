@@ -1,25 +1,26 @@
 # Use this file with
 # `source ~/main.syncthing/monochrome/module/email/neomuttrc`.
 
+# Utility.
+set my_active_dir="~/main.syncthing/monochrome/module/email/"
+set my_archive_dir="~/main.syncthing/monochrome/archive.syncthing/module/email/"
 # Change to `snowfall` for <save-entry>.
 cd ~/main.syncthing/snowfall/
 
 # Receive.
-set spoolfile="~/main.syncthing/monochrome/machine/gilgamesh-58/inbox/"
-set record="~/main.syncthing/monochrome/module/email/sent/"
-set postponed="~/main.syncthing/monochrome/module/email/draft/"
-set trash="~/main.syncthing/monochrome/module/email/archive/"
+set spoolfile=\
+	"~/main.syncthing/monochrome/machine/gilgamesh-58/inbox.maildir/"
+set record="${my_archive_dir}sent.maildir/"
+set postponed="${my_archive_dir}draft.maildir/"
+set trash="${my_archive_dir}archive.maildir/"
+# Helps with Windows syncing.
+set maildir_field_delimiter=";"
 # Extract `archive` mailbox from
-# `../../archive.syncthing/module/email/archive.mbox.tar.xz`
-# if desired.
-mailboxes -label inbox \
-	~/main.syncthing/monochrome/machine/gilgamesh-58/inbox/
-mailboxes -label sent \
-	~/main.syncthing/monochrome/module/email/sent/
-mailboxes -label draft \
-	~/main.syncthing/monochrome/module/email/draft/
-mailboxes -label archive \
-	~/main.syncthing/monochrome/module/email/archive/
+# `${my_archive_dir}archive.mbox.tar.xz`.
+mailboxes -label inbox $spoolfile
+mailboxes -label sent $record
+mailboxes -label draft $postponed
+mailboxes -label archive $trash
 mailboxes -label deep_archive \
 	~/main.syncthing/monochrome/local.syncthing/module/email/archive/
 set sort_browser=unsorted
@@ -42,11 +43,13 @@ set folder="imaps://imap.gmail.com"
 set imap_authenticators="oauthbearer:xoauth2"
 set imap_oauth_refresh_command=\
 	"/usr/share/neomutt/oauth2/mutt_oauth2.py \
-	~/main.syncthing/monochrome/module/email/yangawesome_gmail.com.password.token \
+	${my_active_dir}yangawesome_gmail.com.password.token \
 	--decryption-pipe cat --encryption-pipe cat"
 # Uncomment to view IMAP folders.
-# mailboxes =INBOX =[Gmail]/Sent\ Mail =[Gmail]/Drafts =[Gmail]/All\ Mail
-# unsubscribe-from =INBOX =[Gmail]/Sent\ Mail =[Gmail]/Drafts =[Gmail]/All\ Mail
+# mailboxes =INBOX \
+# 	=[Gmail]/Sent\ Mail =[Gmail]/Drafts =[Gmail]/All\ Mail
+# unsubscribe-from =INBOX \
+# 	=[Gmail]/Sent\ Mail =[Gmail]/Drafts =[Gmail]/All\ Mail
 # IMAP throttle experimental options.
 # set message_cache_clean=yes
 # set mail_check=21600
@@ -63,7 +66,7 @@ set imap_oauth_refresh_command=\
 unset ssl_force_tls
 set real_name="Yang Yan"
 set from="yang@gilgamesh.cc"
-set signature="~/main.syncthing/monochrome/module/email/.signature"
+set signature="${my_active_dir}.signature"
 # Reply from receiving mailbox, if on this list.
 set reverse_name
 # Not all SMTP servers are set up yet: `yangilga@outlook.com
@@ -71,7 +74,7 @@ set reverse_name
 # gilgameshxzero@outlook.com`.
 alternates @gilgamesh.cc yangawesome@gmail.com @mit.edu
 # This file automatically sources the relevant passwords.
-source "~/main.syncthing/monochrome/module/email/neomuttrc.password"
+source "${my_active_dir}neomuttrc.password"
 # Adjust SMTP server based on sending address.
 # For some reason, AUTH LOGIN on SMTP is not explicitly
 # selectable, so `smtp_authenticators` needs to be set for
@@ -121,7 +124,7 @@ set markers=no
 # Don't ask for confirmation on some functions.
 set wait_key=no
 # Dump with `mailcap` if html available and no plaintext.
-set mailcap_path="~/main.syncthing/monochrome/module/email/mailcap"
+set mailcap_path="${my_active_dir}mailcap"
 auto_view text/html
 alternative_order text/plain text/html
 
