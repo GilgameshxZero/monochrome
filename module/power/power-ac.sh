@@ -23,7 +23,7 @@ cpupower -c all frequency-set -g performance
 powerprofilesctl set performance
 
 # Applications.
-runuser -u gilgamesh -- syncthing cli config folders ifzzk-usnva paused set false
+# runuser -u gilgamesh -- syncthing cli config folders ifzzk-usnva paused set false
 
 # Theme. Hack.
 runuser -l gilgamesh -c "XAUTHORITY=$(ls /run/user/1000/xauth_*) DISPLAY=:0 XDG_CURRENT_DESKTOP=KDE lookandfeeltool -a org.kde.breeze.desktop"
