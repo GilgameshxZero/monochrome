@@ -22,6 +22,7 @@ mailboxes -label archive \
 	~/main.syncthing/monochrome/module/email/archive/
 mailboxes -label deep_archive \
 	~/main.syncthing/monochrome/local.syncthing/module/email/archive/
+set sort_browser=unsorted
 
 # Receive: deprecated GMail setup.
 # "delete" messages = "archive". Use `xb` for real delete,
