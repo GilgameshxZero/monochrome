@@ -4,16 +4,37 @@
 # Change to `snowfall` for <save-entry>.
 cd ~/main.syncthing/snowfall/
 
-# Receive: GMail folder setup.
+# Receive.
+set spoolfile="~/main.syncthing/monochrome/machine/gilgamesh-58/inbox/"
+set record="~/main.syncthing/monochrome/module/email/sent/"
+set postponed="~/main.syncthing/monochrome/module/email/draft/"
+set trash="~/main.syncthing/monochrome/module/email/archive/"
+# Extract `archive` mailbox from
+# `../../archive.syncthing/module/email/archive.mbox.tar.xz`
+# if desired.
+mailboxes -label inbox \
+	~/main.syncthing/monochrome/machine/gilgamesh-58/inbox/
+mailboxes -label sent \
+	~/main.syncthing/monochrome/module/email/sent/
+mailboxes -label draft \
+	~/main.syncthing/monochrome/module/email/draft/
+mailboxes -label archive \
+	~/main.syncthing/monochrome/module/email/archive/
+mailboxes -label deep_archive \
+	~/main.syncthing/monochrome/local.syncthing/module/email/archive/
+
+# Receive: deprecated GMail setup.
 # "delete" messages = "archive". Use `xb` for real delete,
 # along with `xi`, `xa`.
+# Allow access to IMAP folder if necessary.
 set imap_user="yangawesome@gmail.com"
 set folder="imaps://imap.gmail.com"
-set spoolfile=+INBOX
+# Disabled in favor of local maildirs over syncthing.
+# set spoolfile=+INBOX
 # record must be set, as not all sent emails are sent
 # through the GMail SMTP servers.
-set record="+[Gmail]/Sent Mail"
-set postponed="+[Gmail]/Drafts"
+# set record="+[Gmail]/Sent Mail"
+# set postponed="+[Gmail]/Drafts"
 # Trash does not need to be set; it will be placed into
 # `All Mail` after deleting via `d` by GMail anyway.
 # set trash="+[Gmail]/All Mail"
@@ -22,6 +43,20 @@ set imap_oauth_refresh_command=\
 	"/usr/share/neomutt/oauth2/mutt_oauth2.py \
 	~/main.syncthing/monochrome/module/email/yangawesome_gmail.com.password.token \
 	--decryption-pipe cat --encryption-pipe cat"
+# Uncomment to view IMAP folders.
+# mailboxes =INBOX =[Gmail]/Sent\ Mail =[Gmail]/Drafts =[Gmail]/All\ Mail
+# unsubscribe-from =INBOX =[Gmail]/Sent\ Mail =[Gmail]/Drafts =[Gmail]/All\ Mail
+# IMAP throttle experimental options.
+# set message_cache_clean=yes
+# set mail_check=21600
+# set timeout=3600
+# set imap_keep_alive=21600
+# unset imap_idle
+# set imap_idle=no
+# set imap_fetch_chunk_size=1024
+# set imap_deflate=no
+# set imap_passive=yes
+# set socket_timeout=60
 
 # Send: via `gilgamesh.cc` usually.
 unset ssl_force_tls
@@ -71,13 +106,13 @@ set query_command="echo %s | \
 set delete=yes
 
 # View: general and index options.
-mailboxes =INBOX
 set header_cache="~/.neomutt/cache/"
 set message_cache_dir="~/.neomutt/cache/"
 set pager_stop=yes
 set sort=reverse-date
 set sort_aux=reverse-last-date-received
 set use_threads=no
+set time_inc=1000
 # Display message size, not number of lines, in index.
 set index_format="%4C %Z %{%b %d} %-15.15L %4cr %s"
 # Don't display line wrap markers for easy copy out of tmux buffer.
@@ -88,12 +123,6 @@ set wait_key=no
 set mailcap_path="~/main.syncthing/monochrome/module/email/mailcap"
 auto_view text/html
 alternative_order text/plain text/html
-# Extract `archive` mailbox from
-# `../../archive.syncthing/module/email/archive.mbox.tar.xz`
-# if desired.
-startup-hook "mailboxes -label archive `ls -d \
-	~/main.syncthing/monochrome/local.syncthing/module/email/archive/ \
-	2>/dev/null`"
 
 # Force color for older patches.
 color normal default default
@@ -142,16 +171,3 @@ macro index,pager xr \
 macro index,pager xc \
 	"<search>~m<space><1024<space>~B<space>17a7ceae-5204-47cd-8c8a-74b95b3aa83d<enter>"
 macro index,pager xx "<imap-fetch-mail>:set sort=date<enter>:set sort=reverse-date<enter><tag-pattern>~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter><sync-mailbox><search>~m<space><1024<space>~B<space>17a7ceae-5204-47cd-8c8a-74b95b3aa83d<enter>"
-
-# IMAP throttle experimental options.
-# mailboxes =INBOX =[Gmail]/All\ Mail =[Gmail]/Sent\ Mail =[Gmail]/Drafts =[Gmail]/Spam =[Gmail]/Bin
-# unsubscribe-from =[Gmail]/All\ Mail
-# set message_cache_clean=yes
-set mail_check=3600
-set timeout=3600
-set time_inc=1000
-set imap_keep_alive=600
-unset imap_idle
-set imap_fetch_chunk_size=200
-set imap_deflate=yes
-set imap_passive=yes

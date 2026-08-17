@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
-if ! tmux has-session -t $1 > /dev/null; then
+if ! tmux has-session -t "$1" > /dev/null; then
 	cd ~/main.syncthing
 	# set status off not working; minor issue.
-	tmux new -d -s $1 \; set status off \;
-	tmux send -t $1 "$1" ENTER
+	tmux new -d -s "$1" \; set status off \;
+	tmux send -t "$1" "$1" ENTER
 fi
 if [[ ! -v TMUX ]]; then
-	tmux a -t $1
+	tmux a -t "$1"
 else
-	tmux detach -E "tmux a -t $1"
+	tmux detach -E "tmux a -t '$1'"
 fi
