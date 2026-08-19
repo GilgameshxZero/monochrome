@@ -1,5 +1,5 @@
-# Higher threads fails Youtube RSS.
-reload-threads 1
+# Higher threads may fail Youtube RSS.
+reload-threads 32
 cleanup-on-quit	no
 confirm-mark-all-feeds-read no
 confirm-mark-feed-read no

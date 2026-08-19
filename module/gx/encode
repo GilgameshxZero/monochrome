@@ -175,6 +175,5 @@ elif [ "$1" = "image" ]; then
 	dimensions_new=$(magick identify -ping -format "%[width]x%[height]" "$filename_new")
 	echo "$compare_result $filename_old [$du_old @ $dimensions_old] > [$du_new @ $dimensions_new]"
 elif [ "$1" = "file" ]; then
-	tar --sort=name -cf - "$2" | pv | xz -9 -T0 --lzma2=dict=1024MiB > "${2%/}.tar.xz"
-	# tar --sort=name -cf - "$2" | pv | pixz -9 > "${2%/}.tar.xz"
+	tar --sort=name -cf - "$2" | xz -9 -T0 -M95% -vv --lzma2=dict=1024MiB > "${2%/}.tar.xz"
 fi

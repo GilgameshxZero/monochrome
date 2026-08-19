@@ -8,16 +8,18 @@ set my_archive_dir="~/main.syncthing/monochrome/archive.syncthing/module/email/"
 cd ~/main.syncthing/snowfall/
 
 # Receive.
-set spoolfile=\
+set spool_file=\
 	"~/main.syncthing/monochrome/machine/gilgamesh-58/inbox.maildir/"
-set record="${my_archive_dir}sent.maildir/"
-set postponed="${my_active_dir}draft.maildir/"
-set trash="${my_archive_dir}archive.maildir/"
+# Sent emails and processed emails are "deleted" into an
+# "archive". Messages from $postponed should only be purged.
+# Messages deleted from the "archive" are "purged".
+set record="${my_archive_dir}archive.maildir/"
+set postponed="${my_active_dir}postponed.maildir/"
+set trash="$record"
 # Helps with Windows syncing.
 set maildir_field_delimiter=";"
-mailboxes -label inbox $spoolfile
-mailboxes -label sent $record
-mailboxes -label draft $postponed
+mailboxes -label inbox $spool_file
+mailboxes -label postponed $postponed
 mailboxes -label archive $trash
 set sort_browser=unsorted
 
@@ -92,7 +94,7 @@ set use_threads=no
 set time_inc=1000
 # Display message size, not number of lines, in index.
 set index_format="%4C %Z %{%b %d} %-15.15L %4cr %s"
-# Don't display line wrap markers for easy copy out of tmux buffer.
+# Don't display line wrap markers for easy copy.
 set markers=no
 # Don't ask for confirmation on some functions.
 set wait_key=no
@@ -116,35 +118,55 @@ color tree default default
 # Search, reply, tab complete.
 bind editor <Tab> complete-query
 bind editor ^T complete
+# Group reply by default.
+bind index,pager R group-reply
+# Swap N, Ctrl+N.
 bind index,pager N search-opposite
 bind index \CN toggle-new
-bind index,pager R group-reply
 # Editor scroll is confusing to me.
 bind editor <space> noop
-
-# Keybind replacements.
-bind index,pager <Up> previous-entry
+# Ignore deleted messages in up/down. Up/down usually
+# switches messages, except in the pager, where left/right
+# accomplishes the same.
 bind index,pager K previous-unread
-bind index,pager <Down> next-entry
 bind index,pager J next-unread
+bind index <Up> previous-entry
+bind index <Down> next-entry
+bind pager <Left> previous-entry
+bind pager <Right> next-entry
+bind pager <Up> previous-line
+bind pager <Down> next-line
+# Alt+E/R scroll bindings.
+bind index,pager \ee previous-page
+bind index,pager \er next-page
 
 # Keybind `x`-keys are general operations.
 bind index,pager x noop
-macro index,pager xi "<save-message>$spoolfile<enter><enter>"
-macro index,pager xp "<purge-message>"
+macro index,pager xi \
+	"<save-message>$spoolfile<enter><enter>" \
+	"Move message to INBOX."
+macro index,pager xp "<purge-message>" "Purge message.
 macro index,pager xr \
-	"<tag-pattern>~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>"
+	"<tag-pattern>~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" \
+	"Mark all as read."
 macro index,pager xc \
-	"<search>~m<space><1024<space>~B<space>17a7ceae-5204-47cd-8c8a-74b95b3aa83d<enter>"
+	"<search>~m<space><1024<space>~B<space>17a7ceae-5204-47cd-8c8a-74b95b3aa83d<enter>" \
+	"Cache messages."
 # Toggle Gmail IMAP folders.
-# Uncomment to view IMAP folders.
+# Open/close IMAP folders. This may leave an IMAP
+# connection even after close, which might slow down all
+# `neomutt` operations until restart.
 macro index,pager xgo "<enter-command>mailboxes \
 	=INBOX \
  	'=[Gmail]/Sent Mail' =[Gmail]/Drafts '=[Gmail]/All Mail' \
 	=[Gmail]/Spam =[Gmail]/Bin \
-	=[Gmail]/Chats =[Gmail]/Important =[Gmail]/Starred<enter>"
+	=[Gmail]/Chats =[Gmail]/Important \
+	=[Gmail]/Starred<enter>" \
+	"Open IMAP mailboxes."
 macro index,pager xgc "<enter-command>unmailboxes \
 	=INBOX \
  	'=[Gmail]/Sent Mail' =[Gmail]/Drafts '=[Gmail]/All Mail' \
 	=[Gmail]/Spam =[Gmail]/Bin \
-	=[Gmail]/Chats =[Gmail]/Important =[Gmail]/Starred<enter>"
+	=[Gmail]/Chats =[Gmail]/Important \
+	=[Gmail]/Starred<enter>" \
+	"Close IMAP mailboxes."
