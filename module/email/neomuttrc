@@ -11,7 +11,7 @@ cd ~/main.syncthing/snowfall/
 set spoolfile=\
 	"~/main.syncthing/monochrome/machine/gilgamesh-58/inbox.maildir/"
 set record="${my_archive_dir}sent.maildir/"
-set postponed="${my_archive_dir}draft.maildir/"
+set postponed="${my_active_dir}draft.maildir/"
 set trash="${my_archive_dir}archive.maildir/"
 # Helps with Windows syncing.
 set maildir_field_delimiter=";"
@@ -21,42 +21,18 @@ mailboxes -label draft $postponed
 mailboxes -label archive $trash
 set sort_browser=unsorted
 
-# Receive: deprecated GMail setup.
+# Receive: Gmail IMAP.
 # "delete" messages = "archive". Use `xb` for real delete,
 # along with `xi`, `xa`.
 # Allow access to IMAP folder if necessary.
 set imap_user="yangawesome@gmail.com"
-set folder="imaps://imap.gmail.com"
-# Disabled in favor of local maildirs over syncthing.
-# set spoolfile=+INBOX
-# record must be set, as not all sent emails are sent
-# through the GMail SMTP servers.
-# set record="+[Gmail]/Sent Mail"
-# set postponed="+[Gmail]/Drafts"
-# Trash does not need to be set; it will be placed into
-# `All Mail` after deleting via `d` by GMail anyway.
-# set trash="+[Gmail]/All Mail"
 set imap_authenticators="oauthbearer:xoauth2"
 set imap_oauth_refresh_command=\
 	"/usr/share/neomutt/oauth2/mutt_oauth2.py \
 	${my_active_dir}yangawesome_gmail.com.password.token \
 	--decryption-pipe cat --encryption-pipe cat"
-# Uncomment to view IMAP folders.
-# mailboxes =INBOX \
-# 	=[Gmail]/Sent\ Mail =[Gmail]/Drafts =[Gmail]/All\ Mail
-# unsubscribe-from =INBOX \
-# 	=[Gmail]/Sent\ Mail =[Gmail]/Drafts =[Gmail]/All\ Mail
-# IMAP throttle experimental options.
-# set message_cache_clean=yes
-# set mail_check=21600
-# set timeout=3600
-# set imap_keep_alive=21600
-# unset imap_idle
-# set imap_idle=no
-# set imap_fetch_chunk_size=1024
-# set imap_deflate=no
-# set imap_passive=yes
-# set socket_timeout=60
+# For convenience to navigate to other folders.
+set folder="imaps://imap.gmail.com"
 
 # Send: via `gilgamesh.cc` usually.
 unset ssl_force_tls
@@ -68,7 +44,8 @@ set reverse_name
 # Not all SMTP servers are set up yet: `yangilga@outlook.com
 # gilgamesh@tfwno.gf gilgameshxzero@icloud.com
 # gilgameshxzero@outlook.com`.
-alternates @gilgamesh.cc yangawesome@gmail.com @mit.edu
+alternates @gilgamesh.cc yangawesome@gmail.com \
+	yangilga@mit.edu yyan99@mit.edu
 # This file automatically sources the relevant passwords.
 source "${my_active_dir}neomuttrc.password"
 # Adjust SMTP server based on sending address.
@@ -139,21 +116,13 @@ color tree default default
 # Search, reply, tab complete.
 bind editor <Tab> complete-query
 bind editor ^T complete
-bind index N search-opposite
+bind index,pager N search-opposite
 bind index \CN toggle-new
 bind index,pager R group-reply
 # Editor scroll is confusing to me.
 bind editor <space> noop
 
-# No automatic line breaks (patch).
-# set editor="vim +':set textwidth=0' +':set wrapmargin=0' +':set wrap'"
-
-# Keybind replacements. Use `d` to mark for "archive",
-# "$" to sync. New mail may be fetched, but the index may
-# not update until re-sorted.
-# macro index,pager $ \
-	"<imap-fetch-mail>:set sort=date<enter>:set sort=reverse-date<enter><sync-mailbox>"
-macro index,pager $ "<sync-mailbox>"
+# Keybind replacements.
 bind index,pager <Up> previous-entry
 bind index,pager K previous-unread
 bind index,pager <Down> next-entry
@@ -161,15 +130,21 @@ bind index,pager J next-unread
 
 # Keybind `x`-keys are general operations.
 bind index,pager x noop
-# macro index,pager xi "<save-message>=INBOX<enter><enter>"
-# macro index,pager xa \
-	"<save-message>=[Gmail]/All^V Mail<enter><enter>"
-# macro index,pager xb \
-	"<save-message>=[Gmail]/Bin<enter><enter>"
 macro index,pager xi "<save-message>$spoolfile<enter><enter>"
 macro index,pager xp "<purge-message>"
 macro index,pager xr \
 	"<tag-pattern>~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>"
-# macro index,pager xc \
+macro index,pager xc \
 	"<search>~m<space><1024<space>~B<space>17a7ceae-5204-47cd-8c8a-74b95b3aa83d<enter>"
-# macro index,pager xx "<imap-fetch-mail>:set sort=date<enter>:set sort=reverse-date<enter><tag-pattern>~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter><sync-mailbox><search>~m<space><1024<space>~B<space>17a7ceae-5204-47cd-8c8a-74b95b3aa83d<enter>"
+# Toggle Gmail IMAP folders.
+# Uncomment to view IMAP folders.
+macro index,pager xgo "<enter-command>mailboxes \
+	=INBOX \
+ 	'=[Gmail]/Sent Mail' =[Gmail]/Drafts '=[Gmail]/All Mail' \
+	=[Gmail]/Spam =[Gmail]/Bin \
+	=[Gmail]/Chats =[Gmail]/Important =[Gmail]/Starred<enter>"
+macro index,pager xgc "<enter-command>unmailboxes \
+	=INBOX \
+ 	'=[Gmail]/Sent Mail' =[Gmail]/Drafts '=[Gmail]/All Mail' \
+	=[Gmail]/Spam =[Gmail]/Bin \
+	=[Gmail]/Chats =[Gmail]/Important =[Gmail]/Starred<enter>"

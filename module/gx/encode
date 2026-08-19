@@ -21,26 +21,27 @@ if [ "$1" = "audio" ]; then
 		filename_new=${2%.*}.opus
 	else
 		filename=$(yt-dlp \
-			--cookies-from-browser chromium+kwallet6 \
 			--js-runtimes node \
 			--remote-components ejs:github \
+			--cookies-from-browser chromium+kwallet6 \
 			--extract-audio \
 			--output "%(uploader)s-%(title)s" \
 			--restrict-filenames \
 			--windows-filenames \
+			--format "ba[abr<=320] / wa / w" \
 			--no-playlist \
 			--print filename \
 			"$2" | tail -1)
 		# Use old.tmp here to avoid opus conflict after extracting audio.
 		yt-dlp \
-			--cookies-from-browser chromium+kwallet6 \
 			--js-runtimes node \
 			--remote-components ejs:github \
+			--cookies-from-browser chromium+kwallet6 \
 			--extract-audio \
 			--output ".%(uploader)s-%(title)s.old.tmp" \
 			--restrict-filenames \
 			--windows-filenames \
-			--format "ba[filesize<100M] / ba / b" \
+			--format "ba[abr<=320] / wa / w" \
 			--no-playlist \
 			"$2"
 		filename_old=$(ls .$filename.old.tmp*)
@@ -72,7 +73,6 @@ if [ "$1" = "audio" ]; then
 	if [ -f "$2" ]; then
 		rm "$filename_old"
 	fi
-	# opustags -D -i "$filename_int"
 	mv "$filename_int" "$filename_new"
 elif [ "$1" = "video" ]; then
 	bitrate_audio=${3:-48}
@@ -88,23 +88,24 @@ elif [ "$1" = "video" ]; then
 		filename_new=${2%.*}.mkv
 	else
 		filename=$(yt-dlp \
-			--cookies-from-browser chromium+kwallet6 \
 			--js-runtimes node \
 			--remote-components ejs:github \
+			--cookies-from-browser chromium+kwallet6 \
 			--output "%(uploader)s-%(title)s" \
 			--restrict-filenames \
 			--windows-filenames \
+			--format "bv[height>=720][vbr<=1536] + ba[abr<=256] / b[tbr<=1536] / wv[height>=720] + wa / wv + wa / w" \
 			--no-playlist \
 			--print filename \
 			"$2" | tail -1)
 		yt-dlp \
-			--cookies-from-browser chromium+kwallet6 \
 			--js-runtimes node \
 			--remote-components ejs:github \
+			--cookies-from-browser chromium+kwallet6 \
 			--output ".%(uploader)s-%(title)s.old.tmp" \
 			--restrict-filenames \
 			--windows-filenames \
-			-f "bv[height>=720][filesize<1G] + ba[filesize<100M] / b[filesize<1G] / wv[height>=720] + wa[filesize>=100M] / wv + wa / w" \
+			--format "bv[height>=720][vbr<=1536] + ba[abr<=256] / b[tbr<=1536] / wv[height>=720] + wa / wv + wa / w" \
 			--no-playlist \
 			"$2"
 		filename_old=$(ls .$filename.old.tmp*)
@@ -165,16 +166,6 @@ elif [ "$1" = "image" ]; then
 	magick "$filename_old" -resize "${frame_max_resolution}x${frame_max_resolution}>" "$filename_int_png"
 	# Then, encode to `avif` (mostly equivalent to `ffmpeg` without filter, which may cause problems; also loses some color filter detail (?)) on the lossless PNG. EXIF data may be lost with `ffmpeg`.
 	avifenc -q "$av1_quality" -s "$av1_speed" -j "$avif_parallelism" "$filename_int_png" "$filename_int" >/dev/null
-	# ffmpeg \
-	# 	-hide_banner \
-	# 	-loglevel fatal \
-	# 	-nostats \
-	# 	-y \
-	# 	-i "$filename_int_png" \
-	# 	-c:v libaom-av1 \
-	# 	-crf $((-(($av1_quality * 63 - 31) / 100 - 63))) \
-	# 	-preset $av1_speed \
-	# 	"$filename_int"
 	rm "$filename_int_png"
 	# Resize smaller to larger then compare.
 	compare_result=$(magick compare -metric DSSIM -alpha off -resize "$dimensions_old" "$filename_old" "$filename_int" NULL: 2>&1 || true)
