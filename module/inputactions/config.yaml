@@ -19,14 +19,14 @@ touchpad:
 
       actions:
         - on: update
-          interval: -20
+          interval: -100
           input:
-            - keyboard: [ leftshift+volumeup ]
+            - keyboard: [ volumeup ]
 
         - on: update
-          interval: 20
+          interval: 100
           input:
-            - keyboard: [ leftshift+volumedown ]
+            - keyboard: [ volumedown ]
 
     # Interferes with kwin 3 finger tap.
     # - type: tap

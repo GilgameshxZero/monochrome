@@ -44,3 +44,4 @@ sudo fbgrab -s 3 fb.png 2>/dev/null &
 ## Bugs
 
 1. Seems like alt-tabbing fast between two chromium windows will eventually freeze both windows until the mouse moves. Bypass this by setting `Task Switching` to `Compact` again.
+2. `systemctl --user restart xdg-desktop-portal`.
