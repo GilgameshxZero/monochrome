@@ -35,6 +35,9 @@ set imap_oauth_refresh_command=\
 	--decryption-pipe cat --encryption-pipe cat"
 # For convenience to navigate to other folders.
 set folder="imaps://imap.gmail.com"
+# General IMAP hygiene.
+set mail_check=300
+set timeout=300
 
 # Send: via `gilgamesh.cc` usually.
 unset ssl_force_tls
