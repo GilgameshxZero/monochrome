@@ -10,5 +10,5 @@ yt-dlp \
 	--output "%(uploader)s-%(title)s.%(ext)s" \
 	--restrict-filenames \
 	--windows-filenames \
-	--format "bv[height>=720][vbr<=1024] + ba[abr<=128] / b[tbr<=1152] / wv[height>=720] + wa / wv + wa / w" \
+	--format "bv[height>=720][vbr<=1536] + ba[abr<=256] / b[tbr<=1792] / wv[height>=720] + wa / wv + wa / w" \
 	"$@"

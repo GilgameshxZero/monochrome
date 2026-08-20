@@ -3,7 +3,7 @@
 # `prototype` format is `opus` VBR 96kb/s at compression level 10, with the peak volume normalized to 0 dB.
 # $1: `audio` or `video` or `image` or `file`.
 # $2: link or filename, e.g. "https://www.youtube.com/watch?v=r6sGWTCMz2k".
-# $3: opus target bitrate in kb/s (default: 96 for audio, 48 for video).
+# $3: opus target bitrate in kb/s (default: 96 for audio (48 for yt-dlp audio), 48 for video).
 # $4: av1 target bitrate in kb/s or avif quality (default: 500 for video, 80 for image).
 # $5: video/image maximum square pixel count (default: 1280 for video, 1920 for image).
 # $6: video maximum fps (default: 30).
@@ -12,14 +12,15 @@
 # Use `encode video <> 96 1000 1920 60 2` and `encode image <> - 80 3840` for `cosine`, and default `1920` size for `cygnus` images. Use default settings with `0` speed for `emilia` videos and images, or even lower bitrate (down to 0, but usually 32 or 48, since we have constrained CRF) depending on the source.
 set -e
 if [ "$1" = "audio" ]; then
-	bitrate_audio=${3:-96}
 	if [ -f "$2" ]; then
+		bitrate_audio=${3:-96}
 		filename_old=$2
 		filename_old_bn=$(basename "$filename_old")
 		filename_old_dir=$(dirname "$filename_old")
 		filename_int=${filename_old_dir}.${filename_old_bn%.*}.tmp.opus
 		filename_new=${2%.*}.opus
 	else
+		bitrate_audio=${3:-48}
 		filename=$(yt-dlp \
 			--js-runtimes node \
 			--remote-components ejs:github \
@@ -94,7 +95,7 @@ elif [ "$1" = "video" ]; then
 			--output "%(uploader)s-%(title)s" \
 			--restrict-filenames \
 			--windows-filenames \
-			--format "bv[height>=720][vbr<=1536] + ba[abr<=256] / b[tbr<=1536] / wv[height>=720] + wa / wv + wa / w" \
+			--format "bv[height>=720][vbr<=1536] + ba[abr<=256] / b[tbr<=1792] / wv[height>=720] + wa / wv + wa / w" \
 			--no-playlist \
 			--print filename \
 			"$2" | tail -1)
@@ -105,7 +106,7 @@ elif [ "$1" = "video" ]; then
 			--output ".%(uploader)s-%(title)s.old.tmp" \
 			--restrict-filenames \
 			--windows-filenames \
-			--format "bv[height>=720][vbr<=1536] + ba[abr<=256] / b[tbr<=1536] / wv[height>=720] + wa / wv + wa / w" \
+			--format "bv[height>=720][vbr<=1536] + ba[abr<=256] / b[tbr<=1792] / wv[height>=720] + wa / wv + wa / w" \
 			--no-playlist \
 			"$2"
 		filename_old=$(ls .$filename.old.tmp*)
