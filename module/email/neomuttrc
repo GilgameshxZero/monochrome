@@ -18,10 +18,11 @@ set postponed="${my_active_dir}postponed.maildir/"
 set trash="$record"
 # Helps with Windows syncing.
 set maildir_field_delimiter=";"
-mailboxes -label inbox $spool_file
-mailboxes -label postponed $postponed
-mailboxes -label archive $trash
-set sort_browser=unsorted
+named-mailboxes inbox $spool_file
+named-mailboxes -nonotify postponed $postponed \
+	archive $trash
+# Unfortunately this sets for both the file/folder browser.
+set browser_sort=unsorted
 
 # Receive: Gmail IMAP.
 # "delete" messages = "archive". Use `xb` for real delete,
@@ -44,13 +45,14 @@ unset ssl_force_tls
 set real_name="Yang Yan"
 set from="yang@gilgamesh.cc"
 set signature="${my_active_dir}.signature"
+set fast_reply=yes
 # Reply from receiving mailbox, if on this list.
 set reverse_name
 # Not all SMTP servers are set up yet: `yangilga@outlook.com
 # gilgamesh@tfwno.gf gilgameshxzero@icloud.com
 # gilgameshxzero@outlook.com`.
-alternates @gilgamesh.cc yangawesome@gmail.com \
-	yangilga@mit.edu yyan99@mit.edu
+alternates @gilgamesh.cc ^yangawesome@gmail.com$ \
+	^yangilga@mit.edu$ ^yyan99@mit.edu$
 # This file automatically sources the relevant passwords.
 source "${my_active_dir}neomuttrc.password"
 # Adjust SMTP server based on sending address.
@@ -69,7 +71,7 @@ send2-hook "~f @gilgamesh\.cc$" "set \
 	smtp_url='$my_smtp_url_gilgamesh_cc' \
 	smtp_authenticators='' \
 	smtp_pass='$my_smtp_pass_gilgamesh_cc'"
-send2-hook "~f yangawesome@gmail.com" "set \
+send2-hook "~f ^yangawesome@gmail\.com$" "set \
 	smtp_url='$my_smtp_url_yangawesome_gmail_com' \
 	smtp_authenticators='$imap_authenticators' \
 	smtp_pass=''"
@@ -95,6 +97,8 @@ set sort=reverse-date
 set sort_aux=reverse-last-date-received
 set use_threads=no
 set time_inc=1000
+# Use `t` to tag to attach multiple.
+set folder_format="%t %f"
 # Display message size, not number of lines, in index.
 set index_format="%4C %Z %{%b %d} %-15.15L %4cr %s"
 # Don't display line wrap markers for easy copy.
@@ -140,8 +144,8 @@ bind pager <Right> next-entry
 bind pager <Up> previous-line
 bind pager <Down> next-line
 # Alt+E/R scroll bindings.
-bind index,pager \ee previous-page
-bind index,pager \er next-page
+bind index,pager <Esc>e previous-page
+bind index,pager <Esc>r next-page
 
 # Keybind `x`-keys are general operations.
 bind index,pager x noop
@@ -160,6 +164,7 @@ macro index,pager xc \
 # connection even after close, which might slow down all
 # `neomutt` operations until restart.
 macro index,pager xgo "<enter-command>mailboxes \
+	-nonotify -nopoll \
 	=INBOX \
  	'=[Gmail]/Sent Mail' =[Gmail]/Drafts '=[Gmail]/All Mail' \
 	=[Gmail]/Spam =[Gmail]/Bin \
