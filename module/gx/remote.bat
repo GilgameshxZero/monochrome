@@ -8,7 +8,7 @@ IF "%1" == "34" (
 ) ELSE IF "%1" == "48" (
 	scrcpy -f --tcpip=10.8.40.48 --orientation 270
 ) ELSE IF "%1" == "49" (
-	moonlight stream --resolution 2880x1800 --fps 120 --bitrate 32000 10.8.47.49 default
+	moonlight stream --resolution 2880x1800 --fps 120 --bitrate 32000 10.8.47.49 Desktop
 ) ELSE IF "%1" == "50" (
 	scrcpy -f --tcpip=10.8.58.50 --no-audio
 ) ELSE IF "%1" == "57" (

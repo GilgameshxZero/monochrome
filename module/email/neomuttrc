@@ -97,6 +97,7 @@ set sort=reverse-date
 set sort_aux=reverse-last-date-received
 set use_threads=no
 set time_inc=1000
+set attach_format="%T %s %<f?%f&%m/%M>"
 # Use `t` to tag to attach multiple.
 set folder_format="%t %f"
 # Display message size, not number of lines, in index.

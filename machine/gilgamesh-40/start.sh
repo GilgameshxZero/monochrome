@@ -21,3 +21,6 @@ sleep 128
 ./sendkeys.sh 142 $(cat /mnt/pve/sdb1/import/sendkeys.142.txt.raw)
 ./sendkeys.sh 143 $(cat /mnt/pve/sdb1/import/sendkeys.143.txt.raw)
 ./sendkeys.sh 147 $(cat /mnt/pve/sdb1/import/sendkeys.147.txt.raw)
+
+# Notifications are linked to `/mnt/pve/sdb1/import/notifications.cfg.raw`. Currently, PVE bypasses this `mount --bind` during read, so it doesn't work.
+# mount --bind /mnt/pve/sdb1/import/notifications.cfg.raw /etc/pve/priv/notifications.cfg

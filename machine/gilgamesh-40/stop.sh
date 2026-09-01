@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# umount /etc/pve/priv/notifications.cfg
+
 qm shutdown 141
 qm shutdown 142
 qm stop 143
