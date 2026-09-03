@@ -34,13 +34,13 @@ elif [ "$1" = "theme" ]; then
 		lookandfeeltool -a org.kde.breeze.desktop
 		sleep 0.4
 		lookandfeeltool -a org.kde.breeze.desktop
-		plasma-apply-wallpaperimage $(realpath ~/main.syncthing/monochrome/theme/intent-1650x2200.avif)
+		plasma-apply-wallpaperimage $(realpath /home/gilgamesh/main.syncthing/monochrome/theme/intent-1650x2200.avif)
 		echo Enabled light theme.
 	else
 		lookandfeeltool -a org.kde.breezedark.desktop
 		sleep 0.4
 		lookandfeeltool -a org.kde.breezedark.desktop
-		plasma-apply-wallpaperimage $(realpath ~/main.syncthing/monochrome/theme/intent-dark-1650x2200.avif)
+		plasma-apply-wallpaperimage $(realpath /home/gilgamesh/main.syncthing/monochrome/theme/intent-dark-1650x2200.avif)
 		echo Enabled dark theme.
 	fi
 elif [ "$1" = "vpn" ]; then

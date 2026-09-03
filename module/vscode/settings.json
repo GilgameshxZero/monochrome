@@ -1,12 +1,8 @@
 {
-	// Toggle scrollbar.
-	// "editor.scrollbar.verticalScrollbarSize": 0,
-
 	// Base code/codium settings.
 	"breadcrumbs.enabled": false,
 
 	"chat.editor.fontSize": 20,
-	"chat.commandCenter.enabled": false,
 
 	"comments.visible": false,
 
@@ -34,10 +30,10 @@
 	"editor.experimental.asyncTokenization": true,
 	"editor.stickyScroll.enabled": false,
 	"editor.glyphMargin": false,
-	// "editor.tokenColorCustomizations": {},
 	"editor.accessibilitySupport": "off",
 	"editor.cursorBlinking": "solid",
 	"editor.cursorSurroundingLines": 2,
+	// Can fit some thinner screens.
 	// "editor.letterSpacing": -0.33,
 	"editor.suggest.showWords": false,
 	"editor.inlayHints.enabled": "off",
@@ -54,96 +50,173 @@
 	},
 	"editor.lightbulb.enabled": "off",
 	"editor.pasteAs.showPasteSelector": "never",
+	"editor.matchBrackets": "never",
 	"editor.colorDecorators": false,
-	// Disable all color and syntax highlights. The second line is needed in case of external (?) language servers e.g. `clangd`.
-	"editor.maxTokenizationLineLength": 0,
+	// Disable all color and syntax highlights, bold some.
+	// "editor.maxTokenizationLineLength": 0,
+	// Using tokenColorCustomizations instead, to bold
+	// certain tokens.
 	"editor.tokenColorCustomizations": {
-		"[Default High Contrast]": {
-			"comments": "#FF0000",
-			"functions": "#FF0000",
-			"keywords": "#FF0000",
-			"numbers": "#FF0000",
-			"strings": "#FF0000",
-			"types": "#FF0000",
-			"variables": "#FF0000",
+		"[Default High Contrast Light]": {
+			"comments": {
+				"foreground": "#000000",
+				"fontStyle": "italic"
+			},
+			"functions": {
+				"foreground": "#000000"
+			},
+			"keywords": {
+				"foreground": "#000000",
+				"fontStyle": "bold"
+			},
+			"numbers": {
+				"foreground": "#000000"
+			},
+			"strings": {
+				"foreground": "#000000"
+			},
+			"types": {
+				"foreground": "#000000",
+				"fontStyle": "bold"
+			},
+			"variables": {
+				"foreground": "#000000"
+			},
 			"textMateRules": [
 				{
-					"scope": "constant",
+					// Find scopes with
+					// `Developer: Inspect Editor Tokens...`.
+					"scope": [
+						"constant.character",
+						"constant.character.escape",
+						"constant.language",
+						"entity.name.function.preprocessor",
+						"entity.name.namespace",
+						"entity.name.operator",
+						"entity.name.scope-resolution",
+						"entity.other.attribute-name",
+						"keyword.operator.cast",
+						"keyword.operator.logical.python",
+						"keyword.operator.sizeof",
+						"keyword.other.operator",
+						"keyword.other.unit",
+						"keyword.other.using",
+						"markup.heading",
+						"storage.modifier",
+						"support.type.property-name.json",
+						"support.variable",
+						"variable.language",
+						"variable.language.this",
+						"variable.other.constant",
+						"variable.other.enummember",
+						"invalid",
+						"invalid.deprecated",
+						"invalid.illegal"
+					],
 					"settings": {
-						"foreground": "#FF0000"
+						"foreground": "#000000"
 					}
 				},
 				{
-					"scope": "emphasis",
+					"scope": [],
 					"settings": {
-						"foreground": "#FF0000"
+						"fontStyle": "bold"
 					}
 				},
 				{
-					"scope": "entity",
+					"scope": ["string.quoted.docstring"],
 					"settings": {
-						"foreground": "#FF0000"
+						"fontStyle": "italic"
+					}
+				}
+			]
+		},
+		"[Default High Contrast]": {
+			"comments": {
+				"foreground": "#FFFFFF",
+				"fontStyle": "italic"
+			},
+			"functions": {
+				"foreground": "#FFFFFF"
+			},
+			"keywords": {
+				"foreground": "#FFFFFF",
+				"fontStyle": "bold"
+			},
+			"numbers": {
+				"foreground": "#FFFFFF"
+			},
+			"strings": {
+				"foreground": "#FFFFFF"
+			},
+			"types": {
+				"foreground": "#FFFFFF",
+				"fontStyle": "bold"
+			},
+			"variables": {
+				"foreground": "#FFFFFF"
+			},
+			"textMateRules": [
+				{
+					// Find scopes with
+					// `Developer: Inspect Editor Tokens...`.
+					"scope": [
+						"constant.character",
+						"constant.character.escape",
+						"constant.language",
+						"entity.name.function.preprocessor",
+						"entity.name.namespace",
+						"entity.name.operator",
+						"entity.name.scope-resolution",
+						"entity.other.attribute-name",
+						"keyword.operator.cast",
+						"keyword.operator.logical.python",
+						"keyword.operator.sizeof",
+						"keyword.other.operator",
+						"keyword.other.unit",
+						"keyword.other.using",
+						"markup.heading",
+						"storage.modifier",
+						"support.type.property-name.json",
+						"support.variable",
+						"variable.language",
+						"variable.language.this",
+						"variable.other.constant",
+						"variable.other.enummember",
+						"invalid",
+						"invalid.deprecated",
+						"invalid.illegal"
+					],
+					"settings": {
+						"foreground": "#FFFFFF"
 					}
 				},
 				{
-					"scope": "meta",
+					"scope": [],
 					"settings": {
-						"foreground": "#FF0000"
+						"fontStyle": "bold"
 					}
 				},
 				{
-					"scope": "support",
+					"scope": ["string.quoted.docstring"],
 					"settings": {
-						"foreground": "#FF0000"
-					}
-				},
-				{
-					"scope": "invalid",
-					"settings": {
-						"foreground": "#FFFF00"
-					}
-				},
-				{
-					"scope": "keyword",
-					"settings": {
-						"foreground": "#FF0000"
-					}
-				},
-				{
-					"scope": "punctuation",
-					"settings": {
-						"foreground": "#FF0000"
-					}
-				},
-				{
-					"scope": "string",
-					"settings": {
-						"foreground": "#FF0000"
-					}
-				},
-				{
-					"scope": "markup",
-					"settings": {
-						"foreground": "#FF0000"
-					}
-				},
-				{
-					"scope": "variable",
-					"settings": {
-						"foreground": "#FF0000"
+						"fontStyle": "italic"
 					}
 				}
 			]
 		}
 	},
-	"editor.semanticHighlighting.enabled": false,
+	// Necessary to recognize some tokens for their types.
+	"editor.semanticHighlighting.enabled": true,
 	"editor.selectionHighlight": false,
 	"editor.cursorStyle": "block",
 	"editor.lineNumbers": "off",
-	// Undocumented for 0-width gutter.
+	// Undocumented setting for 0-width gutter.
 	"editor.lineDecorationsWidth": 0,
 	"editor.occurrencesHighlight": "off",
 	"editor.hover.showLongLineWarning": false,
+	// Toggle scrollbar.
+	// "editor.scrollbar.verticalScrollbarSize": 0,
 
 	"explorer.confirmDelete": false,
 	"explorer.confirmDragAndDrop": false,
@@ -182,7 +255,6 @@
 	"markdown.preview.fontSize": 16,
 	"markdown.preview.lineHeight": 1.5,
 	"markdown.preview.scrollPreviewWithEditor": true,
-
 	// Most markdown files should be edited with the `silver` CSS.
 	"markdown.styles": [".vscode/default.css"],
 
@@ -200,7 +272,6 @@
 	"terminal.integrated.fontSize": 20,
 	"terminal.integrated.fontWeight": "400",
 	"terminal.integrated.fontFamily": "Noto Sans Mono, monospace",
-	// Closes terminals faster (on Windows); faster tasks/builds.
 	"terminal.integrated.profiles.windows": {
 		"Command Prompt": {
 			"path": [
@@ -218,7 +289,9 @@
 			// Necessary for loading `~/.bashrc` properly.
 			"args": ["-i"]
 		},
-		// Tmux shell for easy keyboard navigation/c/p, but will die on disconnect. Still, drops back into bash when done.
+		// Tmux shell for easy keyboard navigation/c/p, but will
+		// die on disconnect. Still, drops back into bash when
+		// done. Unused for now.
 		"tmux": {
 			"path": "bash",
 			"icon": "terminal-bash",
@@ -290,7 +363,6 @@
 	"workbench.colorCustomizations": {
 		"activityBarBadge.foreground": "#00000000",
 		"activityBarBadge.background": "#00000000",
-
 		"[Default High Contrast Light]": {
 			"contrastBorder": "#000000",
 			"focusBorder": "#000000",
@@ -372,7 +444,9 @@
 			"terminal.ansiBlack": "#000000",
 			"terminal.ansiBrightBlack": "#000000",
 			"terminal.ansiWhite": "#ffffff",
-			"terminal.ansiBrightWhite": "#ffffff"
+			"terminal.ansiBrightWhite": "#ffffff",
+
+			"editorBracketHighlight.unexpectedBracket.foreground": "#000000"
 		},
 		"[Default High Contrast]": {
 			"contrastBorder": "#ffffff",
@@ -455,7 +529,9 @@
 			"terminal.ansiBlack": "#ffffff",
 			"terminal.ansiBrightBlack": "#ffffff",
 			"terminal.ansiWhite": "#000000",
-			"terminal.ansiBrightWhite": "#000000"
+			"terminal.ansiBrightWhite": "#000000",
+
+			"editorBracketHighlight.unexpectedBracket.foreground": "#ffffff"
 		}
 	},
 	"workbench.iconTheme": null,
@@ -477,7 +553,6 @@
 	"workbench.editor.empty.hint": "hidden",
 	"workbench.activityBar.location": "bottom",
 	"workbench.panel.showLabels": false,
-	// "workbench.statusBar.visible": false,
 	"workbench.statusBar.experimental.fontSize": 16,
 	"workbench.statusBar.experimental.fontFamily": "Noto Sans Mono, monospace",
 	"workbench.experimental.fontSize": 16,
@@ -492,6 +567,7 @@
 
 	// Extensions.
 	"clangd.inactiveRegions.opacity": 1,
+	"clangd.path": "/home/gilgamesh/.config/VSCodium/User/globalStorage/llvm-vs-code-extensions.vscode-clangd/install/22.1.6/clangd_22.1.6/bin/clangd",
 
 	"cSpell.userWords": [
 		"abelian",
@@ -557,6 +633,7 @@
 		"infty",
 		"injective",
 		"interdimensional",
+		"ipynb",
 		"Kadane",
 		"Kanbaru",
 		"Karp",
@@ -576,6 +653,7 @@
 		"Morozov",
 		"MOUSEEVENTF",
 		"Nadeko",
+		"Noto",
 		"nullptr",
 		"Ofast",
 		"openai",
@@ -615,6 +693,7 @@
 		"subgrids",
 		"surjective",
 		"syncthing",
+		"tfds",
 		"tqdm",
 		"Tutte",
 		"UTULEK",
@@ -683,16 +762,14 @@
 	"redhat.telemetry.enabled": false,
 
 	"remote.SSH.remotePlatform": {
-		"gilgamesh-31": "linux",
 		"gilgamesh-40": "linux",
-		"gilgamesh-42": "windows",
+		"gilgamesh-42": "linux",
 		"gilgamesh-43": "macos",
-		"gilgamesh-44": "linux",
-		"gilgamesh-45": "linux",
 		"gilgamesh-46": "windows",
 		"gilgamesh-47": "linux",
 		"gilgamesh-49": "windows",
-		"gilgamesh-51": "linux"
+		"gilgamesh-51": "linux",
+		"gilgamesh-58": "linux"
 	},
 	// Sometimes necessary for `git` to function on Windows remotes.
 	// "remote.SSH.enableAgentForwarding": false,
@@ -713,7 +790,8 @@
 	"[markdown]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode",
 		"editor.rulers": [],
-		// For some reason, "advanced" is broken with Latin Modern Roman without GPU acceleration.
+		// For some reason, "advanced" is broken with
+		// `Latin Modern Roman` without GPU acceleration.
 		"editor.wrappingStrategy": "advanced",
 		"editor.wordWrap": "on"
 	},
@@ -748,6 +826,8 @@
 	},
 
 	// VSCode-specific settings.
+	"chat.commandCenter.enabled": false,
+
 	"inlineChat.lineNaturalLanguageHint": false,
 
 	"liveshare.notebooks.allowGuestExecuteCells": true,

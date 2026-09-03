@@ -29,3 +29,4 @@ powerprofilesctl set power-saver
 runuser -l gilgamesh -c "XAUTHORITY=$(ls /run/user/1000/xauth_*) DISPLAY=:0 XDG_CURRENT_DESKTOP=KDE lookandfeeltool -a org.kde.breezedark.desktop"
 sleep 0.4
 runuser -l gilgamesh -c "XAUTHORITY=$(ls /run/user/1000/xauth_*) DISPLAY=:0 XDG_CURRENT_DESKTOP=KDE lookandfeeltool -a org.kde.breezedark.desktop"
+runuser -l gilgamesh -c "XAUTHORITY=$(ls /run/user/1000/xauth_*) DISPLAY=:0 XDG_CURRENT_DESKTOP=KDE plasma-apply-wallpaperimage $(realpath /home/gilgamesh/main.syncthing/monochrome/theme/intent-dark-1650x2200.avif)"
