@@ -571,7 +571,6 @@
 
 	// Extensions.
 	"clangd.inactiveRegions.opacity": 1,
-	"clangd.path": "/home/gilgamesh/.config/VSCodium/User/globalStorage/llvm-vs-code-extensions.vscode-clangd/install/22.1.6/clangd_22.1.6/bin/clangd",
 
 	"cSpell.userWords": [
 		"abelian",
