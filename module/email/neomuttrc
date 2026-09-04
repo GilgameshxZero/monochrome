@@ -88,6 +88,9 @@ set query_command="echo %s | \
 	xargs khard email -d formatted_name --parsable --"
 # Don't ask for confirmation for delete.
 set delete=yes
+# Allow easy scheduling of send. Unclear why this uses
+# `my_hdr` and not `my-header`, which is newer syntax
+my_hdr X-Emilia-Deliver-After: 1970-01-01T00:00:00Z
 
 # View: general and index options.
 set header_cache="~/.neomutt/cache/"
