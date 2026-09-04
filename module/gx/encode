@@ -192,7 +192,12 @@ elif [ "$1" = "file" ]; then
 			pipe="xz -d -M95% -vv | $pipe"
 		fi
 		if $encrypt; then
-			pipe="gpg --decrypt --no-symkey-cache | $pipe"
+			# If filename provided in $3, use that as private key.
+			if [ -f "$3" ]; then
+				pipe="age -d -i \"$3\" | $pipe"
+			else
+				pipe="gpg --decrypt --no-symkey-cache | $pipe"
+			fi
 		fi
 		eval "cat \"$2\" | $pipe"
 	else
@@ -203,8 +208,14 @@ elif [ "$1" = "file" ]; then
 			pipe+=" | xz -9 -T0 -M95% -vv --lzma2=dict=1024MiB"
 		fi
 		if $encrypt; then
-			filename+=".gpg"
-			pipe+=" | gpg --symmetric --no-symkey-cache"
+			# If filename provided in $3, use that as public key.
+			if [ -f "$3" ]; then
+				filename+=".age"
+				pipe+=" | age -R \"$3\""
+			else
+				filename+=".gpg"
+				pipe+=" | gpg --symmetric --no-symkey-cache"
+			fi
 		fi
 		eval "$pipe > \"$filename\""
 	fi

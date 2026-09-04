@@ -1,4 +1,4 @@
-……………“““““‘‘‘# `monochrome`
+# `monochrome`
 
 `monochrome` stores system-related configuration files, setup files, and syncable app data.
 
