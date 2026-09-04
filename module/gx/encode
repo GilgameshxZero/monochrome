@@ -176,5 +176,36 @@ elif [ "$1" = "image" ]; then
 	dimensions_new=$(magick identify -ping -format "%[width]x%[height]" "$filename_new")
 	echo "$compare_result $filename_old [$du_old @ $dimensions_old] > [$du_new @ $dimensions_new]"
 elif [ "$1" = "file" ]; then
-	tar --sort=name -cf - "$2" | xz -9 -T0 -M95% -vv --lzma2=dict=1024MiB > "${2%/}.tar.xz"
+	reverse=false
+	compress=false
+	encrypt=false
+	for i in "$@"; do
+		case "$i" in
+			--reverse) reverse=true ;;
+			--compress) compress=true ;;
+			--encrypt) encrypt=true ;;
+		esac
+	done
+	if $reverse; then
+		pipe="tar -xf -"
+		if $compress; then
+			pipe="xz -d -M95% -vv | $pipe"
+		fi
+		if $encrypt; then
+			pipe="gpg --decrypt --no-symkey-cache | $pipe"
+		fi
+		eval "cat \"$2\" | $pipe"
+	else
+		filename="${2%/}.tar"
+		pipe="tar --sort=name -cf - \"$2\""
+		if $compress; then
+			filename+=".xz"
+			pipe+=" | xz -9 -T0 -M95% -vv --lzma2=dict=1024MiB"
+		fi
+		if $encrypt; then
+			filename+=".gpg"
+			pipe+=" | gpg --symmetric --no-symkey-cache"
+		fi
+		eval "$pipe > \"$filename\""
+	fi
 fi

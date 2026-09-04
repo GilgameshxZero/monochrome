@@ -14,3 +14,11 @@ Self-signed certificates: <https://wiki.archlinux.org/title/Chromium#SSL_certifi
 ```about:config
 browser.closeWindowWithLastTab=false
 ```
+
+## Cookies
+
+Cookies and logins can be imported with reasonable precision with the following:
+
+```js
+'COOKIES_HERE'.split(';').forEach(c => document.cookie=`${c}; Domain=.DOMAIN.TLD; Path=/`);
+```
