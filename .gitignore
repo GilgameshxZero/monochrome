@@ -3,6 +3,10 @@
 **.password.*
 **.password
 **.maildir
+# id_rsa is still being deprecated.
+**/id_rsa
+**/id_ed25519
+module/ssh/id_ed25519.pub
 
 # Syncthing.
 **/*local.syncthing*

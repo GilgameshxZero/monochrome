@@ -55,9 +55,8 @@
 (?d)**/jspm_packages
 (?d)**/node_modules
 
-// Manual fixes.
-
-// Some overrides for files contain `?` in the filename,
-// which is not supported across platforms. It is difficult
-// to ignore single files with `?` for some reason.
-// (?d)monochrome/module/browser/overrides
+// SSH keys will not be synced. `id_rsa` is still being
+// deprecated. Access public keys in specific `monochrome`
+// folders.
+(?d)**/id_ed25519
+(?d)**/id_ed25519.pub

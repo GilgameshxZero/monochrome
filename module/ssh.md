@@ -1,6 +1,8 @@
 # `ssh`
 
-ssh/sshd are used for inter-device communication. All clients are preferred to use the `gilgamesh-16` keys in `./module/ssh`.
+ssh/sshd are used for inter-device communication. As per `canon`, each client retains their own `ed25519` key in their `machine` folder. This will not be synced via Syncthing. This can be symlinked/hardlinked into `~/.ssh` on each client and will not interfere with the syncing progress. An `id_rsa` key in `module/ssh` is being phased out.
+
+On the breach of a client, that key must be decommissioned in `authorized_keys`, which synced via Syncthing, as well as in all machines without Syncthing.
 
 ## Permissions
 
