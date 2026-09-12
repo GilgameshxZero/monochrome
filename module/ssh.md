@@ -34,7 +34,7 @@ Using Windows features may result in either a broken authentication agent or the
 Authorized keys should be set in `%ProgramData%\ssh\administrators_authorized_keys` instead of `~\.ssh\authorized_keys` for Administrator accounts. Read <https://learn.microsoft.com/en-us/windows-server/administration/openssh/openssh_keymanagement#administrative-user> for a detailed explanation of how, but quickly, via an admin Powershell:
 
 ```powershell
-$authorizedKey = Get-Content -Path $env:USERPROFILE\.ssh\id_rsa.pub
+$authorizedKey = Get-Content -Path $env:USERPROFILE\.ssh\authorized_keys
 Add-Content -Force -Path $env:ProgramData\ssh\administrators_authorized_keys -Value "$authorizedKey";icacls.exe "$env:ProgramData\ssh\administrators_authorized_keys" /inheritance:r /grant "Administrators:F" /grant "SYSTEM:F"
 ```
 
