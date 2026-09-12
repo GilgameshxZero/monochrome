@@ -12,7 +12,7 @@ Environment="DOMAIN=gilgamesh.cc"
 Environment="NAME=gilgamesh-40"
 Environment="SLEEP_INTERVAL=300"
 Environment="REMOVE_DUPLICATES=true"
-ExecStart=bash -c "set -a && source /home/gilgamesh/main.syncthing/monochrome/machine/gilgamesh-47/digital_ocean-dyndns.password.env && /home/gilgamesh/main.syncthing/monochrome/machine/gilgamesh-47/digital_ocean-dyndns.sh"
+ExecStart=bash -c "set -a && source /home/gilgamesh/main.syncthing/monochrome/machine/gilgamesh-47/local.syncthing/digital_ocean-dyndns.password.env && /home/gilgamesh/main.syncthing/monochrome/machine/gilgamesh-47/digital_ocean-dyndns.sh"
 
 [Install]
 WantedBy=multi-user.target

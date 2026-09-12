@@ -30,10 +30,12 @@ set browser_sort=unsorted
 # Allow access to IMAP folder if necessary.
 set imap_user="yangawesome@gmail.com"
 set imap_authenticators="oauthbearer:xoauth2"
+# Encrypted with symmetric key. No `tar` pipeline like `gx`.
 set imap_oauth_refresh_command=\
 	"/usr/share/neomutt/oauth2/mutt_oauth2.py \
-	${my_active_dir}yangawesome_gmail.com.password.token \
-	--decryption-pipe cat --encryption-pipe cat"
+	${my_active_dir}yangawesome_gmail.com.password.token.gpg \
+	--decryption-pipe \"gpg --decrypt\" \
+	--encryption-pipe \"gpg --compress-algo none --symmetric\""
 # For convenience to navigate to other folders.
 set folder="imaps://imap.gmail.com"
 # General IMAP hygiene.
@@ -54,7 +56,10 @@ set reverse_name
 alternates @gilgamesh.cc ^yangawesome@gmail.com$ \
 	^yangilga@mit.edu$ ^yyan99@mit.edu$
 # This file automatically sources the relevant passwords.
-source "${my_active_dir}neomuttrc.password"
+source "`gpg --yes -o /tmp/neomuttrc.password --decrypt \
+	~/main.syncthing/monochrome/module/email/neomuttrc.password.gpg; \
+	echo /tmp/neomuttrc.password; \
+	(sleep 4 && rm /tmp/neomuttrc.password) &`"
 # Adjust SMTP server based on sending address.
 # For some reason, AUTH LOGIN on SMTP is not explicitly
 # selectable, so `smtp_authenticators` needs to be set for
@@ -89,7 +94,7 @@ set query_command="echo %s | \
 # Don't ask for confirmation for delete.
 set delete=yes
 # Allow easy scheduling of send. Unclear why this uses
-# `my_hdr` and not `my-header`, which is newer syntax
+# `my_hdr` and not `my-header`, which is newer syntax.
 my_hdr X-Emilia-Deliver-After: 1970-01-01T00:00:00Z
 
 # View: general and index options.
