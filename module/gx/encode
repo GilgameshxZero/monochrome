@@ -214,7 +214,7 @@ elif [ "$1" = "file" ]; then
 				pipe+=" | age -R \"$3\""
 			else
 				filename+=".gpg"
-				pipe+=" | gpg --symmetric --no-symkey-cache"
+				pipe+=" | gpg --compress-algo none --symmetric --no-symkey-cache"
 			fi
 		fi
 		eval "$pipe > \"$filename\""

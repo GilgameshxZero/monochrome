@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+~/main.syncthing/monochrome/app/aria2c "$@"

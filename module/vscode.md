@@ -15,3 +15,4 @@ On Windows, to use `nmake`, VSCode must be launched within the Visual Studio Dev
 ## Bugs
 
 1. Windows SSH agent is broken with Codium SSH.
+2. Codium SSH may require manual copying of the `.vscodium-server` directory, or only the `clangd` extension directory under `data/User` to enable `clangd` detection, after setting `clangd.path` in the remote settings.

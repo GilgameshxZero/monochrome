@@ -12,11 +12,6 @@ Host gilgamesh-43
 	HostName gilgamesh-58.gilgamesh.cc
 	Port 60043
 	User gilgamesh
-	
-Host gilgamesh-45
-	HostName gilgamesh-58.gilgamesh.cc
-	Port 60045
-	User gilgamesh
 
 Host gilgamesh-46
 	HostName gilgamesh-58.gilgamesh.cc
@@ -36,11 +31,6 @@ Host gilgamesh-49
 Host gilgamesh-51
 	HostName gilgamesh-58.gilgamesh.cc
 	Port 60051
-	User gilgamesh
-
-Host gilgamesh-52
-	HostName gilgamesh-58.gilgamesh.cc
-	Port 60052
 	User gilgamesh
 
 Host gilgamesh-58
