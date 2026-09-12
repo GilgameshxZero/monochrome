@@ -59,4 +59,4 @@
 // deprecated. Access public keys in specific `monochrome`
 // folders.
 (?d)**/id_ed25519
-(?d)**/id_ed25519.pub
+(?d)monochrome/module/ssh/id_ed25519.pub
