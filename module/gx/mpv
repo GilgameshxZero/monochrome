@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+mpv \
+	--script-opts=ytdl_hook-ytdl_path=$HOME/main.syncthing/monochrome/module/gx/yt-dlp \
+	"$@"

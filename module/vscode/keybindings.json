@@ -250,7 +250,8 @@
 	},
 	{
 		"key": "ctrl+shift+w",
-		"command": "workbench.action.toggleZenMode"
+		// "command": "workbench.action.toggleZenMode"
+		"command": "workbench.action.toggleStatusbarVisibility"
 	},
 	{
 		"key": "ctrl+shift+e",
@@ -499,5 +500,71 @@
 	{
 		"key": "ctrl+0",
 		"command": "workbench.action.zoomReset"
+	},
+
+	// MacOS patches. Alt+E still fails.
+	{
+		"key": "ctrl+s",
+		"command": "workbench.action.files.save"
+	},
+	{
+		"key": "ctrl+w",
+		"command": "workbench.action.closeActiveEditor"
+	},
+	{
+		"key": "ctrl+c",
+		"command": "editor.action.clipboardCopyAction",
+		"when": "!(terminalTextSelectedInFocused || terminalFocus && terminalHasBeenCreated && terminalTextSelected || terminalFocus && terminalProcessSupported && terminalTextSelected || terminalFocus && terminalTextSelected && terminalTextSelectedInFocused || terminalHasBeenCreated && terminalTextSelected && terminalTextSelectedInFocused || terminalProcessSupported && terminalTextSelected && terminalTextSelectedInFocused)"
+	},
+	{
+		"key": "ctrl+c",
+		"command": "workbench.action.terminal.copySelection",
+		"when": "terminalTextSelectedInFocused || terminalFocus && terminalHasBeenCreated && terminalTextSelected || terminalFocus && terminalProcessSupported && terminalTextSelected || terminalFocus && terminalTextSelected && terminalTextSelectedInFocused || terminalHasBeenCreated && terminalTextSelected && terminalTextSelectedInFocused || terminalProcessSupported && terminalTextSelected && terminalTextSelectedInFocused"
+	},
+	{
+		"key": "ctrl+v",
+		"command": "editor.action.clipboardPasteAction",
+		"when": "!(terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported)"
+	},
+	{
+		"key": "ctrl+v",
+		"command": "workbench.action.terminal.paste",
+		"when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
+	},
+	{
+		"key": "ctrl+x",
+		"command": "editor.action.clipboardCutAction"
+	},
+	{
+		"key": "ctrl+a",
+		"command": "editor.action.selectAll"
+	},
+	{
+		"key": "ctrl+f",
+		"command": "actions.find"
+	},
+	{
+		"key": "ctrl+z",
+		"command": "undo"
+	},
+	{
+		"key": "ctrl+e",
+		"command": "workbench.action.quickOpen"
+	},
+	{
+		"key": "ctrl+p",
+		"command": "workbench.action.quickOpen"
+	},
+	{
+		"key": "ctrl+shift+z",
+		"command": "redo"
+	},
+	{
+		"key": "ctrl+shift+t",
+		"command": "workbench.action.reopenClosedEditor"
+	},
+	{
+		"key": "ctrl+shift+p",
+		"command": "workbench.action.showCommands"
 	}
 ]

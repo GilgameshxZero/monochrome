@@ -344,7 +344,7 @@
 		"workbench.action.moveEditorLeftInGroup",
 		"workbench.action.moveEditorRightInGroup"
 	],
-	"terminal.integrated.scrollback": 8192,
+	"terminal.integrated.scrollback": 65536,
 	"terminal.integrated.ignoreBracketedPasteMode": true,
 	"terminal.integrated.persistentSessionScrollback": 1024,
 	"terminal.integrated.showExitAlert": false,
@@ -354,6 +354,7 @@
 	"terminal.integrated.tabStopWidth": 2,
 	"terminal.integrated.shellIntegration.decorationsEnabled": "never",
 	"terminal.integrated.shellIntegration.quickFixEnabled": false,
+	// No setting to terminal margin yet.
 
 	"timeline.pageOnScroll": true,
 
@@ -558,7 +559,6 @@
 	"workbench.preferredHighContrastColorTheme": "Default High Contrast Light",
 	"workbench.preferredLightColorTheme": "Default High Contrast Light",
 	"workbench.preferredDarkColorTheme": "Default High Contrast",
-	"workbench.editor.tabSizing": "shrink",
 	"workbench.list.mouseWheelScrollSensitivity": 3,
 	"workbench.editor.empty.hint": "hidden",
 	"workbench.activityBar.location": "bottom",
@@ -570,6 +570,11 @@
 	"workbench.tree.enableStickyScroll": false,
 	"workbench.editor.useModal": "off",
 	"workbench.list.horizontalScrolling": true,
+	// "shrink" is also good, but this causes less thrash.
+	"workbench.editor.tabSizing": "fixed",
+	"workbench.editor.tabActionCloseVisibility": false,
+	"workbench.editor.editorActionsLocation": "titleBar",
+	"workbench.editor.decorations.badges": false,
 
 	"zenMode.restore": true,
 	"zenMode.showTabs": "none",
@@ -860,5 +865,6 @@
 	"C_Cpp.autoAddFileAssociations": false,
 	"C_Cpp.clang_format_fallbackStyle": "{ \tBasedOnStyle: Chromium,  \tUseTab: Always, \tTabWidth: 2, \tPointerAlignment: Right,  \tNamespaceIndentation: All, \tFixNamespaceComments: false, \tAccessModifierOffset: 0, \tIndentCaseLabels: true,  \tAlignAfterOpenBracket: AlwaysBreak, \tAlignOperands: false, \tContinuationIndentWidth: 2,  \tBinPackArguments: false, \tBinPackParameters: false, \tAlignConsecutiveDeclarations: false, \tAllowShortIfStatementsOnASingleLine: true, \tAllowShortLoopsOnASingleLine: true,  \tAlignTrailingComments: false, \tReflowComments: true, \tColumnLimit: 80,  \tIncludeBlocks: Preserve, \tSortUsingDeclarations: false, }",
 	"C_Cpp.experimentalFeatures": "enabled",
-	"C_Cpp.intelliSenseCacheSize": 1024
+	"C_Cpp.intelliSenseCacheSize": 1024,
+	"workbench.statusBar.visible": false
 }
