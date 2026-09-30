@@ -84,6 +84,8 @@ send2-hook "~f @mit\.edu$" "set \
 	smtp_url='$my_smtp_url_mit_edu' \
 	smtp_authenticators='' \
 	smtp_pass='$my_smtp_pass_mit_edu'"
+# Pass out information to scripts that need it.
+send2-hook "~f .*" "setenv NEOMUTT_FROM='$from'"
 # Always quote reply.
 set include=yes
 # Don't include hostname in message ID.
@@ -93,9 +95,6 @@ set query_command="echo %s | \
 	xargs khard email -d formatted_name --parsable --"
 # Don't ask for confirmation for delete.
 set delete=yes
-# Allow easy scheduling of send. Unclear why this uses
-# `my_hdr` and not `my-header`, which is newer syntax.
-# my_hdr X-Emilia-Deliver-After: 1970-01-01T00:00:00Z
 
 # View: general and index options.
 set header_cache="~/.neomutt/cache/"
@@ -109,15 +108,19 @@ set attach_format="%T %s %<f?%f&%m/%M>"
 # Use `t` to tag to attach multiple.
 set folder_format="%t %f"
 # Display message size, not number of lines, in index.
-set index_format="%4C %Z %{%b %d} %-15.15L %4cr %s"
+set index_format="%4C %Z %{%m-%d} %-15.15L %4cr %s"
 # Don't display line wrap markers for easy copy.
 set markers=no
 # Don't ask for confirmation on some functions.
 set wait_key=no
 # Dump with `mailcap` if html available and no plaintext.
 set mailcap_path="${my_active_dir}mailcap"
-auto_view text/html
-alternative_order text/plain text/html
+auto_view text/calendar text/x-vcalendar application/ics \
+	text/plain text/html
+alternative_order text/calendar text/x-vcalendar \
+	application/ics text/plain text/html
+# Remove keymap help line.
+unset help
 
 # Force color for older patches.
 color normal default default
@@ -134,8 +137,35 @@ color tree default default
 # Search, reply, tab complete.
 bind editor <Tab> complete-query
 bind editor ^T complete
-# Group reply by default.
+# Group reply by default. Reply to ICS request.
 bind index,pager R group-reply
+set my_ics_response_macro_pre=" \
+	<pipe-entry> \
+	iconv -c --to-code=UTF-8 > .event.tmp.ics<enter>"
+set my_ics_response_macro_post=" \
+	<shell-escape> \
+	${my_active_dir}mutt-ical.py \
+	-i -g .reply.tmp.ics .event.tmp.ics; \
+	rm .event.tmp.ics<enter> \
+	<attach-file>.reply.tmp.ics<enter><toggle-unlink>"
+macro attach r "$my_ics_response_macro_pre<reply> \
+	$my_ics_response_macro_post"
+macro attach R "$my_ics_response_macro_pre<group-reply> \
+	$my_ics_response_macro_post"
+# Save ICS request.
+macro attach S " \
+	<pipe-entry> \
+	iconv -c --to-code=UTF-8 > .event.tmp.ics<enter> \
+	<shell-escape> \
+	mv .event.tmp.ics ~/main.syncthing/monochrome/module/calendar/default/$(uuidgen).ics<enter>"
+# Send ICS request. The message being composed is written
+# out first, so that the script can take the recipients from
+# its To: header.
+macro compose R "<write-fcc>\Cu.compose.tmp.mbox<enter> \
+	<shell-escape> \
+	${my_active_dir}neomutt-ical-request.sh \
+	.compose.tmp.mbox<enter> \
+	<attach-file>.request.tmp.ics<enter><toggle-unlink>"
 # Swap N, Ctrl+N.
 bind index,pager N search-opposite
 bind index \CN toggle-new

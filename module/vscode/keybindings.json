@@ -360,6 +360,7 @@
 	{
 		"key": "ctrl+r",
 		"command": "-workbench.action.terminal.runRecentCommand",
+		// Except on Windows, but it doesn't work?
 		"when": "accessibilityModeEnabled && terminalFocus && terminalHasBeenCreated || accessibilityModeEnabled && terminalFocus && terminalProcessSupported || accessibilityModeEnabled && accessibleViewIsShown && terminalHasBeenCreated && accessibleViewCurrentProviderId == 'terminal' || accessibilityModeEnabled && accessibleViewIsShown && terminalProcessSupported && accessibleViewCurrentProviderId == 'terminal'"
 	},
 	{
@@ -502,7 +503,7 @@
 		"command": "workbench.action.zoomReset"
 	},
 
-	// MacOS patches. Alt+E still fails.
+	// MacOS universal patches, without isMac. Alt+E still fails.
 	{
 		"key": "ctrl+s",
 		"command": "workbench.action.files.save"

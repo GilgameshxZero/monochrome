@@ -1,0 +1,119 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+: "${NEOMUTT_FROM:?NEOMUTT_FROM is not set}"
+
+# An optional message file, as written by the compose menu's <write-fcc>, to
+# take the recipients and the subject from.
+draft=${1:-}
+
+# Print a header of a draft message: one address per line for To:, otherwise
+# the decoded value.
+draft_header() {
+	python3 - "$1" "$2" <<'PY'
+import email.message, email.policy, email.utils, mailbox, sys
+
+path, name = sys.argv[1], sys.argv[2]
+
+def factory(fp, **kwargs):
+	return email.message_from_binary_file(fp, policy=email.policy.default)
+
+msg = None
+try:
+	for msg in mailbox.mbox(path, factory=factory, create=False):
+		pass
+except Exception:
+	msg = None
+if msg is None:
+	with open(path, 'rb') as fh:
+		msg = email.message_from_binary_file(fh, policy=email.policy.default)
+
+value = str(msg.get(name) or '')
+if name == 'To':
+	print('\n'.join(addr for _, addr in email.utils.getaddresses([value])))
+else:
+	print(value)
+PY
+}
+
+subject=
+to=
+if [[ -n $draft && -f $draft ]]; then
+	subject=$(draft_header "$draft" Subject)
+	to=$(draft_header "$draft" To)
+	rm -f "$draft"
+fi
+
+if [[ -n $subject ]]; then
+	read -rp "Subject [$subject]: " input
+	subject=${input:-$subject}
+else
+	read -rp "Subject: " subject
+fi
+
+if [[ -z $to ]]; then
+	read -rp "To: " to
+fi
+
+read -rp "Start (YYYY-MM-DD HH:MM): " start
+read -rp "Duration (e.g. 45m, 1h, 1h30m): " duration
+
+# Interpret the supplied start time as local time and convert to UTC.
+start_utc=$(date -d "$start" -u '+%Y%m%dT%H%M%SZ')
+dtstamp=$(date -u '+%Y%m%dT%H%M%SZ')
+uid="$(uuidgen)@$(hostname -f 2>/dev/null || hostname)"
+
+# Convert the duration to an RFC 5545 DURATION value.
+if [[ $duration =~ ^([0-9]+)h([0-9]+)m$ ]]; then
+	duration_ics="PT${BASH_REMATCH[1]}H${BASH_REMATCH[2]}M"
+elif [[ $duration =~ ^([0-9]+)h$ ]]; then
+	duration_ics="PT${BASH_REMATCH[1]}H"
+elif [[ $duration =~ ^([0-9]+)m$ ]]; then
+	duration_ics="PT${BASH_REMATCH[1]}M"
+else
+	echo "Invalid duration: $duration (use e.g. 45m, 1h, 1h30m)" >&2
+	exit 1
+fi
+
+# Escape RFC 5545 text values.
+escape_ics() {
+	local value=$1
+	value=${value//\\/\\\\}
+	value=${value//;/\\;}
+	value=${value//,/\\,}
+	value=${value//$'\n'/\\n}
+	printf '%s' "$value"
+}
+
+subject=$(escape_ics "$subject")
+
+{
+	printf '%s\n' \
+		'BEGIN:VCALENDAR' \
+		'VERSION:2.0' \
+		'PRODID:-//Rain//Emilia//EN' \
+		'METHOD:REQUEST' \
+		'BEGIN:VEVENT'
+
+	printf 'UID:%s\n' "$uid"
+	printf 'DTSTAMP:%s\n' "$dtstamp"
+	printf 'DTSTART:%s\n' "$start_utc"
+	printf 'DURATION:%s\n' "$duration_ics"
+	printf 'SUMMARY:%s\n' "$subject"
+	printf 'ORGANIZER:mailto:%s\n' "$NEOMUTT_FROM"
+
+	# The recipients may be comma- or whitespace-separated.
+	tr ',[:space:]' '\n\n' <<< "$to" |
+		while IFS= read -r address; do
+			[[ -z "$address" ]] && continue
+			printf 'ATTENDEE;RSVP=TRUE:mailto:%s\n' "$address"
+		done
+
+	printf '%s\n' \
+		'SEQUENCE:0' \
+		'STATUS:CONFIRMED' \
+		'END:VEVENT' \
+		'END:VCALENDAR'
+} > .request.tmp.ics
+
+echo "Created .request.tmp.ics"

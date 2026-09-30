@@ -3,6 +3,8 @@ reload-threads 32
 cleanup-on-quit	no
 confirm-mark-all-feeds-read no
 confirm-mark-feed-read no
+show-keymap-hint no
+show-title-bar no
 
 color background default default
 color listnormal default default

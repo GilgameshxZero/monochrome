@@ -9,7 +9,7 @@
 # $6: video maximum fps (default: 30).
 # $7: av1 preset or avif speed (default: 7 for video, 0 for image).
 # $8: parallelism (default: "all" for image).
-# Use `encode video <> 96 1000 1920 60 2` and `encode image <> - 80 3840` for `cosine`, and default `1920` size for `cygnus` images. Use default settings with `0` speed for `emilia` videos and images, or even lower bitrate (down to 0, but usually 32 or 48, since we have constrained CRF) depending on the source.
+# Use `encode video <> 96 1000 1920 60 2` and `encode image <> - 80 3840` for `cosine`, and default `1920` size for `cygnus` images. Use default settings with `0` speed for `emilia` videos and images, or even lower bitrate (down to 0, but usually 32 or 48, since we have constrained CRF) depending on the source. Default settings for `prototype` audio.
 set -e
 if [ "$1" = "audio" ]; then
 	if [ -f "$2" ]; then
@@ -64,7 +64,7 @@ if [ "$1" = "audio" ]; then
 	# `channel_layouts` fix taken from <https://trac.ffmpeg.org/ticket/5718#comment:11>.
 	ffmpeg \
 		-hide_banner \
-		-nostats \
+		-stats_period 4s \
 		-y \
 		-i "$filename_old" \
 		-c:a libopus \
