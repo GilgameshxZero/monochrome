@@ -248,10 +248,28 @@
 		"key": "ctrl+shift+q",
 		"command": "workbench.action.toggleSidebarVisibility"
 	},
+	// Ctrl+Shift+W is a three-state toggler.
 	{
 		"key": "ctrl+shift+w",
 		// "command": "workbench.action.toggleZenMode"
-		"command": "workbench.action.toggleStatusbarVisibility"
+		"command": "workbench.action.toggleStatusbarVisibility",
+		"when": "config.workbench.statusBar.visible"
+	},
+	{
+		"key": "ctrl+shift+w",
+		"command": "workbench.action.toggleZenMode",
+		"when": "!inZenMode && !config.workbench.statusBar.visible"
+	},
+	{
+		"key": "ctrl+shift+w",
+		"command": "runCommands",
+		"args": {
+			"commands": [
+				"workbench.action.toggleStatusbarVisibility",
+				"workbench.action.toggleZenMode"
+			]
+		},
+		"when": "inZenMode"
 	},
 	{
 		"key": "ctrl+shift+e",

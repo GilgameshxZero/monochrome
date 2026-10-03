@@ -12,20 +12,21 @@ echo $resolution_y
 echo $resolution_fps
 
 moonlight_params="--resolution ${resolution_x}x${resolution_y} --fps $resolution_fps --bitrate 32000"
+scrcpy_params="-f --no-audio --window-borderless"
 
 host=$1
 if [ "$host" = "34" ]; then
-	SDL_VIDEODRIVER=wayland scrcpy -f --tcpip=10.8.58.34 --no-audio
+	SDL_VIDEODRIVER=wayland scrcpy $scrcpy_params --tcpip=10.8.58.34
 elif [ "$host" = "42" ]; then
 	moonlight stream $moonlight_params 10.8.47.42 Desktop
 elif [ "$host" = "43" ]; then
 	moonlight stream $moonlight_params 10.8.47.43 default
 elif [ "$host" = "48" ]; then
-	SDL_VIDEODRIVER=wayland scrcpy -f --tcpip=10.8.40.48 --orientation 270
+	SDL_VIDEODRIVER=wayland scrcpy $scrcpy_params --tcpip=10.8.40.48 --orientation 270
 elif [ "$host" = "49" ]; then
 	moonlight stream $moonlight_params 10.8.47.49 Desktop
 elif [ "$host" = "50" ]; then
-	SDL_VIDEODRIVER=wayland scrcpy -f --tcpip=10.8.58.50 --no-audio
+	SDL_VIDEODRIVER=wayland scrcpy $scrcpy_params --tcpip=10.8.58.50
 elif [ "$host" = "57" ]; then
-	SDL_VIDEODRIVER=wayland scrcpy -f --tcpip=10.8.58.57 --no-audio
+	SDL_VIDEODRIVER=wayland scrcpy $scrcpy_params --tcpip=10.8.58.57
 fi
