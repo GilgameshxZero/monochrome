@@ -1,7 +1,10 @@
 @ECHO OFF
-CALL %~dp0/../../app/yt-dlp.exe ^
-	--cookies-from-browser chromium ^
+"%~dp0/../../app/yt-dlp.exe" ^
 	--js-runtimes node ^
 	--remote-components ejs:github ^
-	-f "bv[height>=720][filesize<1G] + ba[filesize < 100M] / wv[height>=720] + wa[filesize >= 100M] / wv + wa" ^
+	--cookies-from-browser chromium ^
+	--output "%%(uploader)s-%%(title)s.%%(ext)s" ^
+	--restrict-filenames ^
+	--windows-filenames ^
+	--format "bv[height>=720][vbr<=1536] + ba[abr<=256] / b[tbr<=1792] / wv[height>=720] + wa / wv + wa / w" ^
 	%*
