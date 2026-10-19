@@ -15,6 +15,8 @@ su --mount-master -c "mount --rbind /mnt/user/0/2DCA-1E91/main.syncthing/origin 
 su --mount-master -c "mount --rbind /mnt/user/0/2DCA-1E91/main.syncthing/snowfall /mnt/user/0/emulated/0/main.syncthing/snowfall"
 ```
 
+This is placed under `/data/adb/service.d/mount.sh` for autostart: <https://github.com/topjohnwu/Magisk/blob/master/docs/guides.md#boot-scripts>.
+
 To reverse:
 
 ```bash

@@ -1,4 +1,5 @@
 @ECHO OFF
+@REM Using CALL here necessitates %%%% to double-escape, rather than the single-escape %% here.
 "%~dp0/../../app/yt-dlp.exe" ^
 	--js-runtimes node ^
 	--remote-components ejs:github ^

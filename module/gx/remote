@@ -11,7 +11,7 @@ echo $resolution_x
 echo $resolution_y
 echo $resolution_fps
 
-moonlight_params="--resolution ${resolution_x}x${resolution_y} --fps $resolution_fps --bitrate 32000"
+moonlight_params="--resolution ${resolution_x}x${resolution_y} --fps $resolution_fps --bitrate 2000"
 scrcpy_params="-f --no-audio --window-borderless"
 
 host=$1

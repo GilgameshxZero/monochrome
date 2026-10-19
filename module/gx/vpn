@@ -3,18 +3,18 @@
 if [ "$1" = "47" ]; then
 	sudo systemctl stop gilgamesh-47.split.ovpn
 	sudo systemctl stop gilgamesh-58.ovpn
-	sudo systemctl start gilgamesh-47.ovpn
-	sudo systemctl start gilgamesh-58.split.ovpn
+	sudo systemctl restart gilgamesh-47.ovpn
+	sudo systemctl restart gilgamesh-58.split.ovpn
 elif [ "$1" = "58" ]; then
 	sudo systemctl stop gilgamesh-47.ovpn
 	sudo systemctl stop gilgamesh-58.split.ovpn
-	sudo systemctl start gilgamesh-47.split.ovpn
-	sudo systemctl start gilgamesh-58.ovpn
+	sudo systemctl restart gilgamesh-47.split.ovpn
+	sudo systemctl restart gilgamesh-58.ovpn
 elif [ "$1" = "0" ]; then
 	sudo systemctl stop gilgamesh-47.ovpn
 	sudo systemctl stop gilgamesh-58.ovpn
-	sudo systemctl start gilgamesh-47.split.ovpn
-	sudo systemctl start gilgamesh-58.split.ovpn
+	sudo systemctl restart gilgamesh-47.split.ovpn
+	sudo systemctl restart gilgamesh-58.split.ovpn
 fi
 sleep 1
 ping -c1 -W 2 1.1.1.1 | grep -B1 transmitted

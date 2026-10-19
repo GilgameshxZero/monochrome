@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# Launch vim or code depending on if a GUI is available.
+
+client_pid=$(tmux display-message -p '#{client_pid}' 2>/dev/null)
+
+# In tmux, inspect the connecting client's environment.
+if [[ -n $client_pid && -r "/proc/$client_pid/environ" ]]; then
+  in_ssh=$(tr '\0' '\n' < "/proc/$client_pid/environ" | grep -q '^SSH_TTY=' && echo yes)
+fi
+
+# Outside tmux, or when tmux cannot identify an SSH client, check this shell.
+if [[ -n ${SSH_TTY:-}${SSH_CONNECTION:-}${SSH_CLIENT:-} ]]; then
+  in_ssh=yes
+fi
+
+if [[ $in_ssh == yes ]]; then
+  vim "$@"
+else
+  code --wait "$@"
+fi

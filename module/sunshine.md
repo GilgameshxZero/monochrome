@@ -54,6 +54,10 @@ Seems like SDDM autostart causes the GPU driver to not properly attach to displa
 
 Tray should be disabled if RTSP error during user service connect.
 
+### Missing the start menu on Linux?
+
+Using `kwin` capture.
+
 ## Bugs
 
 1. May require manual patching of `libicu*.76`.

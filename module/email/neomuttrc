@@ -18,9 +18,12 @@ set postponed="${my_active_dir}postponed.maildir/"
 set trash="$record"
 # Helps with Windows syncing.
 set maildir_field_delimiter=";"
+# Accessible mailboxes.
 named-mailboxes inbox $spool_file
+# Difficult to expand neomuttrc variables inside ``.
 named-mailboxes -nonotify postponed $postponed \
-	archive $trash
+	archive $trash \
+	vault `ls -d "$HOME/main.syncthing/monochrome/local.syncthing/module/email/vault.maildir/"`
 # Unfortunately this sets for both the file/folder browser.
 set browser_sort=unsorted
 

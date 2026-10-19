@@ -3,12 +3,14 @@ HISTSIZE=262144
 HISTFILESIZE=262144
 HISTCONTROL=ignoreboth:erasedups
 
-export PATH="$HOME/main.syncthing/monochrome/local.syncthing/bin:$HOME/main.syncthing/monochrome/bin:$HOME/main.syncthing/monochrome/archive.syncthing/bin:$PATH:$HOME/.local/bin"
+export PATH="$PATH:$HOME/.local/bin:$HOME/.cargo/bin"
+
+export PATH="$HOME/main.syncthing/monochrome/local.syncthing/bin:$HOME/main.syncthing/monochrome/bin:$HOME/main.syncthing/monochrome/archive.syncthing/bin:$PATH"
 export PS1="> "
 export LYNX_CFG="$HOME/main.syncthing/monochrome/module/lynx/lynx.cfg"
 export WWW_HOME="http://ddg.gg"
 export GPG_TTY="$(tty)"
-export EDITOR="/usr/bin/vim"
+export EDITOR="$HOME/main.syncthing/monochrome/module/gx/code"
 export RL_CLCOPY_CMD="xargs -I'{}' -0 -n1 clip '{}'"
 
 # True white in some TTYs.
