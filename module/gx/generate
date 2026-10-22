@@ -7,6 +7,84 @@ elif [ "$1" = "uuid" ]; then
 elif [ "$1" = "totp" ]; then
 	# Useful for generating 2fa codes provided an original time-based key (e.g. from Slack).
 	id=$(oathtool -b --totp "$2")
+elif [ "$1" = "audio" ]; then
+	filename=${2:-audio}
+	bitrate_audio=${3:-24}
+	# Record both default source and sink audio, normalize volume, merge, re-encode.
+	mkfifo .source.tmp.in .sink.tmp.in
+	exec {ctl_source}<>.source.tmp.in
+	exec {ctl_sink}<>.sink.tmp.in
+	ffmpeg \
+		-hide_banner \
+		-stats_period 4s \
+		-y \
+		-f pulse \
+		-i default \
+		.source.tmp.wav <.source.tmp.in &
+	pid_source=$!
+	ffmpeg \
+		-hide_banner \
+		-stats_period 4s \
+		-y \
+		-f pulse \
+		-i "$(pactl get-default-sink).monitor" \
+		.sink.tmp.wav <.sink.tmp.in &
+	pid_sink=$!
+	echo Recording...
+	handle_interrupt() {
+		trap '' INT
+		printf 'q\n' >&"$ctl_source"
+    printf 'q\n' >&"$ctl_sink"
+		wait "$pid_source" 2>/dev/null || true
+    wait "$pid_sink" 2>/dev/null || true
+		exec {ctl_source}>&-
+    exec {ctl_sink}>&-
+		rm .source.tmp.in .sink.tmp.in
+	}
+	trap handle_interrupt INT
+	wait "$pid_source" "$pid_sink"
+
+	echo Merging and encoding...
+	# Get max volume of each to normalize.
+	exec 3>&1
+	max_volume_out=$(ffmpeg \
+		-hide_banner \
+		-nostats \
+		-i .source.tmp.wav \
+		-filter:a "volumedetect" \
+		-map 0:a \
+		-f null - |& tee /dev/fd/3)
+	max_volume_source=$(echo "$max_volume_out" \
+		| awk -F': ' '/max_volume/ {print $2; exit;}' \
+		| awk '{print int($1);}')
+	exec 3>&1
+	max_volume_out=$(ffmpeg \
+		-hide_banner \
+		-nostats \
+		-i .sink.tmp.wav \
+		-filter:a "volumedetect" \
+		-map 0:a \
+		-f null - |& tee /dev/fd/3)
+	max_volume_sink=$(echo "$max_volume_out" \
+		| awk -F': ' '/max_volume/ {print $2; exit;}' \
+		| awk '{print int($1);}')
+	ffmpeg \
+		-hide_banner \
+		-stats_period 4s \
+		-y \
+		-i .source.tmp.wav \
+		-i .sink.tmp.wav \
+		-c:a libopus \
+		-b:a ${bitrate_audio}k \
+  	-filter_complex \
+			"[0:a]aformat=channel_layouts=7.1|5.1|stereo, \
+				volume=$((-max_volume_source)) dB[a0]; \
+   		[1:a]aformat=channel_layouts=7.1|5.1|stereo, \
+				volume=$((-max_volume_sink)) dB[a1]; \
+			[a0][a1]amix=inputs=2:duration=longest[out]" \
+  	-map "[out]" \
+		"$filename.opus"
+	rm .source.tmp.wav .sink.tmp.wav
 fi
 echo "$id"
 clip "$id"

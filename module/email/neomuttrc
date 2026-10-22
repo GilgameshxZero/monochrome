@@ -148,8 +148,8 @@ set my_ics_response_macro_pre=" \
 set my_ics_response_macro_post=" \
 	<shell-escape> \
 	${my_active_dir}mutt-ical.py \
-	-i -g .reply.tmp.ics .event.tmp.ics; \
-	rm .event.tmp.ics<enter> \
+	-i -g .reply.tmp.ics .event.tmp.ics<enter> \
+	<shell-escape>rm .event.tmp.ics<enter> \
 	<attach-file>.reply.tmp.ics<enter><toggle-unlink>"
 macro attach r "$my_ics_response_macro_pre<reply> \
 	$my_ics_response_macro_post"
@@ -174,6 +174,8 @@ bind index,pager N search-opposite
 bind index \CN toggle-new
 # Editor scroll is confusing to me.
 bind editor <space> noop
+# `d` marks as read and for deletion.
+macro index,pager d "<tag-message><tag-prefix><clear-flag>N<tag-prefix><delete-message>"
 # Ignore deleted messages in up/down. Up/down usually
 # switches messages, except in the pager, where left/right
 # accomplishes the same.
