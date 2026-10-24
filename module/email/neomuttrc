@@ -174,8 +174,6 @@ bind index,pager N search-opposite
 bind index \CN toggle-new
 # Editor scroll is confusing to me.
 bind editor <space> noop
-# `d` marks as read and for deletion.
-macro index,pager d "<tag-message><tag-prefix><clear-flag>N<tag-prefix><delete-message>"
 # Ignore deleted messages in up/down. Up/down usually
 # switches messages, except in the pager, where left/right
 # accomplishes the same.
