@@ -12,6 +12,7 @@ export WWW_HOME="http://ddg.gg"
 export GPG_TTY="$(tty)"
 export EDITOR="$HOME/main.syncthing/monochrome/module/gx/code"
 export RL_CLCOPY_CMD="xargs -I'{}' -0 -n1 clip '{}'"
+# export CODEX_HOME="$HOME/main.syncthing/utulek/agent/"
 
 # True white in some TTYs.
 echo -en "\e]P7ffffff"

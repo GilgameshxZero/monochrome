@@ -35,6 +35,7 @@
 (?d)**/.dropbox.attr
 (?d)**/.stackdump
 (?d)**/.user
+(?d)**/.playwright-mcp
 
 // Development intermediaries are generally the same as
 // those in `.gitignore`. Files which can be generated
