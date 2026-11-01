@@ -20,7 +20,8 @@ IF "%1"=="video" (
 	IF "!reverse!"=="1" (
 		SET "pipe=tar -xf -"
 		IF "!compress!"=="1" (
-			SET "pipe=xz -d -M95% -vv | !pipe!"
+			@REM No sane memory limit option!
+			SET "pipe=xz -d -vv | !pipe!"
 		)
 		IF "!encrypt!"=="1" (
 			IF EXIST "%~3" (

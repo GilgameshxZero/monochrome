@@ -1,4 +1,4 @@
-# `symlinks`
+# `symlink`
 
 Symlinks avoid replication and unnecessary copying and are an integral part of maintaining the sync-config structure of `monochrome`.
 
