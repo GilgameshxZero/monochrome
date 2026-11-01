@@ -192,15 +192,12 @@ bind index,pager <Esc>r next-page
 # Keybind `x`-keys are general operations.
 bind index,pager x noop
 macro index,pager xi \
-	"<save-message>$spoolfile<enter><enter>" \
-	"Move message to INBOX."
-macro index,pager xp "<purge-message>" "Purge message.
+	"<save-message>$spoolfile<enter><enter>"
+macro index,pager xp "<purge-message>"
 macro index,pager xr \
-	"<tag-pattern>~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" \
-	"Mark all as read."
+	"<tag-pattern>~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>"
 macro index,pager xc \
-	"<search>~m<space><1024<space>~B<space>17a7ceae-5204-47cd-8c8a-74b95b3aa83d<enter>" \
-	"Cache messages."
+	"<search>~m<space><1024<space>~B<space>17a7ceae-5204-47cd-8c8a-74b95b3aa83d<enter>"
 # Toggle Gmail IMAP folders.
 # Open/close IMAP folders. This may leave an IMAP
 # connection even after close, which might slow down all
@@ -211,12 +208,10 @@ macro index,pager xgo "<enter-command>mailboxes \
  	'=[Gmail]/Sent Mail' =[Gmail]/Drafts '=[Gmail]/All Mail' \
 	=[Gmail]/Spam =[Gmail]/Bin \
 	=[Gmail]/Chats =[Gmail]/Important \
-	=[Gmail]/Starred<enter>" \
-	"Open IMAP mailboxes."
+	=[Gmail]/Starred<enter>"
 macro index,pager xgc "<enter-command>unmailboxes \
 	=INBOX \
  	'=[Gmail]/Sent Mail' =[Gmail]/Drafts '=[Gmail]/All Mail' \
 	=[Gmail]/Spam =[Gmail]/Bin \
 	=[Gmail]/Chats =[Gmail]/Important \
-	=[Gmail]/Starred<enter>" \
-	"Close IMAP mailboxes."
+	=[Gmail]/Starred<enter>"
