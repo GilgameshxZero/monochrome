@@ -35,7 +35,7 @@ set imap_user="yangawesome@gmail.com"
 set imap_authenticators="oauthbearer:xoauth2"
 # Encrypted with symmetric key. No `tar` pipeline like `gx`.
 set imap_oauth_refresh_command=\
-	"/usr/share/neomutt/oauth2/mutt_oauth2.py \
+	"${my_active_dir}mutt_oauth2.py \
 	${my_active_dir}yangawesome_gmail.com.password.token.gpg \
 	--decryption-pipe \"gpg --decrypt\" \
 	--encryption-pipe \"gpg --compress-algo none --symmetric\""
