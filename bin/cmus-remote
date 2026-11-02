@@ -1,2 +1,2 @@
 #!/bin/sh
-exec "$(dirname -- "$0")/../app/cmus-remote" "$@"
+exec "$(dirname -- "$0")"/../app/cmus-remote "$@"
