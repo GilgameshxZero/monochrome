@@ -36,9 +36,9 @@ set imap_authenticators="oauthbearer:xoauth2"
 # Encrypted with symmetric key. No `tar` pipeline like `gx`.
 set imap_oauth_refresh_command=\
 	"${my_active_dir}mutt_oauth2.py \
-	${my_active_dir}yangawesome_gmail.com.password.token.gpg \
-	--decryption-pipe \"gpg --decrypt\" \
-	--encryption-pipe \"gpg --compress-algo none --symmetric\""
+${my_active_dir}yangawesome_gmail.com.password.token.gpg \
+--decryption-pipe \"gpg --decrypt\" \
+--encryption-pipe \"gpg --compress-algo none --symmetric\""
 # For convenience to navigate to other folders.
 set folder="imaps://imap.gmail.com"
 # General IMAP hygiene.
@@ -60,9 +60,9 @@ alternates @gilgamesh.cc ^yangawesome@gmail.com$ \
 	^yangilga@mit.edu$ ^yyan99@mit.edu$
 # This file automatically sources the relevant passwords.
 source "`gpg --yes -o /tmp/neomuttrc.password --decrypt \
-	~/main.syncthing/monochrome/module/email/neomuttrc.password.gpg; \
-	echo /tmp/neomuttrc.password; \
-	(sleep 4 && rm /tmp/neomuttrc.password) &`"
+~/main.syncthing/monochrome/module/email/neomuttrc.password.gpg; \
+echo /tmp/neomuttrc.password; \
+(sleep 4 && rm /tmp/neomuttrc.password) &`"
 # Adjust SMTP server based on sending address.
 # For some reason, AUTH LOGIN on SMTP is not explicitly
 # selectable, so `smtp_authenticators` needs to be set for
@@ -76,17 +76,17 @@ set my_smtp_url_mit_edu=\
 # `send2-hook` is used because it is run each time the
 # message is edited, including when `From:` is edited.
 send2-hook "~f @gilgamesh\.cc$" "set \
-	smtp_url='$my_smtp_url_gilgamesh_cc' \
-	smtp_authenticators='' \
-	smtp_pass='$my_smtp_pass_gilgamesh_cc'"
+smtp_url='$my_smtp_url_gilgamesh_cc' \
+smtp_authenticators='' \
+smtp_pass='$my_smtp_pass_gilgamesh_cc'"
 send2-hook "~f ^yangawesome@gmail\.com$" "set \
-	smtp_url='$my_smtp_url_yangawesome_gmail_com' \
-	smtp_authenticators='$imap_authenticators' \
-	smtp_pass=''"
+smtp_url='$my_smtp_url_yangawesome_gmail_com' \
+smtp_authenticators='$imap_authenticators' \
+smtp_pass=''"
 send2-hook "~f @mit\.edu$" "set \
-	smtp_url='$my_smtp_url_mit_edu' \
-	smtp_authenticators='' \
-	smtp_pass='$my_smtp_pass_mit_edu'"
+smtp_url='$my_smtp_url_mit_edu' \
+smtp_authenticators='' \
+smtp_pass='$my_smtp_pass_mit_edu'"
 # Pass out information to scripts that need it.
 send2-hook "~f .*" "setenv NEOMUTT_FROM='$from'"
 # Always quote reply.
@@ -95,7 +95,7 @@ set include=yes
 set message_id_format="<%z@gilgamesh.cc>"
 # `khard` handles address book queries.
 set query_command="echo %s | \
-	xargs khard email -d formatted_name --parsable --"
+xargs khard email -d formatted_name --parsable --"
 # Don't ask for confirmation for delete.
 set delete=yes
 
@@ -142,33 +142,33 @@ bind editor <Tab> complete-query
 bind editor ^T complete
 # Group reply by default. Reply to ICS request.
 bind index,pager R group-reply
-set my_ics_response_macro_pre=" \
-	<pipe-entry> \
-	iconv -c --to-code=UTF-8 > .event.tmp.ics<enter>"
-set my_ics_response_macro_post=" \
-	<shell-escape> \
-	${my_active_dir}mutt-ical.py \
-	-i -g .reply.tmp.ics .event.tmp.ics<enter> \
-	<shell-escape>rm .event.tmp.ics<enter> \
-	<attach-file>.reply.tmp.ics<enter><toggle-unlink>"
-macro attach r "$my_ics_response_macro_pre<reply> \
-	$my_ics_response_macro_post"
-macro attach R "$my_ics_response_macro_pre<group-reply> \
-	$my_ics_response_macro_post"
+set my_ics_response_macro_pre="\
+<pipe-entry>\
+iconv -c --to-code=UTF-8 > .event.tmp.ics<enter>"
+set my_ics_response_macro_post="\
+<shell-escape>\
+${my_active_dir}mutt-ical.py \
+-i -g .reply.tmp.ics .event.tmp.ics<enter>\
+<shell-escape>rm .event.tmp.ics<enter>\
+<attach-file>.reply.tmp.ics<enter><toggle-unlink>"
+macro attach r "$my_ics_response_macro_pre<reply>\
+$my_ics_response_macro_post"
+macro attach R "$my_ics_response_macro_pre<group-reply>\
+$my_ics_response_macro_post"
 # Save ICS request.
-macro attach S " \
-	<pipe-entry> \
-	iconv -c --to-code=UTF-8 > .event.tmp.ics<enter> \
-	<shell-escape> \
-	mv .event.tmp.ics ~/main.syncthing/monochrome/module/calendar/default/$(uuidgen).ics<enter>"
+macro attach S "\
+<pipe-entry>\
+iconv -c --to-code=UTF-8 > .event.tmp.ics<enter>\
+<shell-escape>\
+mv .event.tmp.ics ~/main.syncthing/monochrome/module/calendar/default/$(uuidgen).ics<enter>"
 # Send ICS request. The message being composed is written
 # out first, so that the script can take the recipients from
 # its To: header.
-macro compose R "<write-fcc>\Cu.compose.tmp.mbox<enter> \
-	<shell-escape> \
-	${my_active_dir}neomutt-ical-request.sh \
-	.compose.tmp.mbox<enter> \
-	<attach-file>.request.tmp.ics<enter><toggle-unlink>"
+macro compose R "<write-fcc>\Cu.compose.tmp.mbox<enter>\
+<shell-escape>\
+${my_active_dir}neomutt-ical-request.sh \
+.compose.tmp.mbox<enter>\
+<attach-file>.request.tmp.ics<enter><toggle-unlink>"
 # Swap N, Ctrl+N.
 bind index,pager N search-opposite
 bind index \CN toggle-new
@@ -203,15 +203,15 @@ macro index,pager xc \
 # connection even after close, which might slow down all
 # `neomutt` operations until restart.
 macro index,pager xgo "<enter-command>mailboxes \
-	-nonotify -nopoll \
-	=INBOX \
- 	'=[Gmail]/Sent Mail' =[Gmail]/Drafts '=[Gmail]/All Mail' \
-	=[Gmail]/Spam =[Gmail]/Bin \
-	=[Gmail]/Chats =[Gmail]/Important \
-	=[Gmail]/Starred<enter>"
+-nonotify -nopoll \
+=INBOX \
+'=[Gmail]/Sent Mail' =[Gmail]/Drafts '=[Gmail]/All Mail' \
+=[Gmail]/Spam =[Gmail]/Bin \
+=[Gmail]/Chats =[Gmail]/Important \
+=[Gmail]/Starred<enter>"
 macro index,pager xgc "<enter-command>unmailboxes \
-	=INBOX \
- 	'=[Gmail]/Sent Mail' =[Gmail]/Drafts '=[Gmail]/All Mail' \
-	=[Gmail]/Spam =[Gmail]/Bin \
-	=[Gmail]/Chats =[Gmail]/Important \
-	=[Gmail]/Starred<enter>"
+=INBOX \
+'=[Gmail]/Sent Mail' =[Gmail]/Drafts '=[Gmail]/All Mail' \
+=[Gmail]/Spam =[Gmail]/Bin \
+=[Gmail]/Chats =[Gmail]/Important \
+=[Gmail]/Starred<enter>"
