@@ -2,10 +2,10 @@
 audio/*; xdg-open %s
 image/*; xdg-open %s
 video/*; xdg-open %s
-text/html; ~/main.syncthing/monochrome/module/email/neomutt-html-open.sh %s
+text/html; "../monochrome/module/email/neomutt-html-open" %s
 text/html; lynx -dump -hiddenlinks=ignore %s; copiousoutput; nametemplate=%s.html
-text/calendar; ~/main.syncthing/monochrome/module/email/mutt-ical.py -D %s; copiousoutput
-text/x-vcalendar; ~/main.syncthing/monochrome/module/email/mutt-ical.py -D %s; copiousoutput
-application/ics; ~/main.syncthing/monochrome/module/email/mutt-ical.py -D %s; copiousoutput
+text/calendar; python3 -X utf8 "../monochrome/module/email/mutt-ical.py" -D %s; copiousoutput; compose=true
+text/x-vcalendar; python3 -X utf8 "../monochrome/module/email/mutt-ical.py" -D %s; copiousoutput
+application/ics; python3 -X utf8 "../monochrome/module/email/mutt-ical.py" -D %s; copiousoutput
 application/octet-stream; mpv %s
 application/*; xdg-open %s

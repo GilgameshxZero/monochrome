@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Preserve the original echo/xargs query semantics.
+khard=khard
+if [[ $OSTYPE == msys* || $OSTYPE == cygwin* ]]; then
+    directory=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd) || exit
+    khard="$directory/../../app/khard.exe"
+fi
+echo "$1" | xargs "$khard" email -d formatted_name --parsable --

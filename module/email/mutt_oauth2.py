@@ -39,6 +39,8 @@ import shlex
 import socket
 import http.server
 import subprocess
+from command_args import split_command
+from private_storage import check_private, protect_private
 
 # The token file must be encrypted because it contains multi-use bearer tokens
 # whose usage does not require additional verification. Specify whichever
@@ -95,11 +97,11 @@ ap.add_argument('--format', type=str, choices=['token', 'sasl', 'msasl'], defaul
 ap.add_argument('--protocol', type=str, choices=['imap', 'pop', 'smtp'], default='imap',
                 help='protocol used for SASL output (default: imap)')
 ap.add_argument('-t', '--test', action='store_true', help='test IMAP/POP/SMTP endpoints')
-ap.add_argument('--decryption-pipe', type=shlex.split, default=DECRYPTION_PIPE,
+ap.add_argument('--decryption-pipe', type=split_command, default=DECRYPTION_PIPE,
                 help='decryption command (string), reads from stdin and writes '
                 'to stdout, default: "{}"'.format(
                     " ".join(DECRYPTION_PIPE)))
-ap.add_argument('--encryption-pipe', type=shlex.split, default=ENCRYPTION_PIPE,
+ap.add_argument('--encryption-pipe', type=split_command, default=ENCRYPTION_PIPE,
                 help='encryption command (string), reads from stdin and writes '
                 'to stdout, suggested: "{}"'.format(
                     " ".join(ENCRYPTION_PIPE)))
@@ -116,10 +118,9 @@ ENCRYPTION_PIPE = args.encryption_pipe
 DECRYPTION_PIPE = args.decryption_pipe
 
 token = {}
-path = Path(args.tokenfile)
+path = Path(args.tokenfile).expanduser()
 if path.exists():
-    if 0o777 & path.stat().st_mode != 0o600:
-        sys.exit('Token file has unsafe mode. Suggest deleting and starting over.')
+    check_private(path)
     try:
         sub = subprocess.run(DECRYPTION_PIPE, check=True, input=path.read_bytes(),
                              capture_output=True)
@@ -134,8 +135,8 @@ def writetokenfile():
     '''Writes global token dictionary into token file.'''
     if not path.exists():
         path.touch(mode=0o600)
-    if 0o777 & path.stat().st_mode != 0o600:
-        sys.exit('Token file has unsafe mode. Suggest deleting and starting over.')
+        protect_private(path)
+    check_private(path)
     sub2 = subprocess.run(ENCRYPTION_PIPE, check=True, input=json.dumps(token).encode(),
                           capture_output=True)
     path.write_bytes(sub2.stdout)

@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 set -euo pipefail
+export PYTHONUTF8=1 PYTHONIOENCODING=utf-8
+if [[ $OSTYPE == msys* || $OSTYPE == cygwin* ]]; then
+    uuidgen() { powershell.exe -NoLogo -NoProfile -NonInteractive -Command '([guid]::NewGuid()).ToString()' | tr -d '\r'; }
+fi
+# Remove a NeoMutt-owned placeholder if generation fails or is cancelled.
+trap 'status=$?; if (( status != 0 )); then rm -f .request.tmp.ics; fi' EXIT
 
 : "${NEOMUTT_FROM:?NEOMUTT_FROM is not set}"
 

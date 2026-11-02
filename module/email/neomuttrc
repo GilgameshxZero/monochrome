@@ -2,7 +2,7 @@
 # `source ~/main.syncthing/monochrome/module/email/neomuttrc`.
 
 # Utility.
-set my_active_dir="~/main.syncthing/monochrome/module/email/"
+set my_active_dir="$HOME/main.syncthing/monochrome/module/email/"
 set my_archive_dir="~/main.syncthing/monochrome/archive.syncthing/module/email/"
 # Change to `snowfall` for <save-entry>.
 cd ~/main.syncthing/snowfall/
@@ -23,7 +23,7 @@ named-mailboxes inbox $spool_file
 # Difficult to expand neomuttrc variables inside ``.
 named-mailboxes -nonotify postponed $postponed \
 	archive $trash \
-	vault `ls -d "$HOME/main.syncthing/monochrome/local.syncthing/module/email/vault.maildir/"`
+	vault `ls -d "../monochrome/local.syncthing/module/email/vault.maildir/"`
 # Unfortunately this sets for both the file/folder browser.
 set browser_sort=unsorted
 
@@ -35,8 +35,8 @@ set imap_user="yangawesome@gmail.com"
 set imap_authenticators="oauthbearer:xoauth2"
 # Encrypted with symmetric key. No `tar` pipeline like `gx`.
 set imap_oauth_refresh_command=\
-	"${my_active_dir}mutt_oauth2.py \
-${my_active_dir}yangawesome_gmail.com.password.token.gpg \
+	"python3 -X utf8 \"${my_active_dir}mutt_oauth2.py\" \
+\"${my_active_dir}yangawesome_gmail.com.password.token.gpg\" \
 --decryption-pipe \"gpg --decrypt\" \
 --encryption-pipe \"gpg --compress-algo none --symmetric\""
 # For convenience to navigate to other folders.
@@ -59,10 +59,7 @@ set reverse_name
 alternates @gilgamesh.cc ^yangawesome@gmail.com$ \
 	^yangilga@mit.edu$ ^yyan99@mit.edu$
 # This file automatically sources the relevant passwords.
-source "`gpg --yes -o /tmp/neomuttrc.password --decrypt \
-~/main.syncthing/monochrome/module/email/neomuttrc.password.gpg; \
-echo /tmp/neomuttrc.password; \
-(sleep 4 && rm /tmp/neomuttrc.password) &`"
+source "gpg --decrypt \"${my_active_dir}neomuttrc.password.gpg\"|"
 # Adjust SMTP server based on sending address.
 # For some reason, AUTH LOGIN on SMTP is not explicitly
 # selectable, so `smtp_authenticators` needs to be set for
@@ -94,8 +91,7 @@ set include=yes
 # Don't include hostname in message ID.
 set message_id_format="<%z@gilgamesh.cc>"
 # `khard` handles address book queries.
-set query_command="echo %s | \
-xargs khard email -d formatted_name --parsable --"
+set query_command="\"${my_active_dir}neomutt-query\" %s"
 # Don't ask for confirmation for delete.
 set delete=yes
 
@@ -146,11 +142,12 @@ set my_ics_response_macro_pre="\
 <pipe-entry>\
 iconv -c --to-code=UTF-8 > .event.tmp.ics<enter>"
 set my_ics_response_macro_post="\
+<new-mime>.reply.tmp.ics<enter>text/calendar<enter>\
 <shell-escape>\
-${my_active_dir}mutt-ical.py \
+python3 -X utf8 \"${my_active_dir}mutt-ical.py\" \
 -i -g .reply.tmp.ics .event.tmp.ics<enter>\
 <shell-escape>rm .event.tmp.ics<enter>\
-<attach-file>.reply.tmp.ics<enter><toggle-unlink>"
+<last-entry><update-encoding>"
 macro attach r "$my_ics_response_macro_pre<reply>\
 $my_ics_response_macro_post"
 macro attach R "$my_ics_response_macro_pre<group-reply>\
@@ -160,15 +157,20 @@ macro attach S "\
 <pipe-entry>\
 iconv -c --to-code=UTF-8 > .event.tmp.ics<enter>\
 <shell-escape>\
-mv .event.tmp.ics ~/main.syncthing/monochrome/module/calendar/default/$(uuidgen).ics<enter>"
+python3 -X utf8 -c \
+\"import os,shutil,sys,uuid; \
+shutil.move('.event.tmp.ics', \
+os.path.join(os.path.expanduser(sys.argv[1]), str(uuid.uuid4())+'.ics'))\" \
+\"~/main.syncthing/monochrome/module/calendar/default\"<enter>"
 # Send ICS request. The message being composed is written
 # out first, so that the script can take the recipients from
 # its To: header.
 macro compose R "<write-fcc>\Cu.compose.tmp.mbox<enter>\
+<new-mime>.request.tmp.ics<enter>text/calendar<enter>\
 <shell-escape>\
-${my_active_dir}neomutt-ical-request.sh \
+\"${my_active_dir}neomutt-ical-request\" \
 .compose.tmp.mbox<enter>\
-<attach-file>.request.tmp.ics<enter><toggle-unlink>"
+<last-entry><update-encoding>"
 # Swap N, Ctrl+N.
 bind index,pager N search-opposite
 bind index \CN toggle-new

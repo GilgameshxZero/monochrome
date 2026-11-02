@@ -4,16 +4,14 @@
 This script is meant as a simple way to reply to ical invitations from mutt.
 See README for instructions and LICENSE for licensing information.
 
-Note on dependencies and compatibility:
-- This script depends on the 'vobject' package for iCalendar parsing/serialization.
-- Ensure a recent 'vobject' (e.g., 0.9.7 or newer) is installed for best compatibility with modern Python.
-- Some older 'vobject' versions may have issues with recent Python releases. If you encounter parsing/serialization problems,
-  consider upgrading 'vobject' or using an alternative like 'icalendar'.
+The local ical_support module uses only Python's standard library.
 """
 
 __author__ = "Martin Sander"
 __license__ = "MIT"
 
+import atexit
+from pathlib import Path
 import locale
 import subprocess
 import sys
@@ -25,7 +23,11 @@ from datetime import datetime, timezone
 from email.message import EmailMessage
 from getopt import gnu_getopt as getopt
 
-import vobject
+import ical_support as vobject
+from command_args import split_command
+
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8', newline='\n')
 
 # Gilgamesh.
 usage = """
@@ -65,6 +67,8 @@ def get_accept_decline():
     while True:
         sys.stdout.write("\nAccept Invitation? [Y]es/[n]o/[t]entative/[c]ancel\n")
         ans = sys.stdin.readline()
+        if not ans:
+            sys.exit('No invitation response received')
         if ans.lower() == 'y\n' or ans == '\n':
             return 'ACCEPTED'
         if ans.lower() == 'n\n':
@@ -118,7 +122,7 @@ def execute(command, mailtext):
 
 def openics(invitation_file):
     # Open and parse the ICS invitation file
-    with open(invitation_file, encoding=locale.getpreferredencoding(False)) as f:
+    with open(invitation_file, encoding='utf-8-sig') as f:
         return vobject.readOne(f, ignoreUnreadable=True)
 
 
@@ -188,15 +192,15 @@ def sendmail_command():
 
         match = re.search(r'sendmail\s*=\s*"([^"]+)"', out)
         if match:
-            return shlex.split(match.group(1))
+            return split_command(match.group(1))
 
         match = re.search(r'sendmail\s*=\s*(\S.*)$', out)
         if match:
-            return shlex.split(match.group(1))
+            return split_command(match.group(1))
 
         if out:
             out = out.strip('"')
-            return shlex.split(out)
+            return split_command(out)
 
     return None
 
@@ -220,6 +224,14 @@ if __name__ == "__main__":
     generate_reply_to = None
     # Gilgamesh.
     opts, args = getopt(sys.argv[1:], "s:e:g:aidtD")
+    # A cancelled/failed generation must not leave an empty new-mime placeholder.
+    def remove_empty_reply():
+        for option, value in opts:
+            if option == '-g':
+                path = Path(value)
+                if path.is_file() and path.stat().st_size == 0:
+                    path.unlink()
+    atexit.register(remove_empty_reply)
 
     if len(args) < 1:
         sys.stderr.write(usage)
@@ -233,7 +245,7 @@ if __name__ == "__main__":
             sys.exit(0)
         if opt == '-s':
             # If -s is provided, override sendmail with a lambda that returns the command
-            sendmail_resolver = (lambda a=arg: shlex.split(a))
+            sendmail_resolver = (lambda a=arg: split_command(a))
         if opt == '-e':
             email_address = arg
         if opt == '-i':
@@ -314,7 +326,7 @@ if __name__ == "__main__":
 
     # Gilgamesh: If flagged, only generate the ICS REPLY and exit.
     if generate_reply_to:
-        with open(generate_reply_to, "w") as f:
+        with open(generate_reply_to, "w", encoding='utf-8', newline='') as f:
             f.write(ans.serialize())
         sys.exit(0)
 
