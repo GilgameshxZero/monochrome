@@ -1,0 +1,30 @@
+{
+  "accounts": [
+    {
+      "id": "android",
+      "name": "Android",
+      "server": "http://10.8.58.57:8080",
+      "username": "sms",
+      "password": "mRzPju6t"
+    },
+    {
+      "id": "google_voice",
+      "name": "Google Voice",
+      "server": "http://10.8.58.42:8081",
+      "username": "smsgate",
+      "password": "4a314e82cf743405b265adba460ee6e112cb20d9378a18a1"
+    }
+  ],
+  "active_account": "android",
+  "update_mode": "push",
+  "reconcile_seconds": 3600,
+  "server": "",
+  "username": "",
+  "password": "",
+  "poll_seconds": 10,
+  "timeout_seconds": 20,
+  "cache_enabled": true,
+  "cache_dir": "",
+  "theme": "auto",
+  "vcf_dir": "~/main.syncthing/monochrome/module/contact/khard"
+}
