@@ -46,6 +46,7 @@ set mail_check=300
 set timeout=300
 
 # Send: via `gilgamesh.cc` usually.
+set editor="gx code"
 unset ssl_force_tls
 set real_name="Yang Yan"
 set from="yang@gilgamesh.cc"

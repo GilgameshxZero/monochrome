@@ -9,5 +9,5 @@ We prefer to not have internal symlinks inside `main.syncthing` as they are not 
 Real|Fake|Notes
 -|-|-
 `~/main.syncthing/snowfall/local.syncthing`|`~/Downloads`|
-`~/main.syncthing/monochrome/module/windows-library`|`~/AppData/Roaming/Microsoft/Windows/Libraries`|Windows-only syncing of libraries for File Explorer.
+`~/main.syncthing/monochrome/module/windows_library`|`~/AppData/Roaming/Microsoft/Windows/Libraries`|Windows-only syncing of libraries for File Explorer.
 `~/main.syncthing/monochrome/module/ssh`|`~/.ssh`|
