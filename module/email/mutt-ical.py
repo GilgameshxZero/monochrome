@@ -24,7 +24,7 @@ from email.message import EmailMessage
 from getopt import gnu_getopt as getopt
 
 import ical_support as vobject
-from command_args import split_command
+from command_args import split_command, read_draft_headers, mailbox_address
 
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8', newline='\n')
@@ -215,6 +215,14 @@ def organizer(ical):
 
 
 if __name__ == "__main__":
+    if len(sys.argv) == 3 and sys.argv[1] == '--draft-headers':
+        headers = read_draft_headers(sys.argv[2])
+        for name in ('Subject', 'To', 'From'):
+            sys.stdout.buffer.write(headers[name].encode('utf-8') + b'\0')
+        sys.exit(0)
+    if len(sys.argv) == 3 and sys.argv[1] == '--mailbox-address':
+        print(mailbox_address(sys.argv[2]))
+        sys.exit(0)
     # Parse options and drive the interactive or non-interactive reply flow
     sendmail_resolver = sendmail_command
     # Gilgamesh: default with NEOMUTT_FROM.

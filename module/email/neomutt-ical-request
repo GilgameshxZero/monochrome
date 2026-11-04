@@ -7,47 +7,24 @@ fi
 # Remove a NeoMutt-owned placeholder if generation fails or is cancelled.
 trap 'status=$?; if (( status != 0 )); then rm -f .request.tmp.ics; fi' EXIT
 
-: "${NEOMUTT_FROM:?NEOMUTT_FROM is not set}"
-
-# An optional message file, as written by the compose menu's <write-fcc>, to
-# take the recipients and the subject from.
+# Read the current message rather than a From value captured at config load.
+# Source-tree and installed bundles share the same Python implementation.
+script_dir=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)
+ical_helper="$script_dir/mutt-ical.py"
+[[ -f $ical_helper ]] || ical_helper="$script_dir/../python/mutt-ical.py"
 draft=${1:-}
-
-# Print a header of a draft message: one address per line for To:, otherwise
-# the decoded value.
-draft_header() {
-	python3 - "$1" "$2" <<'PY'
-import email.message, email.policy, email.utils, mailbox, sys
-
-path, name = sys.argv[1], sys.argv[2]
-
-def factory(fp, **kwargs):
-	return email.message_from_binary_file(fp, policy=email.policy.default)
-
-msg = None
-try:
-	for msg in mailbox.mbox(path, factory=factory, create=False):
-		pass
-except Exception:
-	msg = None
-if msg is None:
-	with open(path, 'rb') as fh:
-		msg = email.message_from_binary_file(fh, policy=email.policy.default)
-
-value = str(msg.get(name) or '')
-if name == 'To':
-	print('\n'.join(addr for _, addr in email.utils.getaddresses([value])))
-else:
-	print(value)
-PY
-}
-
 subject=
 to=
 if [[ -n $draft && -f $draft ]]; then
-	subject=$(draft_header "$draft" Subject)
-	to=$(draft_header "$draft" To)
-	rm -f "$draft"
+    {
+        IFS= read -r -d '' subject
+        IFS= read -r -d '' to
+        IFS= read -r -d '' NEOMUTT_FROM
+    } < <(python3 -X utf8 "$ical_helper" --draft-headers "$draft")
+    rm -f "$draft"
+else
+    : "${NEOMUTT_FROM:?NEOMUTT_FROM is not set}"
+    NEOMUTT_FROM=$(python3 -X utf8 "$ical_helper" --mailbox-address "$NEOMUTT_FROM")
 fi
 
 if [[ -n $subject ]]; then

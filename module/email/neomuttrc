@@ -37,8 +37,8 @@ set imap_authenticators="oauthbearer:xoauth2"
 set imap_oauth_refresh_command=\
 	"python3 -X utf8 \"${my_active_dir}mutt_oauth2.py\" \
 \"${my_active_dir}yangawesome_gmail.com.password.token.gpg\" \
---decryption-pipe \"gpg --decrypt\" \
---encryption-pipe \"gpg --compress-algo none --symmetric\""
+--decryption-pipe \"gpg --pinentry-mode loopback --decrypt\" \
+--encryption-pipe \"gpg --pinentry-mode loopback --compress-algo none --symmetric\""
 # For convenience to navigate to other folders.
 set folder="imaps://imap.gmail.com"
 # General IMAP hygiene.
@@ -59,7 +59,7 @@ set reverse_name
 alternates @gilgamesh.cc ^yangawesome@gmail.com$ \
 	^yangilga@mit.edu$ ^yyan99@mit.edu$
 # This file automatically sources the relevant passwords.
-source "gpg --decrypt \"${my_active_dir}neomuttrc.password.gpg\"|"
+source "gpg --pinentry-mode loopback --decrypt \"${my_active_dir}neomuttrc.password.gpg\"|"
 # Adjust SMTP server based on sending address.
 # For some reason, AUTH LOGIN on SMTP is not explicitly
 # selectable, so `smtp_authenticators` needs to be set for

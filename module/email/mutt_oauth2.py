@@ -33,6 +33,8 @@ import base64
 import secrets
 import hashlib
 import time
+import os
+import tempfile
 from datetime import timedelta, datetime
 from pathlib import Path
 import shlex
@@ -87,6 +89,7 @@ Use "--verbose --test" to test the IMAP/POP/SMTP endpoints.
 ap.add_argument('-v', '--verbose', action='store_true', help='increase verbosity')
 ap.add_argument('-d', '--debug', action='store_true', help='enable debug output')
 ap.add_argument('tokenfile', help='persistent token storage')
+ap.add_argument('--force-refresh', action='store_true', help='refresh even an unexpired access token')
 ap.add_argument('-a', '--authorize', action='store_true', help='manually authorize new tokens')
 ap.add_argument('--authflow', help='authcode | localhostauthcode | devicecode')
 ap.add_argument('--format', type=str, choices=['token', 'sasl', 'msasl'], default='token',
@@ -123,7 +126,7 @@ if path.exists():
     check_private(path)
     try:
         sub = subprocess.run(DECRYPTION_PIPE, check=True, input=path.read_bytes(),
-                             capture_output=True)
+                             stdout=subprocess.PIPE)
         token = json.loads(sub.stdout)
     except subprocess.CalledProcessError:
         sys.exit('Difficulty decrypting token file. Is your decryption agent primed for '
@@ -133,13 +136,26 @@ if path.exists():
 
 def writetokenfile():
     '''Writes global token dictionary into token file.'''
-    if not path.exists():
-        path.touch(mode=0o600)
-        protect_private(path)
-    check_private(path)
+    # Complete encryption before touching the current token. A refresh must not
+    # leave a truncated file after a write failure or process interruption.
     sub2 = subprocess.run(ENCRYPTION_PIPE, check=True, input=json.dumps(token).encode(),
-                          capture_output=True)
-    path.write_bytes(sub2.stdout)
+                          stdout=subprocess.PIPE)
+    if not sub2.stdout:
+        raise RuntimeError('Encryption returned an empty token file')
+    if path.exists():
+        check_private(path)
+    fd, temporary = tempfile.mkstemp(prefix='.' + path.name + '.', dir=path.parent)
+    try:
+        with os.fdopen(fd, 'wb') as output:
+            protect_private(temporary)
+            output.write(sub2.stdout)
+            output.flush()
+            os.fsync(output.fileno())
+        check_private(temporary)
+        os.replace(temporary, path)
+    finally:
+        if os.path.exists(temporary):
+            os.unlink(temporary)
 
 
 if args.debug:
@@ -271,7 +287,7 @@ if args.authorize:
         print('Exchanging the authorization code for an access token')
         try:
             response = urllib.request.urlopen(registration['token_endpoint'],
-                                              urllib.parse.urlencode(p).encode())
+                                              urllib.parse.urlencode(p).encode(), timeout=30)
         except urllib.error.HTTPError as err:
             print(err.code, err.reason)
             response = err
@@ -288,7 +304,7 @@ if args.authorize:
     elif authflow == 'devicecode':
         try:
             response = urllib.request.urlopen(registration['devicecode_endpoint'],
-                                              urllib.parse.urlencode(p).encode())
+                                              urllib.parse.urlencode(p).encode(), timeout=30)
         except urllib.error.HTTPError as err:
             print(err.code, err.reason)
             response = err
@@ -313,7 +329,7 @@ if args.authorize:
             print('.', end='', flush=True)
             try:
                 response = urllib.request.urlopen(registration['token_endpoint'],
-                                                  urllib.parse.urlencode(p).encode())
+                                                  urllib.parse.urlencode(p).encode(), timeout=30)
             except urllib.error.HTTPError as err:
                 # Not actually always an error, might just mean "keep trying..."
                 response = err
@@ -343,7 +359,7 @@ if args.authorize:
     update_tokens(response)
 
 
-if not access_token_valid():
+if args.force_refresh or not access_token_valid():
     if args.verbose:
         print('NOTICE: Invalid or expired access token; using refresh token '
               'to obtain new access token.')
@@ -356,7 +372,7 @@ if not access_token_valid():
               'grant_type': 'refresh_token'})
     try:
         response = urllib.request.urlopen(registration['token_endpoint'],
-                                          urllib.parse.urlencode(p).encode())
+                                          urllib.parse.urlencode(p).encode(), timeout=30)
     except urllib.error.HTTPError as err:
         print(err.code, err.reason)
         response = err

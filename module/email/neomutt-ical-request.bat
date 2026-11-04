@@ -1,4 +1,4 @@
 @echo off
-setlocal
+setlocal DisableDelayedExpansion
 bash "%~dpn0" %*
 exit /b %errorlevel%
