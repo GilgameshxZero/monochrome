@@ -89,15 +89,14 @@ def get_answer(invitation):
 
     # just copy from invitation
     end_prop = "dtend" if "dtend" in invitation.vevent.contents else "duration"
-    for i in ["uid", "summary", "dtstart", end_prop, "organizer", "vtimezone"]:
+    for i in ["uid", "summary", "dtstart", end_prop, "organizer", "sequence", "recurrence-id"]:
         if i in invitation.vevent.contents:
             ans.vevent.add(invitation.vevent.contents[i][0])
 
     # new timestamp
     ans.vevent.add('dtstamp')
-    # Gilgamesh: timezone fix.
-    ans.vevent.dtstamp.value = datetime.now(timezone.utc).replace(tzinfo=None)
-    # ans.vevent.dtstamp.value = datetime.now(timezone.utc)
+    # DTSTAMP must be UTC on the wire, including its trailing Z.
+    ans.vevent.dtstamp.value = datetime.now(timezone.utc)
     return ans
 
 

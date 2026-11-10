@@ -11,5 +11,7 @@ cryptsetup --key-file=/tmp/lukskey open /dev/nvme0n1p4 nvme0n1p4
 cryptsetup --key-file=/tmp/lukskey open /dev/sda1 sda1
 cryptsetup --key-file=/tmp/lukskey open /dev/sdb1 sdb1
 rm /tmp/lukskey
+mkdir -p /mnt/pve/sda1
 mount /dev/mapper/sda1 /mnt/pve/sda1
+mkdir -p /mnt/pve/sdb1
 mount /dev/mapper/sdb1 /mnt/pve/sdb1

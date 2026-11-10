@@ -36,6 +36,7 @@
 (?d)**/.stackdump
 (?d)**/.user
 (?d)**/.playwright-mcp
+(?d)**/.~lock.*
 
 // Development intermediaries are generally the same as
 // those in `.gitignore`. Files which can be generated

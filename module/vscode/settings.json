@@ -231,6 +231,7 @@
 	"editor.hover.showLongLineWarning": false,
 	// Toggle scrollbar.
 	// "editor.scrollbar.verticalScrollbarSize": 0,
+	"editor.roundedSelection": false,
 
 	"explorer.confirmDelete": false,
 	"explorer.confirmDragAndDrop": false,
@@ -579,6 +580,7 @@
 	"workbench.editor.tabActionCloseVisibility": false,
 	"workbench.editor.editorActionsLocation": "titleBar",
 	"workbench.editor.decorations.badges": false,
+	"workbench.experimental.modernUI": false,
 
 	"zenMode.restore": true,
 	"zenMode.showTabs": "none",
@@ -872,7 +874,5 @@
 	"C_Cpp.intelliSenseCacheSize": 1024,
 
 	// "clangd.path": "/home/gilgamesh/.config/VSCodium/User/globalStorage/llvm-vs-code-extensions.vscode-clangd/install/23.1.0/clangd_23.1.0/bin/clangd",
-	"workbench.experimental.modernUI": false,
-	"editor.roundedSelection": false,
 	"workbench.statusBar.visible": false
 }
