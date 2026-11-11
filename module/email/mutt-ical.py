@@ -213,7 +213,205 @@ def organizer(ical):
     raise Exception("no organizer in event")
 
 
+def rc_quote(value):
+    """Quote data for one NeoMutt config token, without executing substitutions."""
+    value = str(value)
+    if any(ord(char) < 32 or ord(char) == 127 for char in value):
+        raise ValueError('Control character in calendar command data')
+    return '"' + value.replace('\\', '\\\\').replace('"', '\\"').replace(
+        '$', '\\$').replace('`', '\\`').replace('^', '\\136') + '"'
+
+
+def command_path(path):
+    # Relative forward-slash paths avoid treating a drive colon/backslash as
+    # editor control input while the macro is entering an attachment filename.
+    try:
+        return Path(os.path.relpath(path, Path.cwd())).as_posix()
+    except ValueError:
+        return Path(path).as_posix()
+
+
+def source_keys(arguments):
+    """Invoke this helper through NeoMutt's ordinary source-pipe command."""
+    command = ['python3', '-X', 'utf8', Path(__file__).resolve().as_posix(), *(command_path(arg) if isinstance(arg, Path) else str(arg) for arg in arguments)]
+    shell_command = subprocess.list2cmdline(command) if os.name == 'nt' else shlex.join(command)
+    return '<enter-command>source ' + rc_quote(shell_command + '|') + '<enter>'
+
+
+def literal_keys(value):
+    # A quote-char before each scalar prevents address text from becoming a
+    # macro operation. Config quoting separately protects $, backticks and ^.
+    if any(ord(char) < 32 or ord(char) == 127 for char in value):
+        raise ValueError('Control character in organizer mailbox')
+    return ''.join('<quote-char>' + char for char in value)
+
+
+def prepare_reply_commands(reply_key):
+    """Create private unique staging and emit only stock compose operations."""
+    import json
+    import tempfile
+    from private_storage import check_private, protect_private
+    if reply_key not in {'r', 'R'}:
+        raise ValueError('Unknown calendar reply key')
+    base = Path(tempfile.gettempdir()) / 'neomutt-ical'
+    try:
+        base.mkdir(mode=0o700)
+    except FileExistsError:
+        check_private(base, directory=True)
+    else:
+        protect_private(base)
+    # Completed/discarded replies leave at most an empty directory. Never
+    # remove an active reply, or any file, during this bounded cleanup.
+    for child in base.iterdir():
+        if child.is_dir() and not child.is_symlink():
+            try:
+                child.rmdir()
+            except OSError:
+                pass
+    root = Path(tempfile.mkdtemp(prefix='reply-', dir=base))
+    state = root / 'state.json'
+    state.write_text(json.dumps({'kind': 'calendar_reply'}), encoding='utf-8')
+    invitation, reply = root / 'invitation.ics', root / 'reply.ics'
+    if any('<' in str(path) or '>' in str(path) for path in (root, Path(__file__))):
+        import shutil
+        shutil.rmtree(root)
+        raise ValueError('Calendar staging path contains a reserved macro character')
+    quote = (lambda arg: subprocess.list2cmdline([command_path(arg) if isinstance(arg, Path) else str(arg)])) if os.name == 'nt' else (lambda arg: shlex.quote(str(arg)))
+    generate = 'python3 -X utf8 ' + quote(Path(__file__).resolve()) + ' -i -g ' + quote(reply) + ' ' + quote(invitation)
+    keys = ('<pipe-entry>iconv -c --to-code=UTF-8 > ' + quote(invitation) + '<enter>' +
+            ('<reply>' if reply_key == 'r' else '<group-reply>') +
+            '<new-mime>' + command_path(reply) + '<enter>text/calendar<enter>' +
+            '<shell-escape>' + generate + '<enter>' +
+            '<last-entry><edit-type><kill-line>text/calendar; method=REPLY<enter>' +
+            '<update-encoding>' + source_keys(['--compose-reply', reply]))
+    print('push ' + rc_quote(keys))
+
+
+def reply_workspace(filename):
+    """Accept only the private workspace created for this reply."""
+    import json
+    import tempfile
+    from private_storage import check_private
+    reply = Path(filename).resolve()
+    root = reply.parent
+    base = Path(tempfile.gettempdir()).resolve() / 'neomutt-ical'
+    if reply.name != 'reply.ics' or root.parent != base or not root.name.startswith('reply-'):
+        raise ValueError('Unknown calendar reply workspace')
+    check_private(base, directory=True)
+    state = json.loads((root / 'state.json').read_text(encoding='utf-8'))
+    if state.get('kind') != 'calendar_reply':
+        raise ValueError('Unknown calendar reply workspace')
+    return root, reply, state
+
+
+def validated_reply(filename):
+    calendar = openics(str(filename))
+    if str(calendar.method.value).upper() != 'REPLY':
+        raise ValueError('A generated calendar REPLY is required')
+    event = calendar.vevent
+    attendees = event.contents.get('attendee', [])
+    if len(attendees) != 1 or not str(event.uid.value):
+        raise ValueError('A single-attendee calendar response is required')
+    if attendees[0].params.get('PARTSTAT', [''])[0] not in {'ACCEPTED', 'DECLINED', 'TENTATIVE'}:
+        raise ValueError('A calendar participation response is required')
+    return mailbox_address(organizer(calendar))
+
+
+def compose_reply_commands(filename):
+    """Snapshot a fresh compose using stock write-fcc, preserving all settings.
+
+    This snapshot only validates/counts MIME parts; it does not change From or
+    determine attendee identity. Nothing is submitted or put in the sent archive.
+    """
+    import hashlib
+    import json
+    import shutil
+    root, reply, state = reply_workspace(filename)
+    if not reply.is_file() or not reply.stat().st_size:
+        shutil.rmtree(root)
+        return
+    recipient = validated_reply(reply)
+    state['reply_sha256'] = hashlib.sha256(reply.read_bytes()).hexdigest()
+    (root / 'state.json').write_text(json.dumps(state), encoding='utf-8')
+    snapshot = root / 'draft'
+    keys = ('<edit-to><kill-line>' + literal_keys(recipient) + '<enter>' +
+            '<edit-cc><kill-line><enter><edit-bcc><kill-line><enter>' +
+            '<write-fcc><kill-line>' + command_path(snapshot) + '<enter>' +
+            source_keys(['--finish-compose-reply', reply]))
+    print('set my_ical_reply_saved_create=$confirm_create')
+    print('unset confirm_create')
+    print('push ' + rc_quote(keys))
+
+
+def finish_compose_reply_commands(filename):
+    """Keep the verified generated MIME part using ordinary stock detach keys."""
+    import hashlib
+    import mailbox
+    import shutil
+    from email import policy
+    from email.parser import BytesParser
+    # Restore even when serialization/generation failed; do not delete a body
+    # unless the exact generated calendar is found once in the actual snapshot.
+    print('set confirm_create=$my_ical_reply_saved_create; unset my_ical_reply_saved_create')
+    root, reply, state = reply_workspace(filename)
+    snapshot = root / 'draft'
+    try:
+        data = reply.read_bytes()
+        if hashlib.sha256(data).hexdigest() != state.get('reply_sha256'):
+            raise ValueError('Calendar response changed during composition')
+        validated_reply(reply)
+        factory = lambda file: BytesParser(policy=policy.default).parse(file)
+        if snapshot.is_dir():
+            box = mailbox.Maildir(snapshot, factory=factory, create=False) if (snapshot/'cur').is_dir() else mailbox.MH(snapshot, factory=factory, create=False)
+        else:
+            with snapshot.open('rb') as stream:
+                is_mmdf = stream.read(5) == b'\1\1\1\1\n'
+            box = (mailbox.MMDF if is_mmdf else mailbox.mbox)(snapshot, factory=factory, create=False)
+        try:
+            messages = list(box.values())
+        finally:
+            box.close()
+        if len(messages) != 1:
+            raise ValueError('Expected one private compose snapshot')
+        message = messages[0]
+        parts = list(message.iter_parts()) if message.is_multipart() else [message]
+        normalize = lambda payload: payload.replace(b'\r\n', b'\n').rstrip(b'\n')
+        matches = [index for index, part in enumerate(parts)
+                   if part.get_content_type() == 'text/calendar' and part.get_param('method') == 'REPLY'
+                   and normalize(part.get_payload(decode=True) or b'') == normalize(data)]
+        if len(matches) != 1 or len(parts) > 1000:
+            raise ValueError('Generated calendar part is missing or ambiguous')
+        selected = matches[0]
+        keys = ('<first-entry><detach-file>' * selected +
+                '<last-entry><detach-file>' * (len(parts) - selected - 1) + '<first-entry>')
+        if parts[selected].get_content_disposition() != 'inline':
+            keys += '<toggle-disposition>'
+        keys += ('<update-encoding><enter-command>set compose_confirm_detach_first='
+                 '$my_ical_reply_saved_detach; unset my_ical_reply_saved_detach<enter>')
+        print('set my_ical_reply_saved_detach=$compose_confirm_detach_first')
+        print('unset compose_confirm_detach_first')
+        print('push ' + rc_quote(keys))
+    finally:
+        if snapshot.is_dir():
+            shutil.rmtree(snapshot)
+        else:
+            snapshot.unlink(missing_ok=True)
+        (root/'invitation.ics').unlink(missing_ok=True)
+        (root/'state.json').unlink(missing_ok=True)
+        # reply.ics remains owned by NeoMutt until send/discard. The now-empty
+        # directory is removed by the next prepare, without a background worker.
+
+
 if __name__ == "__main__":
+    if len(sys.argv) == 3 and sys.argv[1] == '--prepare-reply':
+        prepare_reply_commands(sys.argv[2])
+        sys.exit(0)
+    if len(sys.argv) == 3 and sys.argv[1] == '--finish-compose-reply':
+        finish_compose_reply_commands(sys.argv[2])
+        sys.exit(0)
+    if len(sys.argv) == 3 and sys.argv[1] == '--compose-reply':
+        compose_reply_commands(sys.argv[2])
+        sys.exit(0)
     if len(sys.argv) == 3 and sys.argv[1] == '--draft-headers':
         headers = read_draft_headers(sys.argv[2])
         for name in ('Subject', 'To', 'From'):
@@ -337,8 +535,7 @@ if __name__ == "__main__":
             f.write(ans.serialize())
         sys.exit(0)
 
-    message.add_alternative(mailtext, subtype='plain')
-    message.add_alternative(
+    message.set_content(
         ans.serialize(),
         subtype='calendar',
         params={'method': 'REPLY', 'component': 'VEVENT', 'name': 'reply.ics'}

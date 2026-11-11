@@ -139,21 +139,8 @@ bind editor <Tab> complete-query
 bind editor ^T complete
 # Group reply by default. Reply to ICS request.
 bind index,pager R group-reply
-set my_ics_response_macro_pre="\
-<pipe-entry>\
-iconv -c --to-code=UTF-8 > .event.tmp.ics<enter>"
-set my_ics_response_macro_post="\
-<new-mime>.reply.tmp.ics<enter>text/calendar<enter>\
-<shell-escape>\
-python3 -X utf8 \"${my_active_dir}mutt-ical.py\" \
--i -g .reply.tmp.ics .event.tmp.ics<enter>\
-<shell-escape>rm .event.tmp.ics<enter>\
-<last-entry><edit-type><kill-line>text/calendar; method=REPLY<enter>\
-<update-encoding>"
-macro attach r "$my_ics_response_macro_pre<reply>\
-$my_ics_response_macro_post"
-macro attach R "$my_ics_response_macro_pre<group-reply>\
-$my_ics_response_macro_post"
+macro attach r "<enter-command>source \"python3 -X utf8 \\\"${my_active_dir}mutt-ical.py\\\" --prepare-reply r|\"<enter>"
+macro attach R "<enter-command>source \"python3 -X utf8 \\\"${my_active_dir}mutt-ical.py\\\" --prepare-reply R|\"<enter>"
 # Save ICS request.
 macro attach S "\
 <pipe-entry>\
