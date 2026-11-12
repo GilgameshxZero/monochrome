@@ -2,6 +2,7 @@
 // everything except the `snowfall/slush/` directory.
 // (?d)!/emilia
 (?d)!/monochrome/machine/gilgamesh-58
+(?d)!/monochrome/module/email
 (?d)!/snowfall/slush
 (?d)!*.stignore
 (?d)**

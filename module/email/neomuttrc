@@ -3,17 +3,16 @@
 
 # Utility.
 set my_active_dir="$HOME/main.syncthing/monochrome/module/email/"
-set my_archive_dir="~/main.syncthing/monochrome/archive.syncthing/module/email/"
 # Change to `snowfall` for <save-entry>.
 cd ~/main.syncthing/snowfall/
 
 # Receive.
 set spool_file=\
-	"~/main.syncthing/monochrome/machine/gilgamesh-58/inbox.maildir/"
+	"${my_active_dir}inbox.maildir/"
 # Sent emails and processed emails are "deleted" into an
 # "archive". Messages from $postponed should only be purged.
 # Messages deleted from the "archive" are "purged".
-set record="${my_archive_dir}archive.maildir/"
+set record="${my_active_dir}archive.maildir/"
 set postponed="${my_active_dir}postponed.maildir/"
 set trash="$record"
 # Helps with Windows syncing.
