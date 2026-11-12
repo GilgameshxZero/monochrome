@@ -11,20 +11,23 @@ __author__ = "Martin Sander"
 __license__ = "MIT"
 
 import atexit
-from pathlib import Path
-import locale
-import subprocess
-import sys
-import time
-import shlex
-import re
-import os
 from datetime import datetime, timezone
 from email.message import EmailMessage
+import hashlib
+import json
+import os
+from pathlib import Path
+import re
+import shlex
+import shutil
+import subprocess
+import sys
+import tempfile
 from getopt import gnu_getopt as getopt
 
 import ical_support as vobject
 from command_args import split_command, read_draft_headers, mailbox_address
+from private_storage import check_private, protect_private
 
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8', newline='\n')
@@ -98,25 +101,6 @@ def get_answer(invitation):
     # DTSTAMP must be UTC on the wire, including its trailing Z.
     ans.vevent.dtstamp.value = datetime.now(timezone.utc)
     return ans
-
-
-def execute(command, mailtext):
-    # Execute an external command optionally feeding it data through stdin
-    process = subprocess.Popen(command, stdin=subprocess.PIPE)
-    if process.stdin is not None and mailtext is not None:
-        if isinstance(mailtext, str):
-            mailtext = mailtext.encode()
-        process.stdin.write(mailtext)
-        process.stdin.close()
-
-    result = None
-    while result is None:
-        result = process.poll()
-        time.sleep(.1)
-    if result != 0:
-        print("unable to send reply, subprocess exited with\
-                exit code %d\nPress return to continue" % result)
-        sys.stdin.readline()
 
 
 def openics(invitation_file):
@@ -248,9 +232,6 @@ def literal_keys(value):
 
 def prepare_reply_commands(reply_key):
     """Create private unique staging and emit only stock compose operations."""
-    import json
-    import tempfile
-    from private_storage import check_private, protect_private
     if reply_key not in {'r', 'R'}:
         raise ValueError('Unknown calendar reply key')
     base = Path(tempfile.gettempdir()) / 'neomutt-ical'
@@ -273,7 +254,6 @@ def prepare_reply_commands(reply_key):
     state.write_text(json.dumps({'kind': 'calendar_reply'}), encoding='utf-8')
     invitation, reply = root / 'invitation.ics', root / 'reply.ics'
     if any('<' in str(path) or '>' in str(path) for path in (root, Path(__file__))):
-        import shutil
         shutil.rmtree(root)
         raise ValueError('Calendar staging path contains a reserved macro character')
     quote = (lambda arg: subprocess.list2cmdline([command_path(arg) if isinstance(arg, Path) else str(arg)])) if os.name == 'nt' else (lambda arg: shlex.quote(str(arg)))
@@ -289,9 +269,6 @@ def prepare_reply_commands(reply_key):
 
 def reply_workspace(filename):
     """Accept only the private workspace created for this reply."""
-    import json
-    import tempfile
-    from private_storage import check_private
     reply = Path(filename).resolve()
     root = reply.parent
     base = Path(tempfile.gettempdir()).resolve() / 'neomutt-ical'
@@ -323,9 +300,6 @@ def compose_reply_commands(filename):
     This snapshot only validates/counts MIME parts; it does not change From or
     determine attendee identity. Nothing is submitted or put in the sent archive.
     """
-    import hashlib
-    import json
-    import shutil
     root, reply, state = reply_workspace(filename)
     if not reply.is_file() or not reply.stat().st_size:
         shutil.rmtree(root)
@@ -345,9 +319,9 @@ def compose_reply_commands(filename):
 
 def finish_compose_reply_commands(filename):
     """Keep the verified generated MIME part using ordinary stock detach keys."""
-    import hashlib
+    # mailbox and email.parser are only needed here and cost a noticeable
+    # fraction of interpreter startup, so they stay local to this command.
     import mailbox
-    import shutil
     from email import policy
     from email.parser import BytesParser
     # Restore even when serialization/generation failed; do not delete a body
@@ -482,21 +456,6 @@ if __name__ == "__main__":
     attendee.value = f'mailto:{email_address}'
     attendee.params['CN'] = [email_address]
     attendee.params['PARTSTAT'] = [accept_decline]
-    # ans.vevent.add('attendee')
-    # ans.vevent.attendee_list.pop()
-    # flag = 1
-    # for attendee in attendees:
-    #     if hasattr(attendee, 'EMAIL_param'):
-    #         if attendee.EMAIL_param.lower() == email_address.lower():
-    #             ans.vevent.attendee_list.append(attendee)
-    #             flag = 0
-    #     else:
-    #         if attendee.value.split(':')[1].lower() == email_address.lower():
-    #             ans.vevent.attendee_list.append(attendee)
-    #             flag = 0
-    # if flag:
-    #     sys.stderr.write("Seems like you have not been invited to this event!\n")
-    #     sys.exit(1)
 
     summary = ans.vevent.contents['summary'][0].value
     accept_decline = accept_decline.capitalize()
@@ -546,19 +505,3 @@ if __name__ == "__main__":
         raise RuntimeError("Sendmail command is not configured. Aborting.")
 
     subprocess.run(sendmail_cmd, input=message.as_bytes(), check=True)
-
-    # # From https://github.com/marvinthepa/mutt-ical/commit/c62488fbfa6a817e0f03f808c8cc14d771ce3c2d#diff-3248d42797b254937d2a6b11a3980df7c90a128ba41931a0dc8f4c1ed2c51d13R224
-    # if accept_decline in {'ACCEPTED', 'TENTATIVE'}:
-    #     # add to khal
-    #     khal = {}
-    #     khal['dtstart'] = None
-    #     khal['dtend'] = None
-    #     khal['summary'] = invitation.vevent.contents['summary'][0].value
-    #     if hasattr(invitation.vevent, 'dtstart'):
-    #         khal['dtstart'] = invitation.vevent.dtstart.value.astimezone(tz=None).strftime("%Y-%m-%d %H:%M")
-    #     if hasattr(invitation.vevent, 'dtend'):
-    #         khal['dtend'] = invitation.vevent.dtend.value.astimezone(tz=None).strftime("%Y-%m-%d %H:%M")
-    #     if 'description' in invitation.vevent.contents:
-    #         khal['summary'] += " :: "
-    #         khal['summary'] += invitation.vevent.contents['description'][0].value
-    #     execute(['khal', 'new', khal['dtstart'], khal['dtend'], khal['summary']], None)

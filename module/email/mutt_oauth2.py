@@ -201,6 +201,21 @@ def access_token_valid():
     return token_exp and datetime.now() < datetime.fromisoformat(token_exp)
 
 
+def request_json(endpoint, params):
+    '''POST urlencoded parameters and decode one JSON response.'''
+    try:
+        response = urllib.request.urlopen(endpoint,
+                                          urllib.parse.urlencode(params).encode(),
+                                          timeout=30)
+    except urllib.error.HTTPError as err:
+        print(err.code, err.reason)
+        response = err
+    payload = response.read()
+    if args.debug:
+        print(payload)
+    return json.loads(payload)
+
+
 def update_tokens(r):
     '''Takes a response dictionary, extracts tokens out of it, and updates token file.'''
     token['access_token'] = r['access_token']
@@ -285,16 +300,7 @@ if args.authorize:
                   'client_secret': token['client_secret'],
                   'code_verifier': verifier})
         print('Exchanging the authorization code for an access token')
-        try:
-            response = urllib.request.urlopen(registration['token_endpoint'],
-                                              urllib.parse.urlencode(p).encode(), timeout=30)
-        except urllib.error.HTTPError as err:
-            print(err.code, err.reason)
-            response = err
-        response = response.read()
-        if args.debug:
-            print(response)
-        response = json.loads(response)
+        response = request_json(registration['token_endpoint'], p)
         if 'error' in response:
             print(response['error'])
             if 'error_description' in response:
@@ -302,16 +308,7 @@ if args.authorize:
             sys.exit(1)
 
     elif authflow == 'devicecode':
-        try:
-            response = urllib.request.urlopen(registration['devicecode_endpoint'],
-                                              urllib.parse.urlencode(p).encode(), timeout=30)
-        except urllib.error.HTTPError as err:
-            print(err.code, err.reason)
-            response = err
-        response = response.read()
-        if args.debug:
-            print(response)
-        response = json.loads(response)
+        response = request_json(registration['devicecode_endpoint'], p)
         if 'error' in response:
             print(response['error'])
             if 'error_description' in response:
@@ -327,16 +324,8 @@ if args.authorize:
         while True:
             time.sleep(interval)
             print('.', end='', flush=True)
-            try:
-                response = urllib.request.urlopen(registration['token_endpoint'],
-                                                  urllib.parse.urlencode(p).encode(), timeout=30)
-            except urllib.error.HTTPError as err:
-                # Not actually always an error, might just mean "keep trying..."
-                response = err
-            response = response.read()
-            if args.debug:
-                print(response)
-            response = json.loads(response)
+            # Not actually always an error, might just mean "keep trying..."
+            response = request_json(registration['token_endpoint'], p)
             if 'error' not in response:
                 break
             if response['error'] == 'authorization_declined':
@@ -370,16 +359,7 @@ if args.force_refresh or not access_token_valid():
               'client_secret': token['client_secret'],
               'refresh_token': token['refresh_token'],
               'grant_type': 'refresh_token'})
-    try:
-        response = urllib.request.urlopen(registration['token_endpoint'],
-                                          urllib.parse.urlencode(p).encode(), timeout=30)
-    except urllib.error.HTTPError as err:
-        print(err.code, err.reason)
-        response = err
-    response = response.read()
-    if args.debug:
-        print(response)
-    response = json.loads(response)
+    response = request_json(registration['token_endpoint'], p)
     if 'error' in response:
         print(response['error'])
         if 'error_description' in response:

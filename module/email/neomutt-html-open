@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # The paired Windows launcher supplies its native browser default.
 BROWSER=${BROWSER:-xdg-open}
+export BROWSER
 # Preserve the stable browser filename, publishing complete HTML atomically.
 output="$(pwd -W 2>/dev/null || pwd)/.neomutt-html-open.tmp.html"
 temporary=$(mktemp .neomutt-html-open.XXXXXX) || exit $?
@@ -10,12 +11,14 @@ printf '%s\n' '<!DOCTYPE html><html><head><style>body img { max-width: 100vw; ma
 cat -- "$1" || exit $?
 printf '%s\n' '</body></html>'
 } > "$temporary" || exit $?
-# A Windows shell sleeper holds ConPTY open even after NeoMutt exits. Detach
-# its cleanup worker, and never let an older timer remove a newer viewing.
+# Publish, start the cleanup timer and launch the browser in one interpreter so
+# attachment viewing pays a single Python startup. A Windows shell sleeper holds
+# ConPTY open even after NeoMutt exits; the detached worker never removes a
+# newer viewing because it compares the full file identity first.
 python3 -X utf8 - "$output" "$temporary" <<'PY'
 import os, subprocess, sys
-path = sys.argv[1]
-info = os.stat(sys.argv[2])
+path, temporary = sys.argv[1], sys.argv[2]
+info = os.stat(temporary)
 identity = (info.st_dev, info.st_ino, info.st_mtime_ns, info.st_size)
 worker = '''import os,sys,time
 path=sys.argv[1]; expected=tuple(map(int,sys.argv[2:]))
@@ -29,8 +32,7 @@ options = {'creationflags': subprocess.CREATE_NO_WINDOW} if os.name == 'nt' else
 subprocess.Popen([sys.executable, '-c', worker, path, *map(str, identity)],
                  stdin=subprocess.DEVNULL, stdout=subprocess.DEVNULL,
                  stderr=subprocess.DEVNULL, close_fds=True, **options)
+os.replace(temporary, path)
+sys.exit(subprocess.call([os.environ['BROWSER'], path]))
 PY
-mv -f -- "$temporary" "$output" || exit $?
-# Native Python preserves batch quoting when either path contains spaces.
-python3 -X utf8 -c 'import subprocess,sys; sys.exit(subprocess.call(sys.argv[1:]))' "$BROWSER" "$output"
 exit $?
