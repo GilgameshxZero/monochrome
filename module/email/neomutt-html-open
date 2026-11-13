@@ -15,7 +15,7 @@ printf '%s\n' '</body></html>'
 # attachment viewing pays a single Python startup. A Windows shell sleeper holds
 # ConPTY open even after NeoMutt exits; the detached worker never removes a
 # newer viewing because it compares the full file identity first.
-python3 -X utf8 - "$output" "$temporary" <<'PY'
+python -X utf8 - "$output" "$temporary" <<'PY'
 import os, subprocess, sys
 path, temporary = sys.argv[1], sys.argv[2]
 info = os.stat(temporary)
