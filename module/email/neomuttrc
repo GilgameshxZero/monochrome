@@ -187,22 +187,3 @@ macro index,pager xi \
 macro index,pager xp "<purge-message>"
 macro index,pager xr \
 	"<tag-pattern>~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>"
-macro index,pager xc \
-	"<search>~m<space><1024<space>~B<space>17a7ceae-5204-47cd-8c8a-74b95b3aa83d<enter>"
-# Toggle Gmail IMAP folders.
-# Open/close IMAP folders. This may leave an IMAP
-# connection even after close, which might slow down all
-# `neomutt` operations until restart.
-macro index,pager xgo "<enter-command>mailboxes \
--nonotify -nopoll \
-=INBOX \
-'=[Gmail]/Sent Mail' =[Gmail]/Drafts '=[Gmail]/All Mail' \
-=[Gmail]/Spam =[Gmail]/Bin \
-=[Gmail]/Chats =[Gmail]/Important \
-=[Gmail]/Starred<enter>"
-macro index,pager xgc "<enter-command>unmailboxes \
-=INBOX \
-'=[Gmail]/Sent Mail' =[Gmail]/Drafts '=[Gmail]/All Mail' \
-=[Gmail]/Spam =[Gmail]/Bin \
-=[Gmail]/Chats =[Gmail]/Important \
-=[Gmail]/Starred<enter>"
