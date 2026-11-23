@@ -38,7 +38,9 @@ Must be modified via Recovery mode.
 
 ## VPN
 
-For some reason, complete tunnels will cause the network to fail over time. For now, we maintain the network interfaces on `gilgamesh-43` to only utilize the split tunnels.
+Uses `gilgamesh-47.split.ovpn` and the full tunnel `gilgamesh-58.ovpn` together (`ovpn.command`).
+
+macOS rejects an explicit `route 0.0.0.0 0.0.0.0 vpn_gateway 0` with `File exists`, but OpenVPN still deletes that destination on shutdown, which removes the real default route. The full tunnel therefore uses `redirect-gateway def1` instead. It also omits `10.8.40.0/24` (the local LAN, already on `en0`) and `10.8.47.0/24` (owned by the 47 split tunnel); the 47 split likewise no longer declares `10.8.40.0/24`. On macOS a teardown deletes by destination even when the corresponding add failed, so overlapping declarations can take out the other tunnel or the connected interface route.
 
 ## GPU passthrough trail
 

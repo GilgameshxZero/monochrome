@@ -94,6 +94,7 @@
 						"entity.name.namespace",
 						"entity.name.operator",
 						"entity.name.scope-resolution",
+						"entity.name.tag",
 						"entity.other.attribute-name",
 						"keyword",
 						"keyword.operator.cast",
@@ -109,6 +110,8 @@
 						"meta.preprocessor",
 						"punctuation.definition.list.begin.markdown",
 						"string.regexp",
+						"string.unquoted.plain.in.yaml",
+						"string.unquoted.plain.out.yaml",
 						"storage.modifier",
 						"support.type.property-name.json",
 						"support.variable",
@@ -190,6 +193,8 @@
 						"meta.preprocessor",
 						"punctuation.definition.list.begin.markdown",
 						"string.regexp",
+						"string.unquoted.plain.in.yaml",
+						"string.unquoted.plain.out.yaml",
 						"storage.modifier",
 						"support.type.property-name.json",
 						"support.variable",
@@ -590,6 +595,10 @@
 	"clangd.inactiveRegions.opacity": 1,
 
 	"cSpell.userWords": [
+		"HELO",
+		"EHLO",
+		"SOML",
+		"EXPN",
 		"abelian",
 		"aeterna",
 		"Alveria",
@@ -872,7 +881,5 @@
 	"C_Cpp.clang_format_fallbackStyle": "{ \tBasedOnStyle: Chromium,  \tUseTab: Always, \tTabWidth: 2, \tPointerAlignment: Right,  \tNamespaceIndentation: All, \tFixNamespaceComments: false, \tAccessModifierOffset: 0, \tIndentCaseLabels: true,  \tAlignAfterOpenBracket: AlwaysBreak, \tAlignOperands: false, \tContinuationIndentWidth: 2,  \tBinPackArguments: false, \tBinPackParameters: false, \tAlignConsecutiveDeclarations: false, \tAllowShortIfStatementsOnASingleLine: true, \tAllowShortLoopsOnASingleLine: true,  \tAlignTrailingComments: false, \tReflowComments: true, \tColumnLimit: 80,  \tIncludeBlocks: Preserve, \tSortUsingDeclarations: false, }",
 	"C_Cpp.experimentalFeatures": "enabled",
 	"C_Cpp.intelliSenseCacheSize": 1024,
-
-	// "clangd.path": "/home/gilgamesh/.config/VSCodium/User/globalStorage/llvm-vs-code-extensions.vscode-clangd/install/23.1.0/clangd_23.1.0/bin/clangd",
 	"workbench.statusBar.visible": false
 }

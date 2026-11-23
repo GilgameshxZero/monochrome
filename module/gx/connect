@@ -7,4 +7,6 @@ elif [ "$1" = "jjl" ]; then
 	bluetoothctl connect "90:DA:07:9D:61:13"
 elif [ "$1" = "jjm" ]; then
 	bluetoothctl connect "BF:03:A1:D5:BA:8D"
+elif [ "$1" = "jjma" ]; then
+	bluetoothctl connect "A8:12:96:3D:6D:45"
 fi

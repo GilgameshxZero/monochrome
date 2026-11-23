@@ -83,6 +83,8 @@ dhcp-option DNS 1.1.1.1
 dhcp-option DNS 8.8.8.8
 ```
 
+On macOS, do not use the explicit `route 0.0.0.0 0.0.0.0` line. Darwin rejects a second default route (`File exists`), yet OpenVPN still runs `route delete -net 0.0.0.0` on shutdown, which removes the real default route. Use `redirect-gateway def1` instead: it installs `0.0.0.0/1` and `128.0.0.0/1`, which can be removed safely. Also do not declare a subnet that another concurrent tunnel owns; on macOS the teardown deletes by destination even when the corresponding add failed, so one tunnel can remove the other tunnel's routes (and a connected interface route).
+
 Preferred split tunnel:
 
 ```ovpn
@@ -119,6 +121,4 @@ Trail: <https://superuser.com/questions/1414464/multiple-client-connections-usin
 
 ## Bugs
 
-1. Seems like MacOS fails its internet interface after a while with the full tunnel. Still looking into this.
-	1. <https://serverfault.com/questions/975000/file-exists-when-pushing-route-with-openvpn>.
-		1. Seems like this solution is working.
+1. Resolved: macOS full tunnels “failing after a while” was OpenVPN deleting the real default route on shutdown. An explicit `route 0.0.0.0 0.0.0.0` fails to add with `File exists`, but the corresponding `route delete -net 0.0.0.0` still succeeds and removes the system default; the restart then cannot resolve the VPN endpoint. Use `redirect-gateway def1` on macOS. See `machine/gilgamesh-43.md`.
