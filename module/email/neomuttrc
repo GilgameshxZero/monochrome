@@ -4,7 +4,9 @@
 # Utility.
 set my_active_dir="$HOME/main.syncthing/monochrome/module/email/"
 # Change to `snowfall` for <save-entry>.
-cd ~/main.syncthing/snowfall/
+cd ~/main.syncthing/snowfall/local.syncthing/
+# This file automatically sources the relevant passwords.
+source "gpg --pinentry-mode loopback --decrypt \"${my_active_dir}neomuttrc.password.gpg\"|"
 
 # Receive.
 set spool_file=\
@@ -22,7 +24,7 @@ named-mailboxes inbox $spool_file
 # Difficult to expand neomuttrc variables inside ``.
 named-mailboxes -nonotify postponed $postponed \
 	archive $trash \
-	vault `ls -d "../monochrome/local.syncthing/module/email/vault.maildir/"`
+	vault `ls -d "../../monochrome/local.syncthing/module/email/vault.maildir/"`
 # Unfortunately this sets for both the file/folder browser.
 set browser_sort=unsorted
 
@@ -36,8 +38,11 @@ set imap_authenticators="oauthbearer:xoauth2"
 set imap_oauth_refresh_command=\
 	"python3 -X utf8 \"${my_active_dir}mutt_oauth2.py\" \
 \"${my_active_dir}yangawesome_gmail.com.password.token.gpg\" \
---decryption-pipe \"gpg --decrypt\" \
---encryption-pipe \"gpg --compress-algo none --symmetric\""
+--decryption-pipe \"gpg --batch --pinentry-mode loopback \
+--passphrase $my_yangawesome_gmail_com_password --decrypt\" \
+--encryption-pipe \"gpg --batch --pinentry-mode loopback \
+--passphrase $my_yangawesome_gmail_com_password \
+--compress-algo none --symmetric\""
 # For convenience to navigate to other folders.
 set folder="imaps://imap.gmail.com"
 # General IMAP hygiene.
@@ -58,8 +63,6 @@ set reverse_name
 # gilgameshxzero@outlook.com`.
 alternates @gilgamesh.cc ^yangawesome@gmail.com$ \
 	^yangilga@mit.edu$ ^yyan99@mit.edu$
-# This file automatically sources the relevant passwords.
-source "gpg --pinentry-mode loopback --decrypt \"${my_active_dir}neomuttrc.password.gpg\"|"
 # Adjust SMTP server based on sending address.
 # For some reason, AUTH LOGIN on SMTP is not explicitly
 # selectable, so `smtp_authenticators` needs to be set for

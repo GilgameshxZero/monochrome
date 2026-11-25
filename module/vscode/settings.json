@@ -558,6 +558,7 @@
 	"workbench.iconTheme": null,
 	"workbench.layoutControl.enabled": false,
 	"workbench.tips.enabled": false,
+	"workbench.editor.wrapTabs": true,
 	"workbench.editor.focusRecentEditorAfterClose": false,
 	"workbench.editor.splitInGroupLayout": "vertical",
 	"workbench.editorAssociations": {
